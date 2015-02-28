@@ -18,6 +18,11 @@ class Home extends CI_Controller {
 	function index()
 	{	
 		$lang_code = $this->uri->segment(1);
+		//$vars['coach_item'] = $this->core_model->get_coach_item($this->core_model->get_cate_list("COACH_TYPE"));
+		/*echo "<pre>";
+		print_r($vars['coach_item']);
+		echo "</pre>";
+		die();*/
 		$vars['views'] = 'index';
 		$vars['base_url'] = base_url();
 		$page_init = array('location' => 'index');
@@ -70,6 +75,15 @@ class Home extends CI_Controller {
 		$this->fuel->pages->render("iso_coach_list", $vars);
 	 
 	}
+	function _aboutus()
+	{	
+		$lang_code = $this->uri->segment(1);
+		$vars['views'] = 'aboutus';
+		$vars['base_url'] = base_url();
+		$page_init = array('location' => 'aboutus');
+		$this->fuel->pages->render("aboutus", $vars);
+	 
+	}
 	function contactus()
 	{	
 		$lang_code = $this->uri->segment(1);
@@ -117,7 +131,7 @@ class Home extends CI_Controller {
 		$this->fuel->pages->render("search_result", $vars);
 	}
 
-	function team_info()
+	function _team_info()
 	{	
 		$lang_code = $this->uri->segment(1);
 		$vars['views'] = 'team_info';

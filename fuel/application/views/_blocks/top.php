@@ -162,85 +162,37 @@
         <a href="index.php"><div class="logo"></div></a>
         <div class="menu">
             <ul id="menu">
-                <li class="top_title_menu"><a href="#">品質管理</a>
+                <?php
+
+                $menu_data = $this->core_model->get_coach_item($this->core_model->get_cate_list("COACH_TYPE"));
+
+                //print_r($menu_data);
+                //die();
+                foreach ($menu_data as $key => $value) {
+                  
+              
+                ?>
+                <li class="top_title_menu"><a href="<?php echo site_url()."home/iso_coach_list?type=".$value->code_id ?>"><?php echo $value->code_name ?></a>
                     <ul class="second_menu">
                         <span class="arrow_t_int"></span>
                         <span class="arrow_t_out"></span>
-                        <li><a href="b3_c.php">什麼是 ISO 14971 醫療器材風險管理？</a></li>
-                        <li><a href="b3_d.php">ISO 9001：2008 品質管理系統</a></li>
-                        <li><a href="#">SGS Qualicert 服務驗證</a></li>
-                        <li><a href="#">ISO 17025：2005實驗室認證</a></li>
-                        <li><a href="#">ISO/TS 16949：2009汽車業品質管理系統</a></li>
-                        <li><a href="#">IECQ QC080000：2012HSPM有害物質流程管理系統</a></li>
-                        <li><a href="#">ISO 13485：2003（EN ISO 13485:2012）醫療器材品質管理系統</a></li>
-                        <li><a href="#">TL9000通訊電子業品質管制系統</a></li>
-                        <li><a href="#">ISO 29990 ︰2010 學習服務品質管理系統</a></li>
-                        <li><a href="#">ISO 20121︰2012 公眾活動永續經營管理系統</a></li>
+                        <?php 
+                        if(isset($menu_data[$key]->coach_data))
+                        foreach ($menu_data[$key]->coach_data as $c_key => $c_value) {
+                        ?>
+                        <li><a href="<?php echo site_url()."home/iso_coach_detail?id=".$c_value->id."&type=".$value->code_id ?>"><?php echo $c_value->title ?></a></li>
+                        <?php 
+                        } 
+                        ?>
                     </ul>
                 </li>
-                <li class="top_title_menu"><a href="#">食品安全</a>
-                    <ul class="second_menu">
-                        <span class="arrow_t_int"></span>
-                        <span class="arrow_t_out"></span>
-                        <li><a href="#">食品安全品質標準（Safe Quality Food，SQF）</a></li>
-                        <li><a href="#">BRC 英國零售商管理系統</a></li>
-                        <li><a href="#">HACCP 危害分析重要管制點系統</a></li>
-                        <li><a href="#">ISO 22000：2005 食品安全管理系統</a></li>
-                        <li><a href="#">FSSC 22000 食品安全系統驗證標準</a></li>
-                    </ul>
-                </li>
-                <li class="top_title_menu"><a href="#">驗廠&社會責任</a>
-                    <ul class="second_menu">
-                        <span class="arrow_t_int"></span>
-                        <span class="arrow_t_out"></span>
-                        <li><a href="#">CSR 報告書編製，依據 GRI G4.0版 ＆ AA1000 標準撰寫</a></li>
-                        <li><a href="#">EICC 電子產業行為準則 4.0版</a></li>
-                        <li><a href="#">ISO 26000 社會責任指引</a></li>
-                        <li><a href="#">迪士尼驗廠 Disney ILS Audit Checklist</a></li>
-                        <li><a href="#">Wal-Mart 沃爾瑪驗廠</a></li>
-                        <li><a href="#">SA 8000社會責任管理系統</a></li>
-                        <li><a href="#">BSCI 企業社會責任準則</a></li>
-                        <li><a href="#">ICTI 驗廠</a></li>
-                    </ul>
-                </li>
-                <li class="top_title_menu"><a href="#">環境管理</a>
-                    <ul class="second_menu">
-                        <span class="arrow_t_int"></span>
-                        <span class="arrow_t_out"></span>
-                        <li><a href="#">ISO 14001：2015 （DIS版）環境管理系統</a></li>
-                        <li><a href="#">FSC 森林管理委員會認證</a></li>
-                        <li><a href="#">ISO 50001：2011能源管理系統</a></li>
-                        <li><a href="#">ISO 14064-1溫室氣體盤查標準</a></li>
-                    </ul>
-                </li>
-                <li class="top_title_menu"><a href="#">供應鏈安全</a>
-                    <ul class="second_menu">
-                        <span class="arrow_t_int"></span>
-                        <span class="arrow_t_out"></span>
-                        <li><a href="#">ISO 28000：2007 供應鏈安全管理系統</a></li>
-                        <li><a href="#">C-TPAT美國海關商貿反恐聯盟</a></li>
-                        <li><a href="#">AEO安全認證優質企業</a></li>
-                    </ul>
-                </li>
-                <li class="top_title_menu"><a href="#">風險管理</a>
-                    <ul class="second_menu">
-                        <span class="arrow_t_int"></span>
-                        <span class="arrow_t_out"></span>
-                        <li><a href="#">ISO 27001：2013 資訊安全管理系統</a></li>
-                        <li><a href="#">OHSAS 18001職業安全衛生管理系統</a></li>
-                        <li><a href="#">ISO 31000 : 2009 風險管理系統</a></li>
-                        <li><a href="#">ISO 22301 營運持續管理系統</a></li>
-                    </ul>
-                </li>
-                <li class="top_title_menu"><a href="#">資訊安全</a>
-                    <ul class="second_menu">
-                        <span class="arrow_t_int"></span>
-                        <span class="arrow_t_out"></span>
-                        <li><a href="#">ISO 27001：2013 資訊安全管理系統</a></li>
-                        <li><a href="#">BS 10012：2009 個人資料管理系統</a></li>
-                        <li><a href="#">TPIPAS臺灣個人資料保護與管理制度規範</a></li>
-                    </ul>
-                </li>
+
+
+                <?php 
+
+                } 
+
+                ?>
             </ul>
         </div>
     </div>

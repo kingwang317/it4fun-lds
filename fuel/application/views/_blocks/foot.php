@@ -46,8 +46,8 @@
     <div class="main_foot">
     <div class="foot_block">
         <div class="title">關於我們</div>
-        <div class="contact"><a href="#"><a href="#">ISO認證專業顧問團隊</a></div>
-        <div class="contact"><a href="#"><a href="#">ISO認證成功輔導案例</a></div>
+        <div class="contact"><a href="<?php echo site_url()?>team_info">ISO認證專業顧問團隊</a></div>
+        <div class="contact"><a href="#">ISO認證成功輔導案例</a></div>
     </div>
     <div class="foot_block">
         <div class="title">品質管理系列</div>

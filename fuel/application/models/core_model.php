@@ -6,56 +6,37 @@ class Core_model extends CI_Model {
         $this->load->database();
     }
 
-    public function get_cate_list(){
-        $get_root_cate_sql = @" SELECT * FROM mod_code WHERE codekind_key = 'CHAPTER' AND parent_id = '-1' ORDER BY code_key ASC";
+    public function get_cate_list($code_key){
+        $get_root_cate_sql = @" SELECT code_id,code_name FROM mod_code WHERE codekind_key = '$code_key' AND parent_id = '-1' ORDER BY code_key ASC";
         $query = $this->db->query($get_root_cate_sql);
         //echo $sql;exit;
         if($query->num_rows() > 0)
         {
             $result = $query->result();
-            $result = $this->get_sub_cate($result);
+           // $result = $this->get_sub_cate($result);
             return $result;
         }
 
     }
 
-    public function get_sub_cate($result){
+    public function get_coach_item($cate_list){
 
-        foreach ($result as $key => $value) {
+        foreach ($cate_list as $key => $value) {
          
 
 
-            $get_chapter_sql = "SELECT id,cp_key FROM mod_chapter WHERE cp_kind = '$value->code_id' ORDER BY cp_key ASC ";
+            $get_coach_sql = "SELECT id,title FROM mod_news WHERE news_kind = '2' AND  type = '$value->code_id'  ORDER BY date DESC  LIMIT 0,5 ";
             //echo $get_chapter_sql."<br />";
-            $chapter_query = $this->db->query($get_chapter_sql);
-            $chapter_result = null;
-            if($chapter_query->num_rows() > 0)
+            $coach_query = $this->db->query($get_coach_sql);
+    
+            if($coach_query->num_rows() > 0)
             {
-                $chapter_result = $chapter_query->result();
-
-                
-
+                $coach_data = $coach_query->result();
+                $cate_list[$key]->coach_data = $coach_data;
             }
-
-            $result[$key]->chapters = $chapter_result;
-
-
-            $get_pcate_sql = @" SELECT * FROM mod_code WHERE codekind_key = 'CHAPTER' AND parent_id = '$value->code_id' ORDER BY code_key ASC ";
-            $query = $this->db->query($get_pcate_sql);
-            
-            if($query->num_rows() > 0)
-            {
-                $cate_result = $query->result();
-
-
-                $result[$key]->sub_cate = $this->get_sub_cate($cate_result);
-
-                
-            }
-
 
         }
-        return $result;
+        return $cate_list;
     }
 
     public function get_chapter_detail($id){
