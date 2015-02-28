@@ -14,116 +14,55 @@ class Home extends CI_Controller {
 		parent::Controller(); 
 	} 
 
+	// function index($lang_code){
+	// 	echo $lang_code;
+	// 	die;
+	// 	return;
+	// }
 
 	function index()
 	{	
+		// $lang_code = $this->input->get("lang_code");
 		$lang_code = $this->uri->segment(1);
-		$vars['views'] = 'index';
+		// print_r( $lang_code);
+		// die;
+		$vars['views'] = 'home';
+		//$vars['css'] = site_url()."assets/templates/css/index.css";
+		$index_list = $this->core_model->get_cate_list(); 
+ 		$vars['index_list'] = $index_list;
 		$vars['base_url'] = base_url();
-		$page_init = array('location' => 'index');
-
-		$this->fuel->pages->render("index", $vars);
-	 
-	}
-	function ci_design()
-	{	
-		$lang_code = $this->uri->segment(1);
-		$vars['views'] = 'ci_design';
-		$vars['base_url'] = base_url();
-		$page_init = array('location' => 'ci_design');
-		$this->fuel->pages->render("ci_design", $vars);
-	 
-	}
-	function ci_design_detail()
-	{	
-		$lang_code = $this->uri->segment(1);
-		$vars['views'] = 'ci_design_detail';
-		$vars['base_url'] = base_url();
-		$page_init = array('location' => 'ci_design_detail');
-		$this->fuel->pages->render("ci_design_detail", $vars);
-	 
-	}
-	function iso_coach()
-	{	
-		$lang_code = $this->uri->segment(1);
-		$vars['views'] = 'iso_coach';
-		$vars['base_url'] = base_url();
-		$page_init = array('location' => 'iso_coach');
-		$this->fuel->pages->render("iso_coach", $vars);
-	 
-	}
-	function iso_coach_detail()
-	{	
-		$lang_code = $this->uri->segment(1);
-		$vars['views'] = 'iso_coach_2coldetail';
-		$vars['base_url'] = base_url();
-		$page_init = array('location' => 'iso_coach_2coldetail');
-		$this->fuel->pages->render("iso_coach_2coldetail", $vars);
-	 
-	}
-	function iso_coach_list()
-	{	
-		$lang_code = $this->uri->segment(1);
-		$vars['views'] = 'iso_coach_list';
-		$vars['base_url'] = base_url();
-		$page_init = array('location' => 'iso_coach_list');
-		$this->fuel->pages->render("iso_coach_list", $vars);
-	 
-	}
-	function contactus()
-	{	
-		$lang_code = $this->uri->segment(1);
-		$vars['views'] = 'contactus';
-		$vars['base_url'] = base_url();
-		$page_init = array('location' => 'contactus');
-		$this->fuel->pages->render("contactus", $vars);
-	 
-	}
-	function iso_class()
-	{	
-		$lang_code = $this->uri->segment(1);
-		$vars['views'] = 'iso_class';
-		$vars['base_url'] = base_url();
-		$page_init = array('location' => 'iso_class');
-		$this->fuel->pages->render("iso_class", $vars);
-	 
-	}
-	function iso_class_detail()
-	{	
-		$lang_code = $this->uri->segment(1);
-		$vars['views'] = 'iso_class_detail';
-		$vars['base_url'] = base_url();
-		$page_init = array('location' => 'iso_class_detail');
-		$this->fuel->pages->render("iso_class_detail", $vars);
+		$page_init = array('location' => 'home');
+		// print_r($vars);
+		// die;
+		$this->fuel->pages->render("home", $vars);
 	 
 	}
 
-	function iso_news()
+	function detail()
 	{	
+	 	$chapter_id = $this->input->get("id");
 		$lang_code = $this->uri->segment(1);
-		$vars['views'] = 'news';
+		// print_r( $lang_code);
+		// die;
+		$vars['views'] = 'detail';
+		//$vars['css'] = site_url()."assets/templates/css/index.css";
+ 		$chapter_detail = $this->core_model->get_chapter_detail($chapter_id); 
+ 		$vars['chapter_detail'] = $chapter_detail;
+ 		$chapter_list = $this->core_model->get_chapter_list_by_kind($chapter_detail[0]->cp_kind);
+ 		$vars['chapter_list'] = $chapter_list;
+ 		$vars['sample_list'] = $this->core_model->get_chapter_samples($chapter_id);
+ 		$vars['input_list'] = $this->core_model->get_chapter_inputs($chapter_id);
+ 		$vars['kind_name'] = $this->core_model->get_kind_name($chapter_detail[0]->cp_kind);
+ 		//echo $this->core_model->get_breadcrumb($chapter_detail[0]->cp_kind);
+ 		//die();
+ 		$vars['breadcrumb'] = $this->core_model->get_breadcrumb($chapter_detail[0]->cp_kind);
 		$vars['base_url'] = base_url();
-		$page_init = array('location' => 'news');
-		$this->fuel->pages->render("news", $vars);
+		$page_init = array('location' => 'detail');
+		// print_r($vars);
+		// die;
+		$this->fuel->pages->render("detail", $vars);
+	 
 	}
-
-
-	function search_result()
-	{	
-		$lang_code = $this->uri->segment(1);
-		$vars['views'] = 'search_result';
-		$vars['base_url'] = base_url();
-		$page_init = array('location' => 'search_result');
-		$this->fuel->pages->render("search_result", $vars);
-	}
-
-	function team_info()
-	{	
-		$lang_code = $this->uri->segment(1);
-		$vars['views'] = 'team_info';
-		$vars['base_url'] = base_url();
-		$page_init = array('location' => 'team_info');
-		$this->fuel->pages->render("team_info", $vars);
-	}
+	
 	 
 }
