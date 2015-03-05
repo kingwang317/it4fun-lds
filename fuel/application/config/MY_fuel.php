@@ -25,9 +25,9 @@ $config['fuel_mode'] = 'AUTO';
 $config['modules_allowed'] = array(
 	'user_guide', 
 	'codekind', 
-	'chapter',
-	'sample',
-	'cpinput'
+	'contact',
+	'event',
+	'news'
 	// 'chapter2'
 );
 

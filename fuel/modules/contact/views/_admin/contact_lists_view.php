@@ -61,40 +61,33 @@
 				<thead>
 					<tr> 
 						<th>編號</th>
-						<th>聯絡人</th>>
+						<th>聯絡人</th>
 						<th>電子信箱</th>
 						<th>詢價主旨</th>
 						<th>填寫日期</th>
+						<th></th>
 					</tr>
 				</thead>
 				<tbody>
-					<?php
-					if(isset($results))
-					{
-						foreach($results as $key=>$rows)
-						{
-
-					?>
-					<tr>						
-						<td><a href="<?php echo $detail_url.$rows->id?>"><?php echo $rows->id?></a></td>
-						<td><?php echo $rows->id?></td>
-						<td><?php echo $rows->name?></td>
-						<td><?php echo $rows->email?></td> 
-						<td><?php echo $rows->inquiry_topic?></td>
-						<td><?php echo $rows->modi_date?></td> 
-					</tr>
-					<?php
-						}
-					}
-					else
-					{
-					?>
+					<?php if (isset($results)): ?>
+						<?php foreach ($results as $key => $rows): ?>
+							<tr>						
+								<td><a href="<?php echo $detail_url.$rows->id?>"><?php echo $rows->id?></a></td>
+								<td><?php echo $rows->name?></td>
+								<td><?php echo $rows->email?></td> 
+								<td><?php echo $rows->inquiry_topic?></td>
+								<td><?php echo $rows->modi_date?></td> 
+								<td>
+									<button class="btn btn-xs btn-info" type="button" onclick="aHover('<?php echo $detail_url.$rows->id?>')">明細</button>
+								</td>
+							</tr>
+						<?php endforeach ?>
+					<?php else: ?>
 						<tr>
-							<td colspan="">No results.</td>
+							<td colspan="6">No results.</td>
 						</tr>
-					<?php
-					}
-					?>
+					<?php endif ?>
+					
 				</tobdy>
 			</table>
 		</div>
@@ -115,17 +108,17 @@
 		location.href = url;
 	}
 
-	$j("document").ready(function($) {
-		$("#btnExport").click(function(){
+	// $j("document").ready(function($) {
+	// 	$("#btnExport").click(function(){
 
-			$("#form").attr('action', '<?php echo $export_action ?>');
+	// 		$("#form").attr('action', '<?php echo $export_action ?>');
 
-			$("#form").submit();
+	// 		$("#form").submit();
 
-			$("#form").attr('action', '<?php echo $form_action ?>');
+	// 		$("#form").attr('action', '<?php echo $form_action ?>');
 
-	 	});
-	});
+	//  	});
+	// });
 
 	 
 </script>

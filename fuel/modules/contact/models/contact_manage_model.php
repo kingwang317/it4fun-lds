@@ -45,7 +45,10 @@ class Contact_manage_model extends MY_Model {
 
 	public function get_contact_by_id($id)
 	{
-		$sql = @"SELECT * FROM mod_contact WHERE id='$id' ";
+		$sql = @"SELECT name,email,msg,modi_date,
+		(SELECT code_name FROM mod_code WHERE mod_contact.inquiry_topic = mod_code.code_id ) inquiry_topic,
+		(SELECT code_name FROM mod_code WHERE mod_contact.coor_unit = mod_code.code_id ) coor_unit
+		FROM mod_contact WHERE id='$id' ";
 	
 		$query = $this->db->query($sql);
 

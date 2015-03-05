@@ -125,14 +125,15 @@ class Contact_manage extends Fuel_base_controller {
 			$this->comm->plu_redirect($module_uri, 0, "找不到聯絡資訊");
 			die();
 		}
+		$base_url = base_url();
  
         $vars['row'] = $row; 
 
 	 
 		$crumbs = array($this->module_uri => $this->module_name);
 		$this->fuel->admin->set_titlebar($crumbs);	
-
-	 
+		// module_uri
+	 	$vars["module_uri"] = $base_url.'fuel/contact/lists';
 		$vars["row"] = $row;
 		$vars["view_name"] = "聯絡資訊";
 		$this->fuel->admin->render('_admin/contact_detail_view', $vars);
