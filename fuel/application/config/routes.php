@@ -53,7 +53,7 @@ $route['404_override'] = 'fuel/page_router';
 // $route['zh-TW/product/(:num)'] 		= 'series/product/$1';
 // $route['product/(:num)'] 		= 'series/product/$1';
 
- 
+/* 
 $lang_ary = array('zh-TW', 'EN', 'ES');
 
 foreach($lang_ary as $l)
@@ -66,7 +66,10 @@ foreach($lang_ary as $l)
 	$route["$l/series"] = 'series/index/'; 
 	$route["$l/contact/do_add"] = 'contact/do_add/'; 
 	$route["$l/product/(:num)"] = 'series/product/$1'; 
-}
+}*/
+$route['iso_train'] 				= 'train/index';
+$route['iso_train/detail'] 			= 'train/detail';
+$route['iso_train/register'] 		= 'train/register';
 // $route['zh-TW/product/(:num)'] 		= 'series/product/$1';
 
 /*	

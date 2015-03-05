@@ -4,7 +4,7 @@ class Train extends CI_Controller {
 	function __construct()
 	{
 		parent::__construct(); 
-		$this->load->model('core_model');  
+		$this->load->model('code_model'); 
 	} 
 
 	function index()
