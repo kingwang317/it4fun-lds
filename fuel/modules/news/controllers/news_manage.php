@@ -25,6 +25,7 @@ class News_manage extends Fuel_base_controller {
 		$news_name = $this->news_name_by_kind($news_kind);
 
 		$search_keyword = $this->input->get_post('search_keyword'); 
+		$search_type = ''; 
 		
 		$filter = " WHERE news_kind = '$news_kind' "; 
 
@@ -43,6 +44,29 @@ class News_manage extends Fuel_base_controller {
 			}					
 		}
 
+		if ($news_kind == 2) {
+			$type = $this->codekind_manage_model->get_code_list_for_other_mod("COACH_TYPE");
+			$vars['type'] = $type;
+
+			$search_type = $this->input->get_post('search_type'); 
+
+			if ($search_type != "") {
+				$filter .= " AND type = '$search_type' "; 
+				$this->session->set_userdata('search_type', $search_type);
+			}else{
+				if (!isset($search_type) ) {
+					$search_type = $this->session->userdata('search_type'); 
+					if ($search_type != "") {
+						$search_type = $search_type;
+						$filter .= " AND type = '$search_type' "; 
+					} 
+				}else{
+					$this->session->set_userdata('search_type', "");
+				}					
+			}
+			$vars['search_type'] = $search_type;
+		}
+
 		// print_r($filter);
 
 		$target_url = $base_url."fuel/news/lists/$news_kind/";
@@ -53,7 +77,7 @@ class News_manage extends Fuel_base_controller {
 		$this->pagination->initialize($config); 
 
 		$results = $this->news_manage_model->get_news_list($dataStart, $dataLen,$filter);
-
+		$vars['news_kind'] = $news_kind;
 		$vars['news_name'] = $news_name;
 		$vars['search_keyword'] = $search_keyword;
 		$vars['total_rows'] = $total_rows; 
@@ -92,11 +116,14 @@ class News_manage extends Fuel_base_controller {
 		$vars['module_uri'] = base_url().$this->module_uri.'/'.$news_kind;
 		$vars['view_name'] = "新增";
 
-		$type = $this->codekind_manage_model->get_code_list_for_other_mod("NEWSTYPE");
-		$vars['type'] = $type;
+		if ($news_kind == 2) {
+			$type = $this->codekind_manage_model->get_code_list_for_other_mod("COACH_TYPE");
+			$vars['type'] = $type;
+		}
+		
 
-		$lang = $this->codekind_manage_model->get_code_list_for_other_mod("LANG_CODE");
-		$vars['lang'] = $lang;
+		// $lang = $this->codekind_manage_model->get_code_list_for_other_mod("LANG_CODE");
+		// $vars['lang'] = $lang;
  
 
 		$this->fuel->admin->render("_admin/news_create_view", $vars);
@@ -192,6 +219,12 @@ class News_manage extends Fuel_base_controller {
 
 		$news_kind = $news->news_kind;
 	    $news_name = $this->news_name_by_kind($news_kind);
+
+		if ($news_kind == 2) {
+			$type = $this->codekind_manage_model->get_code_list_for_other_mod("COACH_TYPE");
+			$vars['type'] = $type;
+		}
+
 		$vars['news_name'] = $news_name;
 		$vars['news_kind'] = $news_kind;
 		$vars['form_action'] = base_url()."fuel/news/do_edit/$id";
@@ -250,6 +283,8 @@ class News_manage extends Fuel_base_controller {
 				$this->news_manage_model->update_order($post_arr['news_ori_order'],$ori_id);
 			}
 		} 
+
+		print_r($post_arr);
 
 		$success = $this->news_manage_model->update($post_arr); 
 

@@ -53,6 +53,22 @@
 								<textarea class="form-control ckeditor" id="content" rows="3" name="content"></textarea>
 							</div>
 						</div>	
+						<?php if ($news_kind == 2): ?>						  
+						<div class="form-group">
+							<label class="col-sm-2 col-sm-2 control-label">輔導項目類別</label>
+							<div class="col-sm-4">
+								<select name="type" id="type">
+									<?php
+										if(isset($type)):
+									?>	
+									<?php   foreach($type as $key=>$rows):?>
+												<option value="<?php echo $rows->code_id ?>"><?php echo $rows->code_name ?></option>
+										<?php endforeach;?>
+									<?php endif;?>
+								</select>
+							</div>
+						</div>		
+						<?php endif ?>
 						<?php if ($news_kind == 3): ?>							
 						<div class="form-group">
 							<label class="col-sm-2 col-sm-2 control-label">Slider URL</label>
@@ -77,7 +93,7 @@
 						</div>	
 						<div class="form-group">
 							<div class="col-sm-12" style="text-align:center">
-								<input type="hidden" name="type" value="0" >
+								<!-- <input type="hidden" name="type" value="0" > -->
 								<input type="hidden" name="lang" value="zh-TW" >
 								<input type="hidden" name="news_kind" value="<?php echo $news_kind ?>" >
 								<button type="submit" class="btn btn-info">新增</button>

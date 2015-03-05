@@ -4,14 +4,14 @@
 </style>
 <section class="wrapper" style="margin:0px">
 	<div class="row" style="margin:10px 10px">
-	    <div class="col-md-2 sheader"><h4>修改活動</h4></div>
+	    <div class="col-md-2 sheader"><h4>修改</h4></div>
 	    <div class="col-md-10 sheader"></div>
 	</div>
 
 	<div class="row" style="margin:10px 10px">
 		<div class="span12">
 			<ul class="breadcrumb">
-			  <li>位置：<a href="<?php echo $module_uri?>">活動列表</a></li>
+			  <li>位置：<a href="<?php echo $module_uri?>">列表</a></li>
 			  <li class="active"><?php echo $view_name?></li>
 			</ul>
 		</div>
@@ -25,107 +25,77 @@
 				<div class="panel-body">
 					<div class="form-horizontal tasi-form">
 						<div class="form-group">
-							<label class="col-sm-2 col-sm-2 control-label"><span style="color:#d9534f">*</span>活動主題</label>
+							<label class="col-sm-2 col-sm-2 control-label"><span style="color:#d9534f">*</span>課程名稱</label>
 							<div class="col-sm-4">
-								<input type="text" class="form-control" name="event_title" value="<?php echo $result->event_title?>"> 
+								<input type="text" class="form-control" name="train_title" value="<?php echo $result->train_title?>"> 
 							</div>
 						</div>	
 						<div class="form-group">
-							<label class="col-sm-2 col-sm-2 control-label"><span style="color:#d9534f">*</span>活動開始日期</label>
+							<label class="col-sm-2 col-sm-2 control-label"><span style="color:#d9534f">*</span>開課日期</label>
 							<div class="col-sm-4">
-								<div class="input-group date event_start_date">
-								  <input type="text" class="form-control" readonly="" size="16" name="event_start_date" value="<?php echo $result->event_start_date?>">
-								    <span class="input-group-btn">
-								    <button type="button" class="btn btn-info date-set" style="height:34px;"><i class="icon-calendar"></i></button>
-								    </span>
-								</div>
+								<textarea class="form-control" rows="3" name="train_date" id="train_date"><?php echo $result->train_date ?></textarea>
 							</div>
-						</div>	 
+						</div>	
 						<div class="form-group">
-							<label class="col-sm-2 col-sm-2 control-label"><span style="color:#d9534f">*</span>活動結束日期</label>
+							<label class="col-sm-2 col-sm-2 control-label"><span style="color:#d9534f">*</span>費用</label>
+							<div class="col-sm-4">							 
+								<input type="radio" name="is_free" value="1" <?php echo $result->is_free=="1"?"checked":"" ?>>免費
+								<input type="radio" name="is_free" value="0" <?php echo $result->is_free=="0"?"checked":"" ?>>付費
+								<input type="text" name="train_price" value="<?php echo $result->train_price?>">
+							</div>
+						</div>	
+						<div class="form-group">
+							<label class="col-sm-2 col-sm-2 control-label"><span style="color:#d9534f">*</span>上課時間[起]</label>
 							<div class="col-sm-4">
-								<div class="input-group date event_end_date">
-								  <input type="text" class="form-control" readonly="" size="16" name="event_end_date" value="<?php echo $result->event_end_date?>">
-								    <span class="input-group-btn">
-								    <button type="button" class="btn btn-danger date-set" style="height:34px;"><i class="icon-calendar"></i></button>
-								    </span>
-								</div>
+								<input type="text" class="form-control" name="train_time_s" value="<?php echo $result->train_time_s?>" id="train_time_s"> 
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-sm-2 col-sm-2 control-label"><span style="color:#d9534f">*</span>報名開始日期</label>
+							<label class="col-sm-2 col-sm-2 control-label"><span style="color:#d9534f">*</span>上課時間[迄]</label>
 							<div class="col-sm-4">
-								<div class="input-group date regi_start_date">
-								  <input type="text" class="form-control" readonly="" size="16" name="regi_start_date" value="<?php echo $result->regi_start_date?>">
-								    <span class="input-group-btn">
-								    <button type="button" class="btn btn-info date-set" style="height:34px;"><i class="icon-calendar"></i></button>
-								    </span>
-								</div>
+								<input type="text" class="form-control" name="train_time_e" value="<?php echo $result->train_time_e?>" id="train_time_e"> 
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-sm-2 col-sm-2 control-label"><span style="color:#d9534f">*</span>報名結束日期</label>
+							<label class="col-sm-2 col-sm-2 control-label"><span style="color:#d9534f">*</span>上課天數</label>
 							<div class="col-sm-4">
-								<div class="input-group date regi_end_date">
-								  <input type="text" class="form-control" readonly="" size="16" name="regi_end_date" value="<?php echo $result->regi_end_date?>">
-								    <span class="input-group-btn">
-								    <button type="button" class="btn btn-danger date-set" style="height:34px;"><i class="icon-calendar"></i></button>
-								    </span>
-								</div>
+								<input type="number" class="form-control" name="train_days" value="<?php echo $result->train_days?>" id="train_days"> 
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-sm-2 col-sm-2 control-label"><span style="color:#d9534f">*</span>活動費用</label>
+							<label class="col-sm-2 col-sm-2 control-label"><span style="color:#d9534f">*</span>上課時數</label>
 							<div class="col-sm-4">
-								<input type="number" class="form-control" name="event_charge" value="<?php echo $result->event_charge?>" id="event_charge"> 
+								<input type="number" class="form-control" name="train_hours" value="<?php echo $result->train_hours?>" id="train_hours"> 
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-sm-2 col-sm-2 control-label"><span style="color:#d9534f">*</span>人數限制</label>
+							<label class="col-sm-2 col-sm-2 control-label"><span style="color:#d9534f">*</span>上課地點[全稱]</label>
 							<div class="col-sm-4">
-								<input type="number" class="form-control" name="regi_limit_num" value="<?php echo $result->regi_limit_num?>" id="regi_limit_num"> 
+								<input type="text" class="form-control" name="train_place" value="<?php echo $result->train_place?>" id="train_place"> 
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-sm-2 col-sm-2 control-label"><span style="color:#d9534f">*</span>活動地點</label>
+							<label class="col-sm-2 col-sm-2 control-label"><span style="color:#d9534f">*</span>上課地點[簡稱]</label>
 							<div class="col-sm-4">
-								<input type="text" class="form-control" name="event_place" value="<?php echo $result->event_place?>"> 
+								<input type="text" class="form-control" name="train_place_s" value="<?php echo $result->train_place_s?>" id="train_place_s"> 
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-sm-2 col-sm-2 control-label">活動圖片(列表用)</label>
+							<label class="col-sm-2 col-sm-2 control-label"><span style="color:#d9534f">*</span>主辦單位</label>
 							<div class="col-sm-4">
-								<div class="input-group date">
-								  <input type="text" id="uploadFile2" class="form-control" name="event_photo_list_path" placeholder="Choose File" disabled="disabled" /> 
-								    <span class="input-group-btn">
-										<button class="fileUpload btn btn-info" type="button" style="margin:0">
-											<span>Upload</span>
-											<input type="file" class="upload" name="event_list_photo" id="uploadBtn2"/>
-										</button>
-								    </span>
-								</div>
-							
+								<input type="text" class="form-control" name="host_unit" value="<?php echo $result->host_unit?>" id="host_unit"> 
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-sm-2 col-sm-2 control-label">活動圖片(內頁用)</label>
+							<label class="col-sm-2 col-sm-2 control-label"><span style="color:#d9534f">*</span>合作單位</label>
 							<div class="col-sm-4">
-								<div class="input-group date">
-								  <input type="text" id="uploadFile" class="form-control" name="event_place" placeholder="Choose File" disabled="disabled" /> 
-								    <span class="input-group-btn">
-										<button class="fileUpload btn btn-info" type="button" style="margin:0">
-											<span>Upload</span>
-											<input type="file" class="upload" name="event_photo" id="uploadBtn"/>
-										</button>
-								    </span>
-								</div>
-							
+								<input type="text" class="form-control" name="coll_unit" value="<?php echo $result->coll_unit?>" id="coll_unit"> 
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-sm-2 col-sm-2 control-label">活動簡介</label>
-							<div class="col-sm-4">
-								 <textarea class="form-control" rows="3" name="event_detail" id="EventDetail"><?php echo $result->event_detail?></textarea>
+							<label class="col-sm-2 col-sm-2 control-label">訓練簡介</label>
+							<div class="col-sm-8">
+								 <textarea class="form-control ckeditor" rows="3" name="train_detail" id="train_detail"><?php echo htmlspecialchars_decode($result->train_detail) ?></textarea>
 							</div>
 						</div>
 						<div class="form-group">
@@ -143,6 +113,7 @@
 </section>
 
 <?php echo js($this->config->item('event_javascript'), 'event')?>
+<?php echo js($this->config->item('event_ck_javascript'), 'event')?>
  
 <script>
 	var $j = jQuery.noConflict(true);

@@ -26,6 +26,25 @@
 				    </div>
 				</div>
 			</div>  
+			<?php if ($news_kind == 2): ?>		
+			<div class="form-inline" style="margin-top:10px">				 				  
+				<div class="form-group">
+					<label class="col-sm-4 control-label" >類別</label>
+					<div class="col-sm-8">	
+						<select name="search_type" id="type">
+							<option value="" <?php echo $search_type == ""?"selected":"" ?>>不拘</option>
+							<?php
+								if(isset($type)):
+							?>	
+							<?php   foreach($type as $key=>$rows):?>
+										<option value="<?php echo $rows->code_id ?>" <?php echo $search_type == $rows->code_id?"selected":"" ?>><?php echo $rows->code_name ?></option>
+								<?php endforeach;?>
+							<?php endif;?>
+						</select>
+					</div>
+				</div>	
+			</div> 	
+			<?php endif ?>
 			<div class="form-inline" style="margin-top:10px" >
 				<div class="form-group">
 					<button type="submit" class="btn btn-warning">搜尋</button>

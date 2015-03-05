@@ -29,7 +29,7 @@ $config['modules_allowed'] = array(
 	// 'sample',
 	'event',
 	'news',
-	'train'
+	'contact'
 );
 
 $config['dashboards'] = array('google_analytics');

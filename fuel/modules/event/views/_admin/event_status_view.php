@@ -77,7 +77,6 @@
 						<th>名字</th>
 						<th>聯絡電話</th>
 						<th>報名時間</th>
-						<th>報名狀態</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -110,29 +109,6 @@
 						</td>
 						<td>
 							<?php echo $row->drop_date;?>
-						</td>
-						<td>
-							<?php
-								if($row->regi_type == 0)
-								{
-							?>
-									<span class="label label-success">準時出席</span>
-							<?php
-								}
-								else if($row->regi_type == 1)
-								{
-							?>
-									<span class="label label-warning">無法出席</span>
-							<?php
-								}
-								else
-								{
-							?>
-									<span class="label label-danger">資格不符</span>
-							<?php
-								}
-							?>
-							
 						</td>
 					</tr>
 				<?php

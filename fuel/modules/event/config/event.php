@@ -21,6 +21,7 @@ $config['event_javascript'] = array(
     site_url().'assets/admin_js/jquery.js',
     site_url().'assets/admin_js/bootstrap.min.js',
     site_url().'assets/admin_css/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js',
+    site_url().'assets/admin_js/jquery.timepicker.min.js'
     // "ckeditor.js",
     // "adapters/jquery.js",
     // "jquery.numeric.min.js"
@@ -37,6 +38,7 @@ $config['event_css'] = array(
 	site_url().'assets/admin_css/style.css',
 	site_url().'assets/admin_css/style-responsive.css',
 	site_url().'assets/admin_css/bootstrap-datetimepicker/css/datetimepicker.css',
+	site_url().'assets/admin_css/jquery.timepicker.min.css'
 	// site_url().'assets/admin_css/font-awesome/css/font-awesome.css'
 	// site_url().'assets/admin_css/datepicker.css'
 );

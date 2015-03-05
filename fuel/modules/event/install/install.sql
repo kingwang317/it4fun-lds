@@ -25,3 +25,9 @@ CREATE TABLE `mod_register` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 ALTER TABLE  `mod_event` ADD  `event_list_photo` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL AFTER  `event_id`
+
+ALTER TABLE  `mod_train` ADD  `train_time_s` VARCHAR( 10 ) NOT NULL ,
+ADD  `train_time_e` VARCHAR( 10 ) NOT NULL
+
+ALTER TABLE `mod_train` DROP `train_time`
+ALTER TABLE  `mod_train` ADD  `train_days` INT( 10 ) NOT NULL

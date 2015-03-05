@@ -16,7 +16,7 @@
 	<div class="row">
 		<div class="span12">
 			<ul class="breadcrumb">
-			  <li>位置：活動列表</li>
+			  <li>位置：列表</li>
 			</ul>
 		</div>
 	</div>
@@ -32,14 +32,14 @@
 				<div class="form-group">
 					<div class="col-sm-2">
 						<select class="form-control" name="search_type">
-							<option value="0">活動名稱</option>
-							<option value="1">活動費用</option>
-							<option value="2">活動地點</option>
+							<option value="0" <?php echo $search_type=="0"?"selected":"" ?>>課程名稱</option>
+							<option value="1" <?php echo $search_type=="1"?"selected":"" ?>>費用</option>
+							<option value="2" <?php echo $search_type=="2"?"selected":"" ?>>地點</option>
 						</select>
 					</div>
 					<div class="col-sm-4">
 						<div class="input-group date event_start_date">
-						  <input type="text" class="form-control" size="16" name="search_txt" id="search_txt" placeholder="Search...">
+						  <input type="text" class="form-control" size="16" name="search_txt" id="search_txt" placeholder="Search..." value="<?php echo $search_txt ?>">
 						    <span class="input-group-btn">
 						    <button type="button" class="btn btn-warning date-set isearch" style="height:34px;"><i class="glyphicon glyphicon-search"></i></button>
 						    </span>
@@ -53,7 +53,7 @@
 	    <div class="col-md-12 sheader"> 
 			<div class="form-inline" style="margin-top:10px" >
 				<div class="form-group">
-					<button class="btn btn-info" type="button" onClick="aHover('<?php echo $create_url;?>')">新增活動</button>
+					<button class="btn btn-info" type="button" onClick="aHover('<?php echo $create_url;?>')">新增訓練</button>
 					<button type="button" class="btn btn-danger del-all" style="height:34px;"><i class="glyphicon glyphicon-trash"></i></button>
 				</div>
 			</div>
@@ -73,12 +73,14 @@
 								<input type="checkbox" id="select-all"/>
 							</label>
 						</th>
-						<th>活動主題</th>
-						<th>活動時間</th>
-						<th>報名時間</th>
-						<th>活動地點</th>
-						<th>活動費用</th>
-						<th>報名狀態</th>
+						<th>課程名稱</th>
+						<th>開課日期</th>
+						<th>上課時間</th>
+						<th>上課地點</th>
+						<th>費用</th>
+						<th>主辦單位</th>
+						<th>合作單位</th>
+						<th>報名人數</th>
 						<th>刪除</th>
 					</tr>
 				</thead>
@@ -92,29 +94,31 @@
 					<tr>
 						<td>
 							<label class="label_check c_on" for="checkbox-01">
-								<input type="checkbox" name="event_id[]" eventid="<?php echo $row->event_id?>"/>
+								<input type="checkbox" name="event_id[]" eventid="<?php echo $row->id?>"/>
 							</label>
 						</td>
-						<td><p class="EventTitle"><a href="<?php echo $edit_url.$row->event_id?>" title="<?php echo $row->event_title?>"><?php echo $row->event_title?></a></p></td>
+						<td><p class="EventTitle"><a href="<?php echo $edit_url.$row->id?>" title="<?php echo $row->train_title?>"><?php echo $row->train_title?></a></p></td>
 						<td>
-							S:&nbsp;<span class="DateStart"><?php echo mb_substr($row->event_start_date, 0, 16, "utf-8")?></span><br />
-							E:&nbsp;<span class="DateEnd"><?php echo mb_substr($row->event_end_date, 0, 16, "utf-8")?></span>
+							<?php echo $row->train_date ?>
 						</td>
 						<td>
-							S:&nbsp;<span class="DateStart"><?php echo mb_substr($row->regi_start_date, 0, 16, "utf-8")?></span><br />
-							E:&nbsp;<span class="DateEnd"><?php echo mb_substr($row->regi_end_date, 0, 16, "utf-8")?></span>
+							<?php echo $row->train_time_s;?>~<?php echo $row->train_time_e?>
 						</td>
 						<td>
-							<?php echo $row->event_place;?>
+							<?php echo $row->train_price;?>(<?php echo $row->train_place_s ?>)
 						</td>
 						<td>
-							<?php echo $row->event_charge;?>
+							<?php echo $row->train_price;?>
 						</td>
 						<td>
-							<button class="btn btn-xs btn-info EventStatus" type="button" onClick="aHover('<?php echo $event_status_url.$row->event_id ?>')">報名狀態</button>
+							<?php echo $row->host_unit;?>
 						</td>
 						<td>
-							<button class="btn btn-xs btn-danger del" type="button" EventID="<?php echo $row->event_id ?>">刪除</button>
+							<?php echo $row->coll_unit;?>
+						</td> 
+						<td><a href="<?php echo $reg_list_url.$row->id?>" title="<?php echo $row->reg_count?>"><?php echo $row->reg_count?></a></td>
+						<td>
+							<button class="btn btn-xs btn-danger del" type="button" EventID="<?php echo $row->id ?>">刪除</button>
 						</td>
 					</tr>
 				<?php

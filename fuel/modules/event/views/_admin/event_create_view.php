@@ -33,18 +33,19 @@
 						<div class="form-group">
 							<label class="col-sm-2 col-sm-2 control-label"><span style="color:#d9534f">*</span>開課日期</label>
 							<div class="col-sm-4">
-								<div class="input-group date train_date">
-								  <input type="text" class="form-control" readonly="" size="16" name="train_date" id="train_date">
+								<textarea class="form-control" rows="3" name="train_date" id="train_date"></textarea>
+								<!-- <div class="input-group date train_date">
+								  <input type="text" class="form-control" size="16" name="train_date" id="train_date">
 								    <span class="input-group-btn">
 								    <button type="button" class="btn btn-info date-set" style="height:34px;"><i class="icon-calendar"></i></button>
 								    </span>
-								</div>
+								</div> -->
 							</div>
 						</div>	
 						<div class="form-group">
 							<label class="col-sm-2 col-sm-2 control-label"><span style="color:#d9534f">*</span>費用</label>
 							<div class="col-sm-4">							 
-								<input type="radio" name="is_free" value="1">免費
+								<input type="radio" name="is_free" value="1" checked>免費
 								<input type="radio" name="is_free" value="0">付費
 								<input type="text" name="train_price">
 							</div>
@@ -128,112 +129,94 @@
 	}
 
 	$j(document).ready(function($) {
-		// $j("#train_days").numeric();
-		 
 
-		$j(".event_start_date").datetimepicker({
-		    format: "yyyy-m-d hh:ii",
-		    autoclose: true
-		}).on('changeDate', function(ev){
-			console.log(ev);
+		$j("#train_time_s").timepicker({
+		    timeFormat: 'H:mm'
 		});
 
-		$j("#train_time_s").datetimepicker({
-		    format: "yyyy-m-d hh:ii",
-		    autoclose: true
-		});
-
-		$j("#train_time_e").datetimepicker({
-		    format: "yyyy-m-d hh:ii",
-		    autoclose: true
-		    
-		});
-
-		$(".regi_end_date").datetimepicker({
-		    format: "yyyy-m-d hh:ii",
-		    autoclose: true
-		});
-
-		$("#uploadBtn").change(function(){
-			$("#uploadFile").val($(this).val());
-		});
-
-		$("#uploadBtn2").change(function(){
-			$("#uploadFile2").val($(this).val());
-		});
+		$('#train_time_e').timepicker({
+			timeFormat: 'H:mm' 
+		}); 
 
 		$j("form").submit(function(event) {
 			$(".msg").remove();
-			var event_start_date 	= $("#event_start_date").val();
-			var event_end_date		= $("#event_end_date").val();
-			var regi_start_date		= $("#regi_start_date").val();
-			var regi_end_date		= $("#regi_end_date").val();
-
-
-			var esdt = (new Date(event_start_date).getTime()/1000);
-			var eedt = (new Date(event_end_date).getTime()/1000);
-			var rsdt = (new Date(regi_start_date).getTime()/1000);
-			var redt = (new Date(regi_end_date).getTime()/1000);
-
-			if(eedt < esdt)
+			
+			if($j("#train_title").val() == "")
 			{
-				alert("訓練結束時間不可小於開始時間");
-				return false;
-			}
-
-			if(redt < rsdt)
-			{
-				alert("報名結束時間不可小於開始時間");
-				return false;
-			}
-
-			if(esdt < rsdt)
-			{
-				alert("訓練間不可小於報名時時間");
-				return false;
-			}
-
-			if($j("#event_title").val() == "")
-			{
-				$j("#event_title").parent().after("<div class='col-sm-2 msg'><span style='color:red;'>必填</span></div>");
+				$j("#train_title").parent().after("<div class='col-sm-2 msg'><span style='color:red;'>必填</span></div>");
 
 				return false;
 			}
 
-			if($j("#event_start_date").val() == "")
+			if($j("#train_price").val() == "")
 			{
-				$j("#event_start_date").parents('.col-sm-4').after("<div class='col-sm-2 msg'><span style='color:red;'>必填</span></div>");
+				$j("#train_price").parents('.col-sm-4').after("<div class='col-sm-2 msg'><span style='color:red;'>必填</span></div>");
+
+				return false;
+			}
+			// console.log($j("#train_detail").val());
+			// if($j("#train_detail").val() == "")
+			// {
+			// 	$j("#train_detail").parents('.col-sm-4').after("<div class='col-sm-2 msg'><span style='color:red;'>必填</span></div>");
+
+			// 	return false;
+			// }
+
+			if($j("#train_place").val() == "")
+			{
+				$j("#train_place").parents('.col-sm-4').after("<div class='col-sm-2 msg'><span style='color:red;'>必填</span></div>");
 
 				return false;
 			}
 
-			if($j("#event_end_date").val() == "")
+			if($j("#train_place_s").val() == "")
 			{
-				$j("#event_end_date").parents('.col-sm-4').after("<div class='col-sm-2 msg'><span style='color:red;'>必填</span></div>");
+				$j("#train_place_s").parents('.col-sm-4').after("<div class='col-sm-2 msg'><span style='color:red;'>必填</span></div>");
 
 				return false;
 			}
 
-			if($j("#regi_start_date").val() == "")
+			if($j("#train_days").val() == "")
 			{
-				$j("#regi_start_date").parents('.col-sm-4').after("<div class='col-sm-2 msg'><span style='color:red;'>必填</span></div>");
+				$j("#train_days").parents('.col-sm-4').after("<div class='col-sm-2 msg'><span style='color:red;'>必填</span></div>");
 
 				return false;
 			}
 
-			if($j("#regi_end_date").val() == "")
+			if($j("#train_time_s").val() == "")
 			{
-				$j("#regi_end_date").parents('.col-sm-4').after("<div class='col-sm-2 msg'><span style='color:red;'>必填</span></div>");
+				$j("#train_time_s").parents('.col-sm-4').after("<div class='col-sm-2 msg'><span style='color:red;'>必填</span></div>");
 
 				return false;
-			}
+			}	
 
-			if($j("#event_place").val() == "")
+			if($j("#train_time_e").val() == "")
 			{
-				$j("#event_place").parents('.col-sm-4').after("<div class='col-sm-2 msg'><span style='color:red;'>必填</span></div>");
+				$j("#train_time_e").parents('.col-sm-4').after("<div class='col-sm-2 msg'><span style='color:red;'>必填</span></div>");
 
 				return false;
-			}			
+			}	
+
+			if($j("#train_hours").val() == "")
+			{
+				$j("#train_hours").parents('.col-sm-4').after("<div class='col-sm-2 msg'><span style='color:red;'>必填</span></div>");
+
+				return false;
+			}	
+
+			if($j("#host_unit").val() == "")
+			{
+				$j("#host_unit").parents('.col-sm-4').after("<div class='col-sm-2 msg'><span style='color:red;'>必填</span></div>");
+
+				return false;
+			}	
+
+			if($j("#coll_unit").val() == "")
+			{
+				$j("#coll_unit").parents('.col-sm-4').after("<div class='col-sm-2 msg'><span style='color:red;'>必填</span></div>");
+
+				return false;
+			}		
 		});
 		 
 	});
