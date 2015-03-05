@@ -6,18 +6,18 @@
 <meta name="viewport" content="width=device-width; initial-scale=1.0" /> <!-- 於手機觀看時不會自動放大 -->
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> <!-- 最佳的IE兼容模式 -->
 <title>Isoleader GRI Training System</title>
-<link href="<?php echo site_url()?>assets/templates/css/main.css" rel="stylesheet" type="text/css" />
+<link href="css/main.css" rel="stylesheet" type="text/css" />
 <!--link font awesome to use the icon-->
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-<script type="text/javascript" src="<?php echo site_url()?>assets/templates/js/jquery-1.9.1.min.js"></script>
-<script type="text/javascript" src="<?php echo site_url()?>assets/templates/js/jqueryUI-1.11.1.js"></script>
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="js/jqueryUI-1.11.1.js"></script>
 </head>
 <body>
 <!-- 上方檔案 ↓ -->
-<?php  $this->load->view('_blocks/top')?>
+<?php include 'top.php'; ?>
 
 <div class="main main_width">
-    <div><img src="<?php echo site_url()?>assets/templates/images/b10/b10_banner.jpg"></div>
+    <div><img src="images/b10/b10_banner.jpg"></div>
     <div class="width1024">
         <div class="ci_title">搜尋結果</div>
         <div class="b15_main">
@@ -37,7 +37,7 @@
     </div>
 </div>
 <!-- 最底宣告 -->
-<?php  $this->load->view('_blocks/foot')?>
+<?php include 'foot.php'; ?>
 </body>
 </html>
 

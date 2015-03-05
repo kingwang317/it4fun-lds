@@ -1,4 +1,4 @@
-<script type="text/javascript" src="<?php echo site_url()?>assets/templates/js/jquery.sticky.js"></script>
+<script type="text/javascript" src="js/jquery.sticky.js"></script>
 <style>
 .top{
     margin: 0px auto;
@@ -57,7 +57,7 @@
     color:#202020;
 }
 .logo{
-    background-image:url("<?php echo site_url()?>assets/templates/images/logo.png");
+    background-image:url("images/logo.png");
     height:44px;
     width:216px;
     display:inline-block;
@@ -145,15 +145,15 @@
 </style>
 <div class="top main_width">
     <div class="top_width_1024">
-    <span class='top_menu' style="padding-left:0;"><a href="<?php echo site_url()?>aboutus">關於我們</a></span>| 
-    <span class='top_menu'><a href="<?php echo site_url()?>home/ci_design">CI設計</a></span>| 
-    <span class='top_menu'><a href="<?php echo site_url()?>iso_train">ISO教育訓練</a></span>| 
-    <span class='top_menu'><a href="<?php echo site_url()?>home/iso_coach">ISO輔導項目</a></span>| 
+    <span class='top_menu' style="padding-left:0;"><a href="b17.php">關於我們</a></span>| 
+    <span class='top_menu'><a href="b6.php">CI設計</a></span>| 
+    <span class='top_menu'><a href="b9.php">ISO教育訓練</a></span>| 
+    <span class='top_menu'><a href="b2.php">ISO輔導項目</a></span>| 
     <span class='top_menu'><a href="http://www.isoleader.com.tw/phpBB3/" onclick="window.open(this.href);
             return false;">討論區</a></span>| 
-    <span class='top_menu'><a href="<?php echo site_url()?>home/iso_class">ISO小學堂</a></span>| 
-    <span class='top_menu'><a href="<?php echo site_url()?>home/iso_news">最新消息</a></span>| 
-    <span class='top_menu'><a href="<?php echo site_url()?>home/contactus">與我們聯絡</a></span>
+    <span class='top_menu'><a href="b7.php">ISO小學堂</a></span>| 
+    <span class='top_menu'><a href="b4.php">最新消息</a></span>| 
+    <span class='top_menu'><a href="b10.php">與我們聯絡</a></span>
     <span class="search" ><span class="fa fa-search"> </span><input type="search" id="search_box" style="height:15px;width:230px; background-color:#fafafa;" placeholder="關鍵字搜尋" autocomplete="off"></span>
     </div>
 </div>
@@ -211,12 +211,10 @@
 
         $("#search_box").keypress(function(e) {
             code = (e.keyCode ? e.keyCode : e.which);
-
-            var kw = $("#search_box").val();
             //if enter key is pressed
             if (code == 13) {
                 //click the button and go to page
-               window.location = "<?php echo site_url()?>home/search_result?kw="+kw;
+               window.location = "b15.php";
             }
         });
 </script>

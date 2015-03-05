@@ -25,10 +25,11 @@ $config['fuel_mode'] = 'AUTO';
 $config['modules_allowed'] = array(
 	'user_guide', 
 	'codekind', 
-	'chapter',
-	'sample',
-	'cpinput'
-	// 'chapter2'
+	// 'chapter',
+	// 'sample',
+	'event',
+	'news',
+	'contact'
 );
 
 $config['dashboards'] = array('google_analytics');
