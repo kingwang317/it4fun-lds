@@ -27,7 +27,7 @@ class News_manage_model extends MY_Model {
 
 	public function get_news_list($dataStart, $dataLen, $filter)
 	{
-		$sql = @"SELECT * FROM mod_news $filter ORDER BY `news_order` LIMIT $dataStart, $dataLen";
+		$sql = @"SELECT * FROM mod_news $filter ORDER BY `news_kind`,`type`,`news_order` LIMIT $dataStart, $dataLen";
 	
 		$query = $this->db->query($sql);
 
@@ -39,6 +39,21 @@ class News_manage_model extends MY_Model {
 		}
 
 		return;
+	}
+
+
+	public function get_max_order($news_kind){
+		$sql = @"SELECT MAX(news_order) AS max_order FROM mod_news WHERE news_kind = '$news_kind' ";
+		$query = $this->db->query($sql);
+
+		if($query->num_rows() > 0)
+		{
+			$row = $query->row();
+
+			return $row->max_order;
+		}
+
+		return 0;
 	}
 
 	public function get_news_detail($id){

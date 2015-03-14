@@ -67,6 +67,10 @@ foreach($lang_ary as $l)
 	$route["$l/contact/do_add"] = 'contact/do_add/'; 
 	$route["$l/product/(:num)"] = 'series/product/$1'; 
 }*/
+
+$route['home/iso_coach_detail/(:num)'] 		= 'home/iso_coach_detail/$1';
+$route['home/ci_design_detail/(:num)'] 		= 'home/ci_design_detail/$1';
+
 $route['iso_train'] 				= 'train/index';
 $route['iso_train/detail'] 			= 'train/detail';
 $route['iso_train/register'] 		= 'train/register';

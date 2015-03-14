@@ -44,9 +44,8 @@ class News_manage extends Fuel_base_controller {
 			}					
 		}
 
-		if ($news_kind == 2) {
-			$type = $this->codekind_manage_model->get_code_list_for_other_mod("COACH_TYPE");
-			$vars['type'] = $type;
+		if ($news_kind == 2 || $news_kind == 0 || $news_kind == 4) {
+		
 
 			$search_type = $this->input->get_post('search_type'); 
 
@@ -65,6 +64,17 @@ class News_manage extends Fuel_base_controller {
 				}					
 			}
 			$vars['search_type'] = $search_type;
+		}
+
+		if ($news_kind == 2) {
+			$type = $this->codekind_manage_model->get_code_list_for_other_mod("COACH_TYPE");
+			$vars['type'] = $type;
+		}else if($news_kind == 0){
+			$type = $this->codekind_manage_model->get_code_list_for_other_mod("HOME_TYPE");
+			$vars['type'] = $type;
+		}else if($news_kind == 4){
+			$type = $this->codekind_manage_model->get_code_list_for_other_mod("NEWS_TYPE");
+			$vars['type'] = $type;
 		}
 
 		// print_r($filter);
@@ -106,10 +116,12 @@ class News_manage extends Fuel_base_controller {
 		// $total_rows = $this->news_manage_model->get_total_rows(" WHERE 1=1 ");
 
 		// $vars['news_order'] = $total_rows + 1;
+		$vars['now'] = date("Y-m-d");
 		$vars['news_name'] = $news_name;
 		$vars['news_kind'] = $news_kind;
 		$vars['form_action'] = base_url().'fuel/news/do_create';
 		$vars['form_method'] = 'POST';
+		$vars['order'] = $this->news_manage_model->get_max_order($news_kind);
 		$crumbs = array($this->module_uri => $this->module_name);
 		$this->fuel->admin->set_titlebar($crumbs);		
 
@@ -118,6 +130,12 @@ class News_manage extends Fuel_base_controller {
 
 		if ($news_kind == 2) {
 			$type = $this->codekind_manage_model->get_code_list_for_other_mod("COACH_TYPE");
+			$vars['type'] = $type;
+		}else if($news_kind == 0){
+			$type = $this->codekind_manage_model->get_code_list_for_other_mod("HOME_TYPE");
+			$vars['type'] = $type;
+		}else if($news_kind == 4){
+			$type = $this->codekind_manage_model->get_code_list_for_other_mod("NEWS_TYPE");
 			$vars['type'] = $type;
 		}
 		
@@ -143,10 +161,10 @@ class News_manage extends Fuel_base_controller {
 		 
 		$post_arr = $this->input->post();
 		$config['upload_path'] = $root_path;
-		$config['allowed_types'] = 'png';
+		$config['allowed_types'] = 'png|jpg';
 		$config['max_size']	= '9999';
-		$config['max_width']  = '1024';
-		$config['max_height']  = '768';
+		$config['max_width']  = '*';
+		$config['max_height']  = '*';
 
 		$this->load->library('upload',$config); 
 
@@ -223,6 +241,12 @@ class News_manage extends Fuel_base_controller {
 		if ($news_kind == 2) {
 			$type = $this->codekind_manage_model->get_code_list_for_other_mod("COACH_TYPE");
 			$vars['type'] = $type;
+		}else if($news_kind == 0){
+			$type = $this->codekind_manage_model->get_code_list_for_other_mod("HOME_TYPE");
+			$vars['type'] = $type;
+		}else if($news_kind == 4){
+			$type = $this->codekind_manage_model->get_code_list_for_other_mod("NEWS_TYPE");
+			$vars['type'] = $type;
 		}
 
 		$vars['news_name'] = $news_name;
@@ -254,10 +278,10 @@ class News_manage extends Fuel_base_controller {
 		 
 		$post_arr = $this->input->post();
 		$config['upload_path'] = $root_path;
-		$config['allowed_types'] = 'png';
+		$config['allowed_types'] = 'png|jpg';
 		$config['max_size']	= '9999';
-		$config['max_width']  = '1024';
-		$config['max_height']  = '768';
+		$config['max_width']  = '*';
+		$config['max_height']  = '*';
 
 		$this->load->library('upload',$config); 
 
@@ -275,16 +299,16 @@ class News_manage extends Fuel_base_controller {
 		$post_arr["id"] = $id;
 
 		//調整順序 
-		if ($post_arr['news_ori_order'] != $post_arr['news_order']) {
-			$ori_obj = $this->news_manage_model->get_order($post_arr);
-			if (isset($ori_obj)) {
-				$ori_id = $ori_obj->id;
-				$this->news_manage_model->update_order($post_arr['news_order'],$id);
-				$this->news_manage_model->update_order($post_arr['news_ori_order'],$ori_id);
-			}
-		} 
+		// if ($post_arr['news_ori_order'] != $post_arr['news_order']) {
+		// 	$ori_obj = $this->news_manage_model->get_order($post_arr);
+		// 	if (isset($ori_obj)) {
+		// 		$ori_id = $ori_obj->id;
+		// 		$this->news_manage_model->update_order($post_arr['news_order'],$id);
+		// 		$this->news_manage_model->update_order($post_arr['news_ori_order'],$ori_id);
+		// 	}
+		// } 
 
-		print_r($post_arr);
+		// print_r($post_arr);
 
 		$success = $this->news_manage_model->update($post_arr); 
 
@@ -373,7 +397,7 @@ class News_manage extends Fuel_base_controller {
 		$news_name = '';
 		switch ($news_kind) {
 			case '0':
-				$news_name = '最新消息';
+				$news_name = '首頁';
 				break;
 			case '1':
 				$news_name = 'CI設計';
@@ -383,6 +407,8 @@ class News_manage extends Fuel_base_controller {
 				break;
 			case '3':
 				$news_name = 'ISO小學堂';
+			case '4':
+				$news_name = '最新消息';
 				break;
 		}
 		return $news_name;

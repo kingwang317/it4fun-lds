@@ -40,11 +40,11 @@
 
         <div class="location">
 
-            <div class="location_left"><font color="black">首頁 / ISO 認證輔導 / 品質管理系列 /</font> EICC / SA8000 / BSCI 驗證與社會責任系列比較</div>
+            <div class="location_left"><font color="black">首頁 / ISO 認證輔導 / <?php echo $news_type->code_name ?>系列 /</font> <?php echo $news->title ?></div>
 
             <div class="location_right">
 
-                <div class="browse_count"><font color="black">瀏覽數：</font>200+</div>
+                <div class="browse_count"><font color="black">瀏覽數：</font><?php echo $news->view_count ?>+</div>
 
                 <div class="facebook_like"><img src="images/b3_c/fb.jpg"></div>
 
@@ -56,160 +56,20 @@
 
             <div class="b3_d_top">
 
-                <div class="b3_d_top_title">EICC / SA8000 / BSCI 驗證與社會責任系列比較</div>
+                <div class="b3_d_top_title"><?php echo $news->title ?></div>
 
-                <div class="b3_d_top_date">December 31, 2014</div>
+                <div class="b3_d_top_date"><?php 
+                    $date = date_create($news->date);
+                    echo date_format($date, 'Y-m-d')
+                ?></div>
 
             </div>
 
-            <div class="b3_d_contact">領導力企管為您整理常見的驗廠與社會責任系列領導力企管為您整理常見的驗廠與社會責任系列領導力企管為您整理常見的驗廠與社會責任系列領導力企管為您整理常見的驗廠與社會責任系列。<br>領導力企管為您整理常見的驗廠與社會責任系列領導力企管為您整理常見的驗廠與社會責任系列。</div>
-
-            <div class="b3_d_table">
-
-                <table cellSpacing="0" width="945px" border="0" align="left">
-
-                    <tr>
-
-                        <td class="b3_d_table_title" colspan="4">標準比較表</td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td class="b3_d_table_name" width="75px">名稱</td>
-
-                        <td class="b3_d_table_contact_img" width="240px"><img src="images/b3_d/b3_d_1.jpg" style="height:60px"></td>
-
-                        <td class="b3_d_table_contact_img" width="240px"><img src="images/b3_d/b3_d_2.jpg" style="height:110px"></td>
-
-                        <td class="b3_d_table_contact_img" width="240px"><img src="images/b3_d/b3_d_3.jpg" style="height:60px"></td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td class="b3_d_table_name">制定發起單位</td>
-
-                        <td class="b3_d_table_contact">2004年6月間，由HP、IBM、DELL、Flextronics、Celestica、Jabil、Sanmina SCI、Solectron等電子大廠所一同發起。而後。</td>
-
-                        <td class="b3_d_table_contact">SAI組織</td>
-
-                        <td class="b3_d_table_contact">FTA對外貿易協會</td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td class="b3_d_table_name" >是否取得證書 ？</td>
-
-                        <td class="b3_d_table_contact">
-
-                            <ul>
-
-                                <li>領導力企管為您整理常見的驗廠領導力企管為您整理常見的驗廠</li>
-
-                                <li>領導力企管為您整理常見的驗廠領導力企管為您整理常見的驗廠領導力企管為您整理常見的驗廠</li>
-
-                            </ul>
-
-                        </td>
-
-                        <td class="b3_d_table_contact">
-
-                            <ul>
-
-                                <li>適用各行業</li>
-
-                                <li>佔80%以上</li>
-
-                            </ul>
-
-                        </td>
-
-                        <td class="b3_d_table_contact">
-
-                            <ul>
-
-                                <li>領導力企管為您整理常見的驗廠領</li>
-
-                                <li>領導力企管為您整理常見的驗廠領導力企管為您整理常見的驗廠領導力企管為您整理常見的驗廠</li>
-
-                            </ul>
-
-                        </td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td class="b3_d_table_name" >複查頻率</td>
-
-                        <td class="b3_d_table_contact">2年1次</td>
-
-                        <td class="b3_d_table_contact">半年1次</td>
-
-                        <td class="b3_d_table_contact">3年</td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td class="b3_d_table_name" >介紹</td>
-
-                        <td class="b3_d_table_contact">2004年6月間，由HP、IBM、DELL、Flextronics、Celestica、Jabil、Sanmina SCI、Solectron等電子大廠所一同發起。而後。2004年6月間，由HP、IBM、DELL、Flextronics、Celestica、Jabil、Sanmina SCI、Solectron等電子大廠所一同發起。而後。2004年6月間，由HP、IBM、DELL、Flextronics、Celestica、Jabil、Sanmina SCI、Solectron等電子大廠所一同發起。而後。2004年6月間，由HP、IBM、DELL、Flextronics、Celestica、Jabil、Sanmina SCI、Solectron等電子大廠所一同發起。而後。2004年6月間，由HP、IBM、DELL、Flextronics、Celestica、Jabil、Sanmina SCI、Solectron等電子大廠所一同發起。而後。</td>
-
-                        <td class="b3_d_table_contact">2004年6月間，由HP、IBM、DELL、Flextronics、Celestica、Jabil、Sanmina SCI、Solectron等電子大廠所一同發起。而後。2004年6月間，由HP、IBM、DELL、Flextronics、Celestica、Jabil、Sanmina SCI、Solectron等電子大廠所一同發起。而後。2004年6月間，由HP、IBM、DELL、Flextronics、Celestica、Jabil、Sanmina SCI、Solectron等電子大廠所一同發起。而後。2004年6月間，由HP、IBM、DELL、Flextronics、Celestica、Jabil、Sanmina SCI、Solectron等電子大廠所一同發起。而後。2004年6月間，由HP、IBM、DELL、Flextronics、Celestica、Jabil、Sanmina SCI、Solectron等電子大廠所一同發起。而後。2004年6月間，由HP、IBM、DELL、Flextronics、Celestica、Jabil、Sanmina SCI、Solectron等電子大廠所一同發起。而後。</td>
-
-                        <td class="b3_d_table_contact">2004年6月間，由HP、IBM、DELL、Flextronics、Celestica、Jabil、Sanmina SCI、Solectron等電子大廠所一同發起。而後。2004年6月間，由HP、IBM、DELL、Flextronics、Celestica、Jabil、Sanmina SCI、Solectron等電子大廠所一同發起。而後。</td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td class="b3_d_table_name" >條文大綱</td>
-
-                        <td class="b3_d_table_contact">
-
-                            A. 勞工<br>
-
-                            B. 勞工<br>
-
-                            C. 勞工<br>
-
-                            D. 勞工<br>
-
-                        </td>
-
-                        <td class="b3_d_table_contact">
-
-                            1. 勞工<br>
-
-                            2. 勞工<br>
-
-                            3. 勞工<br>
-
-                            4. 勞工<br>
-
-                        </td>
-
-                        <td class="b3_d_table_contact">
-
-                            1. 勞工<br>
-
-                            2. 勞工<br>
-
-                            3. 勞工<br>
-
-                            4. 勞工<br>
-
-                        </td>
-
-                     </tr>
-
-                </table>
-
-            </div>
-
+            
+            <?php echo htmlspecialchars_decode($news->content) ?>
+            
+
+         
             
 
             <div class="b3_d_extend">
@@ -220,7 +80,13 @@
 
                     <div class="under_line"></div>
 
-                    <a href="#"><div class="extend_list"><i class="fa fa-file-text-o"></i>食品安全品質標準（Safe Quality Food，SQF）</div></a>
+                    <?php if (isset($interest_news)): ?>
+                        <?php foreach ($interest_news as $key => $value): ?>
+                             <a href="<?php echo site_url().'home/iso_coach_detail/'.$value->id ?>"><div class="extend_list"><i class="fa fa-file-text-o"></i><?php echo $value->title ?></div></a>
+                        <?php endforeach ?>
+                    <?php endif ?>
+
+                   <!--  <a href="#"><div class="extend_list"><i class="fa fa-file-text-o"></i>食品安全品質標準（Safe Quality Food，SQF）</div></a>
 
                     <a href="#"><div class="extend_list"><i class="fa fa-file-text-o"></i>BRC 英國零售商管理系統</div></a>
 
@@ -228,7 +94,7 @@
 
                     <a href="#"><div class="extend_list"><i class="fa fa-file-text-o"></i>ISO 22000：2005 食品安全管理系統</div></a>
 
-                    <a href="#"><div class="extend_list"><i class="fa fa-file-text-o"></i>FSSC 22000 食品安全系統驗證標準</div></a>
+                    <a href="#"><div class="extend_list"><i class="fa fa-file-text-o"></i>FSSC 22000 食品安全系統驗證標準</div></a> -->
 
                 </div>
 
@@ -238,7 +104,13 @@
 
                     <div class="under_line"></div>
 
-                    <a href="#"><div class="extend_list"><i class="fa fa-file-text-o"></i>食品安全品質標準（Safe Quality Food，SQF）</div></a>
+                    <?php if (isset($interest_news)): ?>
+                        <?php foreach ($interest_news as $key => $value): ?>
+                             <a href="<?php echo site_url().'home/iso_coach_detail/'.$value->id ?>"><div class="extend_list"><i class="fa fa-file-text-o"></i><?php echo $value->title ?></div></a>
+                        <?php endforeach ?>
+                    <?php endif ?>
+
+                  <!--   <a href="#"><div class="extend_list"><i class="fa fa-file-text-o"></i>食品安全品質標準（Safe Quality Food，SQF）</div></a>
 
                     <a href="#"><div class="extend_list"><i class="fa fa-file-text-o"></i>BRC 英國零售商管理系統</div></a>
 
@@ -246,7 +118,7 @@
 
                     <a href="#"><div class="extend_list"><i class="fa fa-file-text-o"></i>ISO 22000：2005 食品安全管理系統</div></a>
 
-                    <a href="#"><div class="extend_list"><i class="fa fa-file-text-o"></i>FSSC 22000 食品安全系統驗證標準</div></a>
+                    <a href="#"><div class="extend_list"><i class="fa fa-file-text-o"></i>FSSC 22000 食品安全系統驗證標準</div></a> -->
 
                 </div>
 

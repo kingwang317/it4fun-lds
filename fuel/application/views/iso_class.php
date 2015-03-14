@@ -21,7 +21,20 @@
     <div class="width1024">
         <div class="ci_title">ISO小學堂</div>
         <div id="container" class="ci_detail b7_detail">
-            <div class="ci_block">
+             <?php if (isset($iso)): ?>
+                <?php foreach ($iso as $key => $value): ?>                      
+                    <div class="ci_block">
+                        <div class="ci_image"><img src="<?php echo site_url()."assets/$value->img" ?>"></div>
+                        <div class="ci_text">
+                            <a href="b8.php">
+                            <div class="ci_text_title"><?php echo $value->title ?></div>
+                            <div class="ci_text_detail"><?php echo htmlspecialchars_decode($value->content) ?></div>
+                            </a>
+                        </div>
+                    </div>
+                <?php endforeach ?>
+            <?php endif ?>
+             <!-- <div class="ci_block">
                 <div class="ci_image"><img src="images/b6/ppt_1.png"></div>
                 <div class="ci_text">
                     <a href="b8.php">
@@ -92,8 +105,8 @@
                     <div class="ci_text_detail">014ifrs年報季報. 股票斯貨選擇權手續費 </div>
                     </a>
                 </div>
-            </div>
-        </div>
+            </div>-->
+        </div> 
         <div class="b7_right">
             <div class="b7_right_top">
                 <div class="b7_right_title1">分類項目</div>

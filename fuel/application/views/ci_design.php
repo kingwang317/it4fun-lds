@@ -21,7 +21,21 @@
     <div class="width1024">
         <div class="ci_title">CI設計</div>
         <div id="container" class="ci_detail">
-            <div class="ci_block">
+
+            <?php if (isset($ci)): ?>
+                <?php foreach ($ci as $key => $value): ?>
+                      <div class="ci_block">
+                        <div class="ci_image"><img src="<?php echo site_url()."assets/$value->img" ?>"></div>
+                        <div class="ci_text">
+                        <a href="<?php echo site_url().'home/ci_design_detail/'.$value->id ?>">
+                            <div class="ci_text_title"><?php echo $value->title ?></div>
+                            <div class="ci_text_detail"><?php echo mb_substr(strip_tags(htmlspecialchars_decode($value->content)),0,100,'UTF-8') ?></div>
+                        </a>
+                        </div>
+                    </div>
+                <?php endforeach ?>
+            <?php endif ?>
+            <!-- <div class="ci_block">
                 <div class="ci_image"><img src="images/b6/ppt_1.png"></div>
                 <div class="ci_text">
                 <a href="b14.php">
@@ -93,7 +107,7 @@
                     <div class="ci_text_detail">014ifrs年報季報. 股票斯貨選擇權手續費 </div>
                     </a>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>

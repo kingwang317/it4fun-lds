@@ -42,11 +42,11 @@
 
         <div class="location">
 
-            <div class="location_left"><font color="black">首頁 / ISO 認證輔導 / 品質管理系列 /</font> 台灣百事食品﹙股﹚有限公司通過 FSSC 22000 2013 食品安全系統驗證</div>
+            <div class="location_left"><font color="black">首頁 / ISO 認證輔導 / <?php echo $news_type->code_name ?>系列 /</font> <?php echo $news->title ?></div>
 
             <div class="location_right">
 
-                <div class="browse_count"><font color="black">瀏覽數：</font>200+</div>
+                <div class="browse_count"><font color="black">瀏覽數：</font><?php echo $news->view_count ?>+</div>
 
                 <div class="facebook_like"><img src="images/b3_c/fb.jpg"></div>
 
@@ -58,35 +58,25 @@
 
             <div class="b3_c_left">
 
-                <div class="b3_c_left_title">台灣百事食品﹙股﹚有限公司通過 FSSC 22000 2013 食品安全系統驗證</div>
+                <div class="b3_c_left_title"><?php echo $news->title ?></div>
 
-                <div class="b3_c_left_date">December 31, 2014</div>
+                <div class="b3_c_left_date"><?php 
+                    $date = date_create($news->date);
+                    echo date_format($date, 'Y-m-d')
+                ?></div>
 
-                <div class="b3_c_left_img"><a class="go" href="images/b3_c/b3_c_1.jpg"><img src="images/b3_c/b3_c_1.jpg"></a></div>
+                <?php echo htmlspecialchars_decode($news->content) ?>
 
-                <div class="b3_c_left_text">在領導力企管顧問師專業輔導下，恭禧 <font color="#ed1b23">台灣百事食品股分有限公司台灣廠</font> 通過FSSC 22000：2013 食品安全系統 ﹙FSSC 22000 Food Safety System﹚驗證。一般而言，食品廠導入台灣百事食品股分有限公司台灣廠</font> 通過FSSC 22000：2013 食品安全系統 ﹙FSSC 22000 Food Safety System﹚驗證。一般而言，食品廠導入台灣百事食品股分有限公司台灣廠</font> 通過FSSC 22000：2013 食品安全系統 ﹙FSSC 22000 Food Safety System﹚驗證。一般而言，食品廠導入台灣百事食品股分有限公司台灣廠</font> 通過FSSC 22000：2013 食品安全系統 ﹙FSSC 22000 Food Safety System﹚驗證。一般而言，食品廠導入台灣百事食品股分有限公司台灣廠</font> 通過FSSC 22000：2013 食品安全系統 ﹙FSSC 22000 Food Safety System﹚驗證。一般而言，食品廠導入<br><br>台灣百事食品股分有限公司台灣廠</font> 通過FSSC 22000：2013 食品安全系統 ﹙FSSC 22000 Food Safety System﹚驗證。一般而言，食品廠導入台灣百事食品股分有限公司台灣廠</font> 通過FSSC 22000：2013 食品安全系統 ﹙FSSC 22000 Food Safety System﹚驗證。一般而言，食品廠導入</div>
-
-                <div class="b3_c_left_youtube">
-
-                    <div class="youtube_title">樂事﹙Lays﹚產品電視廣告</div>
-
-                    <div class="main_youtube"><iframe width="600" height="340" src="https://www.youtube.com/embed/lshQYmII03w" frameborder="0" allowfullscreen></iframe></div>
-
-                </div>
-
+              
                 <div class="b3_c_left_extend">
 
                     <div class="new_title_config extend_title">延伸閱讀</div>
 
-                    <a href="#"><div class="extend_list"><i class="fa fa-file-text-o"></i>食品安全品質標準（Safe Quality Food，SQF）</div></a>
-
-                    <a href="#"><div class="extend_list"><i class="fa fa-file-text-o"></i>BRC 英國零售商管理系統</div></a>
-
-                    <a href="#"><div class="extend_list"><i class="fa fa-file-text-o"></i>HACCP 危害分析重要管制點系統</div></a>
-
-                    <a href="#"><div class="extend_list"><i class="fa fa-file-text-o"></i>ISO 22000：2005 食品安全管理系統</div></a>
-
-                    <a href="#"><div class="extend_list"><i class="fa fa-file-text-o"></i>FSSC 22000 食品安全系統驗證標準</div></a>
+                    <?php if (isset($interest_news)): ?>
+                        <?php foreach ($interest_news as $key => $value): ?>
+                             <a href="<?php echo site_url().'home/iso_coach_detail/'.$value->id ?>"><div class="extend_list"><i class="fa fa-file-text-o"></i><?php echo $value->title ?></div></a>
+                        <?php endforeach ?>
+                    <?php endif ?>
 
                 </div>
 
@@ -96,11 +86,17 @@
 
                 <div class="b3_c_right_block">
 
-                    <div class="b3_c_right_title">品質管理系列</div>
+                    <div class="b3_c_right_title"><?php echo $news_type->code_name ?>系列</div>
 
                     <div class="b3_c_right_list">
 
-                        <a href="#"><div class="b3_c_right_list_block"><i class="fa fa-file-text-o"></i>食品安全品質標準（Safe Quality Food，SQF）</div></a>
+                        <?php if (isset($news_series)): ?>
+                            <?php foreach ($news_series as $key => $value): ?>
+                                 <a href="<?php echo site_url().'home/iso_coach_detail/'.$value->id ?>"><div class="b3_c_right_list_block"><i class="fa fa-file-text-o"></i><?php echo $value->title ?></div></a>
+                            <?php endforeach ?>
+                        <?php endif ?>
+
+                      <!--   <a href="#"><div class="b3_c_right_list_block"><i class="fa fa-file-text-o"></i>食品安全品質標準（Safe Quality Food，SQF）</div></a>
 
                         <a href="#"><div class="b3_c_right_list_block"><i class="fa fa-file-text-o"></i>食品安全品質標準（Safe Quality Food，SQF）</div></a>
 
@@ -116,7 +112,7 @@
 
                         <a href="#"><div class="b3_c_right_list_block"><i class="fa fa-file-text-o"></i>食品安全品質標準（Safe Quality Food，SQF）</div></a>
 
-                        <a href="#"><div class="b3_c_right_list_block bottom_end"><i class="fa fa-file-text-o"></i>食品安全品質標準（Safe Quality Food，SQF）</div></a>
+                        <a href="#"><div class="b3_c_right_list_block bottom_end"><i class="fa fa-file-text-o"></i>食品安全品質標準（Safe Quality Food，SQF）</div></a> -->
 
                     </div>
 
@@ -128,7 +124,13 @@
 
                     <div class="b3_c_right_list">
 
-                        <a href="#"><div class="b3_c_right_list_block"><i class="fa fa-file-text-o"></i>食品安全品質標準（Safe Quality Food，SQF）</div></a>
+                        <?php if (isset($interest_news)): ?>
+                            <?php foreach ($interest_news as $key => $value): ?>
+                                 <a href="<?php echo site_url().'home/iso_coach_detail/'.$value->id ?>"><div class="b3_c_right_list_block"><i class="fa fa-file-text-o"></i><?php echo $value->title ?></div></a>
+                            <?php endforeach ?>
+                        <?php endif ?>
+
+                       <!--  <a href="#"><div class="b3_c_right_list_block"><i class="fa fa-file-text-o"></i>食品安全品質標準（Safe Quality Food，SQF）</div></a>
 
                         <a href="#"><div class="b3_c_right_list_block"><i class="fa fa-file-text-o"></i>食品安全品質標準（Safe Quality Food，SQF）</div></a>
 
@@ -140,7 +142,7 @@
 
                         <a href="#"><div class="b3_c_right_list_block"><i class="fa fa-file-text-o"></i>食品安全品質標準（Safe Quality Food，SQF）</div></a>
 
-                        <a href="#"><div class="b3_c_right_list_block bottom_end"><i class="fa fa-file-text-o"></i>食品安全品質標準（Safe Quality Food，SQF）</div></a>
+                        <a href="#"><div class="b3_c_right_list_block bottom_end"><i class="fa fa-file-text-o"></i>食品安全品質標準（Safe Quality Food，SQF）</div></a> -->
 
                     </div>
 

@@ -8,9 +8,54 @@ class Code_model extends CI_Model {
 
     public function get_code($codekind_key,$lang_code,$parent_id=-1,$filter=""){
         $sql = @"select * from mod_code where codekind_key = '$codekind_key' 
-        and parent_id = $parent_id and lang_code = '$lang_code' $filter ";
+        and parent_id = $parent_id and lang_code = '$lang_code' $filter order by code_value1 , code_id";
         $query = $this->db->query($sql);
         //echo $sql;exit;
+        if($query->num_rows() > 0)
+        {
+            $result = $query->result();
+
+            return $result;
+        }
+    }
+
+    public function get_news($news_kind,$type,$filter="",$orderby=""){
+        $sql = @"select * from mod_news where
+        news_kind = '$news_kind'
+        AND (type='0' || type='$type' || type IN (SELECT  code_id FROM mod_code WHERE code_key = '$type'))
+        $filter 
+        order by news_order ASC , date DESC $orderby ";
+        $query = $this->db->query($sql);
+        // echo $sql;exit;
+        if($query->num_rows() > 0)
+        {
+            $result = $query->result();
+
+            return $result;
+        }
+    }
+
+    public function get_random_ci(){
+        return $this->get_random_news(1,9);
+    }
+
+    public function get_random_all_news(){
+        return $this->get_random_news('',5);
+    }
+
+    public function get_random_coach(){
+        return $this->get_random_news(2,5);
+        // return $this->get_news(2,$type);
+    }
+
+    public function get_random_news($news_kind,$limit){
+        $filter = ' news_kind in (1,2,3) ';
+        if (isset($news_kind) && $news_kind != '') {
+            $filter = " news_kind='$news_kind' ";
+        }
+        $sql = @" select * from mod_news WHERE $filter ORDER BY RAND() LIMIT $limit ";
+        $query = $this->db->query($sql);
+        // echo $sql;exit;
         if($query->num_rows() > 0)
         {
             $result = $query->result();
@@ -30,6 +75,54 @@ class Code_model extends CI_Model {
         //     return $result;
         // }
         return $this->get_code($codekind_key,$lang_code,$parent_id);
+    }
+
+    public function get_news_by_id($id){
+        $sql = @"select * from mod_news where id = '$id' ";
+        $query = $this->db->query($sql);
+        // echo $sql;exit;
+        if($query->num_rows() > 0)
+        {
+            $result = $query->row();
+
+            return $result;
+        }
+    }
+
+    public function get_performance($filter="",$orderby=""){
+        return $this->get_news(0,'PERFORMANCE',$filter,$orderby);
+    }
+
+    public function get_banner($filter="",$orderby=""){
+        return $this->get_news(0,'BANNER',$filter,$orderby);
+    }
+
+    public function get_home_news($filter="",$orderby=""){
+        return $this->get_news(0,'HOME_NEWS',$filter,$orderby);
+    }
+
+    public function get_ci_news($filter="",$orderby=""){
+        return $this->get_news(1,0,$filter,$orderby);
+    }
+
+    public function get_iso_class_news($filter="",$orderby=""){
+        return $this->get_news(3,0,$filter,$orderby);
+    }
+
+    public function get_iso_coach_news($type,$filter="",$orderby=""){
+        return $this->get_news(2,$type,$filter,$orderby);
+    }
+
+    public function get_iso_coach_type(){
+        return $this->get_code('COACH_TYPE','zh-TW');
+    }
+
+    public function get_iso_news_items($type,$filter="",$orderby=""){
+        return $this->get_news(4,$type,$filter,$orderby);
+    }
+
+    public function get_iso_news_type(){
+        return $this->get_code('NEWS_TYPE','zh-TW');
     }
 
     public function get_country(){

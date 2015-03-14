@@ -75,6 +75,25 @@
 								</select>
 							</div>
 						</div>		
+						<?php elseif ($news_kind == 0 || $news_kind == 4): ?>		
+						<div class="form-group">
+							<label class="col-sm-2 col-sm-2 control-label">項目</label>
+							<div class="col-sm-4">
+								<select name="type" id="type">
+									<?php 
+										if(isset($type)):
+									?>	
+									<?php   foreach($type as $key=>$rows):?>
+												<option value="<?php echo $rows->code_id ?>" <?php if ($rows->code_id==$news->type): ?>
+													selected
+												<?php endif ?> ><?php echo $rows->code_name ?></option>
+										<?php endforeach;?>
+									<?php endif;?>
+								</select>
+							</div>
+						</div>	
+						<?php else: ?>
+						<input type="hidden" name="type" value="0" > 
 						<?php endif ?>
 						<?php if ($news_kind == 3): ?>							
 						<div class="form-group">
@@ -91,7 +110,7 @@
 							<div class="col-sm-4"> 
 								<input type="text" class="form-control" id="news_order" name="news_order" value="<?php echo $news->news_order ?>">
 								<input type="hidden" name="news_ori_order" value="<?php echo $news->news_order ?>" /> 
-								目前已有<span id="total_count"></span>筆
+								<!-- 目前已有<span id="total_count"></span>筆 -->
 							</div>
 						</div>					  
 						<div class="form-group">
@@ -164,11 +183,11 @@
 		// 		});
 		// 	});
 
-		$("#news_order").blur(function() {   
-   		  	if ($(this).val() > $("#total_count").text()) {
-   		  		$(this).val($("#total_count").text());
-   		  	};
-		});
+		// $("#news_order").blur(function() {   
+  //  		  	if ($(this).val() > $("#total_count").text()) {
+  //  		  		$(this).val($("#total_count").text());
+  //  		  	};
+		// });
 
 		// $("#type").trigger('change');
 

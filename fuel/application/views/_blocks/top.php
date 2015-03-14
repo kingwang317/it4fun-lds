@@ -159,7 +159,7 @@
 </div>
 <div id="sticky" class="top_title main_width">
     <div class="main_title">
-        <a href="index.php"><div class="logo"></div></a>
+        <a href="<?php echo site_url() ?>"><div class="logo"></div></a>
         <div class="menu">
             <ul id="menu">
                 <?php

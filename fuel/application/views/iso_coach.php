@@ -22,8 +22,20 @@
     <div class="b9_main main_width_1024">
         <div class="ci_title">ISO輔導項目</div>
         <div id="container" class="b2_detail">
-            <div class="b2_block">
-                <div class="b2_block_title">品質管理</div>
+          
+                <?php if (isset($iso)): ?>
+                    <?php foreach ($iso as $key => $value): ?>                                
+                         <div class="b2_block">
+                            <div class="b2_block_title"><?php echo $key ?></div>
+                            <div class="b2_block_table">
+                                <?php foreach ($value as $key1 => $value1): ?>
+                                       <a href="<?php echo site_url()."home/iso_coach_detail?id=".$value1->id."&type=".$value1->type ?>"><div class="b2_block_table_list"><i class="fa fa-file-text-o"></i><?php echo $value1->title ?></div></a>
+                                <?php endforeach ?>
+                            </div>
+                        </div>                        
+                    <?php endforeach ?>
+                <?php endif ?>
+           <!--  <div class="b2_block_title">品質管理</div>
                 <div class="b2_block_table">
                     <a href="#"><div class="b2_block_table_list"><i class="fa fa-file-text-o"></i>什麼是ISO 14971 醫療器材風險管理？</div></a>
                     <a href="#"><div class="b2_block_table_list"><i class="fa fa-file-text-o"></i>ISO 9001：2008 品質管理系統</div></a>
@@ -93,7 +105,7 @@
                     <a href="#"><div class="b2_block_table_list"><i class="fa fa-file-text-o"></i>BS 10012：2009 個人資料管理系統</div></a>
                     <a href="#"><div class="b2_block_table_list"><i class="fa fa-file-text-o"></i>TPIPAS臺灣個人資料保護與管理制度規範</div></a>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>

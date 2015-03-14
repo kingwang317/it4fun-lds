@@ -26,7 +26,7 @@
 				    </div>
 				</div>
 			</div>  
-			<?php if ($news_kind == 2): ?>		
+			<?php if ($news_kind == 2 || $news_kind == 0 || $news_kind == 4): ?>		
 			<div class="form-inline" style="margin-top:10px">				 				  
 				<div class="form-group">
 					<label class="col-sm-4 control-label" >類別</label>

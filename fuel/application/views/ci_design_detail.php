@@ -44,27 +44,17 @@
 
         <div class="location">
 
-            <div class="location_left"><font color="black">首頁 / CI設計 / </font>CIS 企業識別設計作品</div>
+            <div class="location_left"><font color="black">首頁 / CI設計 / </font><?php echo $news->title ?></div>
 
         </div>
 
         <div class="b14_left">
 
-            <div class="b14_title">企業識別﹙CIS﹚設計</div>
+            <div class="b14_title"><?php echo $news->title ?></div>
 
             <div class="b14_main">
 
-                <div class="b14_image"><a class="go" href="images/b14/b14_1.jpg"><img src="images/b14/b14_1.jpg"></a></div>
-
-                <div class="b14_image"><a class="go" href="images/b14/b14_2.jpg"><img src="images/b14/b14_2.jpg"></a></div>
-
-                <div class="b14_text">
-
-                    <div class="b14_text_title">你的品牌，讓世界都看到！</div>
-
-                    <div class="b14_text_contact">曾有位品牌行銷大師說過：「想像力是你的超能力。」由此可見，在品牌決定一切的時代，唯有想像力是你的超能力。曾有位品牌行銷大師說過：「想像力是你的超能力。」由此可見，在品牌決定一切的時代，唯有想像力是你的超能力。</div>
-
-                </div>
+                <?php echo htmlspecialchars_decode($news->content) ?>
 
             </div>
 
@@ -77,8 +67,13 @@
             <div class="under_line"></div>
 
                 <div class="b14_right_image">
+                    <?php if (isset($interest_news)): ?>
+                        <?php foreach ($interest_news as $key => $value): ?>
+                            <a href="<?php echo site_url().'home/ci_design_detail/'.$value->id ?>"><div class="b14_right_image_block"><img style="height:90px;width:90px" src="<?php echo site_url().'assets/'.$value->img ?>"></div></a>
+                        <?php endforeach ?>
+                    <?php endif ?>
 
-                    <a href="#"><div class="b14_right_image_block"><img src="images/b14/b14_3.jpg"></div></a>
+                 <!--    <a href="#"><div class="b14_right_image_block"><img src="images/b14/b14_3.jpg"></div></a>
 
                     <a href="#"><div class="b14_right_image_block"><img src="images/b14/b14_4.jpg"></div></a>
 
@@ -94,7 +89,7 @@
 
                     <a href="#"><div class="b14_right_image_block"><img src="images/b14/b14_10.jpg"></div></a>
 
-                    <a href="#"><div class="b14_right_image_block"><img src="images/b14/b14_11.jpg"></div></a>
+                    <a href="#"><div class="b14_right_image_block"><img src="images/b14/b14_11.jpg"></div></a> -->
 
                 <div>
 

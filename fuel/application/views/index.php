@@ -33,7 +33,23 @@
 
 <div class="main">
     <div class="banner">
-        <div class="banner_block1">
+         <?php if (isset($banner)): ?>
+            <?php $i = 1; ?>
+            <?php foreach ($banner as $key => $value): ?>
+                <div class="banner_block<?php echo $i ?>">
+                    <img src="<?php echo site_url()."assets/$value->img" ?>"  />
+                     <div class="banner_top">
+                        <div class="banner_title"><?php echo $value->title ?></div>
+                        <div class="banner_mid"><?php echo htmlspecialchars_decode($value->content) ?></div>
+                        <div class="banner_link_block">
+                            <a href="#"><div class="banner_link">了解更多</div><div class="fa fa-arrow-circle-o-right fa-1x"></div></a>
+                        </div>
+                    </div>
+                </div>    
+                <?php $i++; ?>           
+            <?php endforeach ?>
+        <?php endif ?>
+        <!-- <div class="banner_block1">
             <div class="banner_top">
                 <div class="banner_title">溫室氣體申報怎麼做？</div>
                 <div class="banner_mid">環保署訂定「溫室氣體排放量申報管理辦法」及公告「公私場所應報溫室氣體排放量之固定汙染原」，已於今年1月1日施行。</div>
@@ -59,7 +75,7 @@
                     <a href="#"><div class="banner_link">了解更多</div><div class="fa fa-arrow-circle-o-right fa-1x"></div></a>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
     <div class="main_contact main_width bg_white">
         <div class="main_width_1024">
@@ -69,7 +85,24 @@
                     <div class="under_line"></div>
                 </div>
                 <div class="news_contact">
-                    <div class="index_news_block">
+
+                    <?php if (isset($news)): ?>                   
+                    <?php $i=1; ?>
+                        <?php foreach ($news as $key => $value): ?>
+                            <div class="index_news_block">
+                                <div class="news_image<?php echo $i ?>">
+                                    <img src="<?php echo site_url()."assets/".$value->detail->img ?>"  />
+                                    <div class="image_title"><div style="padding-left:5px;"><?php echo $value->code_name ?></div></div>
+                                 </div>
+                                 <div class="news_text">
+                                 <a href="#"><?php echo mb_substr($value->detail->title,0,30,'UTF-8') ?></a>
+                                </div>
+                            </div>
+                            <?php $i++; ?>
+                        <?php endforeach ?>
+                    <?php endif ?>
+
+                  <!--   <div class="index_news_block">
                         <div class="news_image1">
                             <div class="image_title"><div style="padding-left:5px;">推薦閱讀</div></div>
                          </div>
@@ -116,7 +149,7 @@
                         <div class="news_text">
                         <a href="#">德國TUV NORD與領導力企管合作ISO9001主導稽核員IRCA國際登錄課程</a>
                         </div>
-                   </div>
+                   </div> -->
                 </div>
             </div>
             <div class="news_case">
@@ -124,7 +157,15 @@
                     <div class="case_title_config">最新輔導實績</div>
                     <div class="under_line"></div>
                 </div>
-                <div class="case_list_block">
+                <?php if (isset($performance)): ?>
+                    <?php foreach ($performance as $key => $value): ?>
+                        <div class="case_list_block">
+                            <div class="list_date"><?php echo $value->date ?></div>
+                            <div class="list_text"><a href="#"><?php echo $value->title ?></a></div>
+                        </div>
+                    <?php endforeach ?>
+                <?php endif ?>
+                <!-- <div class="case_list_block">
                     <div class="list_date">August 11, 2014</div>
                     <div class="list_text"><a href="#">得生製藥股份有限公司通過ISO13485：2003醫療器材品質管理系統認證</a></div>
                 </div>
@@ -143,7 +184,7 @@
                 <div class="case_list_block">
                     <div class="list_date">August 11, 2014</div>
                     <div class="list_text"><a href="#">得生製藥股份有限公司通過ISO13485：2003醫療器材品質管理系統認證</a></div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

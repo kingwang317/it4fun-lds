@@ -5,10 +5,11 @@
 |--------------------------------------------------------------------------
 */
 $config['nav']['news'] = array(
-'news/lists/0'		=> '最新消息',
+'news/lists/0'		=> '首頁',
 'news/lists/1'		=> 'CI設計',
 'news/lists/2'		=> 'ISO輔導項目',
-'news/lists/3'		=> 'ISO小學堂'
+'news/lists/3'		=> 'ISO小學堂',
+'news/lists/4'		=> '最新消息'
 );
 
 // deterines whether to use this configuration below or the database for controlling the blogs behavior

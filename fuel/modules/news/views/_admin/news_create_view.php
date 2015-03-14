@@ -38,7 +38,7 @@
 						<div class="form-group">
 							<label class="col-sm-2 col-sm-2 control-label">日期</label>
 							<div class="col-sm-4">
-								<input type="text" class="form-control date" name="date" value=""> 
+								<input type="text" class="form-control date" name="date" value="<?php echo $now ?>"> 
 							</div>
 						</div>
 						<div class="form-group">
@@ -68,6 +68,23 @@
 								</select>
 							</div>
 						</div>		
+						<?php elseif ($news_kind == 0 || $news_kind == 4): ?>	
+						<div class="form-group">
+							<label class="col-sm-2 col-sm-2 control-label">類別</label>
+							<div class="col-sm-4">
+								<select name="type" id="type">
+									<?php
+										if(isset($type)):
+									?>	
+									<?php   foreach($type as $key=>$rows):?>
+												<option value="<?php echo $rows->code_id ?>"><?php echo $rows->code_name ?></option>
+										<?php endforeach;?>
+									<?php endif;?>
+								</select>
+							</div>
+						</div>	
+						<?php else: ?>
+						<input type="hidden" name="type" value="0" > 
 						<?php endif ?>
 						<?php if ($news_kind == 3): ?>							
 						<div class="form-group">
@@ -82,7 +99,7 @@
 						<div class="form-group">
 							<label class="col-sm-2 col-sm-2 control-label">順序</label>
 							<div class="col-sm-4"> 
-								<input type="text" class="form-control" id="news_order" name="news_order" > 
+								<input type="text" class="form-control" id="news_order" name="news_order" value="<?php echo $order ?>" > 
 							</div>
 						</div>						  
 						<div class="form-group">
