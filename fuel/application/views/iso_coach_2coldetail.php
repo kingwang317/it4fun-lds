@@ -48,7 +48,7 @@
 
                 <div class="browse_count"><font color="black">瀏覽數：</font><?php echo $news->view_count ?>+</div>
 
-                <div class="facebook_like"><img src="images/b3_c/fb.jpg"></div>
+                <div class="facebook_like"><img src="<?php echo site_url() ?>assets/templates/images/b3_c/fb.jpg"></div>
 
             </div>
 
@@ -74,7 +74,7 @@
 
                     <?php if (isset($interest_news)): ?>
                         <?php foreach ($interest_news as $key => $value): ?>
-                             <a href="<?php echo site_url().'home/iso_coach_detail/'.$value->id ?>"><div class="extend_list"><i class="fa fa-file-text-o"></i><?php echo $value->title ?></div></a>
+                             <a href="<?php echo site_url().'home/'.news_kind_controller($value->news_kind).'/'.$value->id ?>"><div class="extend_list"><i class="fa fa-file-text-o"></i><?php echo $value->title ?></div></a>
                         <?php endforeach ?>
                     <?php endif ?>
 
@@ -126,7 +126,7 @@
 
                         <?php if (isset($interest_news)): ?>
                             <?php foreach ($interest_news as $key => $value): ?>
-                                 <a href="<?php echo site_url().'home/iso_coach_detail/'.$value->id ?>"><div class="b3_c_right_list_block"><i class="fa fa-file-text-o"></i><?php echo $value->title ?></div></a>
+                                 <a href="<?php echo site_url().'home/'.news_kind_controller($value->news_kind).'/'.$value->id ?>"><div class="b3_c_right_list_block"><i class="fa fa-file-text-o"></i><?php echo $value->title ?></div></a>
                             <?php endforeach ?>
                         <?php endif ?>
 
@@ -152,9 +152,7 @@
 
                     <div class="b3_c_right_list_advert">
 
-                        <div class="b3_c_right_block_advert"><img src="images/b3_c/advert_1.jpg"></div>
-
-                        <div class="b3_c_right_block_advert"><img src="images/b3_c/advert_2.jpg"></div>
+                        <?php echo fuel_block("iso_coach_detail_ad") ?>
 
                     </div>
 

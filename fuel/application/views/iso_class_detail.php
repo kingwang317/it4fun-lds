@@ -42,7 +42,7 @@
 
         <div class="location">
 
-            <div class="location_left"><font color="black">首頁 / ISO 小學堂 / </font> ISO 14971：2007醫療器材風險管理</div>
+            <div class="location_left"><font color="black">首頁 / ISO 小學堂 / </font><?php echo $news->title ?></div>
 
         </div>
 
@@ -50,7 +50,7 @@
 
             <div class="ppt_block">
 
-                <iframe src="https://docs.google.com/presentation/d/1-IOfE1v3Ob1RQnrtzjaoGTsK_Y3nTkGrfnfTqxG5XVI/embed?start=false&loop=false&delayms=3000" frameborder="0" width="1024" height="605" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+                <iframe src="<?php echo $news->frame_url ?>" frameborder="0" width="1024" height="605" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 
             </div>
 
@@ -58,9 +58,11 @@
 
                 <div class="b8_block_left">
 
-                    <div class="b3_d_top_title">ISO 14971：2007醫療器材風險管理</div>
+                    <div class="b3_d_top_title"><?php echo $news->title ?></div>
 
-                    <div class="b3_d_contact">領導力企管為您整理常見的驗廠與社會責任系列領導力企管為您整理常見的驗廠與社會責任系列領導力企管為您整理常見的驗廠與社會責任系列領導力企管為您整理常見的驗廠與社會責任系列。<br>領導力企管為您整理常見的驗廠與社會責任系列領導力企管為您整理常見的驗廠與社會責任系列。</div>
+                    <div class="b3_d_contact">
+                        <?php echo htmlspecialchars_decode($news->content) ?>
+                    </div>
 
                     <div class="b3_d_extend_left">
 
@@ -68,7 +70,13 @@
 
                     <div class="under_line"></div>
 
-                    <a href="#"><div class="extend_list"><i class="fa fa-file-text-o"></i>食品安全品質標準（Safe Quality Food，SQF）</div></a>
+                    <?php if (isset($interest_news)): ?>
+                        <?php foreach ($interest_news as $key => $value): ?>
+                        <a href="<?php echo site_url().'home/'.news_kind_controller($value->news_kind).'/'.$value->id ?>"><div class="extend_list"><i class="fa fa-file-text-o"></i><?php echo $value->title ?></div></a>
+                        <?php endforeach ?>
+                    <?php endif ?>
+
+                    <!-- <a href="#"><div class="extend_list"><i class="fa fa-file-text-o"></i>食品安全品質標準（Safe Quality Food，SQF）</div></a>
 
                     <a href="#"><div class="extend_list"><i class="fa fa-file-text-o"></i>BRC 英國零售商管理系統</div></a>
 
@@ -76,7 +84,7 @@
 
                     <a href="#"><div class="extend_list"><i class="fa fa-file-text-o"></i>ISO 22000：2005 食品安全管理系統</div></a>
 
-                    <a href="#"><div class="extend_list"><i class="fa fa-file-text-o"></i>FSSC 22000 食品安全系統驗證標準</div></a>
+                    <a href="#"><div class="extend_list"><i class="fa fa-file-text-o"></i>FSSC 22000 食品安全系統驗證標準</div></a> -->
 
                 </div>
 
@@ -90,77 +98,21 @@
 
                     <div class="b8_block_right_list">
 
-                        <div class="b8_right_list_block">
-
-                            <div class="b8_list_img"><img src="images/b8/b8_1.jpg"></div>
-
-                            <div class="b8_list_text">
-
-                                <a href="#">
-
-                                <div class="b8_list_text_title">什麼是ISO 17025：2005實驗室認證？</div>
-
-                                <div class="b8_list_text_date">August 11, 2014</div>
-
-                                </a>
-
-                            </div>
-
-                        </div>
-
-                        <div class="b8_right_list_block">
-
-                            <div class="b8_list_img"><img src="images/b8/b8_1.jpg"></div>
-
-                            <div class="b8_list_text">
-
-                                <a href="#">
-
-                                <div class="b8_list_text_title">什麼是ISO 17025：2005實驗室認證？</div>
-
-                                <div class="b8_list_text_date">August 11, 2014</div>
-
-                                </a>
-
-                            </div>
-
-                        </div>
-
-                        <div class="b8_right_list_block">
-
-                            <div class="b8_list_img"><img src="images/b8/b8_1.jpg"></div>
-
-                            <div class="b8_list_text">
-
-                                <a href="#">
-
-                                <div class="b8_list_text_title">什麼是ISO 17025：2005實驗室認證？</div>
-
-                                <div class="b8_list_text_date">August 11, 2014</div>
-
-                                </a>
-
-                            </div>
-
-                        </div>
-
-                        <div class="b8_right_list_block border_bottom_clen">
-
-                            <div class="b8_list_img"><img src="images/b8/b8_1.jpg"></div>
-
-                            <div class="b8_list_text">
-
-                                <a href="#">
-
-                                <div class="b8_list_text_title">什麼是ISO 17025：2005實驗室認證？</div>
-
-                                <div class="b8_list_text_date">August 11, 2014</div>
-
-                                </a>
-
-                            </div>
-
-                        </div>
+                        <?php if (isset($interest_news2)): ?>
+                            <?php $i=0; ?>
+                            <?php foreach ($interest_news2 as $key => $value): ?>
+                                <div class="b8_right_list_block <?php echo $i+1==sizeof($interest_news2)?"border_bottom_clen":"" ?>">
+                                    <div class="b8_list_img"><img style="max-width:135px" src="<?php echo site_url() ?>assets/<?php echo $value->img ?>"></div>
+                                    <div class="b8_list_text">
+                                        <a href="<?php echo site_url().'home/'.news_kind_controller($value->news_kind).'/'.$value->id ?>">
+                                        <div class="b8_list_text_title"><?php echo $value->title ?></div>
+                                        <div class="b8_list_text_date"><?php echo dateconvert($value->date) ?></div>
+                                        </a>
+                                    </div>
+                                </div>
+                            <?php $i++; ?>
+                            <?php endforeach ?>
+                        <?php endif ?>
 
                     </div>
 

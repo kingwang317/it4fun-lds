@@ -21,19 +21,40 @@
     <div class="b9_main main_width_1024">
         <div class="b9_title">ISO教育訓練</div>
         <div class="table_block">
+            
+            <?php if (isset($free_train)): ?>
             <table border="0" cellspacing="1" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="b9_table">
-            <tr class="table_title" border="0">
-                <td class="table_title_first" width="380px">免費課程</td>
-                <td width="80px">費用</td>
-                <td width="150px">時間</td>
-                <td width="50px">天數</td>
-                <td width="50px">時數</td>
-                <td width="80px">合作單位</td>
-                <td width="200px">開課日期</td>
-                <td width="100px">上課地點</td>
-                <td width="150px"></td>
-            </tr>
-            <tr class="table_detail table_white">
+                <tr class="table_title" border="0">
+                    <td class="table_title_first" width="380px">免費課程</td>
+                    <td width="80px">費用</td>
+                    <td width="150px">時間</td>
+                    <td width="50px">天數</td>
+                    <td width="50px">時數</td>
+                    <td width="80px">合作單位</td>
+                    <td width="200px">開課日期</td>
+                    <td width="100px">上課地點</td>
+                    <td width="150px"></td>
+                </tr>
+            <?php $i=0; ?>
+                <?php foreach ($free_train as $key => $value): ?>
+                    <tr class="table_detail <?php echo $i%2==0?"table_white":"table_gray" ?>">
+                        <td class="table_detail_td table_detail_fist"><a href="<?php echo site_url().'iso_train/detail/'.$value->id ?>"><?php echo $value->train_title ?></a></td>
+                        <td class="table_detail_td">免費</td>
+                        <td class="table_detail_td"><?php echo $value->train_time_s ?>~<?php echo $value->train_time_e ?></td>
+                        <td class="table_detail_td"><?php echo $value->train_days ?></td>
+                        <td class="table_detail_td"><?php echo $value->train_hours ?></td>
+                        <td class="table_detail_td"><?php echo $value->coll_unit ?></td>
+                        <td class="table_detail_td">
+                             <?php echo $value->train_date ?>
+                        </td>
+                        <td class="table_detail_td" align="center"><?php echo $value->train_place_s ?></td>
+                        <td class="bottom_block"><a href="<?php echo site_url().'iso_train/detail/'.$value->id ?>"><div class="b9_button">我要報名</div></a></td>
+                    </tr>
+                <?php $i++; ?>
+                <?php endforeach ?>
+            </table>
+            <?php endif ?>
+         <!--    <tr class="table_detail table_white">
                 <td class="table_detail_td table_detail_fist"><a href="#">企業社會責任SA8000/CSR/BSCI/EICC相關標準改版說明會</a></td>
                 <td class="table_detail_td">免費</td>
                 <td class="table_detail_td">13:30~17:00</td>
@@ -82,23 +103,43 @@
                 <td class="table_detail_td">2015-1-19(周一)</td>
                 <td class="table_detail_td" align="center">新竹</td>
                 <td class="bottom_block"><a href="#"><div class="b9_button">我要報名</div></a></td>
-            </tr>
-            </table>
+            </tr> -->
+            
         </div>
         <div class="table_block ">
+            <?php if (isset($charge_train)): ?>
             <table border="0" cellspacing="1" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="b9_table">
-            <tr class="table_title" border="0">
-                <td class="table_title_first" width="380px">收費課程</td>
-                <td width="80px">費用</td>
-                <td width="150px">時間</td>
-                <td width="50px">天數</td>
-                <td width="50px">時數</td>
-                <td width="80px">合作單位</td>
-                <td width="200px">開課日期</td>
-                <td width="100px">上課地點</td>
-                <td width="150px"></td>
-            </tr>
-            <tr class="table_detail table_white">
+                <tr class="table_title" border="0">
+                    <td class="table_title_first" width="380px">收費課程</td>
+                    <td width="80px">費用</td>
+                    <td width="150px">時間</td>
+                    <td width="50px">天數</td>
+                    <td width="50px">時數</td>
+                    <td width="80px">合作單位</td>
+                    <td width="200px">開課日期</td>
+                    <td width="100px">上課地點</td>
+                    <td width="150px"></td>
+                </tr>
+            <?php $i=0; ?>
+                <?php foreach ($charge_train as $key => $value): ?>
+                    <tr class="table_detail <?php echo $i%2==0?"table_white":"table_gray" ?>">
+                        <td class="table_detail_td table_detail_fist"><a href="<?php echo site_url().'iso_train/detail/'.$value->id ?>"><?php echo $value->train_title ?></a></td>
+                        <td class="table_detail_td">$<?php echo $value->train_price ?></td>
+                        <td class="table_detail_td"><?php echo $value->train_time_s ?>~<?php echo $value->train_time_e ?></td>
+                        <td class="table_detail_td"><?php echo $value->train_days ?></td>
+                        <td class="table_detail_td"><?php echo $value->train_hours ?></td>
+                        <td class="table_detail_td"><?php echo $value->coll_unit ?></td>
+                        <td class="table_detail_td">
+                             <?php echo $value->train_date ?>
+                        </td>
+                        <td class="table_detail_td" align="center"><?php echo $value->train_place_s ?></td>
+                        <td class="bottom_block"><a href="<?php echo site_url().'iso_train/detail/'.$value->id ?>"><div class="b9_button">我要報名</div></a></td>
+                    </tr>
+                <?php $i++; ?>
+                <?php endforeach ?>
+            </table>
+            <?php endif ?>
+          <!--   <tr class="table_detail table_white">
                 <td class="table_detail_td table_detail_fist"><a href="#">企業社會責任SA8000/CSR/BSCI/EICC相關標準改版說明會</a></td>
                 <td class="table_detail_td">$3,200</td>
                 <td class="table_detail_td">13:30~17:00</td>
@@ -147,8 +188,8 @@
                 <td class="table_detail_td">2015-1-19(周一)</td>
                 <td class="table_detail_td" align="center">新竹<br>高雄<br>新竹<br>高雄</td>
                 <td class="bottom_block"><a href="#"><div class="b9_button">我要報名</div></a></td>
-            </tr>
-            </table>
+            </tr> -->
+            
         </div>
     </div>
 </div>

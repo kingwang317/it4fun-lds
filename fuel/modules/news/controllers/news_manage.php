@@ -44,7 +44,7 @@ class News_manage extends Fuel_base_controller {
 			}					
 		}
 
-		if ($news_kind == 2 || $news_kind == 0 || $news_kind == 4) {
+		if ($news_kind == 3 || $news_kind == 2 || $news_kind == 0 || $news_kind == 4) {
 		
 
 			$search_type = $this->input->get_post('search_type'); 
@@ -66,7 +66,7 @@ class News_manage extends Fuel_base_controller {
 			$vars['search_type'] = $search_type;
 		}
 
-		if ($news_kind == 2) {
+		if ($news_kind == 2 || $news_kind == 3) {
 			$type = $this->codekind_manage_model->get_code_list_for_other_mod("COACH_TYPE");
 			$vars['type'] = $type;
 		}else if($news_kind == 0){
@@ -128,7 +128,7 @@ class News_manage extends Fuel_base_controller {
 		$vars['module_uri'] = base_url().$this->module_uri.'/'.$news_kind;
 		$vars['view_name'] = "新增";
 
-		if ($news_kind == 2) {
+		if ($news_kind == 2 || $news_kind == 3) {
 			$type = $this->codekind_manage_model->get_code_list_for_other_mod("COACH_TYPE");
 			$vars['type'] = $type;
 		}else if($news_kind == 0){
@@ -238,7 +238,7 @@ class News_manage extends Fuel_base_controller {
 		$news_kind = $news->news_kind;
 	    $news_name = $this->news_name_by_kind($news_kind);
 
-		if ($news_kind == 2) {
+		if ($news_kind == 2 || $news_kind == 3) {
 			$type = $this->codekind_manage_model->get_code_list_for_other_mod("COACH_TYPE");
 			$vars['type'] = $type;
 		}else if($news_kind == 0){

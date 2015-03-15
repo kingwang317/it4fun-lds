@@ -42,7 +42,7 @@
 
         <div class="location">
 
-            <div class="location_left"><font color="black">首頁 / ISO教育訓練 / </font>企業社會責任SA8000/CSR/BSCI/EICC相關標準改版說明會</div>
+            <div class="location_left"><font color="black">首頁 / ISO教育訓練 / </font><?php echo $train->train_title ?></div>
 
         </div>
 
@@ -50,75 +50,9 @@
 
             <div class="b3_c_left">
 
-                <div class="b3_c_left_title">QC七大手法運用實務客程﹙1月-高雄班﹚</div>
+                <div class="b3_c_left_title"><?php echo $train->train_title ?></div>
 
-                <div class="b12_block">
-
-                    <div class="b12_block_title">為什麼要開設這門課程？</div>
-
-                    <div class="b3_c_left_text">在領導力企管顧問師專業輔導下，恭禧台灣百事食品股分有限公司台灣廠通過FSSC 22000：2013 食品安全系統 ﹙FSSC 22000 Food Safety System﹚驗證。一般而言，食品廠導入台灣百事食品股分有限公司台灣廠通過FSSC 22000：2013 食品安全系統 ﹙FSSC 22000 Food Safety System﹚驗證。一般而言，食品廠導入台灣百事食品股分有限公司台灣廠 通過FSSC 22000：2013 食品安全系統 ﹙FSSC 22000 Food Safety System﹚驗證。一般而言，食品廠導入台灣百事食品股分有限公司台灣廠 通過FSSC 22000：2013 食品安全系統 ﹙FSSC 22000 Food Safety System﹚驗證。一般而言，食品廠導入台灣百事食品股分有限公司台灣廠 通過FSSC 22000：2013 食品安全系統 ﹙FSSC 22000 Food Safety System﹚驗證。</div>
-
-                </div>
-
-                <div class="b12_block">
-
-                    <div class="b12_block_title">這門課程的特色為何？</div>
-
-                    <div class="b3_c_left_text">
-
-                        <ul>
-
-                            <li>各統計手法的資料收集。</li>
-
-                            <li>『QC七大手法』要求與重點。</li>
-
-                            <li>圖表的繪製與分析。</li>
-
-                            <li>各統計手法的資料收集。</li>
-
-                            <li>『QC七大手法』要求與重點。</li>
-
-                            <li>圖表的繪製與分析。</li>
-
-                        </ul>
-
-                    </div>
-
-                </div>
-
-                <div class="b12_block">
-
-                    <div class="b12_block_title">上完這門課可以獲得什麼證明文件？？</div>
-
-                    <div class="b3_c_left_text">在領導力企管顧問師專業輔導下，恭禧台灣百事食品股分有限公司台灣廠通過FSSC 22000：2013 食品安全系統 ﹙FSSC 22000 Food Safety System﹚驗證。</div>
-
-                </div>
-
-                <div class="b12_block">
-
-                    <div class="b12_block_title">誰適合參加這門課？</div>
-
-                    <div class="b3_c_left_text">
-
-                        <ul>
-
-                            <li>各統計手法的資料收集。</li>
-
-                            <li>『QC七大手法』要求與重點。</li>
-
-                            <li>圖表的繪製與分析。</li>
-
-                            <li>各統計手法的資料收集。</li>
-
-                            <li>『QC七大手法』要求與重點。</li>
-
-                            <li>圖表的繪製與分析。</li>
-
-                        </ul>
-
-                    </div>
-
-                </div>
+                <?php echo htmlspecialchars_decode($train->train_detail) ?>
 
                 <div class="b12_info">
 
@@ -134,7 +68,7 @@
 
                             <div class="b12_block_title">課程名稱</div>
 
-                            <div class="b12_info_title_slider_text">QC七大手法運用實務課程</div>
+                            <div class="b12_info_title_slider_text"><?php echo $train->train_title ?></div>
 
                         </div>
 
@@ -142,7 +76,7 @@
 
                             <div class="b12_block_title">課程費用</div>
 
-                            <div class="b12_info_title_slider_text">$3,200</div>
+                            <div class="b12_info_title_slider_text">$<?php echo $train->train_price ?></div>
 
                         </div>
 
@@ -150,7 +84,7 @@
 
                             <div class="b12_block_title">開課日期</div>
 
-                            <div class="b12_info_title_slider_text">2015-1-19﹙週一﹚、2015-1-19﹙週一﹚、2015-1-19﹙週一﹚、2015-1-19﹙週一﹚、2015-1-19﹙週一﹚</div>
+                            <div class="b12_info_title_slider_text"><?php echo $train->train_date ?></div>
 
                         </div>
 
@@ -158,7 +92,7 @@
 
                             <div class="b12_block_title">上課天數</div>
 
-                            <div class="b12_info_title_slider_text">1</div>
+                            <div class="b12_info_title_slider_text"><?php echo $train->train_days ?></div>
 
                         </div>
 
@@ -166,7 +100,7 @@
 
                             <div class="b12_block_title">上課時數</div>
 
-                            <div class="b12_info_title_slider_text">3.5</div>
+                            <div class="b12_info_title_slider_text"><?php echo $train->train_hours ?></div>
 
                         </div>
 
@@ -174,7 +108,7 @@
 
                             <div class="b12_block_title">上課時間</div>
 
-                            <div class="b12_info_title_slider_text">13：00~17：00</div>
+                            <div class="b12_info_title_slider_text"><?php echo $train->train_time_s ?>~<?php echo $train->train_time_e ?></div>
 
                         </div>
 
@@ -182,7 +116,7 @@
 
                             <div class="b12_block_title">上課地點</div>
 
-                            <div class="b12_info_title_slider_text">高雄市前鎮區中山二路5號。﹙高雄商務會議中心﹚<br>﹙實際上課地點若有變更，將另行通知。﹚</div>
+                            <div class="b12_info_title_slider_text"><?php echo $train->train_place ?><br>﹙實際上課地點若有變更，將另行通知。﹚</div>
 
                         </div>
 
@@ -190,7 +124,7 @@
 
                             <div class="b12_block_title">主辦單位</div>
 
-                            <div class="b12_info_title_slider_text">領導力企業管理顧問有限公司</div>
+                            <div class="b12_info_title_slider_text"><?php echo $train->host_unit ?></div>
 
                         </div>
 
@@ -198,7 +132,7 @@
 
                             <div class="b12_block_title">合作單位</div>
 
-                            <div class="b12_info_title_slider_text">Intertek</div>
+                            <div class="b12_info_title_slider_text"><?php echo $train->coll_unit ?></div>
 
                         </div>
 
@@ -244,7 +178,13 @@
 
                     <div class="b3_c_right_list">
 
-                        <a href="#"><div class="b3_c_right_list_block"><i class="fa fa-file-text-o"></i>食品安全品質標準（Safe Quality Food，SQF）</div></a>
+                        <?php if (isset($interest_news)): ?>
+                            <?php foreach ($interest_news as $key => $value): ?>
+                                 <a href="<?php echo site_url().'home/'.news_kind_controller($value->news_kind).'/'.$value->id ?>"><div class="b3_c_right_list_block"><i class="fa fa-file-text-o"></i><?php echo $value->title ?></div></a>
+                            <?php endforeach ?>
+                        <?php endif ?>
+
+                       <!--  <a href="#"><div class="b3_c_right_list_block"><i class="fa fa-file-text-o"></i>食品安全品質標準（Safe Quality Food，SQF）</div></a>
 
                         <a href="#"><div class="b3_c_right_list_block"><i class="fa fa-file-text-o"></i>食品安全品質標準（Safe Quality Food，SQF）</div></a>
 
@@ -256,7 +196,7 @@
 
                         <a href="#"><div class="b3_c_right_list_block"><i class="fa fa-file-text-o"></i>食品安全品質標準（Safe Quality Food，SQF）</div></a>
 
-                        <a href="#"><div class="b3_c_right_list_block bottom_end"><i class="fa fa-file-text-o"></i>食品安全品質標準（Safe Quality Food，SQF）</div></a>
+                        <a href="#"><div class="b3_c_right_list_block bottom_end"><i class="fa fa-file-text-o"></i>食品安全品質標準（Safe Quality Food，SQF）</div></a> -->
 
                     </div>
 
@@ -266,9 +206,7 @@
 
                     <div class="b3_c_right_list_advert">
 
-                        <div class="b3_c_right_block_advert"><img src="images/b3_c/advert_1.jpg"></div>
-
-                        <div class="b3_c_right_block_advert"><img src="images/b3_c/advert_2.jpg"></div>
+                        <?php echo fuel_block("iso_coach_detail_ad") ?>
 
                     </div>
 

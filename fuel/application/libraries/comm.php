@@ -30,23 +30,4 @@ Class Comm {
 	    return;
 	}
 
-	public function news_kind_controller($news_kind){
-		$controller = '';
-		switch ($news_kind) {
-			case '0': 
-				$controller = '';
-				break;
-			case '1': 
-				$controller = 'ci_design_detail';
-				break;
-			case '2': 
-				$controller = 'iso_coach_detail';
-				break;
-			case '3': 
-				$controller = 'iso_class_detail';
-				break;
-		}
-		return $controller;
-	}
-
 }

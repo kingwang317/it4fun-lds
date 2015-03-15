@@ -58,24 +58,8 @@
 								<textarea class="form-control ckeditor" rows="3" id="content" name="content"><?php echo htmlspecialchars_decode($news->content); ?></textarea>
 							</div>
 						</div>	
-						<?php if ($news_kind == 2): ?>						  
-						<div class="form-group">
-							<label class="col-sm-2 col-sm-2 control-label">輔導項目類別</label>
-							<div class="col-sm-4">
-								<select name="type" id="type">
-									<?php 
-										if(isset($type)):
-									?>	
-									<?php   foreach($type as $key=>$rows):?>
-												<option value="<?php echo $rows->code_id ?>" <?php if ($rows->code_id==$news->type): ?>
-													selected
-												<?php endif ?> ><?php echo $rows->code_name ?></option>
-										<?php endforeach;?>
-									<?php endif;?>
-								</select>
-							</div>
-						</div>		
-						<?php elseif ($news_kind == 0 || $news_kind == 4): ?>		
+						 
+						<?php if (isset($type)): ?>		
 						<div class="form-group">
 							<label class="col-sm-2 col-sm-2 control-label">項目</label>
 							<div class="col-sm-4">

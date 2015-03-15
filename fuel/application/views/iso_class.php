@@ -26,7 +26,7 @@
                     <div class="ci_block">
                         <div class="ci_image"><img src="<?php echo site_url()."assets/$value->img" ?>"></div>
                         <div class="ci_text">
-                            <a href="b8.php">
+                            <a href="<?php echo site_url().'home/iso_class_detail/'.$value->id ?>">
                             <div class="ci_text_title"><?php echo $value->title ?></div>
                             <div class="ci_text_detail"><?php echo htmlspecialchars_decode($value->content) ?></div>
                             </a>
@@ -111,23 +111,35 @@
             <div class="b7_right_top">
                 <div class="b7_right_title1">分類項目</div>
                 <div class="under_line"></div>
-                    <a href="#"><div class=" b7_list_text">品質管理</div></a>
+                    <?php if (isset($coach_type)): ?>
+                        <?php $i=0 ?>
+                        <?php foreach ($coach_type as $key => $value): ?>
+                            <a href="<?php echo site_url().'home/iso_class/'.$value->code_id ?>"><div class=" b7_list_text <?php echo $i+1==sizeof($coach_type)?"border_hide":"" ?> "><?php echo $value->code_name ?></div></a>
+                            <?php $i++ ?>
+                        <?php endforeach ?>
+                    <?php endif ?>
+                    <!-- <a href="#"><div class=" b7_list_text">品質管理</div></a>
                     <a href="#"><div class=" b7_list_text">食品安全</div></a>
                     <a href="#"><div class=" b7_list_text">驗廠&社會責任</div></a>
                     <a href="#"><div class=" b7_list_text">環境管理</div></a>
                     <a href="#"><div class=" b7_list_text">供應鏈安全</div></a>
                     <a href="#"><div class=" b7_list_text">風險管理</div></a>
-                    <a href="#"><div class=" b7_list_text border_hide">資訊安全</div></a>
+                    <a href="#"><div class=" b7_list_text border_hide">資訊安全</div></a> -->
                 </div>
                 <div class="b7_right_bottom">
                     <div class="b7_right_title1">推薦閱讀</div>
                     <div class="under_line"></div>
-                    <a href="#"><div class=" b7_list_text"><i class="fa fa-file-text-o"></i>ISO 22000食品安全管理</div></a>
+                    <?php if (isset($interest_news)): ?>
+                        <?php foreach ($interest_news as $key => $value): ?>
+                             <a href="<?php echo site_url().'home/'.news_kind_controller($value->news_kind).'/'.$value->id ?>"><div class="extend_list"><i class="fa fa-file-text-o"></i><?php echo $value->title ?></div></a>
+                        <?php endforeach ?>
+                    <?php endif ?>
+                    <!-- <a href="#"><div class=" b7_list_text"><i class="fa fa-file-text-o"></i>ISO 22000食品安全管理</div></a>
                     <a href="#"><div class=" b7_list_text"><i class="fa fa-file-text-o"></i>HACCP 危害分析重要管制點</div></a>
                     <a href="#"><div class=" b7_list_text"><i class="fa fa-file-text-o"></i>ISO 114001環境管理系統</div></a>
                     <a href="#"><div class=" b7_list_text"><i class="fa fa-file-text-o"></i>ISO 13485醫療器材品質管理</div></a>
                     <a href="#"><div class=" b7_list_text"><i class="fa fa-file-text-o"></i>IECQ QC080000 有害物質管理</div></a>
-                    <a href="#"><div class=" b7_list_text"><i class="fa fa-file-text-o"></i>ISO 17025：2005實驗室認證</div></a>
+                    <a href="#"><div class=" b7_list_text"><i class="fa fa-file-text-o"></i>ISO 17025：2005實驗室認證</div></a> -->
                     </div>
             </div>
         </div>

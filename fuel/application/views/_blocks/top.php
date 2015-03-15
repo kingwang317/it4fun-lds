@@ -172,15 +172,16 @@
                   
               
                 ?>
-                <li class="top_title_menu"><a href="<?php echo site_url()."home/iso_coach_list?type=".$value->code_id ?>"><?php echo $value->code_name ?></a>
+                <li class="top_title_menu"><a href="<?php echo site_url()."home/iso_coach_list/".$value->code_id ?>"><?php echo $value->code_name ?></a>
                     <ul class="second_menu">
                         <span class="arrow_t_int"></span>
                         <span class="arrow_t_out"></span>
                         <?php 
                         if(isset($menu_data[$key]->coach_data))
                         foreach ($menu_data[$key]->coach_data as $c_key => $c_value) {
+                            // print_r($c_value);
                         ?>
-                        <li><a href="<?php echo site_url()."home/iso_coach_detail?id=".$c_value->id."&type=".$value->code_id ?>"><?php echo $c_value->title ?></a></li>
+                        <li><a href="<?php echo site_url().'home/'.news_kind_controller($c_value->news_kind).'/'.$c_value->id ?>"><?php echo $c_value->title ?></a></li>
                         <?php 
                         } 
                         ?>

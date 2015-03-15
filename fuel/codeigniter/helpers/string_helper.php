@@ -302,6 +302,30 @@ if ( ! function_exists('repeater'))
 	}
 }
 
+ function news_kind_controller($news_kind){
+	$controller = '';
+	switch ($news_kind) {
+		case '0': 
+			$controller = '';
+			break;
+		case '1': 
+			$controller = 'ci_design_detail';
+			break;
+		case '2': 
+			$controller = 'iso_coach_detail';
+			break;
+		case '3': 
+			$controller = 'iso_class_detail';
+			break;
+	}
+	return $controller;
+}
+
+function dateconvert($date_str,$format="Y-m-d"){
+	$date = date_create($date_str);
+	return date_format($date, $format);
+}
+
 
 /* End of file string_helper.php */
 /* Location: ./system/helpers/string_helper.php */

@@ -70,9 +70,15 @@ foreach($lang_ary as $l)
 
 $route['home/iso_coach_detail/(:num)'] 		= 'home/iso_coach_detail/$1';
 $route['home/ci_design_detail/(:num)'] 		= 'home/ci_design_detail/$1';
+$route['home/iso_coach_list/(:num)'] 		= 'home/iso_coach_list/$1';
+$route['home/iso_class_detail/(:num)'] 		= 'home/iso_class_detail/$1';
+
+$route['home/iso_class'] 		= 'home/iso_class';
+$route['home/iso_class/(:num)'] 		= 'home/iso_class/$1';
+
 
 $route['iso_train'] 				= 'train/index';
-$route['iso_train/detail'] 			= 'train/detail';
+$route['iso_train/detail/(:num)'] 	= 'train/detail/$1';
 $route['iso_train/register'] 		= 'train/register';
 // $route['zh-TW/product/(:num)'] 		= 'series/product/$1';
 

@@ -22,7 +22,7 @@ class Code_model extends CI_Model {
     public function get_news($news_kind,$type,$filter="",$orderby=""){
         $sql = @"select * from mod_news where
         news_kind = '$news_kind'
-        AND (type='0' || type='$type' || type IN (SELECT  code_id FROM mod_code WHERE code_key = '$type'))
+        AND ('$type' = '-1' || type='0' || type='$type' || type IN (SELECT  code_id FROM mod_code WHERE code_key = '$type'))
         $filter 
         order by news_order ASC , date DESC $orderby ";
         $query = $this->db->query($sql);
@@ -46,6 +46,19 @@ class Code_model extends CI_Model {
     public function get_random_coach(){
         return $this->get_random_news(2,5);
         // return $this->get_news(2,$type);
+    }
+
+    public function get_coach_by_type($type){
+        $sql = @"select * from mod_news where type='$type'
+        order by news_order ASC , date DESC $orderby ";
+        $query = $this->db->query($sql);
+        // echo $sql;exit;
+        if($query->num_rows() > 0)
+        {
+            $result = $query->result();
+
+            return $result;
+        }
     }
 
     public function get_random_news($news_kind,$limit){
@@ -105,8 +118,8 @@ class Code_model extends CI_Model {
         return $this->get_news(1,0,$filter,$orderby);
     }
 
-    public function get_iso_class_news($filter="",$orderby=""){
-        return $this->get_news(3,0,$filter,$orderby);
+    public function get_iso_class_news($type,$filter="",$orderby=""){
+        return $this->get_news(3,$type,$filter,$orderby);
     }
 
     public function get_iso_coach_news($type,$filter="",$orderby=""){
@@ -236,6 +249,20 @@ class Code_model extends CI_Model {
 
             return $result;
         }
+    }
+
+    public function update_news_viewcount($id){
+        $sql = @"UPDATE mod_news SET view_count = view_count +1 WHERE id=? "; 
+
+        $para = array($id);
+        $success = $this->db->query($sql, $para);
+
+        if($success)
+        {
+            return true;
+        }
+
+        return;
     }
 
     public function insert_mod_contact($insert_data){

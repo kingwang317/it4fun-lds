@@ -72,6 +72,7 @@ class Home extends CI_Controller {
 			$this->comm->plu_redirect(site_url(), 0, "找不到資料");
 			die;
 		}
+		$this->code_model->update_news_viewcount($id);
 
 		$vars['news'] = $news;
 		$vars['interest_news'] = $this->code_model->get_random_ci();
@@ -112,6 +113,8 @@ class Home extends CI_Controller {
 			die;
 		}
 
+		$this->code_model->update_news_viewcount($id);
+
 		$vars['news'] = $news;
 		$vars['interest_news'] = $this->code_model->get_random_all_news();
 		$vars['interest_news2'] = $this->code_model->get_random_all_news();
@@ -140,9 +143,20 @@ class Home extends CI_Controller {
 	// 	$this->fuel->pages->render("iso_coach_singlecoldetail", $vars);
 	 
 	// }
-	function iso_coach_list()
+	function iso_coach_list($type)
 	{	
 		$lang_code = $this->uri->segment(1);
+
+		$news_type = $this->code_model->get_series_info($type);
+
+		if (!isset($news_type)) {
+			$this->comm->plu_redirect(site_url(), 0, "找不到資料");
+			die;
+		}
+
+		$vars['news_type'] = $news_type;
+		$vars['news_series'] = $this->code_model->get_coach_by_type($type);
+
 		$vars['views'] = 'iso_coach_list';
 		$vars['base_url'] = base_url();
 		$page_init = array('location' => 'iso_coach_list');
@@ -167,19 +181,37 @@ class Home extends CI_Controller {
 		$this->fuel->pages->render("contactus", $vars);
 	 
 	}
-	function iso_class()
+	function iso_class($type="-1")
 	{	
 		$lang_code = $this->uri->segment(1);
-		$vars['iso'] = $this->code_model->get_iso_class_news();
+		$vars['iso'] = $this->code_model->get_iso_class_news($type);
+		$vars['coach_type'] = $this->code_model->get_iso_coach_type();
+		$vars['interest_news'] = $this->code_model->get_random_all_news();
 		$vars['views'] = 'iso_class';
 		$vars['base_url'] = base_url();
 		$page_init = array('location' => 'iso_class');
 		$this->fuel->pages->render("iso_class", $vars);
 	 
 	}
-	function iso_class_detail()
+	function iso_class_detail($id)
 	{	
 		$lang_code = $this->uri->segment(1);
+
+		$news = $this->code_model->get_news_by_id($id);
+
+		if (!isset($news)) {
+			$this->comm->plu_redirect(site_url(), 0, "找不到資料");
+			die;
+		}
+
+		$this->code_model->update_news_viewcount($id);
+
+		$vars['news'] = $news;
+		$vars['interest_news'] = $this->code_model->get_random_all_news();
+		$vars['interest_news2'] = $this->code_model->get_random_all_news();
+		$vars['news_series'] = $this->code_model->get_random_coach();
+		$vars['news_type'] = $this->code_model->get_series_info($news->type);
+
 		$vars['views'] = 'iso_class_detail';
 		$vars['base_url'] = base_url();
 		$page_init = array('location' => 'iso_class_detail');
