@@ -13,4 +13,9 @@ $route[FUEL_ROUTE.'event/do_multi_del'] 	= EVENT_FOLDER.'/event_manage/do_multi_
 $route[FUEL_ROUTE.'event/status/(:num)']	= EVENT_FOLDER.'/event_manage/event_status/$1';
 $route[FUEL_ROUTE.'event/update/regitype']	= EVENT_FOLDER.'/event_manage/do_batch_regi_type';
 
+
+$route[FUEL_ROUTE.'reg/lists'] 			        = EVENT_FOLDER.'/event_manage/reg_lists';
+$route[FUEL_ROUTE.'reg/lists/(:num)/(:num)'] 	= EVENT_FOLDER.'/event_manage/reg_lists/$1/$2';
+$route[FUEL_ROUTE.'reg/detail/(:num)'] 	        = EVENT_FOLDER.'/event_manage/reg_detail/$1';
+
  ?>

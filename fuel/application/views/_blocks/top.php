@@ -217,7 +217,7 @@
             //if enter key is pressed
             if (code == 13) {
                 //click the button and go to page
-               window.location = "<?php echo site_url()?>home/search_result?kw="+kw;
+               window.location = "<?php echo site_url()?>home/search_result/"+encodeURI(kw);
             }
         });
 </script>

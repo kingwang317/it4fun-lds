@@ -42,7 +42,7 @@
                         <div class="banner_title"><?php echo $value->title ?></div>
                         <div class="banner_mid"><?php echo htmlspecialchars_decode($value->content) ?></div>
                         <div class="banner_link_block">
-                            <a href="#"><div class="banner_link">了解更多</div><div class="fa fa-arrow-circle-o-right fa-1x"></div></a>
+                            <a href="<?php echo site_url().'home/iso_news' ?>"><div class="banner_link">了解更多</div><div class="fa fa-arrow-circle-o-right fa-1x"></div></a>
                         </div>
                     </div>
                 </div>    
@@ -95,7 +95,7 @@
                                     <div class="image_title"><div style="padding-left:5px;"><?php echo $value->code_name ?></div></div>
                                  </div>
                                  <div class="news_text">
-                                 <a href="#"><?php echo mb_substr($value->detail->title,0,30,'UTF-8') ?></a>
+                                 <a href="<?php echo site_url().'home/iso_news' ?>"><?php echo mb_substr($value->detail->title,0,30,'UTF-8') ?></a>
                                 </div>
                             </div>
                             <?php $i++; ?>
@@ -161,7 +161,7 @@
                     <?php foreach ($performance as $key => $value): ?>
                         <div class="case_list_block">
                             <div class="list_date"><?php echo $value->date ?></div>
-                            <div class="list_text"><a href="#"><?php echo $value->title ?></a></div>
+                            <div class="list_text"><a href="<?php echo site_url().'home/iso_news' ?>"><?php echo $value->title ?></a></div>
                         </div>
                     <?php endforeach ?>
                 <?php endif ?>

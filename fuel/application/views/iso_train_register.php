@@ -40,10 +40,10 @@
                 <div class="input_block">
                     <div class="b13_title">性別</div>
                          <div>
-                            <input id="radio1" type="radio" name="radio" value="1" checked="checked"><label for="radio1"><span><span></span></span>男性</label>
+                            <input id="sex1" type="radio" name="sex" value="1" checked="checked"><label for="sex1"><span><span></span></span>男性</label>
                           </div>
                           <div>
-                            <input id="radio2" type="radio" name="radio" value="2"><label for="radio2"><span><span></span></span>女性</label>
+                            <input id="sex2" type="radio" name="sex" value="2"><label for="sex2"><span><span></span></span>女性</label>
                           </div>
                 </div>
                 <div class="input_block">
@@ -55,30 +55,35 @@
                     <input id="phone" class="b10_input" type="text" autocomplete="off">
                 </div>
                <div class="input_block">
-                    <select class="b10_select">
-                        <option value="0">報名課程</option>
+                    <select class="b10_select" id="train_id">
+                       <!--  <option value="0">報名課程</option>
                         <option value="1">報名課程1</option>
                         <option value="2">報名課程2</option>
-                        <option value="3">報名課程3</option>
+                        <option value="3">報名課程3</option> -->
+                        <?php if (isset($all_train)): ?>
+                            <?php foreach ($all_train as $key => $value): ?>
+                                <option value="<?php echo $value->id ?>"><?php echo $value->train_title ?></option>
+                            <?php endforeach ?>
+                        <?php endif ?>
                     </select>
                 </div>
                 <div class="input_block">
-                    <input id="phone" class="b10_input" type="text" placeholder="課程費用" autocomplete="off">
-                    <div class="b13_remark">﹙請填寫課程費用，若不知課程費用，請前往ISO教育訓練網 <a href="www.isoleader.com/iso9001training" onclick="window.open(this.href); return false;"><font color="#eb1d23">www.isoleader.com/iso9001training</font></a> 查詢﹚</div>
+                    <input id="price" class="b10_input" type="text" placeholder="課程費用" autocomplete="off">
+                    <div class="b13_remark">﹙請填寫課程費用，若不知課程費用，請前往ISO教育訓練網 <a href="<?php echo site_url().'iso_train' ?>" onclick="window.open(this.href); return false;"><font color="#eb1d23">www.isoleader.com/iso9001training</font></a> 查詢﹚</div>
                 </div>
                 <div class="input_block">
                     <div class="b13_title">請選擇上課地點</div>
                          <div>
-                            <input id="checkbox1" type="checkbox" name="checkbox" value="1" checked="checked"><label for="checkbox1"><span></span>台北</label>
+                            <input id="place1" type="checkbox" name="place" value="台北" checked="checked"><label for="place1"><span></span>台北</label>
                           </div>
                           <div>
-                            <input id="checkbox2" type="checkbox" name="checkbox" value="2"><label for="checkbox2"><span></span>新竹</label>
+                            <input id="place2" type="checkbox" name="place" value="新竹"><label for="place2"><span></span>新竹</label>
                           </div>
                           <div>
-                            <input id="checkbox3" type="checkbox" name="checkbox" value="3"><label for="checkbox3"><span></span>台南</label>
+                            <input id="place3" type="checkbox" name="place" value="台南"><label for="place3"><span></span>台南</label>
                           </div>
                            <div>
-                            <input id="checkbox4" type="checkbox" name="checkbox" value="3"><label for="checkbox4"><span></span>高雄</label>
+                            <input id="place4" type="checkbox" name="place" value="高雄"><label for="place4"><span></span>高雄</label>
                           </div>
                 </div>
                 <div class="input_block">
@@ -134,7 +139,7 @@
                      <div>
                         <span class="b13_title">留下您的意見＆報名注意事項</span>
                         <div class="b13_detail">繳費方式：每個課程將於開課前一周統計報名人數，若有達到開課人數，將會通知報名學員進行繳費，請報名完成或繳費後，來電領導力企管確認。開課前三個工作天內取消或延課者，酌收10%手續費。開課當日取消或延課者，酌收20%手續費。聯絡電話：(07)7934287 洪小姐，傳真電話：(07)7927462，E-mail：service@isoleader.com.tw</div>
-                        <textarea class="b10_textarea" rows="10" placeholder="留言內容" autocomplete="off"></textarea>
+                        <textarea id="register_msg" class="b10_textarea" rows="10" placeholder="留言內容" autocomplete="off"></textarea>
                     </div>
                 </div>
            </div>
@@ -209,6 +214,61 @@
             $("#phone").focus();
             return false;
         }
+
+        var url = '<?php echo $register_url?>';    
+
+        var place = '';
+
+        $('input[name="place"]:checked').each(function() {
+           // console.log($(this).val());
+           place += $(this).val();
+        });
+ 
+        var postData = {//"plan_id": $("#plan_id").val(),
+                          "company_name": $("#company_name").val(),
+                          "dep": $("#dep").val(),
+                          "name": $("#name").val(),
+                          "sex": $('input[name=sex]:checked').val(),
+                          "mail": $("#mail").val(),
+                          "phone": $("#phone").val(),
+                          "train_id": $('#train_id').val(),
+                          "price": $("#price").val(),
+                          "place": place,
+                          "datepicker": $("#datepicker").val(),
+                          "invoice": $('input[name=invoice]:checked').val(),
+                          "invoice_title": $("#invoice_title").val(),
+                          "Uniform": $("#Uniform").val(),
+                          "lunch_box": $('input[name=lunch_box]:checked').val(),
+                          "agree": $('input[name=agree]:checked').val(),
+                          "register_msg": $("#register_msg").val()
+                        };   
+
+        console.log(postData);
+
+       $.ajax({
+          url: url,
+          type: 'POST',
+          dataType: 'json',
+          data: postData,
+          success: function(data)
+          {
+            console.log(data);
+            if(data.status == 1)
+            {
+              // $("#MerchantID").val(data.merchant_id);
+              // $("#XMLData").val(data.encode_data);
+              // $("#payment_form").attr('action', data.gateway);
+              // $("#payment_form").submit();
+              alert('報名成功！！');
+              location.href = '<?php echo site_url() ?>iso_train';
+            }
+            else
+            {
+              alert(data.msg);
+            }
+          }
+        });
+
     });
     $( "#datepicker" ).datepicker({ dateFormat: 'yy/mm/dd' });
     

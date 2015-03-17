@@ -35,6 +35,20 @@ class Code_model extends CI_Model {
         }
     }
 
+    public function get_serach_news($keyword){
+        $sql = @"select * from mod_news where
+        news_kind IN (2,3) AND ( title LIKE '%$keyword%' || content LIKE '%$keyword%')
+        order by news_order ASC , date DESC $orderby ";
+        $query = $this->db->query($sql);
+        // echo $sql;exit;
+        if($query->num_rows() > 0)
+        {
+            $result = $query->result();
+
+            return $result;
+        }
+    }
+
     public function get_random_ci(){
         return $this->get_random_news(1,9);
     }
@@ -140,6 +154,14 @@ class Code_model extends CI_Model {
 
     public function get_country(){
         return $this->get_code('COUNTRY','zh-TW');
+    }
+
+    public function get_coor_unit(){
+        return $this->get_code('COOR_UNIT','zh-TW');
+    }
+
+    public function get_inquiry_topic(){
+        return $this->get_code('INQUIRY_TOPIC','zh-TW');
     }
 
     public function get_country_info($code_id){
@@ -267,42 +289,21 @@ class Code_model extends CI_Model {
 
     public function insert_mod_contact($insert_data){
         $sql = @"INSERT INTO mod_contact (
-                                            com_name, 
-                                            address,
-                                            contact_person, 
-                                            country,   
-                                            tel,
-                                            fax,
-                                            email,
-                                            website,
-                                            engineernum,
-                                            bothpercentt,
-                                            bothpercentr,
-                                            territoryplace,
-                                            whichexhibition,
-                                            wherelearnsturdyothers,
-                                            comment,
-                                            lang                                         
+                                            name, 
+                                            email, 
+                                            inquiry_topic,   
+                                            coor_unit,
+                                            msg,
+                                            modi_date                                         
                                         ) 
-                VALUES ( ?, ?, ?, ?, ?,?,?, ?, ?, ?, ?, ?, ?, ?, ?,?)"; 
+                VALUES ( ?, ?, ?, ?, ?, NOW())"; 
 
         $para = array(
-                $insert_data['com_name'], 
-                $insert_data['address'],
-                $insert_data['contact_person'],
-                $insert_data['country'],  
-                $insert_data['tel'],
-                $insert_data['fax'],
+                $insert_data['name'], 
                 $insert_data['email'],
-                $insert_data['website'],
-                $insert_data['engineernum'],
-                $insert_data['bothpercentt'],
-                $insert_data['bothpercentr'],
-                $insert_data['territoryplace'],
-                $insert_data['whichexhibition'],
-                $insert_data['wherelearnsturdyothers'],
-                $insert_data['comment'],
-                $insert_data['lang']
+                $insert_data['inquiry_topic'],
+                $insert_data['coor_unit'],  
+                $insert_data['msg'],
             );
         $success = $this->db->query($sql, $para);
 

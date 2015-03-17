@@ -116,8 +116,9 @@
 						<td>
 							<?php echo $row->coll_unit;?>
 						</td> 
-						<td><a href="<?php echo $reg_list_url.$row->id?>" title="<?php echo $row->reg_count?>"><?php echo $row->reg_count?></a></td>
+						<td><a href="<?php echo $detail_url.$row->id.'/0'?>" title="<?php echo $row->reg_count?>"><?php echo $row->reg_count?></a></td>
 						<td>
+							<button class="btn btn-xs btn-info" type="button" onclick="aHover('<?php echo $detail_url.$row->id.'/0' ?>')">報名列表</button>
 							<button class="btn btn-xs btn-danger del" type="button" EventID="<?php echo $row->id ?>">刪除</button>
 						</td>
 					</tr>

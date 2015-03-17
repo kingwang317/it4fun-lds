@@ -59,13 +59,13 @@ class Event_manage extends Fuel_base_controller {
 		$vars['create_url'] = $base_url.'fuel/event/create';
 		$vars['search_type'] = $search_type; 
 		$vars['search_txt'] = $search_txt;  
-		$vars['edit_url'] 			= $base_url.'fuel/event/edit?id=';
-		$vars['reg_list_url'] 			= $base_url.'fuel/event/edit?id=';
+		$vars['edit_url'] 			= $base_url.'fuel/event/edit?id='; 
 		$vars['del_url'] 			= $base_url.'fuel/event/del?id=';
 		$vars['multi_del_url'] 		= $base_url.'fuel/event/do_multi_del';
 		$vars['results'] 			= $results;
 		$vars['total_rows'] 		= $total_rows;
 		$vars['search_url'] 		= $base_url.'fuel/event/lists';
+		$vars['detail_url'] 		= $base_url.'fuel/reg/lists/';
 		$vars['event_status_url']	= $base_url.'fuel/event/status/';
 		$vars['CI'] = & get_instance();
 
@@ -73,6 +73,79 @@ class Event_manage extends Fuel_base_controller {
 		$this->fuel->admin->render('_admin/event_lists_view', $vars);
 
 	} 
+
+	function reg_lists($train_id,$dataStart=0)
+	{
+
+		$base_url = base_url();
+		$module_uri = base_url().$this->module_uri; 
+
+		if($train_id)
+		{
+			$result = $this->event_manage_model->get_event_detail($train_id);
+
+			if(empty($result))
+			{
+				$this->comm->plu_redirect($module_uri, 0, "查無此id");
+				die();
+			}
+		}
+		else
+		{
+			$this->comm->plu_redirect($module_uri, 0, "查無此id");
+			die();
+		}
+
+		$crumbs = array($this->module_uri => $this->module_name);
+		$this->fuel->admin->set_titlebar($crumbs);
+		$target_url = $base_url.'fuel/reg/lists/';
+		$filter = " WHERE train_id='$train_id' ";
+		$total_rows = $this->event_manage_model->get_reg_total_rows($filter);
+		$config = $this->set_page->set_config($target_url, $total_rows, $dataStart, 20);
+		$dataLen = $config['per_page'];
+		$this->pagination->initialize($config);
+		$results = $this->event_manage_model->get_reg_list($dataStart, $dataLen, $filter);
+		$vars['page_jump'] = $this->pagination->create_links();	
+		$vars['view_name'] = $result->train_title;		
+		$vars['reg_detail_url'] 	= $base_url.'fuel/reg/detail/';
+		$vars['results'] 			= $results;
+		$vars['total_rows'] 		= $total_rows;
+		$vars['module_uri'] = base_url().$this->module_uri;
+		$vars['CI'] = & get_instance();
+		$this->fuel->admin->render('_admin/reg_lists_view', $vars);
+	} 
+
+	function reg_detail($reg_id)
+	{ 
+		$base_url = base_url();
+		$module_uri = base_url().$this->module_uri; 
+
+		if($reg_id)
+		{
+			$result = $this->event_manage_model->get_reg_detail($reg_id);
+
+			if(empty($result))
+			{
+				$this->comm->plu_redirect($module_uri, 0, "查無此id");
+				die();
+			}
+		}
+		else
+		{
+			$this->comm->plu_redirect($module_uri, 0, "查無此id");
+			die();
+		}
+
+		$crumbs = array($this->module_uri => $this->module_name);
+		$this->fuel->admin->set_titlebar($crumbs);		
+		$vars['module_uri'] = base_url().$this->module_uri;
+		$vars['reg_list'] = base_url()."fuel/reg/lists/$result->train_id/0";
+		$vars['row'] = $result;
+		$vars['module_path'] = base_url().'fuel/modules/event/';
+		$vars['view_name'] = "明細";
+
+		$this->fuel->admin->render("_admin/reg_detail_view", $vars);
+	}
 
  
 	function create()

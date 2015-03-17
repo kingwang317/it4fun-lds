@@ -33,22 +33,32 @@
                     <input id="mail" class="b10_input" type="text" autocomplete="off">
                 </div>
                 <div class="input_block">
-                    <select class="b10_select">
-                        <option value="0">選擇詢價主旨</option>
+                    <select class="b10_select" id="inquiry_topic">
+                        <!-- <option value="0">選擇詢價主旨</option>
                         <option value="1" color="black">選擇詢價主旨1</option>
                         <option value="2">選擇詢價主旨2</option>
-                        <option value="3">選擇詢價主旨3</option>
+                        <option value="3">選擇詢價主旨3</option> -->
+                        <?php if (isset($inquiry_topic)): ?>
+                            <?php foreach ($inquiry_topic as $key => $value): ?>
+                                <option value="<?php echo $value->code_id ?>"><?php echo $value->code_name ?></option>
+                            <?php endforeach ?>
+                        <?php endif ?>
                     </select>
                 </div>
                 <div class="input_block">
-                    <select class="b10_select">
-                        <option value="0">預計配合的驗證機構</option>
+                    <select class="b10_select" id="coor_unit">
+                      <!--   <option value="0">預計配合的驗證機構</option>
                         <option value="1">預計配合的驗證機構1</option>
                         <option value="2">預計配合的驗證機構2</option>
-                        <option value="3">預計配合的驗證機構3</option>
+                        <option value="3">預計配合的驗證機構3</option> -->
+                        <?php if (isset($coor_unit)): ?>
+                            <?php foreach ($coor_unit as $key => $value): ?>
+                                <option value="<?php echo $value->code_id ?>"><?php echo $value->code_name ?></option>
+                            <?php endforeach ?>
+                        <?php endif ?>
                     </select>
                 </div>
-                <div class="input_block"><textarea class="b10_textarea" rows="10" placeholder="留言內容" autocomplete="off"></textarea></div>
+                <div class="input_block"><textarea id="msg" class="b10_textarea" rows="10" placeholder="留言內容" autocomplete="off"></textarea></div>
            </div>
            <div class='b10_submit'>確認送出</div>
         </div>
@@ -106,5 +116,42 @@
             $("#mail").focus();
             return false;
         }
+
+
+        var url = '<?php echo $do_contact_url?>';   
+      
+        var postData = {//"plan_id": $("#plan_id").val(),
+                          "name": $("#name").val(),
+                          "email": $("#mail").val(),
+                          "inquiry_topic": $("#inquiry_topic").val(),
+                          "coor_unit": $("#coor_unit").val(),
+                          "msg": $("#msg").val()
+                        };   
+
+        console.log(postData);
+
+       $.ajax({
+          url: url,
+          type: 'POST',
+          dataType: 'json',
+          data: postData,
+          success: function(data)
+          {
+            console.log(data);
+            if(data.status == 1)
+            {
+              // $("#MerchantID").val(data.merchant_id);
+              // $("#XMLData").val(data.encode_data);
+              // $("#payment_form").attr('action', data.gateway);
+              // $("#payment_form").submit();
+              alert('送出成功！！');
+              location.href = '<?php echo site_url() ?>home/contactus';
+            }
+            else
+            {
+              alert(data.msg);
+            }
+          }
+        });
     });
 </script>

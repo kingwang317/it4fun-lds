@@ -6,7 +6,8 @@ class Home extends CI_Controller {
 		parent::__construct(); 
 		$this->load->model('core_model');  
 		$this->load->model('code_model');  
-		$this->load->library('comm');
+		$this->load->library('comm');	
+		$this->load->helper('ajax');
 	}
 
 	function home() 
@@ -175,6 +176,9 @@ class Home extends CI_Controller {
 	function contactus()
 	{	
 		$lang_code = $this->uri->segment(1);
+		$vars['coor_unit'] = $this->code_model->get_coor_unit();
+		$vars['inquiry_topic'] = $this->code_model->get_inquiry_topic();
+		$vars['do_contact_url'] = base_url()."home/do_contact";
 		$vars['views'] = 'contactus';
 		$vars['base_url'] = base_url();
 		$page_init = array('location' => 'contactus');
@@ -237,10 +241,13 @@ class Home extends CI_Controller {
 	}
 
 
-	function search_result()
+	function search_result($keyword)
 	{	
 		$lang_code = $this->uri->segment(1);
+		$keyword = urldecode($keyword);
+		$vars['result'] = $this->code_model->get_serach_news($keyword);
 		$vars['views'] = 'search_result';
+		$vars['keyword'] = $keyword;
 		$vars['base_url'] = base_url();
 		$page_init = array('location' => 'search_result');
 		$this->fuel->pages->render("search_result", $vars);
@@ -253,6 +260,27 @@ class Home extends CI_Controller {
 		$vars['base_url'] = base_url();
 		$page_init = array('location' => 'team_info');
 		$this->fuel->pages->render("team_info", $vars);
+	}
+
+	function do_contact()
+	{
+		if(is_ajax())
+		// if(true)
+		{  
+			$post_arr = $this->input->post();
+		    $this->code_model->insert_mod_contact($post_arr);
+			$result['status'] = 1; 
+			echo json_encode($result);
+		}
+		else
+		{
+			// redirect(site_url(), 'refresh');
+			$result['status'] = -1;
+			$result['msg'] = "發生錯誤,請再試一次";
+			echo json_encode($result);
+		}
+
+		die();
 	}
 	 
 }

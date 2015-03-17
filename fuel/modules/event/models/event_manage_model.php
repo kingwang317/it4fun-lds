@@ -41,9 +41,24 @@ class Event_manage_model extends MY_Model {
 		return;
 	}
 
-	public function get_regi_event_list($dataStart, $dataLen, $filter)
+	public function get_reg_total_rows($filter="")
 	{
-		$sql = @"SELECT a.*,b.train_title FROM mod_register a LEFT JOIN mod_train b ON a.id = b.id $filter ORDER BY a.modi_date LIMIT $dataStart, $dataLen";
+		$sql = @"SELECT COUNT(*) AS total_rows FROM mod_register $filter ";
+		$query = $this->db->query($sql);
+
+		if($query->num_rows() > 0)
+		{
+			$row = $query->row();
+
+			return $row->total_rows;
+		}
+
+		return 0;
+	}
+
+	public function get_reg_list($dataStart, $dataLen, $filter)
+	{
+		$sql = @"SELECT *  FROM mod_register $filter ORDER BY modi_date DESC LIMIT $dataStart, $dataLen";
 	
 		$query = $this->db->query($sql);
 
@@ -55,26 +70,58 @@ class Event_manage_model extends MY_Model {
 		}
 
 		return;
-	} 
+	}
 
-	public function do_regi_event($id, $account)
+	public function get_reg_detail($id)
 	{
-		$sql = @"INSERT INTO mod_register (
-				id,
-				account,
-				drop_date,
-				regi_type)
-				VALUES(?, ?, NOW(), 0)";
-		$para = array($id, $account);
-		$success = $this->db->query($sql, $para);
+		$sql = @"SELECT *,(SELECT train_title FROM mod_train WHERE mod_train.id = mod_register.train_id ) AS train_title FROM mod_register WHERE id=?";
+		$para = array($id);
+		$query = $this->db->query($sql, $para);
 
-		if($success)
+		if($query->num_rows() > 0)
 		{
-			return true;
+			$result = $query->row();
+
+			return $result;
 		}
 
 		return;
 	}
+
+	// public function get_regi_event_list($dataStart, $dataLen, $filter)
+	// {
+	// 	$sql = @"SELECT a.*,b.train_title FROM mod_register a LEFT JOIN mod_train b ON a.id = b.id $filter ORDER BY a.modi_date LIMIT $dataStart, $dataLen";
+	
+	// 	$query = $this->db->query($sql);
+
+	// 	if($query->num_rows() > 0)
+	// 	{
+	// 		$result = $query->result();
+
+	// 		return $result;
+	// 	}
+
+	// 	return;
+	// } 
+
+	// public function do_regi_event($id, $account)
+	// {
+	// 	$sql = @"INSERT INTO mod_register (
+	// 			id,
+	// 			account,
+	// 			drop_date,
+	// 			regi_type)
+	// 			VALUES(?, ?, NOW(), 0)";
+	// 	$para = array($id, $account);
+	// 	$success = $this->db->query($sql, $para);
+
+	// 	if($success)
+	// 	{
+	// 		return true;
+	// 	}
+
+	// 	return;
+	// }
 
 	public function insert($data)
 	{

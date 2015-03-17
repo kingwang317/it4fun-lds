@@ -140,7 +140,7 @@
 
                 </div>
 
-                <a href="#"><div class="b10_submit b12_submit">線上報名</div></a>
+                <a href="<?php echo site_url().'train/register/'.$train->id ?>"><div class="b10_submit b12_submit">線上報名</div></a>
 
                 <div class="b12_facebook_comment">
 

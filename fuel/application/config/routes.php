@@ -72,6 +72,8 @@ $route['home/iso_coach_detail/(:num)'] 		= 'home/iso_coach_detail/$1';
 $route['home/ci_design_detail/(:num)'] 		= 'home/ci_design_detail/$1';
 $route['home/iso_coach_list/(:num)'] 		= 'home/iso_coach_list/$1';
 $route['home/iso_class_detail/(:num)'] 		= 'home/iso_class_detail/$1';
+$route['home/search_result/(:any)'] 		= 'home/search_result/$1';
+$route['home/do_contact'] 		= 'home/do_contact';
 
 $route['home/iso_class'] 		= 'home/iso_class';
 $route['home/iso_class/(:num)'] 		= 'home/iso_class/$1';
@@ -79,7 +81,10 @@ $route['home/iso_class/(:num)'] 		= 'home/iso_class/$1';
 
 $route['iso_train'] 				= 'train/index';
 $route['iso_train/detail/(:num)'] 	= 'train/detail/$1';
-$route['iso_train/register'] 		= 'train/register';
+$route['iso_train/register'] 	    = 'train/register';
+$route['iso_train/do_register'] 	= 'train/do_register';
+// $route['iso_train/register/(:num)'] 		= 'train/register/$1';
+
 // $route['zh-TW/product/(:num)'] 		= 'series/product/$1';
 
 /*	
