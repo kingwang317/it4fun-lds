@@ -84,7 +84,8 @@ class News_manage_model extends MY_Model {
 										 	news_order,
 										 	news_kind,
 										 	layout_type,
-										 	frame_url
+										 	frame_url,
+										 	url
 										) 
 				VALUES ( ?, ?, ?, ?, ?,?,? ,?,?,?)"; 
 
@@ -98,7 +99,8 @@ class News_manage_model extends MY_Model {
 				$insert_data['news_order'],
 				$insert_data['news_kind'],
 				$insert_data['layout_type'],
-				$insert_data['frame_url']
+				$insert_data['frame_url'],
+				$insert_data['url']
 			);
 		$success = $this->db->query($sql, $para);
 
@@ -198,7 +200,8 @@ class News_manage_model extends MY_Model {
 										news_order = ?,
 										news_kind = ?,
 									 	layout_type = ?,
-									 	frame_url = ?
+									 	frame_url = ?,
+									 	url = ?
 									 
 				WHERE id = ?";
 		$para = array(
@@ -212,6 +215,7 @@ class News_manage_model extends MY_Model {
 				$update_data['news_kind'],
 				$update_data['layout_type'],
 				$update_data['frame_url'],
+				$update_data['url'],
 				$update_data['id']
 			);
 		$success = $this->db->query($sql, $para);

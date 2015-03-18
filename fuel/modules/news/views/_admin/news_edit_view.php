@@ -90,6 +90,12 @@
 							<input type="hidden" name="frame_url" value="" >
 						<?php endif ?>		
 						<div class="form-group">
+							<label class="col-sm-2 col-sm-2 control-label">URL</label>
+							<div class="col-sm-4">
+								<input type="text" class="form-control" name="url" value="<?php echo $news->url ?>"> 
+							</div>
+						</div>
+						<div class="form-group">
 							<label class="col-sm-2 col-sm-2 control-label">順序</label>
 							<div class="col-sm-4"> 
 								<input type="text" class="form-control" id="news_order" name="news_order" value="<?php echo $news->news_order ?>">

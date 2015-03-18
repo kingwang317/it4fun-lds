@@ -42,7 +42,7 @@
                         <div class="banner_title"><?php echo $value->title ?></div>
                         <div class="banner_mid"><?php echo htmlspecialchars_decode($value->content) ?></div>
                         <div class="banner_link_block">
-                            <a href="<?php echo site_url().'home/iso_news' ?>"><div class="banner_link">了解更多</div><div class="fa fa-arrow-circle-o-right fa-1x"></div></a>
+                            <a href="<?php echo $value->url ?>"><div class="banner_link">了解更多</div><div class="fa fa-arrow-circle-o-right fa-1x"></div></a>
                         </div>
                     </div>
                 </div>    

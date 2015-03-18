@@ -79,7 +79,13 @@
 						</div>
 						<?php else: ?>
 							<input type="hidden" name="frame_url" value="" >
-						<?php endif ?>						
+						<?php endif ?>		
+						<div class="form-group">
+							<label class="col-sm-2 col-sm-2 control-label">URL</label>
+							<div class="col-sm-4">
+								<input type="text" class="form-control" name="url" value=""> 
+							</div>
+						</div>				
 						<div class="form-group">
 							<label class="col-sm-2 col-sm-2 control-label">順序</label>
 							<div class="col-sm-4"> 
