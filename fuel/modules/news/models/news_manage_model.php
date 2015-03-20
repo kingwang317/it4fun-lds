@@ -87,7 +87,7 @@ class News_manage_model extends MY_Model {
 										 	frame_url,
 										 	url
 										) 
-				VALUES ( ?, ?, ?, ?, ?,?,? ,?,?,?)"; 
+				VALUES ( ?, ?, ?, ?, ?,?,? ,?,?,?,?)"; 
 
 		$para = array(
 				$insert_data['date'], 
