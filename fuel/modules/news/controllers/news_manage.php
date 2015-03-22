@@ -249,6 +249,8 @@ class News_manage extends Fuel_base_controller {
 			$vars['type'] = $type;
 		}
 
+		$vars["news_kind_arr"] = array("0"=>"首頁","1"=>"CI設計","2"=>"輔導項目","3"=>"ISO小學堂","4"=>"最新消息");
+
 		$vars['news_name'] = $news_name;
 		$vars['news_kind'] = $news_kind;
 		$vars['form_action'] = base_url()."fuel/news/do_edit/$id";

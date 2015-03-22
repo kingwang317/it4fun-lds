@@ -38,7 +38,7 @@ class Home extends CI_Controller {
 			if (is_array($detail) && sizeof($detail) > 0) {
 				$value->detail = $detail[0];
 			}else{
-				$value->detail = stdClass();
+				$value->detail =  (object)array('title'=>'','img'=>'');
 			}
 			$result[$value->code_id] = $value;
 		} 

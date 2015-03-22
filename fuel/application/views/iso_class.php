@@ -28,7 +28,7 @@
                         <div class="ci_text">
                             <a href="<?php echo site_url().'home/iso_class_detail/'.$value->id ?>">
                             <div class="ci_text_title"><?php echo $value->title ?></div>
-                            <div class="ci_text_detail"><?php echo htmlspecialchars_decode($value->content) ?></div>
+                            <div class="ci_text_detail"><?php echo  mb_substr(strip_tags(htmlspecialchars_decode($value->content)),0,100,'UTF-8')  ?></div>
                             </a>
                         </div>
                     </div>

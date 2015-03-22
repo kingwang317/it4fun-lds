@@ -57,6 +57,7 @@ class Fuel_layouts extends Fuel_base_library {
 		@include(FUEL_PATH.'config/fuel_layouts'.EXT);
 		
 		$this->CI->load->library('form_builder');
+		$this->CI->load->model('core_model'); 
 
 		if (!empty($config)) $params = $config;
 		if (empty($params)) show_error('You are missing the fuel_layouts.php config file.');
@@ -89,6 +90,7 @@ class Fuel_layouts extends Fuel_base_library {
 		// grab layouts from the directory if layouts auto is true in the fuel_layouts config
 		$this->CI->load->helper('file');
 		$this->CI->load->helper('directory');
+
 		$layout_path = APPPATH.'views/'.$this->layouts_folder;
 		$layouts = get_filenames($layout_path);
 		

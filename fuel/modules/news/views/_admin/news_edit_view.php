@@ -112,13 +112,28 @@
 								<?php endif ?>
 								<input type="hidden" value="<?php echo $news->img; ?>" name="exist_img" />	
 							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 col-sm-2 control-label">訊息類別</label>
+							<div class="col-sm-4">
+								<select name="news_kind" id="news_kind">
+									<?php 
+										if(isset($news_kind_arr)):
+									?>	
+									<?php   foreach($news_kind_arr as $key=>$value):?>
+												<option value="<?php echo $key ?>" <?php if ($key==$news_kind): ?>
+													selected
+												<?php endif ?> ><?php echo $value ?></option>
+										<?php endforeach;?>
+									<?php endif;?>
+								</select>
+							</div>
 						</div>	
 						<div class="form-group">
 							<div class="col-sm-12" style="text-align:center">
 								<!-- <input type="hidden" name="type" value="0" > -->
 								<input type="hidden" name="lang" value="zh-TW" >
-								<input type="hidden" name="news_kind" value="<?php echo $news->news_kind ?>" >
-								<button type="submit" class="btn btn-info">更新</button>
+								<button type="submit" class="btn btn-info">儲存</button>
 								<button type="button" class="btn btn-danger" onClick="aHover('<?php echo $module_uri?>')">取消</button>
 							</div>
 						</div>

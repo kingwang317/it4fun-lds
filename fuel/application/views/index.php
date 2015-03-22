@@ -86,7 +86,7 @@
                 </div>
                 <div class="news_contact">
 
-                    <?php if (isset($news)): ?>                   
+                    <?php if (isset($news) ): ?>                   
                     <?php $i=1; ?>
                         <?php foreach ($news as $key => $value): ?>
                             <div class="index_news_block">
@@ -192,74 +192,7 @@
         <div class="business_title">領導力企管創下許多全國第一。國內ISO輔導資源最充足的顧問公司，協助您取得各項ISO認證，所有ISO認證問題找領導力企管就對了！我們的專業輔導能量，創下許多同業第一。</div>
         <div class="business_icon_slider">
             <div class="business_icon">
-                <div class="icon_block">
-                    <a href="#"><img src="images/index/case_1.png"></a>
-                </div>
-                <div class="icon_block">
-                    <a href="#"><img src="images/index/case_2.png"></a>
-                </div>
-                <div class="icon_block">
-                    <a href="#"><img src="images/index/case_3.png"></a>
-                </div>
-                <div class="icon_block">
-                    <a href="#"><img src="images/index/case_4.png"></a>
-                </div>
-                <div class="icon_block">
-                    <a href="#"><img src="images/index/case_5.png"></a>
-                </div>
-                <div class="icon_block">
-                    <a href="#"><img src="images/index/case_6.png"></a>
-                </div>
-                <div class="icon_block">
-                    <a href="#"><img src="images/index/case_7.png"></a>
-                </div>
-                <div class="icon_block">
-                    <a href="#"><img src="images/index/case_8.png"></a>
-                </div>
-                <div class="icon_block">
-                    <a href="#"><img src="images/index/case_9.png"></a>
-                </div>
-                <div class="icon_block">
-                    <a href="#"><img src="images/index/case_10.png"></a>
-                </div>
-                <div class="icon_block">
-                    <a href="#"><img src="images/index/case_11.png"></a>
-                </div>
-            </div>
-            <div class="business_icon">
-                <div class="icon_block">
-                    <a href="#"><img src="images/index/case_1.png"></a>
-                </div>
-                <div class="icon_block">
-                    <a href="#"><img src="images/index/case_2.png"></a>
-                </div>
-                <div class="icon_block">
-                    <a href="#"><img src="images/index/case_3.png"></a>
-                </div>
-                <div class="icon_block">
-                    <a href="#"><img src="images/index/case_4.png"></a>
-                </div>
-                <div class="icon_block">
-                    <a href="#"><img src="images/index/case_5.png"></a>
-                </div>
-                <div class="icon_block">
-                    <a href="#"><img src="images/index/case_6.png"></a>
-                </div>
-                <div class="icon_block">
-                    <a href="#"><img src="images/index/case_7.png"></a>
-                </div>
-                <div class="icon_block">
-                    <a href="#"><img src="images/index/case_8.png"></a>
-                </div>
-                <div class="icon_block">
-                    <a href="#"><img src="images/index/case_9.png"></a>
-                </div>
-                <div class="icon_block">
-                    <a href="#"><img src="images/index/case_10.png"></a>
-                </div>
-                <div class="icon_block">
-                    <a href="#"><img src="images/index/case_11.png"></a>
-                </div>
+                <?php echo fuel_block("index_business_icon") ?>
             </div>
         </div>
     </div>
