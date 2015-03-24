@@ -24,6 +24,8 @@
 
 <script type="text/javascript" src="<?php echo site_url()?>assets/templates/js/jqueryUI-1.11.1.js"></script>
 
+<script src="<?php echo site_url()?>assets/templates/js/autoresize.js" type="text/javascript"></script>
+
 </head>
 
 <body>
@@ -71,23 +73,25 @@
              <?php $i=1; ?>           
                 <?php foreach ($news as $key => $value): ?>
                     <div class="b4_1_contact contact<?php echo $i ?>" <?php echo $i==1?"":"style='display:none;'" ?>>
-                        <?php foreach ($value as $key1 => $value1): ?>
-                            <div class='b4_1_list'>
-                                <div class='b4_1_list_left'>
-                                    <div class="b4_1_list_left_icon fa fa-file-text-o"></div>
-                                    <div class="b4_1_list_left_text"><?php echo $value1->title ?></div>
-                                    <div class="fa fa-external-link" style="display:none;"></div>
+                     <?php if (isset($value)): ?>   
+                            <?php foreach ($value as $key1 => $value1): ?>
+                                <div class='b4_1_list'>
+                                    <div class='b4_1_list_left'>
+                                        <div class="b4_1_list_left_icon fa fa-file-text-o"></div>
+                                        <div class="b4_1_list_left_text"><?php echo $value1->title ?></div>
+                                        <div class="fa fa-external-link" style="display:none;"></div>
+                                    </div>
+                                    <div class='b4_1_list_right'>
+                                        <?php $date=date_create($value1->date) ?>
+                                        <div class='b4_1_list_right_date'><?php echo date_format($date,"Y/m/d") ?></div>
+                                        <div class='b4_1_list_right_icon fa fa-plus'></div>
+                                    </div>
                                 </div>
-                                <div class='b4_1_list_right'>
-                                    <?php $date=date_create($value1->date) ?>
-                                    <div class='b4_1_list_right_date'><?php echo date_format($date,"Y/m/d") ?></div>
-                                    <div class='b4_1_list_right_icon fa fa-plus'></div>
+                                <div class='list_slider' style="display:none;">
+                                    <?php echo htmlspecialchars_decode($value1->content) ?>
                                 </div>
-                            </div>
-                            <div class='list_slider' style="display:none;">
-                                <?php echo htmlspecialchars_decode($value1->content) ?>
-                            </div>
-                        <?php endforeach ?> 
+                            <?php endforeach ?> 
+                        <?php endif ?> 
                         <?php $i++; ?>                     
                     </div>                  
                 <?php endforeach ?>

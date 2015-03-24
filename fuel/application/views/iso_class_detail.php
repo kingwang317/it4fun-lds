@@ -26,6 +26,8 @@
 
 <script type="text/javascript" src="<?php echo site_url()?>assets/templates/js/jqueryUI-1.11.1.js"></script>
 
+<script src="<?php echo site_url()?>assets/templates/js/autoresize.js" type="text/javascript"></script>
+
 </head>
 
 <body>
@@ -102,7 +104,7 @@
                             <?php $i=0; ?>
                             <?php foreach ($interest_news2 as $key => $value): ?>
                                 <div class="b8_right_list_block <?php echo $i+1==sizeof($interest_news2)?"border_bottom_clen":"" ?>">
-                                    <div class="b8_list_img"><img style="max-width:135px" src="<?php echo site_url() ?>assets/<?php echo $value->img ?>"></div>
+                                    <div class="b8_list_img"><img onload="AutoResizeImage('140','',this);" src="<?php echo site_url() ?>assets/<?php echo $value->img ?>"></div>
                                     <div class="b8_list_text">
                                         <a href="<?php echo site_url().'home/'.news_kind_controller($value->news_kind).'/'.$value->id ?>">
                                         <div class="b8_list_text_title"><?php echo $value->title ?></div>

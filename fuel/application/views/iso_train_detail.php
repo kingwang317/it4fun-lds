@@ -144,7 +144,7 @@
 
                 <div class="b12_facebook_comment">
 
-                    <div class="new_title_config extend_title">網友留言</div>
+                    <div class="new_title_config extend_title">學員留言</div>
 
                     <div class="under_line"></div>
 

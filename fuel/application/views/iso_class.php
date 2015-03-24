@@ -12,6 +12,7 @@
 <script type="text/javascript" src="<?php echo site_url()?>assets/templates/js/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="<?php echo site_url()?>assets/templates/js/jquery.masonry.min.js"></script>
 <script type="text/javascript" src="<?php echo site_url()?>assets/templates/js/jqueryUI-1.11.1.js"></script>
+<script src="<?php echo site_url()?>assets/templates/js/autoresize.js" type="text/javascript"></script>
 </head>
 <body>
 <!-- 上方檔案 ↓ -->
@@ -24,11 +25,11 @@
              <?php if (isset($iso)): ?>
                 <?php foreach ($iso as $key => $value): ?>                      
                     <div class="ci_block">
-                        <div class="ci_image"><img src="<?php echo site_url()."assets/$value->img" ?>"></div>
+                        <div class="ci_image"><img onload="AutoResizeImage('235','',this);" src="<?php echo site_url()."assets/$value->img" ?>"></div>
                         <div class="ci_text">
                             <a href="<?php echo site_url().'home/iso_class_detail/'.$value->id ?>">
                             <div class="ci_text_title"><?php echo $value->title ?></div>
-                            <div class="ci_text_detail"><?php echo htmlspecialchars_decode($value->content) ?></div>
+                            <div class="ci_text_detail"><?php echo  mb_substr(strip_tags(htmlspecialchars_decode($value->content)),0,100,'UTF-8')  ?></div>
                             </a>
                         </div>
                     </div>

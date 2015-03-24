@@ -13,6 +13,7 @@
 <script type="text/javascript" src="<?php echo site_url()?>assets/templates/js/jqueryUI-1.11.1.js"></script>
 <link rel="stylesheet" href="<?php echo site_url()?>assets/templates/css/jquery.bxslider.css" type="text/css" />
 <script src="<?php echo site_url()?>assets/templates/js/jquery.bxslider.min.js" type="text/javascript"></script>
+<script src="<?php echo site_url()?>assets/templates/js/autoresize.js" type="text/javascript"></script>
 </head>
 <style>
 .fa-arrow-circle-o-right{
@@ -32,17 +33,17 @@
 <?php  $this->load->view('_blocks/top')?>
 
 <div class="main">
-    <div class="banner">
+    <div class="banner" width='100%'>
          <?php if (isset($banner)): ?>
             <?php $i = 1; ?>
             <?php foreach ($banner as $key => $value): ?>
                 <div class="banner_block<?php echo $i ?>">
-                    <img src="<?php echo site_url()."assets/$value->img" ?>"  />
+                    <img onload="AutoResizeImage('1366','',this);" src="<?php echo site_url()."assets/$value->img" ?>"  />
                      <div class="banner_top">
                         <div class="banner_title"><?php echo $value->title ?></div>
                         <div class="banner_mid"><?php echo htmlspecialchars_decode($value->content) ?></div>
                         <div class="banner_link_block">
-                            <a href="<?php echo site_url().'home/iso_news' ?>"><div class="banner_link">了解更多</div><div class="fa fa-arrow-circle-o-right fa-1x"></div></a>
+                            <a href="<?php echo $value->url ?>"><div class="banner_link">了解更多</div><div class="fa fa-arrow-circle-o-right fa-1x"></div></a>
                         </div>
                     </div>
                 </div>    
@@ -86,12 +87,12 @@
                 </div>
                 <div class="news_contact">
 
-                    <?php if (isset($news)): ?>                   
+                    <?php if (isset($news) ): ?>                   
                     <?php $i=1; ?>
                         <?php foreach ($news as $key => $value): ?>
                             <div class="index_news_block">
                                 <div class="news_image<?php echo $i ?>">
-                                    <img src="<?php echo site_url()."assets/".$value->detail->img ?>"  />
+                                    <img onload="AutoResizeImage('225','130',this);" src="<?php echo site_url()."assets/".$value->detail->img ?>"  />
                                     <div class="image_title"><div style="padding-left:5px;"><?php echo $value->code_name ?></div></div>
                                  </div>
                                  <div class="news_text">
@@ -192,74 +193,7 @@
         <div class="business_title">領導力企管創下許多全國第一。國內ISO輔導資源最充足的顧問公司，協助您取得各項ISO認證，所有ISO認證問題找領導力企管就對了！我們的專業輔導能量，創下許多同業第一。</div>
         <div class="business_icon_slider">
             <div class="business_icon">
-                <div class="icon_block">
-                    <a href="#"><img src="images/index/case_1.png"></a>
-                </div>
-                <div class="icon_block">
-                    <a href="#"><img src="images/index/case_2.png"></a>
-                </div>
-                <div class="icon_block">
-                    <a href="#"><img src="images/index/case_3.png"></a>
-                </div>
-                <div class="icon_block">
-                    <a href="#"><img src="images/index/case_4.png"></a>
-                </div>
-                <div class="icon_block">
-                    <a href="#"><img src="images/index/case_5.png"></a>
-                </div>
-                <div class="icon_block">
-                    <a href="#"><img src="images/index/case_6.png"></a>
-                </div>
-                <div class="icon_block">
-                    <a href="#"><img src="images/index/case_7.png"></a>
-                </div>
-                <div class="icon_block">
-                    <a href="#"><img src="images/index/case_8.png"></a>
-                </div>
-                <div class="icon_block">
-                    <a href="#"><img src="images/index/case_9.png"></a>
-                </div>
-                <div class="icon_block">
-                    <a href="#"><img src="images/index/case_10.png"></a>
-                </div>
-                <div class="icon_block">
-                    <a href="#"><img src="images/index/case_11.png"></a>
-                </div>
-            </div>
-            <div class="business_icon">
-                <div class="icon_block">
-                    <a href="#"><img src="images/index/case_1.png"></a>
-                </div>
-                <div class="icon_block">
-                    <a href="#"><img src="images/index/case_2.png"></a>
-                </div>
-                <div class="icon_block">
-                    <a href="#"><img src="images/index/case_3.png"></a>
-                </div>
-                <div class="icon_block">
-                    <a href="#"><img src="images/index/case_4.png"></a>
-                </div>
-                <div class="icon_block">
-                    <a href="#"><img src="images/index/case_5.png"></a>
-                </div>
-                <div class="icon_block">
-                    <a href="#"><img src="images/index/case_6.png"></a>
-                </div>
-                <div class="icon_block">
-                    <a href="#"><img src="images/index/case_7.png"></a>
-                </div>
-                <div class="icon_block">
-                    <a href="#"><img src="images/index/case_8.png"></a>
-                </div>
-                <div class="icon_block">
-                    <a href="#"><img src="images/index/case_9.png"></a>
-                </div>
-                <div class="icon_block">
-                    <a href="#"><img src="images/index/case_10.png"></a>
-                </div>
-                <div class="icon_block">
-                    <a href="#"><img src="images/index/case_11.png"></a>
-                </div>
+                <?php echo fuel_block("index_business_icon") ?>
             </div>
         </div>
     </div>

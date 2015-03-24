@@ -28,7 +28,7 @@
 
 <script type="<?php echo site_url()?>assets/templates/text/javascript" src="js/jqueryUI-1.11.1.js"></script>
 
-
+<script src="<?php echo site_url()?>assets/templates/js/autoresize.js" type="text/javascript"></script>
 
 </head>
 
