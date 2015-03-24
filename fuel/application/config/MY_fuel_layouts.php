@@ -46,6 +46,10 @@ $config['layouts']['page'] = array(
 		'heading' => array('label' => lang('layout_field_heading')),
 		'body' => array('label' => lang('layout_field_body'), 'type' => 'textarea', 'description' => lang('layout_field_body_description')),
 		'body_class' => array('label' => lang('layout_field_body_class')),
+		'module'  => 'Page',
+		'class' => 'Page_layout',
+
+
 	)
 );
 
