@@ -27,7 +27,7 @@ class News_manage_model extends MY_Model {
 
 	public function get_news_list($dataStart, $dataLen, $filter)
 	{
-		$sql = @"SELECT * FROM mod_news $filter ORDER BY `news_kind`,`type`,`news_order` LIMIT $dataStart, $dataLen";
+		$sql = @"SELECT *,(SELECT code_name FROM mod_code WHERE mod_code.code_id = mod_news.type) AS type_name FROM mod_news $filter ORDER BY `news_kind`,`type`,`news_order` LIMIT $dataStart, $dataLen";
 	
 		$query = $this->db->query($sql);
 
@@ -111,6 +111,21 @@ class News_manage_model extends MY_Model {
 
 		return;
 	}
+
+	public function set_order($id,$order)
+	{
+		$sql = @"UPDATE mod_news SET news_order = ?  WHERE id=? ";
+		$para = array( 
+			$order,
+			$id
+		);  
+		$success = $this->db->query($sql, $para); 
+		if($success)
+		{
+			return true;
+		} 
+		return; 
+	} 
 
 	public function delete_order($record)
 	{

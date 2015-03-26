@@ -26,6 +26,7 @@ class News_manage extends Fuel_base_controller {
 
 		$search_keyword = $this->input->get_post('search_keyword'); 
 		$search_type = ''; 
+		$news_type = $this->input->get_post('type');
 		
 		$filter = " WHERE news_kind = '$news_kind' "; 
 
@@ -43,27 +44,33 @@ class News_manage extends Fuel_base_controller {
 				$this->session->set_userdata('search_keyword', "");
 			}					
 		}
-
+		$vars['type_nav'] = "";
 		if ($news_kind == 3 || $news_kind == 2 || $news_kind == 0 || $news_kind == 4) {
 		
 
-			$search_type = $this->input->get_post('search_type'); 
+			// $search_type = $this->input->get_post('search_type'); 
 
-			if ($search_type != "") {
-				$filter .= " AND type = '$search_type' "; 
-				$this->session->set_userdata('search_type', $search_type);
-			}else{
-				if (!isset($search_type) ) {
-					$search_type = $this->session->userdata('search_type'); 
-					if ($search_type != "") {
-						$search_type = $search_type;
-						$filter .= " AND type = '$search_type' "; 
-					} 
-				}else{
-					$this->session->set_userdata('search_type', "");
-				}					
+			// if ($search_type != "") {
+			// 	$filter .= " AND type = '$search_type' "; 
+			// 	$this->session->set_userdata('search_type', $search_type);
+			// }else{
+			// 	if (!isset($search_type) ) {
+			// 		$search_type = $this->session->userdata('search_type'); 
+			// 		if ($search_type != "") {
+			// 			$search_type = $search_type;
+			// 			$filter .= " AND type = '$search_type' "; 
+			// 		} 
+			// 	}else{
+			// 		$this->session->set_userdata('search_type', "");
+			// 	}					
+			// }
+			// $vars['search_type'] = $search_type;
+
+			if (isset($news_type) && !empty($news_type)) {
+				$filter .= " AND type = '$news_type' "; 
+
+				$vars['type_nav'] = " >> ".$this->codekind_manage_model->get_code_detail($news_type)->code_name;
 			}
-			$vars['search_type'] = $search_type;
 		}
 
 		if ($news_kind == 2 || $news_kind == 3) {
@@ -89,10 +96,12 @@ class News_manage extends Fuel_base_controller {
 		$results = $this->news_manage_model->get_news_list($dataStart, $dataLen,$filter);
 		$vars['news_kind'] = $news_kind;
 		$vars['news_name'] = $news_name;
+		$vars['target_url'] = $target_url;
 		$vars['search_keyword'] = $search_keyword;
 		$vars['total_rows'] = $total_rows; 
 		$vars['form_action'] = $base_url."fuel/news/lists/$news_kind";
 		$vars['form_method'] = 'POST';
+		$vars['url_save_order'] = $base_url."fuel/news/do_save_order";		
 		$crumbs = array($this->module_uri => $this->module_name);
 		$this->fuel->admin->set_titlebar($crumbs);
 
@@ -249,6 +258,13 @@ class News_manage extends Fuel_base_controller {
 			$vars['type'] = $type;
 		}
 
+		$vars['type_nav'] = "";
+		if ($news_kind == 3 || $news_kind == 2 || $news_kind == 0 || $news_kind == 4) {			 
+			$vars['type_nav'] = $this->codekind_manage_model->get_code_detail($news->type)->code_name;			 
+		}
+		// print_r($vars['type_nav']);
+		// die;
+
 		$vars["news_kind_arr"] = array("0"=>"首頁","1"=>"CI設計","2"=>"輔導項目","3"=>"ISO小學堂","4"=>"最新消息");
 
 		$vars['news_name'] = $news_name;
@@ -326,6 +342,36 @@ class News_manage extends Fuel_base_controller {
 		}
 		return;
 	} 
+
+	function do_save_order(){
+		// $post_arr = $this->input->post();
+  //       $order_ary = array();
+		// foreach ($post_arr as $key => $value) {			
+		// 	 if(strpos($key,"order_")>-1){
+  //               $order_ary[str_replace("order_","",$key)] = $value;
+  //           }
+		// }
+
+		// foreach ($order_ary as $key => $value) {
+		// 	$this->news_manage_model->set_order($key,$value);
+		// }
+		$ids = $this->input->get_post("ids");
+		foreach ($ids as $key => $value) {
+			$this->news_manage_model->set_order($key,$value);
+		}
+
+		$result = array();
+
+		$result['status'] = 1;
+
+
+		if(is_ajax())
+		{
+			echo json_encode($result);
+		}
+		// print_r($order_ary);
+		// die;
+	}
 
 	function do_multi_del(){
 		$result = array();

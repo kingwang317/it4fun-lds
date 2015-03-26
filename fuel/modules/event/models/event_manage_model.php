@@ -138,8 +138,10 @@ class Event_manage_model extends MY_Model {
 				`train_place`,
 				`train_place_s`,
 				`host_unit`, 
+				`file_path`, 
+				`notify_date`, 
 				`modi_date` )
-				VALUES (?,?, ?, ?, ?, ?, ?, ? ,?, ?, ?, ?, NOW())
+				VALUES (?,?, ?, ?, ?, ?, ?, ? ,?, ?, ?, ?,?,?, NOW())
 				";
 		$para = array(
 				$data['is_free'],
@@ -153,7 +155,9 @@ class Event_manage_model extends MY_Model {
 				$data['coll_unit'],
 				$data['train_place'],
 				$data['train_place_s'],
-				$data['host_unit']
+				$data['host_unit'],
+				$data['file_path'],
+				$data['notify_date']
 			);
 
 		$success = $this->db->query($sql, $para);
@@ -180,6 +184,8 @@ class Event_manage_model extends MY_Model {
 									  train_place=?, 
 									  train_place_s=?, 
 									  host_unit=?, 
+									  file_path=?, 
+									  notify_date=?, 
 									  modi_date=NOW() 
 									  WHERE id=?";
 		$para = array(
@@ -195,6 +201,8 @@ class Event_manage_model extends MY_Model {
 				$data['train_place'],
 				$data['train_place_s'],
 				$data['host_unit'],
+				$data['file_path'],
+				$data['notify_date'],
 				$id
 			);
 

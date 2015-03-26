@@ -68,20 +68,21 @@
 			<table class="table table-striped table-advance table-hover">
 				<thead>
 					<tr>
-						<th>
+						<th style="width:5%">
 							<label class="label_check c_on" for="checkbox-01">
 								<input type="checkbox" id="select-all"/>
 							</label>
 						</th>
-						<th>課程名稱</th>
-						<th>開課日期</th>
-						<th>上課時間</th>
-						<th>上課地點</th>
-						<th>費用</th>
-						<th>主辦單位</th>
-						<th>合作單位</th>
-						<th>報名人數</th>
-						<th>刪除</th>
+						<th style="width:20%">課程名稱</th>
+						<th style="width:30%">開課日期</th>
+						<th style="width:10%">上課時間</th>
+						<th style="width:10%">上課地點</th>
+						<th style="width:5%">費用</th>
+		<!-- 				<th style="width:10%">主辦單位</th>
+						<th style="width:10%">合作單位</th> -->
+						<th style="width:10%">報名人數</th>
+						<th style="width:5%">報名列表</th>
+						<th style="width:5%">刪除</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -97,7 +98,7 @@
 								<input type="checkbox" name="event_id[]" eventid="<?php echo $row->id?>"/>
 							</label>
 						</td>
-						<td><p class="EventTitle"><a href="<?php echo $edit_url.$row->id?>" title="<?php echo $row->train_title?>"><?php echo $row->train_title?></a></p></td>
+						<td style="width:10%"><p class="EventTitle"><a href="<?php echo $edit_url.$row->id?>" title="<?php echo $row->train_title?>"><?php echo $row->train_title?></a></p></td>
 						<td>
 							<?php echo $row->train_date ?>
 						</td>
@@ -110,15 +111,17 @@
 						<td>
 							<?php echo $row->train_price;?>
 						</td>
-						<td>
+					<!-- 	<td>
 							<?php echo $row->host_unit;?>
 						</td>
 						<td>
 							<?php echo $row->coll_unit;?>
-						</td> 
+						</td>  -->
 						<td><a href="<?php echo $detail_url.$row->id.'/0'?>" title="<?php echo $row->reg_count?>"><?php echo $row->reg_count?></a></td>
 						<td>
 							<button class="btn btn-xs btn-info" type="button" onclick="aHover('<?php echo $detail_url.$row->id.'/0' ?>')">報名列表</button>
+						</td>
+						<td>
 							<button class="btn btn-xs btn-danger del" type="button" EventID="<?php echo $row->id ?>">刪除</button>
 						</td>
 					</tr>

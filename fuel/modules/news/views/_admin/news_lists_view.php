@@ -1,5 +1,12 @@
 <?php echo css($this->config->item('news_css'), 'news')?> 
+<style type="text/css">
 
+	.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+  /*background-color: red;*/
+  color: red;
+}
+
+</style>
 <section class="main-content">
 <section class="wrapper" style="margin:0px">
 	<div id="dialog-confirm" title="刪除確認?">
@@ -9,10 +16,10 @@
 	<div class="row">
 		<div class="span12">
 			<ul class="breadcrumb">
-			  <li>位置：<?php echo $news_name ?>-上稿列表</li>
+			  <li>位置：<a href="<?php echo $target_url ?>"><?php echo $news_name ?>-上稿列表</a> <?php echo $type_nav ?></li>
 			</ul>
 		</div>
-	</div> 
+	</div>  
 	<div class="row" style="">
  
 	    <div class="col-md-12 sheader"> 
@@ -26,8 +33,8 @@
 				    </div>
 				</div>
 			</div>  
-			<?php if ($news_kind == 2 || $news_kind == 0 || $news_kind == 4): ?>		
-			<div class="form-inline" style="margin-top:10px">				 				  
+			<?php if ($news_kind == 2 || $news_kind == 0 || $news_kind == 4 || $news_kind == 3): ?>		
+			<!-- <div class="form-inline" style="margin-top:10px">				 				  
 				<div class="form-group">
 					<label class="col-sm-4 control-label" >類別</label>
 					<div class="col-sm-8">	
@@ -43,12 +50,13 @@
 						</select>
 					</div>
 				</div>	
-			</div> 	
+			</div> 	 -->
 			<?php endif ?>
 			<div class="form-inline" style="margin-top:10px" >
 				<div class="form-group">
 					<button type="submit" class="btn btn-warning">搜尋</button>
 					<button class="btn btn-info" type="button" onClick="aHover('<?php echo $create_url;?>')">新增</button>
+					<button class="btn btn-info" type="button" id="btn_save_order" >儲存排序</button>
 					<!-- <button type="button" id="donebatch" class="btn btn-info">批次刪除</button> -->
 				</div>
 			</div>
@@ -80,11 +88,17 @@
 							</label>
 						</th> -->
 						<!-- <th>語言</th> -->
-						<th>日期</th>
+						
 						<th>標題</th>
+						<?php if ($news_kind == 2 || $news_kind == 0 || $news_kind == 4 || $news_kind == 3): ?>		
+						<th>分類</th>
+						<?php endif ?>
 						<!-- <th>內容</th> -->
+						<?php if ($news_kind == 1): ?>		
 						<th>圖片</th> 
+						<?php endif ?>
 						<th>順序</th> 
+						<th>日期</th>
 						<th>刪除</th>
 					</tr>
 				</thead>
@@ -103,6 +117,24 @@
 							</label>
 						</td>  -->
 					    <!-- <td><?php echo $rows->lang?></td> -->
+						
+						<td><a href="<?php echo $edit_url.$rows->id?>"><?php echo mb_substr($rows->title,0,10,'UTF-8')?></a></td>
+						<?php if ($news_kind == 2 || $news_kind == 0 || $news_kind == 4 || $news_kind == 3): ?>	
+						<td><button class="btn btn-xs btn-info" type="button" onclick="aHover('<?php echo $target_url ?>?type=<?php echo $rows->type?>')"><?php echo $rows->type_name ?></button></td>
+						<?php endif ?>
+						<!-- <td><?php echo substr($rows->content,0,10)."..."?></td> -->
+						<?php if ($news_kind == 1): ?>	
+						<td>
+							<?php if (isset($rows->img) && !empty($rows->img)): ?>
+								<img style="max-height:100px" src="<?php echo site_url()."assets/".$rows->img?>" />
+							<?php endif ?>
+							
+						</td>
+						<?php endif ?>
+						<td><input type="text" class="order_news_id" style="width:50px" name="<?php echo $rows->id ?>" value="<?php echo $rows->news_order?>" /></td>
+						
+						<!-- <td><?php echo site_url()."assets/".$rows->img?></td> -->
+						
 						<td style="width:100px">
 							<?php 
                              $date = explode(" ", $rows->date); 
@@ -111,18 +143,8 @@
 
                             ?>
 						</td>
-						<td><?php echo $rows->title?></td>
-						<!-- <td><?php echo substr($rows->content,0,10)."..."?></td> -->
 						<td>
-							<?php if (isset($rows->img) && !empty($rows->img)): ?>
-								<img style="width:150px" src="<?php echo site_url()."assets/".$rows->img?>" />
-							<?php endif ?>
-							
-						</td>
-						<td><?php echo $rows->news_order?></td>
-						<!-- <td><?php echo site_url()."assets/".$rows->img?></td> -->
-						<td>
-							<button class="btn btn-xs btn-primary" type="button" onclick="aHover('<?php echo $edit_url.$rows->id?>')" >更新</button>
+							<!-- <button class="btn btn-xs btn-primary" type="button" onclick="aHover('<?php echo $edit_url.$rows->id?>')" >更新</button> -->
 							<button class="btn btn-xs btn-danger del" type="button" onclick="dialog_chk('<?php echo $rows->id?>')">刪除</button>
 						</td>
 					</tr>
@@ -175,6 +197,41 @@
 		// 		});     
 		//    }
 		// });
+
+		$j("#btn_save_order").click(function(event) {
+			 // $j("#form").attr('action', '<?php echo $url_save_order ?>');
+			 // $j("#form").submit();
+			 // $j("#form").attr('action', '<?php echo $form_action ?>');
+			var postData = {};
+			var ids = [];
+			var api_url = '<?php echo $url_save_order?>';
+			$j("input[class='order_news_id']").each(function(i){	
+				// console.log($j(this).val());			
+				// console.log($j(this).attr('name'));		
+				ids[$j(this).attr('name')] = $j(this).val();	 
+				// console.log(ids);
+			});
+			console.log(ids);
+			postData = {'ids': ids};
+			 $j.ajax({
+				url: api_url,
+				type: 'POST',
+				async: true,
+				crossDomain: false,
+				cache: false,
+				data: postData,
+				success: function(data, textStatus, jqXHR){
+					var data_json=jQuery.parseJSON(data);
+					console.log(data_json);
+					if(data_json.status == 1)
+					{ 
+						setTimeout("update_page()", 500);
+					}
+
+				},
+			});
+			 // setTimeout("update_page()", 500);
+		});
 
 		$j("#donebatch").click(function(){
 			var ids = [];

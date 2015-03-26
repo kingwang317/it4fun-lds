@@ -168,6 +168,36 @@ class Event_manage extends Fuel_base_controller {
 		$module_uri = base_url().$this->module_uri;
 		$post_arr = $this->input->post();	
 		$post_arr['train_detail'] = htmlspecialchars($this->input->get_post("train_detail"));
+
+
+		$root_path = assets_server_path('event/');
+		if (!file_exists($root_path)) {
+		    mkdir($root_path, 0777, true);
+		}
+
+		$config['upload_path'] = $root_path;
+		$config['allowed_types'] = 'png|jpg';
+		$config['max_size']	= '999999';
+		$config['max_width']  = '*';
+		$config['max_height']  = '*';
+
+		$this->load->library('upload',$config); 
+
+	 	// $name = 'news_img/'.$post_arr['type']."/".$post_arr['title'].".png"; 
+
+        if ($this->upload->do_upload('file'))
+		{			 
+			$data = array('upload_data'=>$this->upload->data()); 
+			$post_arr["file_path"] = 'event/'.$data["upload_data"]["file_name"];
+		 
+		} else{ 
+			$post_arr["file_path"] = '';				 
+		} 
+
+		// print_r($post_arr);
+		// die;
+
+
 		$success = $this->event_manage_model->insert($post_arr);		 
 
 		if($success)
@@ -177,9 +207,6 @@ class Event_manage extends Fuel_base_controller {
 		}
 		else
 		{
-			$cmd = "rm ".$config['upload_path'].$file_name;
-			exec($cmd);
-
 			$this->comm->plu_redirect($module_uri, 0, "新增失敗");
 			die();
 		}
@@ -229,6 +256,31 @@ class Event_manage extends Fuel_base_controller {
 		$id = $this->input->get("id");		  
 		$post_arr = $this->input->post();	 
 		$post_arr['train_detail'] = htmlspecialchars($this->input->get_post("train_detail"));
+
+		$root_path = assets_server_path("event/");
+		if (!file_exists($root_path)) {
+		    mkdir($root_path, 0777, true);
+		}  
+		 
+		$post_arr = $this->input->post();
+		$config['upload_path'] = $root_path;
+		$config['allowed_types'] = 'png|jpg';
+		$config['max_size']	= '9999';
+		$config['max_width']  = '*';
+		$config['max_height']  = '*';
+
+		$this->load->library('upload',$config); 
+
+	 	// $name = 'news_img/'.$post_arr['type']."/".$post_arr['title'].".png"; 
+
+        if ($this->upload->do_upload('file'))
+		{
+			$data = array('upload_data'=>$this->upload->data()); 
+			$post_arr["file_path"] = "event/".$data["upload_data"]["file_name"];
+		 
+		} else{ 
+			$post_arr["file_path"] = $post_arr["exist_file"];				 
+		} 
  
 		$success = $this->event_manage_model->modify($post_arr, $id);
 		
@@ -385,6 +437,19 @@ class Event_manage extends Fuel_base_controller {
 			// }				
 		}
 		return $filter;
+	}
+
+	private function gen_file_name()
+	{
+		$r_char = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+		$file_name = "";
+
+		for($i=0; $i<10; $i++)
+		{
+			$file_name .= $r_char[rand(0, strlen($r_char) - 1)];
+		}
+
+		return $file_name;
 	}
 
 }

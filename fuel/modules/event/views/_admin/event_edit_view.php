@@ -11,7 +11,7 @@
 	<div class="row" style="margin:10px 10px">
 		<div class="span12">
 			<ul class="breadcrumb">
-			  <li>位置：<a href="<?php echo $module_uri?>">列表</a></li>
+			  <li>位置：<a href="<?php echo $module_uri?>">列表 </a></li>
 			  <li class="active"><?php echo $view_name?></li>
 			</ul>
 		</div>
@@ -93,6 +93,30 @@
 							</div>
 						</div>
 						<div class="form-group">
+							<label class="col-sm-2 col-sm-2 control-label"><span style="color:#d9534f">*</span>上課通知</label>
+							<div class="col-sm-4">
+								<?php 
+								// print_r($result);
+								// die;
+									$date = date_create($result->notify_date);
+									
+									// $date = date_create($news->date);
+         //            echo date_format($date, 'Y-m-d')
+								 ?>
+								<input type="text" class="form-control" size="16" name="notify_date" id="notify_date" value="<?php echo date_format($date, 'Y-m-d') ?>"> 
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 col-sm-2 control-label">圖片</label>
+							<div class="col-sm-4">
+								<input type="file" class="form-control" name="file" value=""> 
+								<?php if (isset($result->file_path) && "" != $result->file_path): ?>
+									<img style="max-height:350px" src="<?php echo site_url()."assets/".$result->file_path; ?>" />
+								<?php endif ?>
+								<input type="hidden" value="<?php echo $result->file_path; ?>" name="exist_file" />	
+							</div>
+						</div>
+						<div class="form-group">
 							<label class="col-sm-2 col-sm-2 control-label">訓練簡介</label>
 							<div class="col-sm-8">
 								 <textarea class="form-control ckeditor" rows="3" name="train_detail" id="train_detail"><?php echo htmlspecialchars_decode($result->train_detail) ?></textarea>
@@ -123,116 +147,122 @@
 	}
 
 	$j(document).ready(function($) {
-		CKEDITOR.replace( 'EventDetail', {
-			height: 380,
-			width: 750,
-			toolbar: [
-				[ 'Styles', 'Format', 'Font', 'FontSize'],['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
-				['Bold', 'Italic', 'Underline', '-', 'NumberedList', 'BulletedList'],
-				['Link', 'Unlink'], ['Undo', 'Redo'], [ 'TextColor', 'BGColor', '-', 'Image' ], ['Source']
-				]
-		});
-
-		$j(".event_start_date").datetimepicker({
-		    format: "yyyy-m-d hh:ii",
+		 
+		$j("#notify_date").datetimepicker({
+		    format: "yyyy-mm-dd",
 		    autoclose: true
 		}).on('changeDate', function(ev){
 			console.log(ev);
-		});
+		}); 
 
-		$j(".event_end_date").datetimepicker({
-		    format: "yyyy-m-d hh:ii",
-		    autoclose: true
-		});
+		// $j(".event_start_date").datetimepicker({
+		//     format: "yyyy-m-d hh:ii",
+		//     autoclose: true
+		// }).on('changeDate', function(ev){
+		// 	console.log(ev);
+		// });
 
-		$j(".regi_start_date").datetimepicker({
-		    format: "yyyy-m-d hh:ii",
-		    autoclose: true
+		// $j(".event_end_date").datetimepicker({
+		//     format: "yyyy-m-d hh:ii",
+		//     autoclose: true
+		// });
+
+		// $j(".regi_start_date").datetimepicker({
+		//     format: "yyyy-m-d hh:ii",
+		//     autoclose: true
 		    
-		});
+		// });
 
-		$(".regi_end_date").datetimepicker({
-		    format: "yyyy-m-d hh:ii",
-		    autoclose: true
-		});
+		// $(".regi_end_date").datetimepicker({
+		//     format: "yyyy-m-d hh:ii",
+		//     autoclose: true
+		// });
 
-		$("#uploadBtn").change(function(){
-			$("#uploadFile").val($(this).val());
-		});
+		// $("#uploadBtn").change(function(){
+		// 	$("#uploadFile").val($(this).val());
+		// });
 
-		$("#uploadBtn2").change(function(){
-			$("#uploadFile2").val($(this).val());
-		});
+		// $("#uploadBtn2").change(function(){
+		// 	$("#uploadFile2").val($(this).val());
+		// });
 
 		$("form").submit(function(event) {
 			$(".msg").remove();
-			var event_start_date 	= $("#event_start_date").val();
-			var event_end_date		= $("#event_end_date").val();
-			var regi_start_date		= $("#regi_start_date").val();
-			var regi_end_date		= $("#regi_end_date").val();
+			
 
-
-			var esdt = (new Date(event_start_date).getTime()/1000);
-			var eedt = (new Date(event_end_date).getTime()/1000);
-			var rsdt = (new Date(regi_start_date).getTime()/1000);
-			var redt = (new Date(regi_end_date).getTime()/1000);
-
-			if(eedt < esdt)
+			if($j("#train_title").val() == "")
 			{
-				alert("活動結束時間不可小於開始時間");
-				return false;
-			}
-
-			if(redt < rsdt)
-			{
-				alert("報名結束時間不可小於開始時間");
-				return false;
-			}
-
-			if(esdt < rsdt)
-			{
-				alert("活動間不可小於報名時時間");
-				return false;
-			}
-
-			if($("#event_title").val() == "")
-			{
-				$("#event_title").parent().after("<div class='col-sm-2 msg'><span style='color:red;'>必填</span></div>");
+				$j("#train_title").parent().after("<div class='col-sm-2 msg'><span style='color:red;'>必填</span></div>");
 
 				return false;
 			}
 
-			if($("#event_start_date").val() == "")
+			if($j("#train_price").val() == "")
 			{
-				$("#event_start_date").parents('.col-sm-4').after("<div class='col-sm-2 msg'><span style='color:red;'>必填</span></div>");
+				$j("#train_price").parents('.col-sm-4').after("<div class='col-sm-2 msg'><span style='color:red;'>必填</span></div>");
+
+				return false;
+			}
+			// console.log($j("#train_detail").val());
+			// if($j("#train_detail").val() == "")
+			// {
+			// 	$j("#train_detail").parents('.col-sm-4').after("<div class='col-sm-2 msg'><span style='color:red;'>必填</span></div>");
+
+			// 	return false;
+			// }
+
+			if($j("#train_place").val() == "")
+			{
+				$j("#train_place").parents('.col-sm-4').after("<div class='col-sm-2 msg'><span style='color:red;'>必填</span></div>");
 
 				return false;
 			}
 
-			if($("#event_end_date").val() == "")
+			if($j("#train_place_s").val() == "")
 			{
-				$("#event_end_date").parents('.col-sm-4').after("<div class='col-sm-2 msg'><span style='color:red;'>必填</span></div>");
+				$j("#train_place_s").parents('.col-sm-4').after("<div class='col-sm-2 msg'><span style='color:red;'>必填</span></div>");
 
 				return false;
 			}
 
-			if($("#regi_start_date").val() == "")
+			if($j("#train_days").val() == "")
 			{
-				$("#regi_start_date").parents('.col-sm-4').after("<div class='col-sm-2 msg'><span style='color:red;'>必填</span></div>");
+				$j("#train_days").parents('.col-sm-4').after("<div class='col-sm-2 msg'><span style='color:red;'>必填</span></div>");
 
 				return false;
 			}
 
-			if($("#regi_end_date").val() == "")
+			if($j("#train_time_s").val() == "")
 			{
-				$("#regi_end_date").parents('.col-sm-4').after("<div class='col-sm-2 msg'><span style='color:red;'>必填</span></div>");
+				$j("#train_time_s").parents('.col-sm-4').after("<div class='col-sm-2 msg'><span style='color:red;'>必填</span></div>");
 
 				return false;
-			}
+			}	
 
-			if($("#event_place").val() == "")
+			if($j("#train_time_e").val() == "")
 			{
-				$("#event_place").parents('.col-sm-4').after("<div class='col-sm-2 msg'><span style='color:red;'>必填</span></div>");
+				$j("#train_time_e").parents('.col-sm-4').after("<div class='col-sm-2 msg'><span style='color:red;'>必填</span></div>");
+
+				return false;
+			}	
+
+			if($j("#train_hours").val() == "")
+			{
+				$j("#train_hours").parents('.col-sm-4').after("<div class='col-sm-2 msg'><span style='color:red;'>必填</span></div>");
+
+				return false;
+			}	
+
+			if($j("#host_unit").val() == "")
+			{
+				$j("#host_unit").parents('.col-sm-4').after("<div class='col-sm-2 msg'><span style='color:red;'>必填</span></div>");
+
+				return false;
+			}	
+
+			if($j("#coll_unit").val() == "")
+			{
+				$j("#coll_unit").parents('.col-sm-4').after("<div class='col-sm-2 msg'><span style='color:red;'>必填</span></div>");
 
 				return false;
 			}			
