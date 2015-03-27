@@ -10,13 +10,9 @@
 		<div class="span12">
 			<ul class="breadcrumb">
 			  <li>位置：<a href="<?php echo $module_uri?>"><?php echo $news_name ?>-上稿作業</a></li>
-  				<?php
-				if(isset($type)):
-			?>	
-			<?php   foreach($type as $key=>$rows):?>
-						<?php echo $news->type == $rows->code_id?"<li>".$rows->code_name."</li>":"" ?>
-				<?php endforeach;?>
-			<?php endif;?>
+			  <?php if (isset($type_nav) && !empty($type_nav)): ?> 
+			  <li><a href="<?php echo $module_uri?>?type=<?php echo $news->type ?>"><?php echo $type_nav ?></a></li>
+			  <?php endif ?>
 			  <li class="active"><?php echo $view_name?></li>
 			</ul>
 		</div>
@@ -115,7 +111,7 @@
 							<div class="col-sm-4">
 								<input type="file" class="form-control" name="img" value=""> 
 								<?php if (isset($news->img) && "" != $news->img): ?>
-									<img src="<?php echo site_url()."assets/".$news->img; ?>" />
+									<img style="max-height:350px" src="<?php echo site_url()."assets/".$news->img; ?>" />
 								<?php endif ?>
 								<input type="hidden" value="<?php echo $news->img; ?>" name="exist_img" />	
 							</div>

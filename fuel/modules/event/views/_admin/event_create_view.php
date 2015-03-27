@@ -99,6 +99,19 @@
 							</div>
 						</div>
 						<div class="form-group">
+							<label class="col-sm-2 col-sm-2 control-label"><span style="color:#d9534f">*</span>上課通知</label>
+							<div class="col-sm-4">
+								<input type="text" class="form-control" size="16" name="notify_date" id="notify_date"> 
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 col-sm-2 control-label">圖片</label>
+							<div class="col-sm-4">
+								<input type="file" class="upload" name="file" id="file"/>
+							
+							</div>
+						</div>
+						<div class="form-group">
 							<label class="col-sm-2 col-sm-2 control-label">訓練簡介</label>
 							<div class="col-sm-8">
 								 <textarea class="form-control ckeditor" rows="3" name="train_detail" id="train_detail"></textarea>
@@ -138,8 +151,17 @@
 			timeFormat: 'H:mm' 
 		}); 
 
+		$j("#notify_date").datetimepicker({
+		    format: "yyyy-mm-dd",
+		    autoclose: true
+		}).on('changeDate', function(ev){
+			console.log(ev);
+		}); 
+
 		$j("form").submit(function(event) {
 			$(".msg").remove();
+
+
 			
 			if($j("#train_title").val() == "")
 			{
