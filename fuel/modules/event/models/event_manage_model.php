@@ -58,7 +58,7 @@ class Event_manage_model extends MY_Model {
 
 	public function get_reg_list($dataStart, $dataLen, $filter)
 	{
-		$sql = @"SELECT *  FROM mod_register $filter ORDER BY modi_date DESC LIMIT $dataStart, $dataLen";
+		$sql = @"SELECT *  FROM mod_register $filter ORDER BY train_date,modi_date DESC LIMIT $dataStart, $dataLen";
 	
 		$query = $this->db->query($sql);
 
