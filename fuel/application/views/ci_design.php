@@ -26,7 +26,9 @@
             <?php if (isset($ci)): ?>
                 <?php foreach ($ci as $key => $value): ?>
                       <div class="ci_block">
-                        <div class="ci_image"><img onload="AutoResizeImage('235','',this);" src="<?php echo site_url()."assets/$value->img" ?>"></div>
+                        <a href="<?php echo site_url().'home/ci_design_detail/'.$value->id ?>">
+                            <div class="ci_image"><img onload="AutoResizeImage('235','',this);" src="<?php echo site_url()."assets/$value->img" ?>"></div>
+                        </a>
                         <div class="ci_text">
                         <a href="<?php echo site_url().'home/ci_design_detail/'.$value->id ?>">
                             <div class="ci_text_title"><?php echo $value->title ?></div>

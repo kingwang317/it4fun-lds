@@ -33,12 +33,12 @@
 <?php  $this->load->view('_blocks/top')?>
 
 <div class="main">
-    <div class="banner" width='100%'>
+    <div class="banner">
          <?php if (isset($banner)): ?>
             <?php $i = 1; ?>
             <?php foreach ($banner as $key => $value): ?>
-                <div class="banner_block<?php echo $i ?>">
-                    <img onload="AutoResizeImage('1366','',this);" src="<?php echo site_url()."assets/$value->img" ?>"  />
+                <div class="banner_block<?php echo $i ?>" style="background-image:url(<?php echo site_url()."assets/$value->img" ?>);">
+                    
                      <div class="banner_top">
                         <div class="banner_title"><?php echo $value->title ?></div>
                         <div class="banner_mid"><?php echo htmlspecialchars_decode($value->content) ?></div>
@@ -205,21 +205,13 @@
 
 <!--Script放後面加速頁面產生-->
 <script type="text/javascript">
-    $('.index_news_block').on({
-        mouseover: function() {
-            $(this).css("opacity", '1');
-        },
-        mouseleave: function() {
-            $(this).css("opacity", '0.8');
-        }
-    });
+    
 
     //slider
     $('.banner').bxSlider({
         autoHover:true,
         auto: true,
         captions: true,
-        slideWidth:1366,
         speed:1000
     });
     $('.business_icon_slider').bxSlider({
@@ -229,5 +221,13 @@
         slideWidth:1050,
         speed:1000,
         pager:false
+    });
+    $('.index_news_block').on({
+        mouseover: function() {
+            $(this).css("opacity", '1');
+        },
+        mouseleave: function() {
+            $(this).css("opacity", '0.8');
+        }
     });
 </script>

@@ -28,6 +28,8 @@
 
 <script type="text/javascript" src="<?php echo site_url()?>assets/templates/js/jqueryUI-1.11.1.js"></script>
 
+<script src="<?php echo site_url()?>assets/templates/js/autoresize.js" type="text/javascript"></script>
+
 </head>
 
 <body>
@@ -59,7 +61,9 @@
             <div class="b3_c_left">
 
                 <div class="b3_c_left_title"><?php echo $news->title ?></div>
-
+                <div class="b3_c_left_img">
+                    <img onload="AutoResizeImage('600','338',this);" src="http://jaygraphy.com/wp-content/uploads/2014/08/dyne_logo-600x338.jpg">
+                </div>
                 <div class="b3_c_left_date"><?php 
                     $date = date_create($news->date);
                     echo date_format($date, 'Y-m-d')

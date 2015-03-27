@@ -14,12 +14,17 @@ body ,ol ,ul ,li ,a ,img ,h1 ,h2 ,h3 ,h4 ,h5 ,i ,b ,dd ,tt ,input ,textarea ,sel
     border:none;
 } 
 /* 主要css */
-body {background-color:#fafafa; font-size:15px;}
-.main_width {width:1366px;margin: 0px;text-align:center;background-color:#fafafa;}
+body {background-color:white;}
+p{margin:0;}
+.main_width {margin: 0px;text-align:center;background-color:#fafafa;}
 .left {float:left;}
 .right {float:right;}
 .none {display:none;}
-h2 {color:#ed1b23;}
+h2 {
+    color:#ed1b23;
+    font-size:16px;
+    margin:10px 0 10px 0;
+}
 /*index css*/
 .under_line{
     height:1px;
@@ -201,27 +206,24 @@ h2 {color:#ed1b23;}
     z-index:0;
 }
 .banner_block1{
-    width:1366px;
     height:480px;
-    display:block;
-    /*background-image:url("../images/index/banner_1.jpg");*/
-    position: relative;
+    diplay:block;
+    background-repeat: no-repeat;
+    background-position: center;
     z-index:0;
 }
 .banner_block2{
-    width:1366px;
     height:480px;
-    display:block;
-    /*background-image:url("../images/index/banner_1.jpg");*/
-    position: relative;
+    diplay:block;
+    background-repeat: no-repeat;
+    background-position: center;
     z-index:0;
 }
 .banner_block3{
-    width:1366px;
     height:480px;
-    display:block;
-    /*background-image:url("../images/index/banner_1.jpg");*/
-    position: relative;
+    diplay:block;
+    background-repeat: no-repeat;
+    background-position: center;
     z-index:0;
 }
 .banner_top{
@@ -229,11 +231,14 @@ h2 {color:#ed1b23;}
     display:block;
     width:300px;
     height:200px;
-    position:absolute;
-    right:200px;
     bottom:50px;
     text-align:left;
-    padding:30px 20px 20px 30px;
+    padding:20px;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 650px;
+    right: 0;
 }
 .banner_title{
     color:#ed1b23;
@@ -286,6 +291,11 @@ h2 {color:#ed1b23;}
     border-radius: 10px;
     -moz-border-radius: 10px; 
     -webkit-border-radius: 10px;
+}
+.ci_image img{
+    border-radius:10px 10px 0 0 ;
+    -moz-border-radius:10px 10px 0 0 ;
+    -webkit-border-radius:10px 10px 0 0 ;
 }
 .ci_block{
     width:235px;
@@ -470,10 +480,11 @@ h2 {color:#ed1b23;}
     margin:0 2px 5px 0 ;
     background-color:#f1f1f1;
     height:50px;
-    width:165px;
+    width:auto;
     text-align:center;
     line-height:50px;
     cursor:pointer;
+    padding:0 20px 0 20px;
 }
 .tag_click{
     background-color:white;
@@ -526,6 +537,7 @@ h2 {color:#ed1b23;}
     cursor:pointer;
 }
 .list_slider{
+    margin-top:-15px; /* 因內文有<p> 目前暫時用css往上提 */
     padding:0 20px 0 20px;
     background-color:white;
     line-height:28px;
@@ -814,20 +826,23 @@ span.holder {
     padding:20px 10px 20px 20px;
     margin-bottom:20px;
     vertical-align:top;
+    line-height:30px;
 }
 .b3_c_left_title{
     font-size:28px;
+    padding-bottom:20px;
 }
 .b3_c_left_date{
     line-height:50px;
     font-size:14px;
 }
 .b3_c_left_img{
-    width:600px;
+    text-align:center;
 }
 .b3_c_left_text{
     width:600px;
     line-height:25px;
+    font-size:18px;
 }
 .youtube_title{
     font-size:18px;
@@ -841,6 +856,7 @@ span.holder {
     border-top: dotted 1px #7f7f7f;
     width:600px;
     padding-bottom:30px;
+    margin-top:20px;
 }
 .extend_title{
     color:#eb1d23;
@@ -1091,6 +1107,7 @@ span.holder {
     display:inline-block;
     margin:0 5px 5px 0;
     opacity:0.5;
+    vertical-align: top;
 }
 .b14_right_image_block:hover{
     opacity:1;

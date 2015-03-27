@@ -53,7 +53,7 @@
     z-index: 1; 
 }
 .top_title li{
-    font-size:15px;
+    font-size:14px;
     color:#202020;
 }
 .logo{
@@ -69,7 +69,7 @@
 
 }
 .top_title_menu{
-    padding:0 30px 0 0;
+    padding:0 15px 0 0;
     display:inline-block;
     height:50px;
     position:relative;

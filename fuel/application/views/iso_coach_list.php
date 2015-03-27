@@ -26,6 +26,8 @@
 
 <script type="text/javascript" src="<?php echo site_url()?>assets/templates/js/jqueryUI-1.11.1.js"></script>
 
+<script src="<?php echo site_url()?>assets/templates/js/autoresize.js" type="text/javascript"></script>
+
 </head>
 
 <style>
@@ -58,7 +60,7 @@
                 <?php foreach ($news_series as $key => $value): ?>
                 <div class="b11_block"><a href="<?php echo site_url().'home/'.news_kind_controller($value->news_kind).'/'.$value->id ?>">
 
-                    <div class="b11_image"><img src="<?php echo site_url()."assets/$value->img" ?>"></div>
+                    <div class="b11_image"><img onload="AutoResizeImage('235','',this);" src="<?php echo site_url()."assets/$value->img" ?>"></div>
 
                     <div class="b11_text1"><?php echo $value->title ?></div>
 

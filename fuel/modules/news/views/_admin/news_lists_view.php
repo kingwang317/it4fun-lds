@@ -10,6 +10,13 @@
 		<div class="span12">
 			<ul class="breadcrumb">
 			  <li>位置：<?php echo $news_name ?>-上稿列表</li>
+			  				<?php
+								if(isset($type)):
+							?>	
+							<?php   foreach($type as $key=>$rows):?>
+										<?php echo $search_type == $rows->code_id?"<li>".$rows->code_name."</li>":"" ?>
+								<?php endforeach;?>
+							<?php endif;?>
 			</ul>
 		</div>
 	</div> 

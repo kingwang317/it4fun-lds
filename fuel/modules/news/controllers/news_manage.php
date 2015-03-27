@@ -48,6 +48,7 @@ class News_manage extends Fuel_base_controller {
 		
 
 			$search_type = $this->input->get_post('search_type'); 
+			echo $search_type;
 
 			if ($search_type != "") {
 				$filter .= " AND type = '$search_type' "; 
@@ -59,6 +60,7 @@ class News_manage extends Fuel_base_controller {
 						$search_type = $search_type;
 						$filter .= " AND type = '$search_type' "; 
 					} 
+					die();
 				}else{
 					$this->session->set_userdata('search_type', "");
 				}					
@@ -77,7 +79,7 @@ class News_manage extends Fuel_base_controller {
 			$vars['type'] = $type;
 		}
 
-		// print_r($filter);
+		 print_r($filter);
 
 		$target_url = $base_url."fuel/news/lists/$news_kind/";
 
@@ -248,6 +250,9 @@ class News_manage extends Fuel_base_controller {
 			$type = $this->codekind_manage_model->get_code_list_for_other_mod("NEWS_TYPE");
 			$vars['type'] = $type;
 		}
+
+
+		$this->session->set_userdata('search_type', $news->type);
 
 		$vars["news_kind_arr"] = array("0"=>"首頁","1"=>"CI設計","2"=>"輔導項目","3"=>"ISO小學堂","4"=>"最新消息");
 

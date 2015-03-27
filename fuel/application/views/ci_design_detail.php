@@ -69,7 +69,7 @@
                 <div class="b14_right_image">
                     <?php if (isset($interest_news)): ?>
                         <?php foreach ($interest_news as $key => $value): ?>
-                            <a href="<?php echo site_url().'home/ci_design_detail/'.$value->id ?>"><div class="b14_right_image_block"><img style="height:90px;width:90px" src="<?php echo site_url().'assets/'.$value->img ?>"></div></a>
+                            <a href="<?php echo site_url().'home/ci_design_detail/'.$value->id ?>"><div class="b14_right_image_block"><img onload="AutoResizeImage('90','',this);" src="<?php echo site_url().'assets/'.$value->img ?>"></div></a>
                         <?php endforeach ?>
                     <?php endif ?>
 

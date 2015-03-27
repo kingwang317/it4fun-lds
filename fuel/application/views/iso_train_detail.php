@@ -51,9 +51,9 @@
             <div class="b3_c_left">
 
                 <div class="b3_c_left_title"><?php echo $train->train_title ?></div>
-
+                
                 <?php echo htmlspecialchars_decode($train->train_detail) ?>
-
+                
                 <div class="b12_info">
 
                     <div class="b12_info_title">

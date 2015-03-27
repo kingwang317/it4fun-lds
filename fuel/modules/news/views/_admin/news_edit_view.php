@@ -10,6 +10,13 @@
 		<div class="span12">
 			<ul class="breadcrumb">
 			  <li>位置：<a href="<?php echo $module_uri?>"><?php echo $news_name ?>-上稿作業</a></li>
+  				<?php
+				if(isset($type)):
+			?>	
+			<?php   foreach($type as $key=>$rows):?>
+						<?php echo $news->type == $rows->code_id?"<li>".$rows->code_name."</li>":"" ?>
+				<?php endforeach;?>
+			<?php endif;?>
 			  <li class="active"><?php echo $view_name?></li>
 			</ul>
 		</div>
