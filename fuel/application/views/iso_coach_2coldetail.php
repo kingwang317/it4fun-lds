@@ -44,7 +44,7 @@
 
         <div class="location">
 
-            <div class="location_left"><font color="black">首頁 / ISO 認證輔導 / <?php echo $news_type->code_name ?>系列 /</font> <?php echo $news->title ?></div>
+            <div class="location_left"><font color="black"><a href="http://lds.isoleader.com.tw/">首頁</a> / <a href="">ISO 認證輔導</a> / <?php echo $news_type->code_name ?>系列 /</font> <?php echo $news->title ?></div>
 
             <div class="location_right">
 
@@ -68,9 +68,9 @@
                     $date = date_create($news->date);
                     echo date_format($date, 'Y-m-d')
                 ?></div>
-
-                <?php echo htmlspecialchars_decode($news->content) ?>
-
+                <div class="b3_c_left_text">
+                    <?php echo htmlspecialchars_decode($news->content) ?>
+                </div>
               
                 <div class="b3_c_left_extend">
 

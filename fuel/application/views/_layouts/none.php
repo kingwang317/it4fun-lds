@@ -35,7 +35,7 @@
 
 
 <div class="main main_width bg_gray">
-
+    
     <div><img src="<?php echo site_url()?>assets/templates/images/b17/b17_banner.jpg"></div>
     <?php 
 

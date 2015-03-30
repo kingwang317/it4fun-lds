@@ -38,7 +38,8 @@
 
 <div class="main main_width">
 
-    <div><img src="<?php echo site_url()?>assets/templates/images/b4/b4_1_banner.jpg"></div>
+    <div class="b10_banner" style="background-image:url(<?php echo site_url()?>assets/templates/images/banner_about.jpg);"></div>
+    <!--<div><img src="<?php echo site_url()?>assets/templates/images/b4/b4_1_banner.jpg"></div>-->
 
     <div class="main_width_1024">
 
@@ -88,7 +89,9 @@
                                     </div>
                                 </div>
                                 <div class='list_slider' style="display:none;">
+                                    <br>
                                     <?php echo htmlspecialchars_decode($value1->content) ?>
+                                    <br><br>
                                 </div>
                             <?php endforeach ?> 
                         <?php endif ?> 
@@ -133,7 +136,20 @@
 
     });
 
-    
+    $('.b4_1_list').on({
+
+        mouseover: function() {
+
+            $(this).addClass("b4_1_list_mouseover");
+        },
+
+        mouseleave: function() {
+
+            $(this).removeClass("b4_1_list_mouseover");
+
+        }
+
+    });
 
     $('.b4_1_list_right_icon, .b4_1_list_left_text').click(function() {
 
@@ -141,65 +157,36 @@
 
         if ($target.next().filter(".list_slider").attr("id") !== 'open') {
 
-            $target.next().filter(".list_slider").show();
+            $target.next().filter(".list_slider").slideDown();
 
             $target.find(".b4_1_list_right_icon").removeClass("fa-plus").addClass("fa-minus");
-
-            $target.find(".b4_1_list_left_icon").hide();
 
             $target.find(".fa-external-link").show();
 
             $target.find(".b4_1_list_left_text").addClass("b4_1_list_left_text_click");
+            
+            $target.addClass("b4_1_list_click");
+
 
             $target.find(".b4_1_list_right_date").addClass("b4_1_list_right_date_click");
-
-            
 
             $target.next().filter(".list_slider").attr('id', 'open');
 
         } else {
 
-            $target.next().filter(".list_slider").hide();
+            $target.next().filter(".list_slider").slideUp();
 
             $target.find(".b4_1_list_right_icon").removeClass("fa-minus").addClass("fa-plus");
-
-            $target.find(".b4_1_list_left_icon").show();
 
             $target.find(".fa-external-link").hide();
 
             $target.find(".b4_1_list_left_text").removeClass("b4_1_list_left_text_click");
+            
+            $target.removeClass("b4_1_list_click");
 
             $target.find(".b4_1_list_right_date").removeClass("b4_1_list_right_date_click");
 
             $target.next().filter(".list_slider").removeAttr("id");
-
-        }
-
-    });
-
-   $('.b4_1_list').on({
-
-        mouseover: function() {
-
-            $(this).css("background-color", '#f3f3f3');
-
-            $(this).find(".b4_1_list_left_text").css("color", '#eb1d23');
-
-            $(this).find(".b4_1_list_left_icon").css("color", '#eb1d23');
-
-            $(this).find(".b4_1_list_right_icon").css("color", '#eb1d23');
-
-        },
-
-        mouseleave: function() {
-
-            $(this).css("background-color", 'white');
-
-            $(this).find(".b4_1_list_left_text").css("color", 'black');
-
-            $(this).find(".b4_1_list_left_icon").css("color", 'black');
-
-            $(this).find(".b4_1_list_right_icon").css("color", 'black');
 
         }
 

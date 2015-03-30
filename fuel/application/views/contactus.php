@@ -17,12 +17,14 @@
 <?php  $this->load->view('_blocks/top')?>
 
 <div class="main main_width">
-    <div><img src="<?php echo site_url()?>assets/templates/images/b10/b10_banner.jpg"></div>
+    <div class="b10_banner" style="background-image:url(<?php echo site_url()?>assets/templates/images/banner_about.jpg);"></div>
+         <!--<img src="<?php echo site_url()?>assets/templates/images/banner_about.jpg"></div>-->
+    
     <div class="width1024 b10_width">
         <div class="ci_title b10_title">與我們聯絡</div>
+        <div class="b10_detail_title1"  style="width:600px;">ISO認證線上詢價，24h快速回覆！百大企業的選擇，也是您的選擇，歡迎洽詢</div>
         <div class="ci_detail b7_detail b10_left">
-           <div class="b10_detail_title1">ISO認證線上詢價，24h快速回覆！百大企業的選擇，也是您的選擇，歡迎洽詢</div>
-           <div class="b10_detail_title2">領導力企管創下許多全國第一。國內ISO輔導資源最充足的顧問公司，協助您取得各項ISO認證，所有ISO認證問題找領導力企管就對了！我們的專業輔導能量，創下許多同業第一。</div>
+           <!--<div class="b10_detail_title2">領導力企管創下許多全國第一。國內ISO輔導資源最充足的顧問公司，協助您取得各項ISO認證，所有ISO認證問題找領導力企管就對了！我們的專業輔導能量，創下許多同業第一。</div>-->
            <div class="b10_detail_input">
                 <div class="input_block">
                     <span class="holder">姓名或公司名<span class="red"> ﹙必填﹚</span></span>
@@ -38,8 +40,10 @@
                         <option value="1" color="black">選擇詢價主旨1</option>
                         <option value="2">選擇詢價主旨2</option>
                         <option value="3">選擇詢價主旨3</option> -->
+                        <option value="">您想申辦哪一類服務？</option>
                         <?php if (isset($inquiry_topic)): ?>
                             <?php foreach ($inquiry_topic as $key => $value): ?>
+                                
                                 <option value="<?php echo $value->code_id ?>"><?php echo $value->code_name ?></option>
                             <?php endforeach ?>
                         <?php endif ?>
@@ -51,6 +55,7 @@
                         <option value="1">預計配合的驗證機構1</option>
                         <option value="2">預計配合的驗證機構2</option>
                         <option value="3">預計配合的驗證機構3</option> -->
+                        <option value="">您想選擇哪家驗證機構？</option>
                         <?php if (isset($coor_unit)): ?>
                             <?php foreach ($coor_unit as $key => $value): ?>
                                 <option value="<?php echo $value->code_id ?>"><?php echo $value->code_name ?></option>
@@ -68,7 +73,7 @@
                 <div class="b10_right_block_title">台北</div>
                 <div class="b10_right_block_detail">
                 (02)2362-7919</br>
-                台北市大安區浦城街13巷14號1樓
+                台北市中山區建國北路二段87號2樓
                 </div>
             </div>
             <div class="b10_right_block">
@@ -154,4 +159,12 @@
           }
         });
     });
+    $(".b10_select").change(function(){
+    var target = $(this).val();
+    if (target !== ''){
+        $(this).css('color','black');
+    }else{
+        $(this).css('color','#B3B3B3');
+    }
+});
 </script>
