@@ -42,7 +42,7 @@
 
         <div class="location">
 
-            <div class="location_left"><font color="black">首頁 / ISO教育訓練 / </font><?php echo $train->train_title ?></div>
+            <div class="location_left"><font color="black"><a href="http://lds.isoleader.com.tw/">首頁</a> / <a href="">ISO教育訓練</a> / </font><?php echo $train->train_title ?></div>
 
         </div>
 
@@ -51,14 +51,17 @@
             <div class="b3_c_left">
 
                 <div class="b3_c_left_title"><?php echo $train->train_title ?></div>
-                
+                <div class="b3_c_left_img">
+                    <img onload="AutoResizeImage('600','338',this);" src="http://jaygraphy.com/wp-content/uploads/2014/08/dyne_logo-600x338.jpg">
+                </div>
+                <div class="b3_c_left_text">
                 <?php echo htmlspecialchars_decode($train->train_detail) ?>
-                
+                </div>
                 <div class="b12_info">
 
                     <div class="b12_info_title">
-
-                        <i class="fa fa-exclamation-circle" style="color:#eb1d23;"></i>課程報名資訊<i class="fa fa-plus" style="color:#eb1d23;"></i>
+                        <!--<i class="fa fa-exclamation-circle" style="color:#eb1d23;"></i>課程報名資訊<i class="fa fa-plus" style="color:#eb1d23;"></i>-->
+                        課程報名資訊<i class="fa fa-plus" style="color:#eb1d23;"></i>
 
                     </div>
 

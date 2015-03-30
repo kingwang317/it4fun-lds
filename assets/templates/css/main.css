@@ -15,7 +15,7 @@ body ,ol ,ul ,li ,a ,img ,h1 ,h2 ,h3 ,h4 ,h5 ,i ,b ,dd ,tt ,input ,textarea ,sel
 } 
 /* 主要css */
 body {background-color:white;}
-p{margin:0;}
+p{margin:-5px 0 -5px 0;}
 .main_width {margin: 0px;text-align:center;background-color:#fafafa;}
 .left {float:left;}
 .right {float:right;}
@@ -23,7 +23,7 @@ p{margin:0;}
 h2 {
     color:#ed1b23;
     font-size:16px;
-    margin:10px 0 10px 0;
+    margin:15px 0 5px 0;
 }
 /*index css*/
 .under_line{
@@ -228,6 +228,7 @@ h2 {
 }
 .banner_top{
     background-color:white;
+    opacity: 0.85;
     display:block;
     width:300px;
     height:200px;
@@ -239,18 +240,23 @@ h2 {
     margin-right: auto;
     left: 650px;
     right: 0;
+    box-shadow :0 0 20px #999;
 }
 .banner_title{
     color:#ed1b23;
     font-size:28px;
     line-height:36px;
+    padding-bottom:15px;
 }
 .banner_mid{
+    height:145px;
     font-size:17px;
-    line-height:30px;
-    -webkit-line-clamp: 3 !important;
-    -webkit-box-orient: vertical !important;
-    overflow: hidden !important;
+    line-height:29px;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .banner_link_block{
     margin-left:130px;
@@ -500,7 +506,21 @@ h2 {
     line-height:50px;
     vertical-align:middle;
     background-color:white;
+    color:#333;
 }
+.b4_1_list_click{
+    background-color:#f3f3f3;
+    color:#eb1d23;
+}
+.b4_1_list_mouseover{
+    background-color:#f3f3f3;
+    color:#eb1d23;
+}
+.b4_1_list_mouseleave{
+    background-color:white;
+    color:#333;
+}
+
 
 .b4_1_list_left{
     display:inline-block;
@@ -520,15 +540,17 @@ h2 {
     cursor:pointer;
 }
 .b4_1_list_left_text_click{
-    font-size:22px;
-    font-weight:bold;
-    padding:0 10px 20px 20px;
+    color:#eb1d23;
+    //font-size:22px;
+    //font-weight:bold;
+    padding:0 10px 20px 0;
+    height:50px;
 }
 .b4_1_list_right_date{
     display:inline-block;
 }
 .b4_1_list_right_date_click{
-    font-weight:bold;
+    //font-weight:bold;
 }
 .b4_1_list_right_icon{
     display:inline-block;
@@ -537,9 +559,9 @@ h2 {
     cursor:pointer;
 }
 .list_slider{
-    margin-top:-15px; /* 因內文有<p> 目前暫時用css往上提 */
-    padding:0 20px 0 20px;
-    background-color:white;
+    //margin-top:-15px; /* 因內文有<p> 目前暫時用css往上提 */
+    padding:0 60px 0 60px;
+    background-color:#f3f3f3;
     line-height:28px;
     color:#666666;
 }
@@ -559,6 +581,13 @@ h2 {
 /*b10 css*/
 .b10_width{
     text-align:left;
+}
+.b10_banner{
+    diplay:block;
+    height:220px;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index:0;
 }
 .b10_left{
     background-color:white;
@@ -584,7 +613,7 @@ h2 {
     height:40px;
     width:583px;
     line-height:38px;
-    padding-left:15px;
+    padding-left:5px;
     font-size:15px;
     border-radius: 3px;
     -moz-border-radius: 3px; 
@@ -594,8 +623,6 @@ h2 {
     border:solid 1px #CCCCCC;
     height:40px;
     width:600px;
-    line-height:38px;
-    padding-left:10px;
     font-size:15px;
     color:#B3B3B3;
     border-radius: 3px;
@@ -611,13 +638,11 @@ h2 {
     margin-bottom:20px;
     height:40px;
     width:583px;
-    line-height:38px;
     vertical-align:top;
-    padding-left:15px;
+    padding-left:5px;
     font-size:15px;
     height:200px;
     line-height:38px;
-    padding-top:10px;
     border-radius: 3px;
     -moz-border-radius: 3px; 
     -webkit-border-radius: 3px;
@@ -626,7 +651,7 @@ h2 {
 span.holder {
     font-size:15px;
     position: absolute;
-    margin: 13px 15px;
+    margin: 13px 0 0 5px;
     color:#B3B3B3;
     cursor: auto;
     font-family: Helvetica;
@@ -820,30 +845,40 @@ span.holder {
 }
 .b3_c_left{
     display:inline-block;
-    width:640px;
+    width:600px;
     background-color:#fff;
-    text-align:left;
-    padding:20px 10px 20px 20px;
+    text-align:center;
+    padding:20px 30px 20px 30px;
     margin-bottom:20px;
     vertical-align:top;
-    line-height:30px;
+    
 }
 .b3_c_left_title{
     font-size:28px;
     padding-bottom:20px;
+    line-height:30px;
+    text-align:left;
 }
 .b3_c_left_date{
     line-height:50px;
     font-size:14px;
+    text-align:left;
 }
 .b3_c_left_img{
     text-align:center;
 }
 .b3_c_left_text{
     width:600px;
-    line-height:25px;
-    font-size:18px;
+    line-height:26px;
+    list-style-type: disc; 
+    margin-top:10px;
+    text-align:left;
 }
+.b3_c_left_text li{
+    list-style-type: disc;
+    margin:0 0 0 50px;
+}
+
 .youtube_title{
     font-size:18px;
     font-weight:bold;
@@ -857,6 +892,7 @@ span.holder {
     width:600px;
     padding-bottom:30px;
     margin-top:20px;
+    text-align:left;
 }
 .extend_title{
     color:#eb1d23;
@@ -1005,11 +1041,11 @@ span.holder {
 }
 /*b12 css*/
 .b12_block{
-    margin:30px 0 30px 0;
+    margin:10px 0 15px 0;
 }
 .b12_block_title{
     font-weight:bold;
-    margin-bottom:10px;
+    margin-bottom:5px;
 }
 .b12_block ul, .b12_block li{
     list-style-type: disc;
@@ -1022,11 +1058,13 @@ span.holder {
     border-left:none;
     border-right:none;
     background-color:#f3f3f3;
+    text-align:left;
 }
 .b12_info_title{
     color:#eb1d23;
     font-weight:bold;
     cursor:pointer;
+    padding-left:10px;
 }
 .b12_info_title .fa-exclamation-circle{
     padding:0 10px 0 10px;
@@ -1049,7 +1087,7 @@ span.holder {
 .b12_info_title_slider_text{
     color:#5E5E5E;
     width:520px;
-    line-height:30px;
+    line-height:20px;
     font-size:14px;
 }
 
@@ -1108,6 +1146,13 @@ span.holder {
     margin:0 5px 5px 0;
     opacity:0.5;
     vertical-align: top;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index:0;
+    min-width:90px;
+    max-height:90px;
+    overflow:hidden;
+    
 }
 .b14_right_image_block:hover{
     opacity:1;
