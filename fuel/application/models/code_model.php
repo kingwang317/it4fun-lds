@@ -10,7 +10,7 @@ class Code_model extends CI_Model {
         $sql = @"select * from mod_code where codekind_key = '$codekind_key' 
         and parent_id = $parent_id and lang_code = '$lang_code' $filter order by code_value1 , code_id";
         $query = $this->db->query($sql);
-        //echo $sql;exit;
+        // echo $sql;exit;
         if($query->num_rows() > 0)
         {
             $result = $query->result();
@@ -117,7 +117,7 @@ class Code_model extends CI_Model {
     }
 
     public function get_performance($filter="",$orderby=""){
-        return $this->get_news(0,'PERFORMANCE',$filter,$orderby);
+        return $this->get_news(4,'PERFORMANCE',$filter," limit 0,5");
     }
 
     public function get_banner($filter="",$orderby=""){

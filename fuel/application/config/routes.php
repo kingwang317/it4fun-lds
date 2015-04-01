@@ -77,7 +77,7 @@ $route['home/do_contact'] 		= 'home/do_contact';
 
 $route['home/iso_class'] 		= 'home/iso_class';
 $route['home/iso_class/(:num)'] 		= 'home/iso_class/$1';
-
+$route['home/do_contact'] 		= 'home/do_contact'; 
 
 $route['iso_train'] 				= 'train/index';
 $route['iso_train/detail/(:num)'] 	= 'train/detail/$1';

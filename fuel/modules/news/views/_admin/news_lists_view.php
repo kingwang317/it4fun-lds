@@ -118,7 +118,7 @@
 						</td>  -->
 					    <!-- <td><?php echo $rows->lang?></td> -->
 						
-						<td><a href="<?php echo $edit_url.$rows->id?>"><?php echo mb_substr($rows->title,0,10,'UTF-8')?></a></td>
+						<td><a href="<?php echo $edit_url.$rows->id?>"><?php echo mb_substr($rows->title,0,20,'UTF-8')?></a></td>
 						<?php if ($news_kind == 2 || $news_kind == 0 || $news_kind == 4 || $news_kind == 3): ?>	
 						<td><button class="btn btn-xs btn-info" type="button" onclick="aHover('<?php echo $target_url ?>?type=<?php echo $rows->type?>')"><?php echo $rows->type_name ?></button></td>
 						<?php endif ?>

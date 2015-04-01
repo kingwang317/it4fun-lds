@@ -61,7 +61,9 @@
 								<select name="type" id="type">
 									 
 									<?php   foreach($type as $key=>$rows):?>
-												<option value="<?php echo $rows->code_id ?>"><?php echo $rows->code_name ?></option>
+												<option value="<?php echo $rows->code_id ?>" <?php if ($rows->code_id == $news_type): ?>
+													selected
+												<?php endif ?>><?php echo $rows->code_name ?></option>
 										<?php endforeach;?>
 									
 								</select>

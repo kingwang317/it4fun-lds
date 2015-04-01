@@ -27,7 +27,7 @@ class News_manage_model extends MY_Model {
 
 	public function get_news_list($dataStart, $dataLen, $filter)
 	{
-		$sql = @"SELECT *,(SELECT code_name FROM mod_code WHERE mod_code.code_id = mod_news.type) AS type_name FROM mod_news $filter ORDER BY `news_kind`,`type`,`news_order` LIMIT $dataStart, $dataLen";
+		$sql = @"SELECT *,(SELECT code_name FROM mod_code WHERE mod_code.code_id = mod_news.type) AS type_name FROM mod_news $filter ORDER BY `news_kind`,`type`,`date` DESC,`news_order` LIMIT $dataStart, $dataLen";
 	
 		$query = $this->db->query($sql);
 

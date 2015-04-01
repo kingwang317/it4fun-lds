@@ -106,7 +106,7 @@ class News_manage extends Fuel_base_controller {
 		$this->fuel->admin->set_titlebar($crumbs);
 
 		$vars['page_jump'] = $this->pagination->create_links();
-		$vars['create_url'] = $base_url."fuel/news/create/$news_kind";
+		$vars['create_url'] = $base_url."fuel/news/create/$news_kind?type=$news_type";
 		$vars['edit_url'] = $base_url.'fuel/news/edit/';
 		$vars['del_url'] = $base_url.'fuel/news/del/';
 		$vars['multi_del_url'] = $base_url.'fuel/news/do_multi_del';
@@ -122,9 +122,11 @@ class News_manage extends Fuel_base_controller {
 	function create($news_kind=0)
 	{
 		$news_name = $this->news_name_by_kind($news_kind);
+		$news_type = $this->input->get_post('type');
 		// $total_rows = $this->news_manage_model->get_total_rows(" WHERE 1=1 ");
 
 		// $vars['news_order'] = $total_rows + 1;
+		$vars['news_type'] = $news_type;
 		$vars['now'] = date("Y-m-d");
 		$vars['news_name'] = $news_name;
 		$vars['news_kind'] = $news_kind;

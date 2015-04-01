@@ -26,16 +26,17 @@
         <div class="ci_detail b7_detail b10_left">
            <!--<div class="b10_detail_title2">領導力企管創下許多全國第一。國內ISO輔導資源最充足的顧問公司，協助您取得各項ISO認證，所有ISO認證問題找領導力企管就對了！我們的專業輔導能量，創下許多同業第一。</div>-->
            <div class="b10_detail_input">
+            <form method="post" action="<?php echo $do_contact_url?>" id="form_contact" >
                 <div class="input_block">
                     <span class="holder">姓名或公司名<span class="red"> ﹙必填﹚</span></span>
-                    <input id="name" class="b10_input" type="text" autocomplete="off">
+                    <input id="name" name="name" class="b10_input" type="text" autocomplete="off">
                 </div>
                 <div class="input_block">
                     <span class="holder">電子信箱<span class="red"> ﹙必填﹚</span></span>
-                    <input id="mail" class="b10_input" type="text" autocomplete="off">
+                    <input id="mail" name="email" class="b10_input" type="text" autocomplete="off">
                 </div>
                 <div class="input_block">
-                    <select class="b10_select" id="inquiry_topic">
+                    <select class="b10_select" id="inquiry_topic" name="inquiry_topic">
                         <!-- <option value="0">選擇詢價主旨</option>
                         <option value="1" color="black">選擇詢價主旨1</option>
                         <option value="2">選擇詢價主旨2</option>
@@ -50,7 +51,7 @@
                     </select>
                 </div>
                 <div class="input_block">
-                    <select class="b10_select" id="coor_unit">
+                    <select class="b10_select" id="coor_unit" name="coor_unit">
                       <!--   <option value="0">預計配合的驗證機構</option>
                         <option value="1">預計配合的驗證機構1</option>
                         <option value="2">預計配合的驗證機構2</option>
@@ -63,7 +64,8 @@
                         <?php endif ?>
                     </select>
                 </div>
-                <div class="input_block"><textarea id="msg" class="b10_textarea" rows="10" placeholder="留言內容" autocomplete="off"></textarea></div>
+                <div class="input_block"><textarea name="msg" id="msg" class="b10_textarea" rows="10" placeholder="留言內容" autocomplete="off"></textarea></div>
+            </form>
            </div>
            <div class='b10_submit'>確認送出</div>
         </div>
@@ -121,6 +123,10 @@
             $("#mail").focus();
             return false;
         }
+
+        // $("#form_contact").submit();
+
+        // return;
 
 
         var url = '<?php echo $do_contact_url?>';   
