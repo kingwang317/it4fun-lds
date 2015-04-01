@@ -52,7 +52,7 @@
 
                 <div class="b3_c_left_title"><?php echo $train->train_title ?></div>
                 <div class="b3_c_left_img">
-                    <img onload="AutoResizeImage('600','338',this);" src="http://jaygraphy.com/wp-content/uploads/2014/08/dyne_logo-600x338.jpg">
+                    <img onload="AutoResizeImage('600','338',this);" src="<?php echo site_url().'assets/'.$train->file_path ?>">
                 </div>
                 <div class="b3_c_left_text">
                 <?php echo htmlspecialchars_decode($train->train_detail) ?>

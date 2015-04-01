@@ -44,7 +44,7 @@
 
         <div class="location">
 
-            <div class="location_left"><font color="black">首頁 / CI設計 / </font><?php echo $news->title ?></div>
+            <div class="location_left"><font color="black"><a href="<?php echo site_url() ?>">首頁</a> / <a href="<?php echo site_url().'home/ci_design' ?>">CI設計</a> / </font><?php echo $news->title ?></div>
 
         </div>
 

@@ -44,7 +44,7 @@
 
         <div class="location">
 
-            <div class="location_left"><font color="black"><a href="http://lds.isoleader.com.tw/">首頁</a> / <a href="">ISO 認證輔導</a> / <?php echo $news_type->code_name ?>系列 /</font> <?php echo $news->title ?></div>
+            <div class="location_left"><font color="black"><a href="<?php echo site_url() ?>">首頁</a> / <a href="<?php echo site_url().'home/iso_coach' ?>">ISO 認證輔導</a> / <a href="<?php echo site_url().'home/iso_coach_list/'.$news_type->code_id ?>"><?php echo $news_type->code_name ?>系列</a> /</font> <?php echo $news->title ?></div>
 
             <div class="location_right">
 
@@ -62,7 +62,7 @@
 
                 <div class="b3_c_left_title"><?php echo $news->title ?></div>
                 <div class="b3_c_left_img">
-                    <img onload="AutoResizeImage('600','338',this);" src="http://jaygraphy.com/wp-content/uploads/2014/08/dyne_logo-600x338.jpg">
+                    <img onload="AutoResizeImage('600','338',this);" src="<?php echo site_url().'assets/'.$news->img ?>">
                 </div>
                 <div class="b3_c_left_date"><?php 
                     $date = date_create($news->date);

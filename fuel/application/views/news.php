@@ -38,7 +38,7 @@
 
 <div class="main main_width">
 
-    <div class="b10_banner" style="background-image:url(<?php echo site_url()?>assets/templates/images/banner_about.jpg);"></div>
+    <div class="page_banner" style="background-image:url(<?php echo site_url()?>assets/templates/images/banner_about.jpg);"></div>
     <!--<div><img src="<?php echo site_url()?>assets/templates/images/b4/b4_1_banner.jpg"></div>-->
 
     <div class="main_width_1024">

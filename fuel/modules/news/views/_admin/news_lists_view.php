@@ -131,7 +131,7 @@
 							
 						</td>
 						<?php endif ?>
-						<td><input type="text" class="order_news_id" style="width:50px" name="<?php echo $rows->id ?>" value="<?php echo $rows->news_order?>" /></td>
+						<td><input type="text" class="order_news_id" style="width:50px" data-newsid="<?php echo $rows->id ?>" value="<?php echo $rows->news_order?>" /></td>
 						
 						<!-- <td><?php echo site_url()."assets/".$rows->img?></td> -->
 						
@@ -203,15 +203,18 @@
 			 // $j("#form").submit();
 			 // $j("#form").attr('action', '<?php echo $form_action ?>');
 			var postData = {};
-			var ids = [];
+			var ids = {};
 			var api_url = '<?php echo $url_save_order?>';
 			$j("input[class='order_news_id']").each(function(i){	
 				// console.log($j(this).val());			
-				// console.log($j(this).attr('name'));		
-				ids[$j(this).attr('name')] = $j(this).val();	 
-				// console.log(ids);
+					
+				// var newsid = $(this).data('newsid');	
+				ids[$(this).data('newsid')] = $(this).val();	
+				// console.log($(this).data('newsid')); 
+
 			});
-			console.log(ids);
+			// console.log(ids);
+			// return;
 			postData = {'ids': ids};
 			 $j.ajax({
 				url: api_url,
