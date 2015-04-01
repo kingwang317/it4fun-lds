@@ -18,7 +18,7 @@
 
 <!--link font awesome to use the icon-->
 
-<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 
 <script type="text/javascript" src="<?php echo site_url()?>assets/templates/js/jquery-1.9.1.min.js"></script>
 
@@ -36,7 +36,7 @@
 
 <div class="main main_width bg_gray">
 
-    <div><img src="<?php echo site_url()?>assets/templates/images/b17/b17_banner.jpg"></div>
+    <div class="page_banner" style="background-image:url(<?php echo site_url()?>assets/templates/images/banner_about.jpg);"></div>
     <?php 
 
     echo fuel_var('body', ''); 

@@ -61,6 +61,7 @@
     height:44px;
     width:216px;
     display:inline-block;
+    background-repeat:no-repeat;
 }
 .menu{
     display:inline-block;

@@ -13,8 +13,8 @@
         <div style='font-size:12px;display:inline-block;float:right;line-height:50px;padding-right:5px;'><a href='http://a-wei.lionfree.net/leadership/index.php' style="color:black;text-decoration: none;">回領導力官網</a></div>
     </div>
     <div style='background-color:#fff;padding:50px;min-height:500px;'>
-        <div style='margin: 0px auto;text-align:center;'><img src="http://a-wei.lionfree.net/leadership/images/mail/head.jpg"></div>
-        <div style='font-size:26px;margin-bottom:50px;'>你好：<br>領導力企管有一封新的線上留言。</div>
+        <!--<div style='margin: 0px auto;text-align:center;'><img src="http://a-wei.lionfree.net/leadership/images/mail/head.jpg"></div>-->
+        <div style='font-size:24px;margin-bottom:50px;'>你好：<br>我們已收到您的線上留言。將儘快與您聯繫。</div>
         <div style="line-height:30px;">
             <div style='vertical-align:top;font-weight:bold;font-size:14px;margin-right:5px;display:inline-block;width:75px;'>姓　　名：</div><div style='width:420px;font-size:14px;display:inline-block;'>戴 小姐</div>
         </div>

@@ -27,7 +27,7 @@ class Event_manage_model extends MY_Model {
 
 	public function get_event_list($dataStart, $dataLen, $filter)
 	{
-		$sql = @"SELECT * , (SELECT COUNT(*) FROM mod_register WHERE mod_register.train_id = mod_train.id ) reg_count FROM mod_train $filter ORDER BY modi_date DESC LIMIT $dataStart, $dataLen";
+		$sql = @"SELECT * , (SELECT COUNT(*) FROM mod_register WHERE mod_register.train_id = mod_train.id ) reg_count FROM mod_train $filter ORDER BY train_date DESC LIMIT $dataStart, $dataLen";
 	
 		$query = $this->db->query($sql);
 
