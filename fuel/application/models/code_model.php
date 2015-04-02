@@ -80,7 +80,9 @@ class Code_model extends CI_Model {
         if (isset($news_kind) && $news_kind != '') {
             $filter = " news_kind='$news_kind' ";
         }
-        $sql = @" select * from mod_news WHERE $filter ORDER BY RAND() LIMIT $limit ";
+        $sql = @" select * from (
+                select * from mod_news WHERE $filter ORDER BY RAND() LIMIT $limit
+                ) A order by date desc ";
         $query = $this->db->query($sql);
         // echo $sql;exit;
         if($query->num_rows() > 0)
