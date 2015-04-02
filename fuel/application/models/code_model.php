@@ -61,6 +61,10 @@ class Code_model extends CI_Model {
         return $this->get_random_news(2,5);
         // return $this->get_news(2,$type);
     }
+    public function get_random_coach_by_type($type){
+        return $this->get_random_news(2,5,$type);
+        // return $this->get_news(2,$type);
+    }
 
     public function get_coach_by_type($type){
         $sql = @"select * from mod_news where type='$type'
@@ -75,10 +79,13 @@ class Code_model extends CI_Model {
         }
     }
 
-    public function get_random_news($news_kind,$limit){
+    public function get_random_news($news_kind,$limit,$type=null){
         $filter = ' news_kind in (1,2,3) ';
         if (isset($news_kind) && $news_kind != '') {
             $filter = " news_kind='$news_kind' ";
+        }
+        if (isset($type) && $type != '') {
+            $filter .= " AND type='$type' ";
         }
         $sql = @" select * from mod_news WHERE $filter ORDER BY RAND() LIMIT $limit ";
         $query = $this->db->query($sql);

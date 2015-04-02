@@ -118,8 +118,8 @@ class Home extends CI_Controller {
 		$this->code_model->update_news_viewcount($id);
 
 		$vars['news'] = $news;
-		$vars['interest_news'] = $this->code_model->get_random_all_news();
-		$vars['interest_news2'] = $this->code_model->get_random_all_news();
+		$vars['interest_news'] = $this->code_model->get_coach_by_type($news->type);
+		//$vars['interest_news2'] = $this->code_model->get_random_all_news();
 		$vars['news_series'] = $this->code_model->get_random_coach();
 		$vars['news_type'] = $this->code_model->get_series_info($news->type);
 
