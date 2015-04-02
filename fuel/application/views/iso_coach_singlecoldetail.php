@@ -15,7 +15,7 @@
 <title>Isoleader GRI Training System</title>
 
 <link href="<?php echo site_url()?>assets/templates/css/main.css" rel="stylesheet" type="text/css" />
-
+<link href="<?php echo site_url()?>assets/templates/js/iviewer_0.7.11/style.css" rel="stylesheet" type="text/css"/>
 <!--link font awesome to use the icon-->
 
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -65,9 +65,9 @@
 
             </div>
 
-            
+            <div class="b3_d_text">
             <?php echo htmlspecialchars_decode($news->content) ?>
-            
+            </div>
 
          
             
@@ -134,6 +134,16 @@
 
 <?php  $this->load->view('_blocks/foot')?>
 
+<div id="iviewer">
+    <div class="loader"></div>
+    <div class="viewer"></div>
+    <ul class="controls">
+        <li class="close"></li>
+        <li class="zoomin"></li>
+        <li class="zoomout"></li>
+    </ul>
+</div>
+
 </body>
 
 </html>
@@ -143,7 +153,14 @@
 <!--Script放後面加速頁面產生-->
 
 <script type="text/javascript">
+$(".b3_d_text img").each(function(){
+            $(this).wrap($('<a>',{
+               href:  this.src,
+               class:'go'
 
-
-
+            }))
+});
 </script>
+<script type="text/javascript" src="<?php echo site_url()?>assets/templates/js/iviewer_0.7.11/jquery.mousewheel.min.js" ></script>
+<script type="text/javascript" src="<?php echo site_url()?>assets/templates/js/iviewer_0.7.11/jquery.iviewer.min.js" ></script>
+<script type="text/javascript" src="<?php echo site_url()?>assets/templates/js/iviewer_0.7.11/main.js" ></script>

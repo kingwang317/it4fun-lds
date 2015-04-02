@@ -134,7 +134,7 @@ h2 {
     border-bottom: dotted 1px #7f7f7f;
 }
 .list_text a:hover{
-    color:#505050;
+    color:#eb1d23;
 }
 .business_case{
     margin: 0px auto;
@@ -209,27 +209,14 @@ h2 {
     position: relative;
     z-index:0;
 }
-.banner_block1{
+.banner_slider{
     height:480px;
     diplay:block;
     background-repeat: no-repeat;
     background-position: center;
     z-index:0;
 }
-.banner_block2{
-    height:480px;
-    diplay:block;
-    background-repeat: no-repeat;
-    background-position: center;
-    z-index:0;
-}
-.banner_block3{
-    height:480px;
-    diplay:block;
-    background-repeat: no-repeat;
-    background-position: center;
-    z-index:0;
-}
+
 .banner_top{
     background-color:white;
     display:block;
@@ -963,7 +950,7 @@ span.holder {
 .b3_d_top_title{
     font-size:28px;
     display:inline-block;
-    padding-bottom:20px;
+    padding-bottom:10px;
 }
 .b3_d_top_date{
     font-size:14px;
@@ -971,6 +958,12 @@ span.holder {
     float:right;
     position: relative; 
     top:10px;
+}
+.b3_d_text{
+    line-height:26px;
+    font-size:16px;
+    text-align:left;
+    padding:0 50px 0 50px;
 }
 .b3_d_contact{
     font-size:15px;
@@ -999,7 +992,6 @@ span.holder {
     border:solid 1px #ccc;
     border-top:none;
     border-left:none;
-
 }
 .b3_d_table_contact{
     font-size:14px;
@@ -1020,10 +1012,14 @@ span.holder {
     width:945px;
 }
 .b3_d_extend_left{
+    font-size:16px;
+    line-height:26px;
     width:472px;
     display:inline-block;
 }
 .b3_d_extend_right{
+    font-size:16px;
+    line-height:26px;
     display:inline-block;
     float:right;
     width:452px;
