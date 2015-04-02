@@ -74,7 +74,7 @@
             <div class="b10_right_block">
                 <div class="b10_right_block_title">台北</div>
                 <div class="b10_right_block_detail">
-                (02)2362-7919</br>
+                (02)2503-9035</br>
                 台北市中山區建國北路二段87號2樓
                 </div>
             </div>
