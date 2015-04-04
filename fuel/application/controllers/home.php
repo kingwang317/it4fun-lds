@@ -118,9 +118,9 @@ class Home extends CI_Controller {
 		$this->code_model->update_news_viewcount($id);
 
 		$vars['news'] = $news;
-		$vars['interest_news'] = $this->code_model->get_coach_by_type($news->type);
+		$vars['interest_news'] = $this->code_model->get_random_coach_by_type($news->type);
 		//$vars['interest_news2'] = $this->code_model->get_random_all_news();
-		$vars['news_series'] = $this->code_model->get_random_coach();
+		$vars['news_series'] = $this->code_model->get_coach_by_type($news->type);
 		$vars['news_type'] = $this->code_model->get_series_info($news->type);
 
 		if ($news->layout_type <> 1) {
@@ -226,7 +226,7 @@ class Home extends CI_Controller {
 
 	function iso_news()
 	{	
-		$lang_code = $this->uri->segment(1);
+		$news_type = $this->input->get('news_type', TRUE);
 		$iso_news_type = $this->code_model->get_iso_news_type();
 		$result = array();
 
@@ -234,6 +234,7 @@ class Home extends CI_Controller {
 			$result[$value->code_name] = $this->code_model->get_iso_news_items($value->code_id); 
 		} 
 
+		$vars['news_type'] = $news_type;
 		$vars['news'] = $result;
 		$vars['views'] = 'news';
 		$vars['base_url'] = base_url();

@@ -42,7 +42,7 @@
 
         <div class="location">
 
-            <div class="location_left"><font color="black"><a href="http://lds.isoleader.com.tw/">首頁</a> / <a href="">ISO教育訓練</a> / </font><?php echo $train->train_title ?></div>
+            <div class="location_left"><font color="black"><a href="<?php echo site_url() ?>">首頁</a> / <a href="<?php echo site_url().'iso_train' ?>">ISO教育訓練</a> / <a href="<?php echo site_url().'iso_train?type='.$free_charge ?>"><?php echo $free_charge_name ?></a> / </font><?php echo $train->train_title ?></div>
 
         </div>
 

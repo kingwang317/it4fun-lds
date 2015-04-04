@@ -59,8 +59,9 @@
                 <div class="b3_d_top_title"><?php echo $news->title ?></div>
 
                 <div class="b3_d_top_date"><?php 
-                    $date = date_create($news->date);
-                    echo date_format($date, 'Y-m-d')
+                    //$date = date_create($news->date);
+                    //echo date_format($date, 'Y-m-d')
+                    echo dateconvert($date)
                 ?></div>
 
             </div>
