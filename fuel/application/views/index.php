@@ -92,7 +92,7 @@
                         <?php foreach ($news as $key => $value): ?>
                             <div class="index_news_block">
                                 <div class="news_image<?php echo $i ?>">
-                                    <a href="<?php echo $value->detail->url ?>">
+                                    <a href="<?php echo $value->detail->url."?news_type=".$key ?>">
                                     <img onload="AutoResizeImage('225','130',this);" src="<?php echo site_url()."assets/".$value->detail->img ?>"  />
                                     </a>
                                     <div class="image_title"><div style="padding-left:5px;"><?php echo $value->code_name ?></div></div>
