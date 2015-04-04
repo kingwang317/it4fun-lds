@@ -85,9 +85,10 @@ class News_manage_model extends MY_Model {
 										 	news_kind,
 										 	layout_type,
 										 	frame_url,
-										 	url
+										 	url,
+										 	keyword
 										) 
-				VALUES ( ?, ?, ?, ?, ?,?,? ,?,?,?,?)"; 
+				VALUES ( ?, ?, ?, ?, ?,?,? ,?,?,?,?,?)"; 
 
 		$para = array(
 				$insert_data['date'], 
@@ -100,7 +101,8 @@ class News_manage_model extends MY_Model {
 				$insert_data['news_kind'],
 				$insert_data['layout_type'],
 				$insert_data['frame_url'],
-				$insert_data['url']
+				$insert_data['url'],
+				$insert_data['keyword']
 			);
 		$success = $this->db->query($sql, $para);
 
@@ -216,7 +218,8 @@ class News_manage_model extends MY_Model {
 										news_kind = ?,
 									 	layout_type = ?,
 									 	frame_url = ?,
-									 	url = ?
+									 	url = ?,
+									 	keyword = ?
 									 
 				WHERE id = ?";
 		$para = array(
@@ -231,6 +234,7 @@ class News_manage_model extends MY_Model {
 				$update_data['layout_type'],
 				$update_data['frame_url'],
 				$update_data['url'],
+				$update_data['keyword'],
 				$update_data['id']
 			);
 		$success = $this->db->query($sql, $para);

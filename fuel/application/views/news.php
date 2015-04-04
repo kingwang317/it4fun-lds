@@ -63,7 +63,7 @@
                 <?php if (isset($news)): ?>
                 <?php $i=1; ?>
                     <?php foreach ($news as $key => $value): ?>
-                        <div id="contact<?php echo $i ?>" class='b4_1_tag <?php echo $i==1?"tag_click":"" ?>'><?php echo $key ?></div>
+                        <div id="contact<?php echo $i ?>" class='b4_1_tag <?php echo isset($news_type) && $key==$news_type?"tag_click":"" ?>'><?php echo $key ?></div>
                         <?php $i++; ?>
                     <?php endforeach ?>
                 <?php endif ?>
@@ -73,7 +73,7 @@
              <?php if (isset($news)): ?>   
              <?php $i=1; ?>           
                 <?php foreach ($news as $key => $value): ?>
-                    <div class="b4_1_contact contact<?php echo $i ?>" <?php echo $i==1?"":"style='display:none;'" ?>>
+                    <div class="b4_1_contact contact<?php echo $i ?>" <?php echo isset($news_type) && $key==$news_type?"":"style='display:none;'" ?>>
                      <?php if (isset($value)): ?>   
                             <?php foreach ($value as $key1 => $value1): ?>
                                 <div class='b4_1_list'>
@@ -88,7 +88,7 @@
                                         <div class='b4_1_list_right_icon fa fa-plus'></div>
                                     </div>
                                 </div>
-                                <div class='list_slider' style="display:none;">
+                                <div class='list_slider' style="<?php echo isset($news_id) && $news_id > 0 && $news_id == $value1->id?'':'display:none;' ?> ">
                                     <br>
                                     <?php echo htmlspecialchars_decode($value1->content) ?>
                                     <br><br>

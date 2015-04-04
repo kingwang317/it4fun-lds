@@ -99,6 +99,12 @@
 							<div class="col-sm-4">
 								<input type="file" class="form-control" name="img" value=""> 
 							</div>
+						</div>						  
+						<div class="form-group">
+							<label class="col-sm-2 col-sm-2 control-label">關鍵字[用,分隔  EX:ISO 20007,ISO 9001]</label>
+							<div class="col-sm-4">
+								<input type="text" class="form-control" name="keyword" value=""> 
+							</div>
 						</div>	
 						<div class="form-group">
 							<div class="col-sm-12" style="text-align:center">

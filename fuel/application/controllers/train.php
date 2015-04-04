@@ -14,8 +14,18 @@ class Train extends CI_Controller {
 	function index()
 	{	
 		$lang_code = $this->uri->segment(1);
-		$vars['free_train'] = $this->train_model->get_list(1);
-		$vars['charge_train'] = $this->train_model->get_list(0);
+		$type = $this->input->get_post("type");
+		// echo $type;
+		if (isset($type) && !empty($type)) {
+			if ($type == 'charge') {
+				$vars['charge_train'] = $this->train_model->get_list(0);
+			}else if ($type == 'free') {
+				$vars['free_train'] = $this->train_model->get_list(1);
+			}			 
+		}else{
+			$vars['free_train'] = $this->train_model->get_list(1);
+			$vars['charge_train'] = $this->train_model->get_list(0);
+		}		
 		$vars['views'] = 'iso_train';
 		$vars['base_url'] = base_url();
 		$page_init = array('location' => 'iso_train');
@@ -32,6 +42,15 @@ class Train extends CI_Controller {
 			$this->comm->plu_redirect(site_url(), 0, "找不到資料");
 			die;
 		}
+
+		if ($train->is_free) {
+			$vars['free_charge'] = 'free';
+			$vars['free_charge_name'] = '免費課程';
+		}else{
+			$vars['free_charge'] = 'charge';
+			$vars['free_charge_name'] = '付費課程';
+		}
+
 		$vars['train'] = $train;
 		$vars['views'] = 'iso_train_detail';
 		$vars['interest_news'] = $this->code_model->get_random_all_news();

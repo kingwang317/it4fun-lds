@@ -74,7 +74,7 @@
 
                     <?php if (isset($interest_news)): ?>
                         <?php foreach ($interest_news as $key => $value): ?>
-                        <a href="<?php echo site_url().'home/'.news_kind_controller($value->news_kind).'/'.$value->id ?>"><div class="extend_list"><i class="fa fa-file-text-o"></i><?php echo $value->title ?></div></a>
+                        <a href="<?php echo site_url().'home/'.news_kind_controller($value->news_kind).'/'.$value->id.'?news_type='.$value->type ?>"><div class="extend_list"><i class="fa fa-file-text-o"></i><?php echo $value->title ?></div></a>
                         <?php endforeach ?>
                     <?php endif ?>
 
@@ -94,19 +94,19 @@
 
                 <div class="b8_block_right">
 
-                    <div class="new_title_config b3_d_extend_title">其它人也瀏覽了</div>
+                    <div class="new_title_config b3_d_extend_title">推薦閱讀</div>
 
                     <div class="under_line"></div>
 
                     <div class="b8_block_right_list">
 
-                        <?php if (isset($interest_news2)): ?>
+                        <?php if (isset($recommand_news)): ?>
                             <?php $i=0; ?>
-                            <?php foreach ($interest_news2 as $key => $value): ?>
-                                <div class="b8_right_list_block <?php echo $i+1==sizeof($interest_news2)?"border_bottom_clen":"" ?>">
+                            <?php foreach ($recommand_news as $key => $value): ?>
+                                <div class="b8_right_list_block <?php echo $i+1==sizeof($recommand_news)?"border_bottom_clen":"" ?>">
                                     <div class="b8_list_img"><img onload="AutoResizeImage('140','',this);" src="<?php echo site_url() ?>assets/<?php echo $value->img ?>"></div>
                                     <div class="b8_list_text">
-                                        <a href="<?php echo site_url().'home/'.news_kind_controller($value->news_kind).'/'.$value->id ?>">
+                                        <a href="<?php echo site_url().'home/'.news_kind_controller($value->news_kind).'/'.$value->id.'?news_type='.$recommand_name ?>">
                                         <div class="b8_list_text_title"><?php echo $value->title ?></div>
                                         <div class="b8_list_text_date"><?php echo dateconvert($value->date) ?></div>
                                         </a>

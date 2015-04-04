@@ -92,13 +92,13 @@
                         <?php foreach ($news as $key => $value): ?>
                             <div class="index_news_block">
                                 <div class="news_image<?php echo $i ?>">
-                                    <a href="<?php echo site_url().'home/iso_news' ?>">
+                                    <a href="<?php echo $value->detail->url ?>">
                                     <img onload="AutoResizeImage('225','130',this);" src="<?php echo site_url()."assets/".$value->detail->img ?>"  />
                                     </a>
                                     <div class="image_title"><div style="padding-left:5px;"><?php echo $value->code_name ?></div></div>
                                  </div>
                                  <div class="news_text">
-                                 <a href="<?php echo site_url().'home/iso_news' ?>"><?php echo mb_substr($value->detail->title,0,30,'UTF-8') ?></a>
+                                 <a href="<?php echo $value->detail->url ?>"><?php echo mb_substr($value->detail->title,0,30,'UTF-8') ?></a>
                                 </div>
                             </div>
                             <?php $i++; ?>
@@ -163,8 +163,8 @@
                 <?php if (isset($performance)): ?>
                     <?php foreach ($performance as $key => $value): ?>
                         <div class="case_list_block">
-                            <div class="list_date"><?php echo $value->date ?></div>
-                            <div class="list_text"><a href="<?php echo site_url().'home/iso_news' ?>"><?php echo $value->title ?></a></div>
+                            <div class="list_date"><?php echo dateconvert($value->date) ?></div>
+                            <div class="list_text"><a href="<?php echo site_url().'home/iso_news?news_type='.$performance_name ?>"><?php echo $value->title ?></a></div>
                         </div>
                     <?php endforeach ?>
                 <?php endif ?>
@@ -193,12 +193,12 @@
     </div>
     <div class="business_case main_width">
         <div class="business_title">領導力企管創下許多全國第一。國內ISO輔導資源最充足的顧問公司，協助您取得各項ISO認證，所有ISO認證問題找領導力企管就對了！我們的專業輔導能量，創下許多同業第一。</div>
-        <div class="business_icon_slider">
+        <!--<div class="business_icon_slider"> 暫時關閉slider-->
             <div class="business_icon">
                 <div><img src="<?php echo site_url()."assets/templates/images/business_banner.jpg" ?>"></div>
                 <?php //echo fuel_block("index_business_icon") ?>
             </div>
-        </div>
+        <!--</div>暫時關閉slider-->
     </div>
 </div>
 <!-- 最底宣告 -->
@@ -217,6 +217,7 @@
         captions: true,
         speed:1000
     });
+    var num = $('div.bxslider img').length;
     $('.business_icon_slider').bxSlider({
         autoHover:true,
         auto: true,

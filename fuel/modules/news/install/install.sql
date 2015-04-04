@@ -27,3 +27,4 @@ CREATE TABLE `mod_code` (
 
 
 ALTER TABLE  `mod_news` ADD  `url` VARCHAR( 200 ) 
+ALTER TABLE  `mod_news` ADD  `keyword` VARCHAR( 200 )

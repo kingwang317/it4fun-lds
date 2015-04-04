@@ -24,7 +24,22 @@ class Code_model extends CI_Model {
         news_kind = '$news_kind'
         AND ('$type' = '-1' || type='0' || type='$type' || type IN (SELECT  code_id FROM mod_code WHERE code_key = '$type'))
         $filter 
-        order by news_order ASC , date DESC $orderby ";
+        order by date DESC $orderby ";
+        $query = $this->db->query($sql);
+        // echo $sql;exit;
+        if($query->num_rows() > 0)
+        {
+            $result = $query->result();
+
+            return $result;
+        }
+    }
+
+    public function get_extension_news($news_kind,$filter="",$orderby="",$limit=""){
+        $sql = @"select * from mod_news where
+        news_kind = '$news_kind'
+        $filter 
+        order by date DESC $orderby $limit ";
         $query = $this->db->query($sql);
         // echo $sql;exit;
         if($query->num_rows() > 0)
@@ -64,6 +79,10 @@ class Code_model extends CI_Model {
     public function get_random_coach_by_type($type){
         return $this->get_random_news(2,5,$type);
         // return $this->get_news(2,$type);
+    }
+    public  function get_recommand_news($page_size='5'){
+        //RECOMMEND
+        return $this->get_news(4,'RECOMMEND','',' limit 0,'.$page_size);
     }
 
     public function get_coach_by_type($type){

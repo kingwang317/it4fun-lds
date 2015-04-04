@@ -317,6 +317,9 @@ if ( ! function_exists('repeater'))
 		case '3': 
 			$controller = 'iso_class_detail';
 			break;
+		case '4': 
+			$controller = 'iso_news';
+			break;
 	}
 	return $controller;
 }

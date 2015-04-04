@@ -59,8 +59,9 @@
                 <div class="b3_d_top_title"><?php echo $news->title ?></div>
 
                 <div class="b3_d_top_date"><?php 
-                    $date = date_create($news->date);
-                    echo date_format($date, 'Y-m-d')
+                    //$date = date_create($news->date);
+                    //echo date_format($date, 'Y-m-d')
+                    echo dateconvert($news->date)
                 ?></div>
 
             </div>
@@ -82,7 +83,7 @@
 
                     <?php if (isset($interest_news)): ?>
                         <?php foreach ($interest_news as $key => $value): ?>
-                             <a href="<?php echo site_url().'home/iso_coach_detail/'.$value->id ?>"><div class="extend_list"><i class="fa fa-file-text-o"></i><?php echo $value->title ?></div></a>
+                             <a href="<?php echo site_url().'home/'.news_kind_controller($value->news_kind).'/'.$value->id.'?news_type='.$value->type ?>"><div class="extend_list"><i class="fa fa-file-text-o"></i><?php echo $value->title ?></div></a>
                         <?php endforeach ?>
                     <?php endif ?>
 
@@ -100,13 +101,13 @@
 
                 <div class="b3_d_extend_right">
 
-                    <div class="new_title_config b3_d_extend_title">其它人也瀏覽了</div>
+                    <div class="new_title_config b3_d_extend_title">推薦閱讀</div>
 
                     <div class="under_line"></div>
 
-                    <?php if (isset($interest_news)): ?>
-                        <?php foreach ($interest_news as $key => $value): ?>
-                             <a href="<?php echo site_url().'home/'.news_kind_controller($value->news_kind).'/'.$value->id ?>"><div class="extend_list"><i class="fa fa-file-text-o"></i><?php echo $value->title ?></div></a>
+                    <?php if (isset($recommand_news)): ?>
+                        <?php foreach ($recommand_news as $key => $value): ?>
+                             <a href="<?php echo site_url().'home/'.news_kind_controller($value->news_kind).'/'.$value->id.'?news_type='.$recommand_name ?>"><div class="extend_list"><i class="fa fa-file-text-o"></i><?php echo $value->title ?></div></a>
                         <?php endforeach ?>
                     <?php endif ?>
 
