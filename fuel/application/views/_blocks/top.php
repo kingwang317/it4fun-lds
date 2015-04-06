@@ -148,12 +148,14 @@
 <div class="top main_width">
     <div class="top_width_1024">
     <span class='top_menu' style="padding-left:0;"><a href="<?php echo site_url()?>aboutus">關於我們</a></span>| 
-    <span class='top_menu'><a href="<?php echo site_url()?>home/ci_design">CI設計</a></span>| 
+    <!--
+    <span class='top_menu'><a href="<?php echo site_url()?>home/ci_design">CI設計</a></span>| -->
     <span class='top_menu'><a href="<?php echo site_url()?>iso_train">ISO教育訓練</a></span>| 
     <span class='top_menu'><a href="<?php echo site_url()?>home/iso_coach">ISO輔導項目</a></span>| 
     <span class='top_menu'><a href="http://www.isoleader.com.tw/phpBB3/" onclick="window.open(this.href);
             return false;">討論區</a></span>| 
-    <span class='top_menu'><a href="<?php echo site_url()?>home/iso_class">ISO小學堂</a></span>| 
+            <!--
+    <span class='top_menu'><a href="<?php echo site_url()?>home/iso_class">ISO小學堂</a></span>| -->
     <span class='top_menu'><a href="<?php echo site_url()?>home/iso_news">最新消息</a></span>| 
     <span class='top_menu'><a href="<?php echo site_url()?>home/contactus">與我們聯絡</a></span>
     <span class="search" ><span class="fa fa-search"> </span><input type="search" id="search_box" style="height:15px;width:230px; background-color:#fafafa;" placeholder="關鍵字搜尋" autocomplete="off"></span>
