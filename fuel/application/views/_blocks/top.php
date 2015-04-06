@@ -51,6 +51,7 @@
     margin: 0px auto;
     align:center;
     z-index: 1; 
+    background-color:#fafafa;
 }
 .top_title li{
     font-size:14px;

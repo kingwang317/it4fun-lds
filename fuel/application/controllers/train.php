@@ -54,6 +54,7 @@ class Train extends CI_Controller {
 		$vars['train'] = $train;
 		$vars['views'] = 'iso_train_detail';
 		$vars['interest_news'] = $this->code_model->get_random_all_news();
+		$vars['recommend_news'] = $this->code_model->get_extension_news("4"," AND type='139'",""," LIMIT 0,5");
 		$vars['base_url'] = base_url();
 		$page_init = array('location' => 'iso_train_detail');
 		$this->fuel->pages->render("iso_train_detail", $vars);

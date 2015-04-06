@@ -28,8 +28,20 @@
            <div class="b10_detail_input">
             <form method="post" action="<?php echo $do_contact_url?>" id="form_contact" >
                 <div class="input_block">
-                    <span class="holder">姓名或公司名<span class="red"> ﹙必填﹚</span></span>
-                    <input id="name" name="name" class="b10_input" type="text" autocomplete="off">
+                    <span class="holder">姓名<span class="red"> ﹙必填﹚</span></span>
+                        <input id="name" name="name" class="b10_input" type="text" autocomplete="off">
+                        <input id="radio1" type="radio" name="sex" value="male" checked="checked">
+                        <label for="radio1"><span><span></span></span><div  class="b10_radio">先生</div></label>
+                        <input id="radio2" type="radio" name="sex" value="female">
+                        <label for="radio2"><span><span></span></span><div  class="b10_radio">小姐</div></label>
+                </div>
+                <div class="input_block">
+                    <span class="holder">公司名稱<span class="red"> ﹙必填﹚</span></span>
+                    <input id="company_name" name="company_name" class="b10_input" type="text" autocomplete="off">
+                </div>
+                <div class="input_block">
+                    <span class="holder">電話號碼<span class="red"> ﹙必填﹚</span></span>
+                    <input id="number" name="number" class="b10_input" type="text" autocomplete="off">
                 </div>
                 <div class="input_block">
                     <span class="holder">電子信箱<span class="red"> ﹙必填﹚</span></span>
@@ -114,12 +126,22 @@
     });
     $(".b10_submit").click(function() {
         if (!$("#name").val()){
-            alert("請輸入姓名或公司名");
+            alert("請輸入姓名");
             $("#name").focus();
             return false;
         }
         if (!$("#mail").val()){
             alert("請輸入電子信箱");
+            $("#mail").focus();
+            return false;
+        }
+        if (!$("#company_name").val()){
+            alert("請輸入公司名稱");
+            $("#mail").focus();
+            return false;
+        }
+        if (!$("#number").val()){
+            alert("請輸入電話號碼");
             $("#mail").focus();
             return false;
         }
@@ -133,6 +155,9 @@
       
         var postData = {//"plan_id": $("#plan_id").val(),
                           "name": $("#name").val(),
+                          "sex":$('input[name=sex]:checked').val(),
+                          "company_name": $("#company_name").val(),
+                          "number": $("#number").val(),
                           "email": $("#mail").val(),
                           "inquiry_topic": $("#inquiry_topic").val(),
                           "coor_unit": $("#coor_unit").val(),

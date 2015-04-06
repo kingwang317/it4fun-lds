@@ -124,12 +124,12 @@
 
                 <div class="b3_c_right_block">
 
-                    <div class="b3_c_right_title">其他人也瀏覽了</div>
+                    <div class="b3_c_right_title">推薦閱讀</div>
 
                     <div class="b3_c_right_list">
 
-                        <?php if (isset($interest_news)): ?>
-                            <?php foreach ($interest_news as $key => $value): ?>
+                        <?php if (isset($recommend_news)): ?>
+                            <?php foreach ($recommend_news as $key => $value): ?>
                                  <a href="<?php echo site_url().'home/'.news_kind_controller($value->news_kind).'/'.$value->id ?>"><div class="b3_c_right_list_block"><i class="fa fa-file-text-o"></i><?php echo $value->title ?></div></a>
                             <?php endforeach ?>
                         <?php endif ?>

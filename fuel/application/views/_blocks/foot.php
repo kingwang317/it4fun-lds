@@ -20,11 +20,20 @@
     font-size:16px;
     font-weight:bold;
     line-height:36px;
+    
 }
 .contact{
     font-size:13px;
     line-height:36px;
     color:#c5c5c5;
+    text-align:left;
+}
+.contact_end{
+    font-size:13px;
+    line-height:26px;
+    color:#c5c5c5;
+    text-align:left;
+    width:1000px;
 }
 .contact a{
     color:#c5c5c5;
@@ -33,8 +42,7 @@
     color:#fff;
 }
 .foot_end{
-    text-align:center;
-    color:#c5c5c5;
+    align:center;
     font-size:13px;
 }
 .main_foot{
@@ -49,6 +57,9 @@
 .end_right{
     display:inline-block;
     text-align:left;
+}
+.contact .fa{
+    padding:0 10px 0 20px;
 }
 </style>
 <!-- Foot -->
@@ -66,6 +77,7 @@
         <div class="contact"><a href="#">ISO認證Q&A</a></div>
         <div class="contact"><a href="#">企業內部教育訓練</a></div>
     </div>
+    <!--
     <div class="foot_block">
         <div class="title">CIS設計</div>
         <div class="contact"><a href="#">品牌行銷</a></div>
@@ -77,6 +89,7 @@
         <div class="contact"><a href="#">品牌行銷</a></div>
         <div class="contact"><a href="#">影片學習區</a></div>
     </div>
+    -->
   <!--   <div class="foot_block">
         <div class="title">ISO認證討論區</div>
         <div class="contact"><a href="#">ISO條文修訂改版</a></div>
@@ -87,17 +100,12 @@
         <div class="contact"><a href="#">內部新聞：領導力企管新聞稿</a></div>
     </div>
     <div class="foot_end">
-        <div class="end_left contact">
-            領導力企業管理顧問有限公司<br> 
-            service@isoleader.com.tw<br>
-            0800-222-007<br><br>
-            訪客人數：000888888 (砍入計數器)
-        </div>
-        <div class="end_right contact">
-            台北  02-25039035    台北市中山區建國北路二段87號2樓<br>
-            台中  04-2265-3849   台中市南區五權南路 516 號<br>
-            高雄  07-7927-146     高雄市小港區新昌街21之23號<br><br>
-            法律顧問：正力法律事務所 吳永茂律師
+        <div class="contact_end">
+            Copyright ⓒ 2015 Leadership, All Rights Reserved. 領導力企業管理顧問有限公司版權所有&nbsp;&nbsp;&nbsp;&nbsp;<span class="fa fa-phone"></span> 0800-222-007&nbsp;&nbsp;&nbsp;&nbsp;<span class="fa fa-envelope"></span> service@isoleader.com.tw
+            <br>
+            台北 02-25039035 台北市中山區建國北路二段87號2樓&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;台中 04-2265-3849 台中市南區五權南路516號&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;高雄 07-79278-146 高雄市小港區新昌街21之23號
+            <br>
+            法律顧問：正力法律事務所 吳永茂律師&nbsp;&nbsp;&nbsp;&nbsp;訪客人數：0888888888(計數器)
         </div>
     </div>
 </div>

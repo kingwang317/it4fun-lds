@@ -193,14 +193,18 @@
     </div>
     <div class="business_case main_width">
         <div class="business_title">領導力企管創下許多全國第一。國內ISO輔導資源最充足的顧問公司，協助您取得各項ISO認證，所有ISO認證問題找領導力企管就對了！我們的專業輔導能量，創下許多同業第一。</div>
-        <!--<div class="business_icon_slider"> 暫時關閉slider-->
+        <div class="business_icon_slider">
             <div class="business_icon">
-                <div><img src="<?php echo site_url()."assets/templates/images/business_banner.jpg" ?>"></div>
+                <div><img src="<?php echo site_url()."assets/templates/images/index/logo_1.png" ?>"></div>
                 <?php //echo fuel_block("index_business_icon") ?>
             </div>
-        <!--</div>暫時關閉slider-->
-    </div>
+            <div class="business_icon">
+                <div><img src="<?php echo site_url()."assets/templates/images/index/logo_2.png" ?>"></div>
+                <?php //echo fuel_block("index_business_icon") ?>
+            </div>
+        </div>
 </div>
+
 <!-- 最底宣告 -->
 <?php  $this->load->view('_blocks/foot')?>
 </body>
@@ -217,7 +221,6 @@
         captions: true,
         speed:1000
     });
-    var num = $('div.bxslider img').length;
     $('.business_icon_slider').bxSlider({
         autoHover:true,
         auto: true,

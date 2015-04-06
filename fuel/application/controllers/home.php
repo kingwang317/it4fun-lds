@@ -138,8 +138,9 @@ class Home extends CI_Controller {
 		
 
 		$vars['interest_news'] = $this->get_extension_news($news->keyword);//$this->code_model->get_coach_by_type($news->type);
+		$vars['recommend_news'] = $this->code_model->get_extension_news("4"," AND type='139'",""," LIMIT 0,5");
 		//$vars['interest_news2'] = $this->code_model->get_random_all_news();
-		$vars['news_series'] = $this->code_model->get_random_coach();
+		$vars['news_series'] = $this->code_model->get_extension_news("2"," AND type='$news->type' ");
 		$vars['news_type'] = $this->code_model->get_series_info($news->type);
 
 		if ($news->layout_type <> 1) {

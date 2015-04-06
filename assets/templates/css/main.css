@@ -1,6 +1,6 @@
 @charset "utf-8";
 /* CSS Document */
-body ,ol ,ul ,li ,a ,img ,h1 ,h2 ,h3 ,h4 ,h5 ,i ,b ,dd ,tt ,input ,textarea ,select{
+body ,ol ,ul ,li ,a ,h1 ,h2 ,h3 ,h4 ,h5 ,i ,b ,dd ,tt ,input ,textarea ,select{
     font-family:Open Sans,"微軟正黑體";
     text-decoration: none;
     margin: 0px;
@@ -27,7 +27,7 @@ p {margin:0;}
 h2 {
     color:#ed1b23 !important;
     font-size:16px;
-    margin:10px 0 10px 0;
+    margin:20px 0 20px 0;
 }
 /*index css*/
 .under_line{
@@ -484,8 +484,6 @@ h2 {
     background-color:white;
     color:#eb1d23;
     position:relative;
-    height:55px;
-    margin-bottom: -15px;
     cursor:auto;
 }
 .b4_1_list{
@@ -498,6 +496,7 @@ h2 {
 
 .b4_1_list_left{
     display:inline-block;
+    
 }
 .b4_1_list_right{
     display:inline-block;
@@ -508,10 +507,18 @@ h2 {
     display:inline-block;
     padding:0 10px 0 20px;
     color:#666666;
+    height:53px;
+    vertical-align: middle;
 }
 .b4_1_list_left_text{
     display:inline-block;
     cursor:pointer;
+    max-width:700px;
+    text-overflow: ellipsis; /* Safari 用 */
+    -o-text-overflow: ellipsis; /* Opera 用 */
+    overflow: hidden;
+    white-space: nowrap; /* 文字不折行功能。一定要寫入，否則不會出現效果 */
+    text-overflow:ellipsis;
 }
 .b4_1_list_click{
     background-color:#F1F1F1;
@@ -544,6 +551,10 @@ h2 {
 .list_slider ul li{
     list-style-type:disc;
     margin-left:50px;
+    color:#666;
+}
+.list_slider a{
+    color:#666;
 }
 .slider_image{
     display:inline-block;
@@ -556,6 +567,8 @@ h2 {
 }
 .fa-external-link{
     display:inline-block;
+    height:50px;
+    vertical-align: middle;
 }
 
 /*b10 css*/
@@ -590,6 +603,10 @@ h2 {
     border-radius: 3px;
     -moz-border-radius: 3px; 
     -webkit-border-radius: 3px;
+    padding-left:5px;
+}
+#name{
+    width:400px;
 }
 .b10_select{
     border:solid 1px #CCCCCC;
@@ -606,6 +623,10 @@ h2 {
     -moz-appearance: none;
     appearance: none;
     background: url("../images/b10/arrow.png") no-repeat 570px 15px;
+}
+.b10_radio{
+    font-size:14px;
+    display:inline;
 }
 .b10_textarea{
     border:solid 1px #CCCCCC;
@@ -635,7 +656,7 @@ span.holder {
 }
 .red{
     font-size:12px;
-    color:red;
+    color:#eb1d23;
 }
 .b10_submit{
     font-size:16px;
@@ -828,8 +849,9 @@ span.holder {
     padding:20px 10px 20px 10px;
     margin-bottom:20px;
     vertical-align:top;
-    line-height:30px;
+    line-height:26px;
     text-align:center;
+    font-size:16px;
 }
 .b3_c_left_title{
     font-size:28px;
@@ -1048,6 +1070,7 @@ span.holder {
     border-right:none;
     background-color:#f3f3f3;
     text-align:left;
+    font-size:16px;
 }
 .b12_info_title{
     color:#eb1d23;
@@ -1333,7 +1356,7 @@ input[type=checkbox]:not(old):checked + label > span:before{
     content     : '✓';
     display     : block;
     width       : 1em;
-    color       : rgb(153,204,102);
+    color       : #eb1d23;
     font-size   : 0.875em;
     line-height : 1em;
     text-align  : center;
@@ -1346,14 +1369,9 @@ input[type=radio]:not(old):checked +  label > span > span{
     width            : 0.5em;
     height           : 0.5em;
     margin           : 0.125em;
-    border           : 0.0625em solid rgb(115,153,77);
+    border           : 0.0625em solid #8D1115;
     border-radius    : 0.125em;
-    background       : rgb(153,204,102);
-    background-image :    -moz-linear-gradient(rgb(179,217,140),rgb(153,204,102));
-    background-image :     -ms-linear-gradient(rgb(179,217,140),rgb(153,204,102));
-    background-image :      -o-linear-gradient(rgb(179,217,140),rgb(153,204,102));
-    background-image : -webkit-linear-gradient(rgb(179,217,140),rgb(153,204,102));
-    background-image :         linear-gradient(rgb(179,217,140),rgb(153,204,102));
+    background       : #eb1d23;
 }
 .b13_radio{
     margin-bottom:10px;

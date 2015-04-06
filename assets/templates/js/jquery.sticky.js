@@ -60,6 +60,7 @@
                         .css('position', 'fixed')
                         .css('top', newTop)
                         .css('left', '0')
+                        .css('background-color','#fafafa')
                         .addClass('top_title_scroll', 200);
 
                     if (typeof s.getWidthFrom !== 'undefined') {
