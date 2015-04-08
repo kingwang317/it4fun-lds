@@ -91,7 +91,7 @@
                                 <div class='list_slider' style="<?php echo isset($news_id) && $news_id > 0 && $news_id == $value1->id?'':'display:none;' ?> ">
                                     <br>
                                     <?php if (isset($value1->img) && !empty($value1->img)): ?>
-                                        <img src="<?php echo site_url().'assets/'.$value1->img ?>" />
+                                        <img class="list_slider_img" src="<?php echo site_url().'assets/'.$value1->img ?>" />
                                     <?php endif ?>
                                     <?php echo htmlspecialchars_decode($value1->content) ?>
                                     <br><br>

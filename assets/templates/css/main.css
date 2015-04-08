@@ -230,6 +230,14 @@ h2 {
     margin-right: auto;
     left: 650px;
     right: 0;
+    /* For IE */
+    filter: alpha(opacity=80);
+    /* For Firefox and Netscape */
+    -moz-opacity: 0.8;
+    /* CSS Standard */
+    opacity: 0.8;
+    box-shadow: 0 1px 10px gray;
+
 }
 .banner_title{
     color:#ed1b23;
@@ -597,7 +605,7 @@ h2 {
 .b10_input{
     border:solid 1px #CCCCCC;
     height:40px;
-    width:598px;
+    width:593px;
     line-height:38px;
     font-size:15px;
     border-radius: 3px;
