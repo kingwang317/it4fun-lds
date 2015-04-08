@@ -41,7 +41,7 @@ class Home extends CI_Controller {
 
 		foreach ($iso_news_type as $key => $value) { 	
 			if ($value->code_key == 'FREE_TRAIN') {
-				$free_train = $this->train_model->get_list(0);
+				$free_train = $this->train_model->get_list(1);
 				if (is_array($free_train) && sizeof($free_train) > 0) {
 					$value->detail = (object)array('title'=>$free_train[0]->train_title,'img'=>$free_train[0]->file_path,'url'=>site_url().'iso_train?type=free');
 				}else{
@@ -137,8 +137,8 @@ class Home extends CI_Controller {
 
 		
 
-		$vars['interest_news'] = $this->get_extension_news($news->keyword);//$this->code_model->get_coach_by_type($news->type);
-		$vars['recommend_news'] = $this->code_model->get_extension_news("4"," AND type='139'",""," LIMIT 0,5");
+		$vars['interest_news'] = $this->get_extension_news($news->keyword," AND type NOT IN (SELECT  code_id FROM mod_code WHERE code_key = 'RECOMMEND') ");//$this->code_model->get_coach_by_type($news->type);
+		// $vars['recommend_news'] = $this->code_model->get_extension_news("4"," AND type='139'",""," LIMIT 0,5");
 		//$vars['interest_news2'] = $this->code_model->get_random_all_news();
 		$vars['news_series'] = $this->code_model->get_extension_news("2"," AND type='$news->type' ");
 		$vars['news_type'] = $this->code_model->get_series_info($news->type);
@@ -151,7 +151,7 @@ class Home extends CI_Controller {
 		}else{
 			$recommand = $this->code_model->get_code_info("NEWS_TYPE","RECOMMEND");	 
 			$vars['recommand_name'] = $recommand[0]->code_name;
-			$vars['recommand_news'] = $this->code_model->get_recommand_news(10);
+			$vars['recommand_news'] = $this->code_model->get_recommand_news(5);
 			$vars['views'] = 'iso_coach_singlecoldetail';
 			$vars['base_url'] = base_url();
 			$page_init = array('location' => 'iso_coach_singlecoldetail');
@@ -262,7 +262,7 @@ class Home extends CI_Controller {
 		$this->code_model->update_news_viewcount($id);
 
 		$vars['news'] = $news;
-		$vars['interest_news'] = $this->get_extension_news($news->keyword);//$this->code_model->get_random_all_news();
+		$vars['interest_news'] = $this->get_extension_news($news->keyword," AND type NOT IN (SELECT  code_id FROM mod_code WHERE code_key = 'RECOMMEND') ");//$this->code_model->get_random_all_news();
 		// $vars['interest_news2'] = $this->code_model->get_random_all_news();
 		$recommand = $this->code_model->get_code_info("NEWS_TYPE","RECOMMEND");	 
 		$vars['recommand_name'] = $recommand[0]->code_name;
@@ -351,13 +351,23 @@ class Home extends CI_Controller {
 
 		    
 
-		    $subject = "CONTACT US FROM WEBSITE"; //信件標題 
+		  
 	 
 	 		$name = $post_arr['name'];
+	 		$sex = $post_arr['sex'];
+	 		if ($sex == 'male') {
+	 			$sex = '先生';
+	 		}else{
+	 			$sex = '小姐';
+	 		}
+	 		$number = $post_arr['number'];
+	 		$company_name = $post_arr['company_name'];
             $email = $post_arr['email'];
             $inquiry_topic = $this->code_model->get_series_info($post_arr['inquiry_topic'])->code_name;
             $coor_unit = $this->code_model->get_series_info($post_arr['coor_unit'])->code_name;
             $msg2 = $post_arr['msg'];
+
+            $subject = "$company_name-$name-$inquiry_topic"; //信件標題 
 
 			// $msg = "
  
@@ -427,11 +437,17 @@ class Home extends CI_Controller {
 				        <!--<div style='margin: 0px auto;text-align:center;'><img src='http://a-wei.lionfree.net/leadership/images/mail/head.jpg'></div>-->
 				        <div style='font-size:14px;line-height:26px;'>你好：<br>我們已收到您的線上留言。將儘快與您聯繫。</div>
 				        <div style='line-height:26px;'>
-				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>姓名：</div><div style='font-size:14px;display:inline-block;'>$name</div>
+				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>姓名：</div><div style='font-size:14px;display:inline-block;'>$name $sex</div>
+				        </div>
+				        <div style='line-height:26px;'>
+				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>公司名稱：</div><div style='font-size:14px;display:inline-block;'>$company_name</div>
 				        </div>
 				        <div style='line-height:26px;'>
 				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>電子信箱：</div><div style='font-size:14px;display:inline-block;'>$email</div>
 				        </div> 
+				        <div style='line-height:26px;'>
+				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>連絡電話：</div><div style='font-size:14px;display:inline-block;'>$number</div>
+				        </div>
 				        <div style='line-height:26px;'>
 				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>詢問主旨：</div><div style='font-size:14px;display:inline-block;'>$inquiry_topic</div>
 				        </div>

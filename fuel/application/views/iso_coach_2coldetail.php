@@ -74,9 +74,10 @@
               
                 <div class="b3_c_left_extend">
 
-                    <div class="new_title_config extend_title">延伸閱讀</div>
+                    
 
-                    <?php if (isset($interest_news)): ?>
+                    <?php if (isset($interest_news) && sizeof($interest_news) > 0): ?>
+                        <div class="new_title_config extend_title">延伸閱讀</div>
                         <?php foreach ($interest_news as $key => $value): ?> 
                              <a href="<?php echo site_url().'home/'.news_kind_controller($value->news_kind).'/'.$value->id.'?news_type='.$value->type ?>"><div class="extend_list"><i class="fa fa-file-text-o"></i><?php echo $value->title ?></div></a>
                         <?php endforeach ?>

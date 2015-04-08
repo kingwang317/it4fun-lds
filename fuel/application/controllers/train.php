@@ -48,7 +48,7 @@ class Train extends CI_Controller {
 			$vars['free_charge_name'] = '免費課程';
 		}else{
 			$vars['free_charge'] = 'charge';
-			$vars['free_charge_name'] = '付費課程';
+			$vars['free_charge_name'] = '收費課程';
 		}
 
 		$vars['train'] = $train;

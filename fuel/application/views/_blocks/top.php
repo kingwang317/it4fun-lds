@@ -1,5 +1,8 @@
 <script type="text/javascript" src="<?php echo site_url()?>assets/templates/js/jquery.sticky.js"></script>
 <style>
+.main_width{
+    backgorund-color:#fafafa;
+}
 .top{
     margin: 0px auto;
     text-align:center;
@@ -69,6 +72,9 @@
     vertical-align:top;
     padding:14px 0 0 0;
 
+}
+.sticky-wrapper{
+    background-color:#fafafa;
 }
 .top_title_menu{
     padding:0 15px 0 0;
@@ -148,19 +154,18 @@
 <div class="top main_width">
     <div class="top_width_1024">
     <span class='top_menu' style="padding-left:0;"><a href="<?php echo site_url()?>aboutus">關於我們</a></span>| 
-    <!--
-    <span class='top_menu'><a href="<?php echo site_url()?>home/ci_design">CI設計</a></span>| -->
+    <span class='top_menu'><a href="<?php echo site_url()?>home/ci_design">CI設計</a></span>| 
     <span class='top_menu'><a href="<?php echo site_url()?>iso_train">ISO教育訓練</a></span>| 
     <span class='top_menu'><a href="<?php echo site_url()?>home/iso_coach">ISO輔導項目</a></span>| 
     <span class='top_menu'><a href="http://www.isoleader.com.tw/phpBB3/" onclick="window.open(this.href);
             return false;">討論區</a></span>| 
-            <!--
-    <span class='top_menu'><a href="<?php echo site_url()?>home/iso_class">ISO小學堂</a></span>| -->
+    <span class='top_menu'><a href="<?php echo site_url()?>home/iso_class">ISO小學堂</a></span>| 
     <span class='top_menu'><a href="<?php echo site_url()?>home/iso_news">最新消息</a></span>| 
     <span class='top_menu'><a href="<?php echo site_url()?>home/contactus">與我們聯絡</a></span>
     <span class="search" ><span class="fa fa-search"> </span><input type="search" id="search_box" style="height:15px;width:230px; background-color:#fafafa;" placeholder="關鍵字搜尋" autocomplete="off"></span>
     </div>
 </div>
+<div class="top main_width">
 <div id="sticky" class="top_title main_width">
     <div class="main_title">
         <a href="<?php echo site_url() ?>"><div class="logo"></div></a>
@@ -192,7 +197,6 @@
                     </ul>
                 </li>
 
-
                 <?php 
 
                 } 
@@ -202,7 +206,7 @@
         </div>
     </div>
 </div>
-
+</div>
 <script type="text/javascript">
         $('.top_title_menu').on({
             mouseover: function() {
