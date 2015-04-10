@@ -17,7 +17,7 @@
 <?php  $this->load->view('_blocks/top')?>
 
 <div class="main main_width">
-    <div class="b10_banner" style="background-image:url(<?php echo site_url()?>assets/templates/images/banner_about.jpg);"></div>
+    <div class="page_banner" style="background-image:url(<?php echo site_url()?>assets/templates/images/banner_about.jpg);"></div>
          <!--<img src="<?php echo site_url()?>assets/templates/images/banner_about.jpg"></div>-->
     
     <div class="width1024 b10_width">
@@ -46,6 +46,10 @@
                 <div class="input_block">
                     <span class="holder">電子信箱<span class="red"> ﹙必填﹚</span></span>
                     <input id="mail" name="email" class="b10_input" type="text" autocomplete="off">
+                </div>
+                <div class="input_block">
+                    <span class="holder">公司人數<span class="red"> ﹙必填﹚</span></span>
+                    <input id="company_num" name="company_num" class="b10_input" type="text" autocomplete="off">
                 </div>
                 <div class="input_block">
                     <select class="b10_select" id="inquiry_topic" name="inquiry_topic">
@@ -86,7 +90,7 @@
             <div class="b10_right_block">
                 <div class="b10_right_block_title">台北</div>
                 <div class="b10_right_block_detail">
-                (02)2503-9035</br>
+                (02)2503-9036</br>
                 台北市中山區建國北路二段87號2樓
                 </div>
             </div>
@@ -145,6 +149,11 @@
             $("#mail").focus();
             return false;
         }
+        if (!$("#company_num").val()){
+            alert("請輸入公司人數");
+            $("#company_num").focus();
+            return false;
+        }
 
         // $("#form_contact").submit();
 
@@ -157,6 +166,7 @@
                           "name": $("#name").val(),
                           "sex":$('input[name=sex]:checked').val(),
                           "company_name": $("#company_name").val(),
+                          "company_num": $("#company_num").val(),
                           "number": $("#number").val(),
                           "email": $("#mail").val(),
                           "inquiry_topic": $("#inquiry_topic").val(),

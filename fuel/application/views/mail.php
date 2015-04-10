@@ -40,7 +40,6 @@
         <div style='font-size:14px;margin-bottom:10px;'>E-Mail：Service@isoleader.com.tw</div>
         <div style='margin-top:30px;font-size:14px;'>領導力企管客服部 敬上</div>
     </div>
-    <div style='font-size:12px;margin: 0px auto;text-align:center;line-height:26px;'>若無法正常閱讀本郵件，請點選此<a href='mail.php' style="color:#eb1d23;"><font style="color:#eb1d23;">連結</font></a></div>
 </div>
 </body>
 </html>

@@ -98,7 +98,7 @@
                                     <div class="image_title"><div style="padding-left:5px;"><?php echo $value->code_name ?></div></div>
                                  </div>
                                  <div class="news_text">
-                                 <a href="<?php echo $value->detail->url ?>"><?php echo mb_substr($value->detail->title,0,30,'UTF-8') ?></a>
+                                 <a href="<?php echo $value->detail->url ?>"><?php echo mb_substr($value->detail->title,0,40,'UTF-8') ?></a>
                                 </div>
                             </div>
                             <?php $i++; ?>

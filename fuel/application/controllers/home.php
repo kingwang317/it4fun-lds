@@ -133,17 +133,16 @@ class Home extends CI_Controller {
 		$this->code_model->update_news_viewcount($id);
 
 		$vars['news'] = $news;
-
-
-		
-
 		$vars['interest_news'] = $this->get_extension_news($news->keyword," AND type NOT IN (SELECT  code_id FROM mod_code WHERE code_key = 'RECOMMEND') ");//$this->code_model->get_coach_by_type($news->type);
+ 
+
 		// $vars['recommend_news'] = $this->code_model->get_extension_news("4"," AND type='139'",""," LIMIT 0,5");
 		//$vars['interest_news2'] = $this->code_model->get_random_all_news();
-		$vars['news_series'] = $this->code_model->get_extension_news("2"," AND type='$news->type' ");
+	
 		$vars['news_type'] = $this->code_model->get_series_info($news->type);
 
-		if ($news->layout_type <> 1) {
+		if ($news->layout_type <> 1) {			
+			$vars['news_series'] = $this->code_model->get_extension_news("2"," AND type='$news->type' ");
 			$vars['views'] = 'iso_coach_2coldetail';
 			$vars['base_url'] = base_url();
 			$page_init = array('location' => 'iso_coach_2coldetail');
@@ -166,8 +165,9 @@ class Home extends CI_Controller {
 			$filter = ' AND ( ';
 			for($i=0;$i<sizeof($k_ary);$i++){
 				$k = $k_ary[$i];
-
-				$filter.=" title like '%$k%' ";
+				$k = str_replace(' ', '', $k);
+				$filter.=" REPLACE(title,' ','') like '%$k%' ";
+				// $filter.=" title like '%$k%' ";
 
 				if ($i != sizeof($k_ary)-1) {
 					$filter.=" OR ";
@@ -176,10 +176,10 @@ class Home extends CI_Controller {
 			$filter .= ' )';
 			// echo $filter;
 			// die;
-			$extension_news = $this->code_model->get_extension_news(4,$filter,'',' limit 0,10 ');//最新消息
-			$extension_coach = $this->code_model->get_extension_news(2,$filter,'',' limit 0,10 ');//ISO輔導項目
+			$extension_news = $this->code_model->get_extension_news(4,$filter,'',' limit 0,5 ');//最新消息
+			$extension_coach = $this->code_model->get_extension_news(2,$filter,'',' limit 0,5 ');//ISO輔導項目
 
-			return array_slice(array_merge($extension_news, $extension_coach),0,10);
+			return array_slice(array_merge($extension_news, $extension_coach),0,5);
 
 		}else{
 			return array();
@@ -361,6 +361,7 @@ class Home extends CI_Controller {
 	 			$sex = '小姐';
 	 		}
 	 		$number = $post_arr['number'];
+	 		$company_num = $post_arr['company_num'];
 	 		$company_name = $post_arr['company_name'];
             $email = $post_arr['email'];
             $inquiry_topic = $this->code_model->get_series_info($post_arr['inquiry_topic'])->code_name;
@@ -368,54 +369,7 @@ class Home extends CI_Controller {
             $msg2 = $post_arr['msg'];
 
             $subject = "$company_name-$name-$inquiry_topic"; //信件標題 
-
-			// $msg = "
  
-			// <html xmlns='http://www.w3.org/1999/xhtml'>
-			// <head>
-			// <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
-			// <meta name='viewport' content='width=device-width; initial-scale=1.0' /> <!-- 於手機觀看時不會自動放大 -->
-			// <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'> <!-- 最佳的IE兼容模式 -->
-			// </head>
-			// <body style='margin: 0px auto;text-align:center;background-color:#f1f1f1;'>
-			// <div style='margin: 0px auto;text-align:left;width:600px;background-color:#f1f1f1;'>
-			//     <div style='padding:30px 0 10px 0;'>
-			//         <img src='http://a-wei.lionfree.net/leadership/images/mail/logo.png'>
-			//         <div style='font-size:12px;display:inline-block;float:right;line-height:50px;padding-right:5px;'><a href='http://a-wei.lionfree.net/leadership/index.php' style='color:black;text-decoration: none;'>回領導力官網</a></div>
-			//     </div>
-			//     <div style='background-color:#fff;padding:50px;min-height:500px;'>
-			//         <div style='margin: 0px auto;text-align:center;'><img src='http://a-wei.lionfree.net/leadership/images/mail/head.jpg'></div>
-			//         <div style='font-size:26px;margin-bottom:50px;'>你好：<br>領導力企管有一封新的線上留言。</div>
-			//         <div style='line-height:30px;'>
-			//             <div style='vertical-align:top;font-weight:bold;font-size:14px;margin-right:5px;display:inline-block;width:75px;'>姓　　名：</div><div style='width:420px;font-size:14px;display:inline-block;'>$name</div>
-			//         </div>
-			//         <div style='line-height:30px;'>
-			//             <div style='vertical-align:top;font-weight:bold;font-size:14px;margin-right:5px;display:inline-block;width:75px;'>電子信箱：</div><div style='width:420px;font-size:14px;display:inline-block;'>$email</div>
-			//         </div>
-			//         <div style='line-height:30px;'>
-			//             <div style='vertical-align:top;font-weight:bold;font-size:14px;margin-right:5px;display:inline-block;width:75px;'>服務：</div><div style='width:420px;font-size:14px;display:inline-block;'>$inquiry_topic</div>
-			//         </div>
-			//         <div style='line-height:30px;'>
-			//             <div style='vertical-align:top;font-weight:bold;font-size:14px;margin-right:5px;display:inline-block;width:75px;'>驗證機構：</div><div style='width:420px;font-size:14px;display:inline-block;'>$coor_unit</div>
-			//         </div>
-			//         <div style='line-height:30px;'>
-			//             <div style='vertical-align:top;font-weight:bold;font-size:14px;margin-right:5px;display:inline-block;width:75px;'>留言內容：</div><div style='width:420px;font-size:14px;display:inline-block;'>$msg2</div>
-			//         </div>
-			//     </div>
-			//     <div style='background-color:#fafafa;padding:30px 0 30px 50px;border-top:solid 2px #f1f1f1;'>
-			//         <div style='font-size:14px;margin-bottom:10px;'>若你還有其它問題，歡迎來信或來電洽詢。</div>
-			//         <div style='font-size:14px;margin-bottom:10px;'>全省免費諮詢電話 0800-222-007</div>
-			//         <div style='font-size:14px;margin-bottom:10px;'>E-Mail：Service@isoleader.com.tw</div>
-			//         <div style='margin-top:30px;font-size:14px;font-weight:bold;'>領導力企管客服部 敬上</div>
-			//     </div>
-			//     <div style='font-size:12px;margin: 0px auto;text-align:center;line-height:30px;'>若無法正常閱讀本郵件，請點選此<a href='mail.php' style='color:#eb1d23;'><font style='color:#eb1d23;'>連結</font></a></div>
-			// </div>
-			// </body>
-			// </html>
-
-
-			// ";
-
 			$url = site_url();
 			$image_url = $url.'assets/templates/images/mail/logo.png';
 
@@ -452,7 +406,10 @@ class Home extends CI_Controller {
 				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>詢問主旨：</div><div style='font-size:14px;display:inline-block;'>$inquiry_topic</div>
 				        </div>
 				        <div style='line-height:26px;'>
-				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>公司人數：</div><div style='font-size:14px;display:inline-block;'>$coor_unit</div>
+				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>公司人數：</div><div style='font-size:14px;display:inline-block;'>$company_num</div>
+				        </div>
+				        <div style='line-height:26px;'>
+				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>驗證機構：</div><div style='font-size:14px;display:inline-block;'>$coor_unit</div>
 				        </div>
 				        <div style='line-height:26px;'>
 				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>詢價內容：</div><div style='font-size:14px;display:inline-block;'>$msg2</div>
@@ -463,8 +420,7 @@ class Home extends CI_Controller {
 				        <div style='font-size:14px;margin-bottom:10px;'>全省免費諮詢電話 0800-222-007</div>
 				        <div style='font-size:14px;margin-bottom:10px;'>E-Mail：Service@isoleader.com.tw</div>
 				        <div style='margin-top:30px;font-size:14px;'>領導力企管客服部 敬上</div>
-				    </div>
-				    <div style='font-size:12px;margin: 0px auto;text-align:center;line-height:26px;'>若無法正常閱讀本郵件，請點選此<a href='mail.php' style='color:#eb1d23;'><font style='color:#eb1d23;'>連結</font></a></div>
+				    </div>				    
 				</div>
 				</body>
 				</html>

@@ -23,7 +23,7 @@
 <?php  $this->load->view('_blocks/top')?>
 
 <div class="main main_width">
-    <div><img src="<?php echo site_url()?>assets/templates/images/b10/b10_banner.jpg"></div>
+    <div class="page_banner" style="background-image:url(<?php echo site_url()?>assets/templates/images/banner_about.jpg);"></div>
     <div class="width1024">
         <div class="ci_title">搜尋結果</div>
         <div class="b15_main">
