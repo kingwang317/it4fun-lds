@@ -18,7 +18,7 @@ body ,ol ,ul ,li ,a ,h1 ,h2 ,h3 ,h4 ,h5 ,i ,b ,dd ,tt ,input ,textarea ,select{
     background-color:#fafafa;
     text-align:left;
 }
-body {background-color:white;}
+body {background-color:white;min-width:1024px;}
 p {margin:0;}
 .main_width {margin: 0px;text-align:center;background-color:#fafafa;}
 .left {float:left;}
@@ -504,7 +504,7 @@ h2 {
 
 .b4_1_list_left{
     display:inline-block;
-    
+
 }
 .b4_1_list_right{
     display:inline-block;
@@ -556,6 +556,11 @@ h2 {
     color:#666666;
     background-color:#F1F1F1;
 }
+.list_slider_img{
+    width:600px;
+    height:338px;
+    align:center;
+}
 .list_slider ul li{
     list-style-type:disc;
     margin-left:50px;
@@ -591,13 +596,14 @@ h2 {
 
 }
 .b10_detail_title1{
-    font-size:17px;
+    font-size:16px;
     padding-bottom:10px;
+    line-height:26px;
 }
 .b10_detail_title2{
-    font-size:15px;
+    font-size:16px;
     padding-bottom:10px;
-    line-height:30px;
+    line-height:26px;
 }
 .input_block{
     margin-bottom:20px;
@@ -633,7 +639,7 @@ h2 {
     background: url("../images/b10/arrow.png") no-repeat 570px 15px;
 }
 .b10_radio{
-    font-size:14px;
+    font-size:16px;
     display:inline;
 }
 .b10_textarea{
@@ -719,19 +725,51 @@ span.holder {
     vertical-align:top;
 }
 .b17_top_left_title{
-    font-size:24px;
-    line-height:35px;
-    padding-bottom:10px;
+    font-size:16px;
+    line-height:30px;
+    padding:20px 0 0 0;
     font-weight: bold;
+    color:#eb1d23;
 }
 .b17_top_left_contact{
     font-size:16px;
     line-height:30px;
+    width:650px;
+    margin-right:20px;
 }
 .b17_top_right{
     display:inline-block;
-    width:300px;
-    float:right;
+    margin:auto;
+    height:490px;
+    position: relative;
+}
+.b17_top_right img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+.b17_buttom_block{
+    width:450px;
+    margin:20px;
+    display:inline-block;
+    text-align:center;
+    vertical-align: top;
+}
+.buttom_block_title{
+    font-size:16px;
+    line-height:26px;
+    color:#eb1d23;
+    height:45px;
+    font-weight:bold;
+    margin:20px 0 10px 0;
+}
+.buttom_block_text{
+    font-size:16px;
+    line-height: 26px;
+    text-align:left;
 }
 .b17_block_buttom_title{
     font-size:24px;
@@ -763,9 +801,8 @@ span.holder {
 .b17_bottom_left_contact4_block{
     display:inline-block;
     width:250px;
-    padding-bottom:10px;
 }
-.b17_c4_text:hover{
+.b17_c4_text a:hover{
     color:#eb1d23;
 }
 .b17_c4_img{
@@ -853,7 +890,6 @@ span.holder {
     display:inline-block;
     width:640px;
     background-color:#fff;
-    text-align:left;
     padding:20px 10px 20px 10px;
     margin-bottom:20px;
     vertical-align:top;
@@ -912,6 +948,7 @@ span.holder {
 }
 .extend_list{
     line-height:26px;
+    font-size:16px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -964,11 +1001,11 @@ span.holder {
     color:#5E5E5E;
 }
 .b3_c_right_list_advert{
-    padding:10px 20px 0 20px;
+    padding:20px 20px 0 20px;
     background-color:#f3f3f3;
 }
 .b3_c_right_block_advert{
-    padding-bottom:10px;
+    padding-bottom:20px;
 }
 
 /*b3_d css*/
@@ -994,6 +1031,15 @@ span.holder {
     font-size:16px;
     text-align:left;
     padding:0 50px 0 50px;
+    text-align:left;
+}
+.b3_d_text_img{
+    text-align:center;
+    margin-top:20px;
+}
+.b3_d_text ul li{
+    list-style-type:disc;
+    margin-left:50px;
 }
 .b3_d_contact{
     font-size:15px;
@@ -1072,7 +1118,7 @@ span.holder {
 }
 .b12_info{
     padding:10px 0 10px 0;
-    width:600px;
+    margin-bottom:15px;
     border: dotted 1px black;
     border-left:none;
     border-right:none;
@@ -1107,6 +1153,7 @@ span.holder {
 .b12_info_title_slider_text{
     color:#5E5E5E;
     width:520px;
+    padding-left:10px;
 }
 
 /*b14 css*/
@@ -1386,14 +1433,16 @@ input[type=radio]:not(old):checked +  label > span > span{
 }
 .b13_title{
     font-weight:bold;
+    font-size:16px;
+    line-height:26px;
 }
 .b13_remark{
     margin-top:5px;
     font-size:12px;
 }
 .b13_detail{
-    font-size:15px;
-    line-height:25px;
+    font-size:16px;
+    line-height:26px;
     padding-bottom:5px;
 }
 .b13_calendar{
