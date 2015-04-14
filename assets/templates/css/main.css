@@ -880,11 +880,14 @@ span.holder {
 .browse_count{
     position: relative;
     right:30px;
-    top:-8px;
     display:inline-block;
+    margin-right:5px;
 }
 .facebook_like{
-    display:inline-block;
+    position: relative;
+    right: 30px;
+    top: -5px;
+    display: inline-block;
 }
 .b3_c_left{
     display:inline-block;

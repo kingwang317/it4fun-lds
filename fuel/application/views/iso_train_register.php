@@ -28,25 +28,18 @@
            -->
            <div class="b10_detail_input">
                 <div class="input_block">
-                    <span class="holder">公司名稱<span class="red"> ﹙必填﹚</span></span>
+                    <span class="holder">公司名稱</span>
                     <input id="company_name" class="b10_input" type="text" autocomplete="off">
                 </div>
                 <div class="input_block">
-                    <span class="holder">部門＆單位<span class="red"> ﹙必填﹚</span></span>
+                    <span class="holder">部門＆單位</span>
                     <input id="dep" class="b10_input" type="text" autocomplete="off">
                 </div>
                 <div class="input_block">
                     <span class="holder">姓名<span class="red"> ﹙必填﹚</span></span>
                     <input id="name" class="b10_input" type="text" autocomplete="off">
-                </div>
-                <div class="input_block">
-                    <div class="b13_title">性別</div>
-                         <div>
-                            <input id="sex1" type="radio" name="sex" value="1" checked="checked"><label for="sex1"><span><span></span></span><div class="b10_radio">男性</div></label>
-                          </div>
-                          <div>
-                            <input id="sex2" type="radio" name="sex" value="2"><label for="sex2"><span><span></span></span><div class="b10_radio">女性</div></label>
-                          </div>
+                    <input id="sex1" type="radio" name="sex" value="1" checked="checked"><label for="sex1"><span><span></span></span><div class="b10_radio">男性</div></label>
+                    <input id="sex2" type="radio" name="sex" value="2"><label for="sex2"><span><span></span></span><div class="b10_radio">女性</div></label>
                 </div>
                 <div class="input_block">
                     <span class="holder">電子信箱<span class="red"> ﹙必填﹚</span></span>
@@ -85,6 +78,97 @@
                     <input id="Uniform" class="b10_input" type="text" placeholder="統一編號" autocomplete="off">
                     <div class="b13_remark">﹙僅付費課程需填寫﹚</div>
                 </div>
+                <div class="b12_info">
+
+                    <div class="b12_info_title">
+                        <!--<i class="fa fa-exclamation-circle" style="color:#eb1d23;"></i>課程報名資訊<i class="fa fa-plus" style="color:#eb1d23;"></i>-->
+                        課程報名資訊<i class="fa fa-plus" style="color:#eb1d23;"></i>
+
+                    </div>
+
+                    <div class="b12_info_title_slider" style="display:none;">
+
+                        <div class="b12_block">
+
+                            <div class="b12_block_title">課程名稱</div>
+
+                            <div class="b12_info_title_slider_text"><?php echo "text1" ?></div>
+
+                        </div>
+
+                        <div class="b12_block">
+
+                            <div class="b12_block_title">課程費用</div>
+
+                            <div class="b12_info_title_slider_text"><?php echo "text2" ?></div>
+
+                        </div>
+
+                        <div class="b12_block">
+
+                            <div class="b12_block_title">開課日期</div>
+
+                            <div class="b12_info_title_slider_text">
+                                <input id="date1" type="radio" name="date" value="" checked="checked"><label for="date1"><span><span></span></span><div class="b10_radio">date1</div></label>
+                                <input id="date2" type="radio" name="date" value=""><label for="date2"><span><span></span></span><div class="b10_radio">date2</div></label>
+                            </div>
+
+                        </div>
+
+                        <div class="b12_block">
+
+                            <div class="b12_block_title">上課天數</div>
+
+                            <div class="b12_info_title_slider_text"><?php echo "text3" ?></div>
+
+                        </div>
+
+                        <div class="b12_block">
+
+                            <div class="b12_block_title">上課時數</div>
+
+                            <div class="b12_info_title_slider_text"><?php echo "text4" ?></div>
+
+                        </div>
+
+                        <div class="b12_block">
+
+                            <div class="b12_block_title">上課時間</div>
+
+                            <div class="b12_info_title_slider_text"><?php echo "text5" ?>~<?php echo "text6" ?></div>
+
+                        </div>
+
+                        <div class="b12_block">
+
+                            <div class="b12_block_title">上課地點</div>
+
+                            <div class="b12_info_title_slider_text">
+                            <input id="location1" type="radio" name="location" value="" checked="checked"><label for="location1"><span><span></span></span><div class="b10_radio">台北</div></label>
+                            <input id="location2" type="radio" name="location" value=""><label for="location2"><span><span></span></span><div class="b10_radio">高雄</div></label>
+                            </div>
+
+                        </div>
+
+                        <div class="b12_block">
+
+                            <div class="b12_block_title">主辦單位</div>
+
+                            <div class="b12_info_title_slider_text"><?php echo "text7" ?></div>
+
+                        </div>
+
+                        <div class="b12_block">
+
+                            <div class="b12_block_title">合作單位</div>
+
+                            <div class="b12_info_title_slider_text"><?php echo "text8" ?></div>
+
+                        </div>
+
+                    </div>
+
+                </div>
                 
                <div class="input_block" style="display:none;">
                     <select class="b10_select" id="train_id">
@@ -114,7 +198,7 @@
                           <div>
                             <input id="place3" type="checkbox" name="place" value="台南"><label for="place3"><span></span>台南</label>
                           </div>
-                           <div>
+                          <div>
                             <input id="place4" type="checkbox" name="place" value="高雄"><label for="place4"><span></span>高雄</label>
                           </div>
                 </div>
@@ -192,6 +276,7 @@
         $(this).next().focus();
     });
     $(".b10_submit").click(function() {
+        /*
         if (!$("#company_name").val()){
             alert("請輸入公司名稱");
             $("#company_name").focus();
@@ -202,6 +287,7 @@
             $("#dep").focus();
             return false;
         }
+        */
         if (!$("#name").val()){
             alert("請輸入姓名");
             $("#name").focus();
@@ -277,5 +363,29 @@
     
     $( ".b13_calendar" ).click(function() {
         $( "#datepicker" ).datepicker("show");
+    });
+    
+    /* control the slide_title to show their own text */
+
+    $('.b12_info_title').click(function() {
+
+        if ($(this).next().attr("id") !== 'open') {
+
+            $(this).next().slideDown(600);
+
+            $('.fa-plus', this).removeClass("fa-plus").addClass("fa-minus");
+
+            $(this).next().attr('id', 'open');
+
+        } else {
+
+            $(this).next().slideUp(300);
+
+            $('.fa-minus', this).removeClass("fa-minus").addClass("fa-plus");
+
+            $(this).next().removeAttr("id");
+
+        }
+
     });
 </script>

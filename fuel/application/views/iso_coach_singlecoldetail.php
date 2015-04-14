@@ -47,7 +47,15 @@
 
                 <div class="browse_count"><font color="black">瀏覽數：</font><?php echo $news->view_count ?>+</div>
 
-                <div class="facebook_like"><img src="<?php echo site_url() ?>assets/templates/images/b3_c/fb.jpg"></div>
+                
+                <?php
+
+                $target_url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+                
+                ?>
+
+                <div class="facebook_like"><div class="fb-like" data-href="<?php echo $target_url; ?>" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div></div>
+
 
             </div>
 
@@ -160,11 +168,12 @@
 
 <script type="text/javascript">
 $(".b3_d_text img").each(function(){
-            $(this).wrap($('<a>',{
+            $(this).wrap( "<div class='b3_d_text_img'></div>" )
+                   .wrap($('<a >',{
                href:  this.src,
                class:'go'
 
-            }))
+            }));
 });
 </script>
 <script type="text/javascript" src="<?php echo site_url()?>assets/templates/js/iviewer_0.7.11/jquery.mousewheel.min.js" ></script>

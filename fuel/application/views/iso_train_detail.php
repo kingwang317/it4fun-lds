@@ -152,7 +152,13 @@
 
                     <div class="under_line"></div>
 
-                    <div class="fb-comments" data-href="http://a-wei.lionfree.net/leadership/b12.php" data-width="600px" data-numposts="3" data-colorscheme="light"></div>
+                <?php
+
+                $target_url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+                
+                ?>
+
+                    <div class="fb-comments" data-href="<?php echo $target_url; ?>" data-width="600px" data-numposts="3" data-colorscheme="light"></div>
 
                     <div id="fb-root"></div>
 
