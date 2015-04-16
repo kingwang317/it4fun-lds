@@ -63,6 +63,13 @@ class Train extends CI_Controller {
 	function register()
 	{	
 		$lang_code = $this->uri->segment(1);
+		$train_id = $this->input->get_post("train_id");
+		$train = $this->train_model->get_train_by_id($train_id);
+
+		if (!isset($train)) {
+			$this->comm->plu_redirect(site_url(), 0, "找不到資料");
+			die;
+		}
 		// $train = $this->train_model->get_train_by_id($id);
 
 		// if (!isset($train)) {
@@ -70,7 +77,8 @@ class Train extends CI_Controller {
 		// 	die;
 		// }
 		// $vars['train'] = $train;
-		$vars['all_train'] = $this->train_model->get_list(-1);
+		// $vars['all_train'] = $this->train_model->get_list(-1);
+		$vars['train'] = $train;
 		$vars['register_url'] = base_url()."train/do_register";
 		$vars['views'] = 'iso_train_register';
 		$vars['base_url'] = base_url();

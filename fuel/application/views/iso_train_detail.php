@@ -120,7 +120,7 @@
 
                             <div class="b12_block_title">上課地點</div>
 
-                            <div class="b12_info_title_slider_text"><?php echo $train->train_place ?><br>﹙實際上課地點若有變更，將另行通知。﹚</div>
+                            <div class="b12_info_title_slider_text"><?php echo $train->train_place ?>﹙實際上課地點若有變更，將另行通知。﹚</div>
 
                         </div>
 
@@ -144,7 +144,7 @@
 
                 </div>
 
-                <a href="<?php echo site_url().'train/register/'.$train->id ?>"><div class="b10_submit b12_submit">線上報名</div></a>
+                <a href="<?php echo site_url().'train/register?train_id='.$train->id ?>"><div class="b10_submit b12_submit">線上報名</div></a>
 
                 <div class="b12_facebook_comment">
 

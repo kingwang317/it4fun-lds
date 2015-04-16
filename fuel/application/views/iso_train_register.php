@@ -79,6 +79,7 @@
                     <div class="b13_remark">﹙僅付費課程需填寫﹚</div>
                 </div>
                 <div class="b12_info">
+                    <input type="hidden" id="train_id" value="<?php echo $train->id ?>" />
 
                     <div class="b12_info_title">
                         <!--<i class="fa fa-exclamation-circle" style="color:#eb1d23;"></i>課程報名資訊<i class="fa fa-plus" style="color:#eb1d23;"></i>-->
@@ -92,7 +93,7 @@
 
                             <div class="b12_block_title">課程名稱</div>
 
-                            <div class="b12_info_title_slider_text"><?php echo "text1" ?></div>
+                            <div class="b12_info_title_slider_text"><?php echo $train->train_title ?></div>
 
                         </div>
 
@@ -100,7 +101,7 @@
 
                             <div class="b12_block_title">課程費用</div>
 
-                            <div class="b12_info_title_slider_text"><?php echo "text2" ?></div>
+                            <div class="b12_info_title_slider_text">$<?php echo $train->train_price ?></div>
 
                         </div>
 
@@ -108,10 +109,7 @@
 
                             <div class="b12_block_title">開課日期</div>
 
-                            <div class="b12_info_title_slider_text">
-                                <input id="date1" type="radio" name="date" value="" checked="checked"><label for="date1"><span><span></span></span><div class="b10_radio">date1</div></label>
-                                <input id="date2" type="radio" name="date" value=""><label for="date2"><span><span></span></span><div class="b10_radio">date2</div></label>
-                            </div>
+                            <div class="b12_info_title_slider_text"><?php echo $train->train_date ?></div>
 
                         </div>
 
@@ -119,7 +117,7 @@
 
                             <div class="b12_block_title">上課天數</div>
 
-                            <div class="b12_info_title_slider_text"><?php echo "text3" ?></div>
+                            <div class="b12_info_title_slider_text"><?php echo $train->train_days ?></div>
 
                         </div>
 
@@ -127,7 +125,7 @@
 
                             <div class="b12_block_title">上課時數</div>
 
-                            <div class="b12_info_title_slider_text"><?php echo "text4" ?></div>
+                            <div class="b12_info_title_slider_text"><?php echo $train->train_hours ?></div>
 
                         </div>
 
@@ -135,7 +133,7 @@
 
                             <div class="b12_block_title">上課時間</div>
 
-                            <div class="b12_info_title_slider_text"><?php echo "text5" ?>~<?php echo "text6" ?></div>
+                            <div class="b12_info_title_slider_text"><?php echo $train->train_time_s ?>~<?php echo $train->train_time_e ?></div>
 
                         </div>
 
@@ -143,10 +141,7 @@
 
                             <div class="b12_block_title">上課地點</div>
 
-                            <div class="b12_info_title_slider_text">
-                            <input id="location1" type="radio" name="location" value="" checked="checked"><label for="location1"><span><span></span></span><div class="b10_radio">台北</div></label>
-                            <input id="location2" type="radio" name="location" value=""><label for="location2"><span><span></span></span><div class="b10_radio">高雄</div></label>
-                            </div>
+                            <div class="b12_info_title_slider_text"><?php echo $train->train_place ?>﹙實際上課地點若有變更，將另行通知。﹚</div>
 
                         </div>
 
@@ -154,7 +149,7 @@
 
                             <div class="b12_block_title">主辦單位</div>
 
-                            <div class="b12_info_title_slider_text"><?php echo "text7" ?></div>
+                            <div class="b12_info_title_slider_text"><?php echo $train->host_unit ?></div>
 
                         </div>
 
@@ -162,7 +157,7 @@
 
                             <div class="b12_block_title">合作單位</div>
 
-                            <div class="b12_info_title_slider_text"><?php echo "text8" ?></div>
+                            <div class="b12_info_title_slider_text"><?php echo $train->coll_unit ?></div>
 
                         </div>
 
@@ -170,19 +165,7 @@
 
                 </div>
                 
-               <div class="input_block" style="display:none;">
-                    <select class="b10_select" id="train_id">
-                       <!--  <option value="0">報名課程</option>
-                        <option value="1">報名課程1</option>
-                        <option value="2">報名課程2</option>
-                        <option value="3">報名課程3</option> -->
-                        <?php if (isset($all_train)): ?>
-                            <?php foreach ($all_train as $key => $value): ?>
-                                <option value="<?php echo $value->id ?>"><?php echo $value->train_title ?></option>
-                            <?php endforeach ?>
-                        <?php endif ?>
-                    </select>
-                </div>
+             
                 <div class="input_block" style="display:none;">
                     <input id="price" class="b10_input" type="text" placeholder="課程費用" autocomplete="off">
                     <div class="b13_remark">﹙請填寫課程費用，若不知課程費用，請前往ISO教育訓練網 <a href="<?php echo site_url().'iso_train' ?>" onclick="window.open(this.href); return false;"><font color="#eb1d23">www.isoleader.com/iso9001training</font></a> 查詢﹚</div>

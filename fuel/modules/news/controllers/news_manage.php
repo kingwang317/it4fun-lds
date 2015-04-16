@@ -287,7 +287,6 @@ class News_manage extends Fuel_base_controller {
 	{ 
 		$post_arr = $this->input->post();
 		$news_kind = $post_arr['news_kind'];
-		$module_uri = base_url().$this->module_uri.'/'.$news_kind;
 		
 		$root_path = assets_server_path("news_img/$news_kind/");
 		if (!file_exists($root_path)) {
@@ -318,6 +317,7 @@ class News_manage extends Fuel_base_controller {
 
 		$post_arr["id"] = $id;
 
+		$module_uri = base_url().'fuel/news/edit/'.$id;
 		//調整順序 
 		// if ($post_arr['news_ori_order'] != $post_arr['news_order']) {
 		// 	$ori_obj = $this->news_manage_model->get_order($post_arr);
