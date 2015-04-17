@@ -98,7 +98,7 @@ class Event_manage extends Fuel_base_controller {
 
 		$crumbs = array($this->module_uri => $this->module_name);
 		$this->fuel->admin->set_titlebar($crumbs);
-		$target_url = $base_url.'fuel/reg/lists/';
+		$target_url = $base_url."fuel/reg/lists/$train_id/";
 		$filter = " WHERE train_id='$train_id' ";
 		$total_rows = $this->event_manage_model->get_reg_total_rows($filter);
 		$config = $this->set_page->set_config($target_url, $total_rows, $dataStart, 20);
