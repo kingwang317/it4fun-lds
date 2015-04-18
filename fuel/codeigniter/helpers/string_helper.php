@@ -318,7 +318,10 @@ if ( ! function_exists('repeater'))
 			$controller = 'iso_class_detail';
 			break;
 		case '4': 
-			$controller = 'iso_news';
+			$controller = 'iso_news_detail';
+			break;
+		case '5': 
+			$controller = 'iso_succcase_detail';
 			break;
 	}
 	return $controller;

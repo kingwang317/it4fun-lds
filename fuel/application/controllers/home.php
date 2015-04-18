@@ -135,6 +135,9 @@ class Home extends CI_Controller {
 		$vars['news'] = $news;
 		$vars['interest_news'] = $this->get_extension_news($news->keyword," AND type NOT IN (SELECT  code_id FROM mod_code WHERE code_key = 'RECOMMEND') ");//$this->code_model->get_coach_by_type($news->type);
  
+ 		$recommand = $this->code_model->get_code_info("NEWS_TYPE","RECOMMEND");	 
+		$vars['recommand_name'] = $recommand[0]->code_name;
+		$vars['recommand_news'] = $this->code_model->get_recommand_news(5);
 
 		// $vars['recommend_news'] = $this->code_model->get_extension_news("4"," AND type='139'",""," LIMIT 0,5");
 		//$vars['interest_news2'] = $this->code_model->get_random_all_news();
@@ -148,9 +151,7 @@ class Home extends CI_Controller {
 			$page_init = array('location' => 'iso_coach_2coldetail');
 			$this->fuel->pages->render("iso_coach_2coldetail", $vars);
 		}else{
-			$recommand = $this->code_model->get_code_info("NEWS_TYPE","RECOMMEND");	 
-			$vars['recommand_name'] = $recommand[0]->code_name;
-			$vars['recommand_news'] = $this->code_model->get_recommand_news(5);
+			
 			$vars['views'] = 'iso_coach_singlecoldetail';
 			$vars['base_url'] = base_url();
 			$page_init = array('location' => 'iso_coach_singlecoldetail');
@@ -287,7 +288,34 @@ class Home extends CI_Controller {
 		$news_type = $this->input->get_post('news_type'); 
 
 		foreach ($iso_news_type as $key => $value) { 
-			$result[$value->code_name] = $this->code_model->get_iso_news_items($value->code_id); 
+			if ($value->code_key == 'CHARGE_TRAIN') {
+				$detail = new stdClass();				
+				$train = $this->train_model->get_list(0);
+				$train_ary = array();
+				foreach ($train as $t_key => $t_value) {
+					$t_detail = new stdClass();	
+					$t_detail->title = $t_value->train_title;
+					$t_detail->date = $t_value->train_date;
+					$t_detail->id = $t_value->id;
+					array_push($train_ary, $t_detail);
+				}
+				$detail->data = $train_ary;
+				$detail->url = site_url().'iso_train/detail/';
+				$detail->key = 'train';
+				$result[$value->code_name] = $detail;
+			}else{
+				$detail = new stdClass();//$this->code_model->get_iso_news_items($value->code_id);
+				// if (is_array($detail) && sizeof($detail) > 0) {
+				// 	$value->detail = (object)array('title'=>$detail[0]->title,'img'=>$detail[0]->img,'url'=>site_url().'home/iso_news?news_type='.$value->code_name);//$detail[0];
+				// }else{
+				// 	$value->detail = (object)array('title'=>'','img'=>'','url'=>site_url());
+				// }
+				$detail->data = $this->code_model->get_iso_news_items($value->code_id);
+				$detail->url = site_url().'home/iso_news_detail/';
+				$detail->key = 'news';
+				$result[$value->code_name] = $detail ;//$this->code_model->get_iso_news_items($value->code_id); 
+			}
+			
 		} 
 
 		if (isset($news_type) && empty($news_type)) {
@@ -305,15 +333,139 @@ class Home extends CI_Controller {
 			}
 		}
 
-		// print_r($news_type);
+		// print_r($result);
 		// die;
 		$vars['news_id'] = $news_id;
 		$vars['news'] = $result;
-		$vars['views'] = 'news';
+		$vars['views'] = 'news_list';
 		$vars['news_type'] = $news_type;
 		$vars['base_url'] = base_url();
-		$page_init = array('location' => 'news');
-		$this->fuel->pages->render("news", $vars);
+		$page_init = array('location' => 'news_list');
+		$this->fuel->pages->render("news_list", $vars);
+	}
+
+	function iso_news_detail($id)
+	{	
+		$lang_code = $this->uri->segment(1);
+
+		$news = $this->code_model->get_news_by_id($id);
+
+		if (!isset($news)) {
+			$this->comm->plu_redirect(site_url(), 0, "找不到資料");
+			die;
+		}
+
+		$this->code_model->update_news_viewcount($id);
+
+		$vars['news'] = $news;
+		$vars['interest_news'] = $this->get_extension_news($news->keyword," AND type NOT IN (SELECT  code_id FROM mod_code WHERE code_key = 'RECOMMEND') ");//$this->code_model->get_coach_by_type($news->type);
+ 
+
+		$recommand = $this->code_model->get_code_info("NEWS_TYPE","RECOMMEND");	 
+		$vars['recommand_name'] = $recommand[0]->code_name;
+		$vars['recommand_news'] = $this->code_model->get_recommand_news(5);
+
+		// $vars['recommend_news'] = $this->code_model->get_extension_news("4"," AND type='139'",""," LIMIT 0,5");
+		//$vars['interest_news2'] = $this->code_model->get_random_all_news();
+	
+		$vars['news_type'] = $this->code_model->get_series_info($news->type);
+
+		if ($news->layout_type <> 1) {			
+			$vars['news_series'] = $this->code_model->get_extension_news("4"," AND type='$news->type' ",'',' limit 0,5 ');
+			$vars['views'] = 'iso_news_2coldetail';
+			$vars['base_url'] = base_url();
+			$page_init = array('location' => 'iso_news_2coldetail');
+			$this->fuel->pages->render("iso_news_2coldetail", $vars);
+		}else{
+		
+			$vars['views'] = 'iso_news_singlecoldetail';
+			$vars['base_url'] = base_url();
+			$page_init = array('location' => 'iso_news_singlecoldetail');
+			$this->fuel->pages->render("iso_news_singlecoldetail", $vars);
+		}
+	 
+	}
+
+
+	function iso_succcase($news_id='')
+	{	
+		// print_r($news_id);
+		// die;
+		$lang_code = $this->uri->segment(1);
+		$iso_news_type = $this->code_model->get_iso_coach_type();
+		$result = array();
+		$news_type = $this->input->get_post('news_type'); 
+
+		foreach ($iso_news_type as $key => $value) { 
+			$result[$value->code_name] = $this->code_model->get_iso_succcase_items($value->code_id); 
+		} 
+
+		if (isset($news_type) && empty($news_type)) {
+			$news_type = $iso_news_type[0]->code_name;
+		}
+		// var_dump(is_int((int)'139'));
+
+		if (is_int(((int)$news_type))) {
+			// print_r($news_type);
+			$code_info = $this->code_model->get_series_info($news_type);
+				// print_r($code_info);
+			if (isset($code_info)) {
+				// print_r($code_info);
+				$news_type = $code_info->code_name;
+			}
+		}
+
+		// print_r($result);
+		// die;
+		$vars['news_id'] = $news_id;
+		$vars['news'] = $result;
+		$vars['views'] = 'succcase_list';
+		$vars['news_type'] = $news_type;
+		$vars['base_url'] = base_url();
+		$page_init = array('location' => 'succcase_list');
+		$this->fuel->pages->render("succcase_list", $vars);
+	}
+
+	function iso_succcase_detail($id)
+	{	
+		$lang_code = $this->uri->segment(1);
+
+		$news = $this->code_model->get_news_by_id($id);
+
+		if (!isset($news)) {
+			$this->comm->plu_redirect(site_url(), 0, "找不到資料");
+			die;
+		}
+
+		$this->code_model->update_news_viewcount($id);
+
+		$vars['news'] = $news;
+		$vars['interest_news'] = $this->get_extension_news($news->keyword," AND type NOT IN (SELECT  code_id FROM mod_code WHERE code_key = 'RECOMMEND') ");//$this->code_model->get_coach_by_type($news->type);
+ 
+
+		$recommand = $this->code_model->get_code_info("NEWS_TYPE","RECOMMEND");	 
+		$vars['recommand_name'] = $recommand[0]->code_name;
+		$vars['recommand_news'] = $this->code_model->get_recommand_news(5);
+		
+		// $vars['recommend_news'] = $this->code_model->get_extension_news("4"," AND type='139'",""," LIMIT 0,5");
+		//$vars['interest_news2'] = $this->code_model->get_random_all_news();
+	
+		$vars['news_type'] = $this->code_model->get_series_info($news->type);
+
+		if ($news->layout_type <> 1) {			
+			$vars['news_series'] = $this->code_model->get_extension_news("5"," AND type='$news->type' ",'',' limit 0,5 ');
+			$vars['views'] = 'iso_succcase_2coldetail';
+			$vars['base_url'] = base_url();
+			$page_init = array('location' => 'iso_succcase_2coldetail');
+			$this->fuel->pages->render("iso_succcase_2coldetail", $vars);
+		}else{
+		
+			$vars['views'] = 'iso_succcase_singlecoldetail';
+			$vars['base_url'] = base_url();
+			$page_init = array('location' => 'iso_succcase_singlecoldetail');
+			$this->fuel->pages->render("iso_succcase_singlecoldetail", $vars);
+		}
+	 
 	}
 
 

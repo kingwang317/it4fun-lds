@@ -157,7 +157,8 @@
     <!--
     <span class='top_menu'><a href="<?php echo site_url()?>home/ci_design">CI設計</a></span>| 
 -->
-    <span class='top_menu'><a href="<?php echo site_url()?>iso_train">ISO教育訓練</a></span>| 
+    <span class='top_menu'><a href="<?php echo site_url()?>home/iso_succcase">輔導實績</a></span>|
+    <span class='top_menu'><a href="<?php echo site_url()?>iso_train">ISO教育訓練</a></span>|  
     <span class='top_menu'><a href="<?php echo site_url()?>home/iso_coach">ISO輔導項目</a></span>| 
     <span class='top_menu'><a href="http://www.isoleader.com.tw/phpBB3/" onclick="window.open(this.href);
             return false;">討論區</a></span>| 

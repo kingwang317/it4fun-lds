@@ -120,7 +120,7 @@
 
                             <div class="b12_block_title">上課地點</div>
 
-                            <div class="b12_info_title_slider_text"><?php echo $train->train_place ?>﹙實際上課地點若有變更，將另行通知。﹚</div>
+                            <div class="b12_info_title_slider_text"><?php echo $train->train_place ?></div>
 
                         </div>
 
