@@ -25,7 +25,7 @@
 				</header>
 				<div class="panel-body">
 					<div class="form-horizontal tasi-form">						 
-				 		<?php if ($news_kind == 2): ?> 
+				 		<?php if ($news_kind == 2 || $news_kind == 4 || $news_kind == 5): ?> 
 						<div class="form-group">
 							<label class="col-sm-2 col-sm-2 control-label">欄位格式</label>
 							<div class="col-sm-4">

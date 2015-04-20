@@ -9,6 +9,7 @@ class Train extends CI_Controller {
 		$this->load->model('code_model');  
 		$this->load->library('comm');		
 		$this->load->helper('ajax');
+		$this->load->library('email');
 	} 
 
 	function index()
@@ -63,6 +64,13 @@ class Train extends CI_Controller {
 	function register()
 	{	
 		$lang_code = $this->uri->segment(1);
+		$train_id = $this->input->get_post("train_id");
+		$train = $this->train_model->get_train_by_id($train_id);
+
+		if (!isset($train)) {
+			$this->comm->plu_redirect(site_url(), 0, "找不到資料");
+			die;
+		}
 		// $train = $this->train_model->get_train_by_id($id);
 
 		// if (!isset($train)) {
@@ -70,7 +78,8 @@ class Train extends CI_Controller {
 		// 	die;
 		// }
 		// $vars['train'] = $train;
-		$vars['all_train'] = $this->train_model->get_list(-1);
+		// $vars['all_train'] = $this->train_model->get_list(-1);
+		$vars['train'] = $train;
 		$vars['register_url'] = base_url()."train/do_register";
 		$vars['views'] = 'iso_train_register';
 		$vars['base_url'] = base_url();
@@ -100,6 +109,146 @@ class Train extends CI_Controller {
 			// $register_msg           = $this->input->get_post("register_msg");
 			$post_arr = $this->input->post();
 		    $this->train_model->insert_mod_register($post_arr);
+
+		    $company_name = $post_arr['company_name'];
+		    $dep = $post_arr['dep'];
+		    $name = $post_arr['name'];
+		    $sex = $post_arr['sex'];
+		    if ($sex == '1') {
+	 			$sex = '先生';
+	 		}else{
+	 			$sex = '小姐';
+	 		}
+		    $mail = $post_arr['mail'];
+		    $phone = $post_arr['phone'];
+		    $train_id = $post_arr['train_id'];
+		    $price = $post_arr['price'];
+		    $place = $post_arr['place'];
+		    $datepicker = $post_arr['datepicker'];
+		    $invoice = $post_arr['invoice'];
+		    if ($invoice == '1') {
+	 			$invoice = '二聯式';
+	 		}else{
+	 			$invoice = '三聯式';
+	 		}
+		    $invoice_title = $post_arr['invoice_title'];
+		    $Uniform = $post_arr['Uniform'];
+		    $lunch_box = $post_arr['lunch_box'];
+		    if ($lunch_box == '1') {
+	 			$lunch_box = '一般';
+	 		}else{
+	 			$lunch_box = '素食';
+	 		}
+		    $agree = $post_arr['agree'];
+		    $register_msg = $post_arr['register_msg'];
+		    $train = $this->train_model->get_train_by_id($train_id);
+
+		    $subject = "$company_name-$name-$train->train_title-$train->train_date-$train->train_place"; //信件標題 
+		    $url = site_url();
+			$image_url = $url.'assets/templates/images/mail/logo.png';
+		    $msg = "
+								
+				<html xmlns='http://www.w3.org/1999/xhtml'>
+				<head>
+				<meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+				<meta name='viewport' content='width=device-width; initial-scale=1.0' /> <!-- 於手機觀看時不會自動放大 -->
+				<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'> <!-- 最佳的IE兼容模式 -->
+				</head>
+				<body style='margin: 0px auto;text-align:center;background-color:#f1f1f1;'>
+				<div style='margin: 0px auto;text-align:left;width:600px;background-color:#f1f1f1;'>
+				    <div style='padding:30px 0 10px 0;'>
+				        <img src='$image_url'>
+				        <div style='font-size:12px;display:inline-block;float:right;line-height:50px;padding-right:5px;'><a href='http://a-wei.lionfree.net/leadership/index.php' style='color:black;text-decoration: none;'>回領導力官網</a></div>
+				    </div>
+				    <div style='background-color:#fff;padding:20px 50px 20px 50px;'>
+				        <!--<div style='margin: 0px auto;text-align:center;'><img src='http://a-wei.lionfree.net/leadership/images/mail/head.jpg'></div>-->
+				        <div style='font-size:14px;line-height:26px;'>你好：<br>我們已收到您的線上留言。將儘快與您聯繫。</div>
+				        <div style='line-height:26px;'>
+				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>公司名稱：</div><div style='font-size:14px;display:inline-block;'>$company_name</div>
+				        </div>
+				        <div style='line-height:26px;'>
+				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>部門單位：</div><div style='font-size:14px;display:inline-block;'>$dep</div>
+				        </div>
+				        <div style='line-height:26px;'>
+				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>姓名：</div><div style='font-size:14px;display:inline-block;'>$name $sex</div>
+				        </div>
+				        <div style='line-height:26px;'>
+				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>電子信箱：</div><div style='font-size:14px;display:inline-block;'>$mail</div>
+				        </div>
+				        <div style='line-height:26px;'>
+				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>連絡電話：</div><div style='font-size:14px;display:inline-block;'>$phone</div>
+				        </div>
+				        <div style='line-height:26px;'>
+				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>餐盒選擇：</div><div style='font-size:14px;display:inline-block;'>$lunch_box</div>
+				        </div>
+				        <div style='line-height:26px;'>
+				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>發票開立：</div><div style='font-size:14px;display:inline-block;'>$invoice</div>
+				        </div>
+				        <div style='line-height:26px;'>
+				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>發票抬頭：</div><div style='font-size:14px;display:inline-block;'>$invoice_title</div>
+				        </div>
+				        <div style='line-height:26px;'>
+				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>統一編號：</div><div style='font-size:14px;display:inline-block;'>$Uniform</div>
+				        </div>
+				        <div style='line-height:26px;'>
+				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>課程名稱：</div><div style='font-size:14px;display:inline-block;'>$train->train_title</div>
+				        </div>
+				        <div style='line-height:26px;'>
+				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>課程費用：</div><div style='font-size:14px;display:inline-block;'>$train->train_price</div>
+				        </div>
+				        <div style='line-height:26px;'>
+				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>開課日期：</div><div style='font-size:14px;display:inline-block;'>$train->train_date</div>
+				        </div>
+				        <div style='line-height:26px;'>
+				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>上課天數：</div><div style='font-size:14px;display:inline-block;'>$train->train_days </div>
+				        </div>
+				        <div style='line-height:26px;'>
+				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>上課時數：</div><div style='font-size:14px;display:inline-block;'>$train->train_hours </div>
+				        </div>
+				        <div style='line-height:26px;'>
+				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>上課時間：</div><div style='font-size:14px;display:inline-block;'>$train->train_time_s~$train->train_time_e</div>
+				        </div>
+				        <div style='line-height:26px;'>
+				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>上課地點：</div><div style='font-size:14px;display:inline-block;'>$train->train_place</div>
+				        </div>
+				        <div style='line-height:26px;'>
+				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>留言內容：</div><div style='font-size:14px;display:inline-block;'>$register_msg</div>
+				        </div>
+				    </div>
+				    <div style='background-color:#fafafa;padding:20px 0 20px 50px;border-top:solid 2px #f1f1f1;'>
+				        <div style='font-size:14px;margin-bottom:10px;'>若你還有其它問題，歡迎來信或來電洽詢。</div>
+				        <div style='font-size:14px;margin-bottom:10px;'>全省免費諮詢電話 0800-222-007</div>
+				        <div style='font-size:14px;margin-bottom:10px;'>E-Mail：Service@isoleader.com.tw</div>
+				        <div style='margin-top:30px;font-size:14px;'>領導力企管客服部 敬上</div>
+				    </div>
+				</div>
+				</body>
+				</html>
+
+
+			";
+
+			$managers = $this->code_model->get_code("ISO_EMAIL_GROUP","zh-TW");
+
+			if (isset($managers)) {
+				foreach ($managers as $row) {
+					$m_email = $row->code_value1; 
+					$this->email->from('service@isoleader.com.tw', 'Leadership');
+					$this->email->to($m_email); 
+					$this->email->subject($subject);
+					// $this->email->message(fuel_block('contact_content'));
+					$this->email->message($msg); 
+					$success = $this->email->send();
+					
+				}
+			}
+
+			$this->email->from('service@isoleader.com.tw', 'Leadership');
+			$this->email->to($mail); 
+			$this->email->subject($subject); 
+			$this->email->message($msg);
+			$success = $this->email->send();
+
 			$result['status'] = 1; 
 			echo json_encode($result);
 		}

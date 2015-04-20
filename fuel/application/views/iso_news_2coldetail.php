@@ -44,7 +44,7 @@
 
         <div class="location">
 
-            <div class="location_left"><font color="black"><a href="<?php echo site_url() ?>">首頁</a> / <a href="<?php echo site_url().'home/iso_coach' ?>">ISO 認證輔導</a> / <a href="<?php echo site_url().'home/iso_coach_list/'.$news_type->code_id ?>"><?php echo $news_type->code_name ?>系列</a> /</font> <?php echo $news->title ?></div>
+            <div class="location_left"><font color="black"><a href="<?php echo site_url() ?>">首頁</a> / <a href="<?php echo site_url().'home/iso_news' ?>">最新消息</a> / </font> <?php echo $news->title ?></div>
 
             <div class="location_right">
 
@@ -139,7 +139,7 @@
                             <?php foreach ($recommand_news as $key => $value): ?>
                                  <a href="<?php echo site_url().'home/'.news_kind_controller($value->news_kind).'/'.$value->id ?>"><div class="b3_c_right_list_block"><i class="fa fa-file-text-o"></i><?php echo $value->title ?></div></a>
                             <?php endforeach ?>
-                        <?php endif ?>
+                        <?php endif ?> 
 
                        <!--  <a href="#"><div class="b3_c_right_list_block"><i class="fa fa-file-text-o"></i>食品安全品質標準（Safe Quality Food，SQF）</div></a>
 

@@ -41,7 +41,7 @@
 
         <div class="location">
 
-            <div class="location_left"><font color="black"><a href="<?php echo site_url() ?>">首頁</a> / <a href="<?php echo site_url().'home/iso_coach' ?>">ISO 認證輔導</a> / <a href="<?php echo site_url().'home/iso_coach_list/'.$news_type->code_id ?>"><?php echo $news_type->code_name ?>系列</a> /</font> <?php echo $news->title ?></div>
+            <div class="location_left"><font color="black"><a href="<?php echo site_url() ?>">首頁</a> / <a href="<?php echo site_url().'home/iso_succcase' ?>">輔導實績</a> / <a href=""><?php echo $news_type->code_name ?>系列</a> /</font> <?php echo $news->title ?></div>
 
             <div class="location_right">
 

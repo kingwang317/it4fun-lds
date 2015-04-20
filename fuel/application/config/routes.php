@@ -68,6 +68,8 @@ foreach($lang_ary as $l)
 	$route["$l/product/(:num)"] = 'series/product/$1'; 
 }*/
 
+$route['home/iso_succcase_detail/(:num)'] 		= 'home/iso_succcase_detail/$1';
+$route['home/iso_news_detail/(:num)'] 		= 'home/iso_news_detail/$1';
 $route['home/iso_coach_detail/(:num)'] 		= 'home/iso_coach_detail/$1';
 $route['home/ci_design_detail/(:num)'] 		= 'home/ci_design_detail/$1';
 $route['home/iso_coach_list/(:num)'] 		= 'home/iso_coach_list/$1';

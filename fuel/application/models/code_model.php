@@ -174,6 +174,10 @@ class Code_model extends CI_Model {
         return $this->get_news(4,$type,$filter,$orderby);
     }
 
+    public function get_iso_succcase_items($type,$filter="",$orderby=""){
+        return $this->get_news(5,$type,$filter,$orderby);
+    }
+
     public function get_iso_news_type(){
         return $this->get_code('NEWS_TYPE','zh-TW');
     }

@@ -78,7 +78,7 @@
 
 
                         <?php foreach ($interest_news as $key => $value): ?>
-                        <a href="<?php echo site_url().'home/'.news_kind_controller($value->news_kind).'/'.$value->id.'?news_type='.$value->type ?>"><div class="extend_list"><i class="fa fa-file-text-o"></i><?php echo $value->title ?></div></a>
+                        <a target="_blank" href="<?php echo site_url().'home/'.news_kind_controller($value->news_kind).'/'.$value->id.'?news_type='.$value->type ?>"><div class="extend_list"><i class="fa fa-file-text-o"></i><?php echo $value->title ?></div></a>
                         <?php endforeach ?>
                     <?php endif ?>
 

@@ -87,7 +87,7 @@
 						{
 				?>
 					<tr>
-						<td><p class="EventTitle"><a href="<?php echo $reg_detail_url.$row->company_name?>" title="<?php echo $row->company_name?>"><?php echo $row->company_name?></a></p></td>
+						<td><?php echo $row->company_name?></td>
 						<td>
 							<?php echo $row->dep_name ?>
 						</td>

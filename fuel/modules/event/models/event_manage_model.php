@@ -133,6 +133,7 @@ class Event_manage_model extends MY_Model {
 				`train_time_s`,
 				`train_time_e`,
 				`train_date`, 
+				`train_days`,
 				`train_hours`,
 				`coll_unit`,
 				`train_place`,
@@ -141,7 +142,7 @@ class Event_manage_model extends MY_Model {
 				`file_path`, 
 				`notify_date`, 
 				`modi_date` )
-				VALUES (?,?, ?, ?, ?, ?, ?, ? ,?, ?, ?, ?,?,?, NOW())
+				VALUES (?,?, ?, ?, ?, ?, ?, ? ,?, ?,?, ?, ?,?,?, NOW())
 				";
 		$para = array(
 				$data['is_free'],
@@ -151,6 +152,7 @@ class Event_manage_model extends MY_Model {
 				$data['train_time_s'],
 				$data['train_time_e'],
 				$data['train_date'],
+				$data['train_days'],
 				$data['train_hours'],
 				$data['coll_unit'],
 				$data['train_place'],
@@ -179,6 +181,7 @@ class Event_manage_model extends MY_Model {
 									  train_time_s=?, 
 									  train_time_e=?,
 									  train_date=?, 
+									  train_days=?,
 									  train_hours=?, 
 									  coll_unit=?, 
 									  train_place=?, 
@@ -196,6 +199,7 @@ class Event_manage_model extends MY_Model {
 				$data['train_time_s'],
 				$data['train_time_e'],
 				$data['train_date'],
+				$data['train_days'],
 				$data['train_hours'],
 				$data['coll_unit'],
 				$data['train_place'],
