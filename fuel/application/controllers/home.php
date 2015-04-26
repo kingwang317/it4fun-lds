@@ -29,12 +29,12 @@ class Home extends CI_Controller {
 
 		$vars['banner'] = $this->code_model->get_banner();
 		// $vars['news'] = $this->code_model->get_home_news();
-		$vars['performance'] = $this->code_model->get_performance();
+		$vars['performance'] = $this->code_model->get_home_success();
 
-		$performance = $this->code_model->get_code_info("NEWS_TYPE","PERFORMANCE");
+		// $performance = $this->code_model->get_code_info("NEWS_TYPE","PERFORMANCE");
 		// print_r($performance);
 		// die;
-		$vars['performance_name'] = $performance[0]->code_name;
+		$vars['performance_name'] = '';//$performance[0]->code_name;
 
 		$iso_news_type = $this->code_model->get_iso_news_type();
 		$result = array();
@@ -44,6 +44,14 @@ class Home extends CI_Controller {
 				$free_train = $this->train_model->get_list(1);
 				if (is_array($free_train) && sizeof($free_train) > 0) {
 					$value->detail = (object)array('title'=>$free_train[0]->train_title,'img'=>$free_train[0]->file_path,'url'=>site_url().'iso_train?type=free');
+				}else{
+					$value->detail =  (object)array('title'=>'','img'=>'','url'=>site_url());
+				}
+				$result[$value->code_id] = $value;
+			}else if ($value->code_key == 'CHARGE_TRAIN') {
+				$free_train = $this->train_model->get_list(0);
+				if (is_array($free_train) && sizeof($free_train) > 0) {
+					$value->detail = (object)array('title'=>$free_train[0]->train_title,'img'=>$free_train[0]->file_path,'url'=>site_url().'iso_train?type=charge');
 				}else{
 					$value->detail =  (object)array('title'=>'','img'=>'','url'=>site_url());
 				}
@@ -291,6 +299,21 @@ class Home extends CI_Controller {
 			if ($value->code_key == 'CHARGE_TRAIN') {
 				$detail = new stdClass();				
 				$train = $this->train_model->get_list(0);
+				$train_ary = array();
+				foreach ($train as $t_key => $t_value) {
+					$t_detail = new stdClass();	
+					$t_detail->title = $t_value->train_title;
+					$t_detail->date = $t_value->train_date;
+					$t_detail->id = $t_value->id;
+					array_push($train_ary, $t_detail);
+				}
+				$detail->data = $train_ary;
+				$detail->url = site_url().'iso_train/detail/';
+				$detail->key = 'train';
+				$result[$value->code_name] = $detail;
+			}else if ($value->code_key == 'FREE_TRAIN') {
+				$detail = new stdClass();				
+				$train = $this->train_model->get_list(1);
 				$train_ary = array();
 				foreach ($train as $t_key => $t_value) {
 					$t_detail = new stdClass();	
