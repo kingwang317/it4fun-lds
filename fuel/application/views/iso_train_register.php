@@ -49,7 +49,7 @@
                     <span class="holder">聯絡電話<span class="red"> ﹙必填﹚</span></span>
                     <input id="phone" class="b10_input" type="text" autocomplete="off">
                 </div>
-                <div class="input_block">
+                <div class="input_block" style="display:none;">
                      <div>
                         <span class="b13_title">餐盒選擇</span>
                         <span class="b13_remark">﹙全天付費課程有附中午餐點，一般半天課程或研討會則無需填寫﹚</span>
@@ -61,7 +61,7 @@
                             <input id="lunch_box2" type="radio" name="lunch_box" value="2"><label for="lunch_box2"><span><span></span></span><div class="b10_radio">素食</div></label>
                           </div>
                 </div>
-                <div class="input_block">
+                <div class="input_block" style="display:none;">
                     <div class="b13_title">發票開立</div>
                          <div>
                             <input id="invoice1" type="radio" name="invoice" value="1" checked="checked"><label for="invoice1"><span><span></span></span><div class="b10_radio">二聯式</div></label>
@@ -70,11 +70,11 @@
                             <input id="invoice2" type="radio" name="invoice" value="2"><label for="invoice2"><span><span></span></span><div class="b10_radio">三聯式</div></label>
                           </div>
                 </div>
-                <div class="input_block">
+                <div class="input_block" style="display:none;">
                     <input id="invoice_title" class="b10_input" type="text" placeholder="發票抬頭" autocomplete="off">
                     <div class="b13_remark">﹙僅付費課程需填寫﹚</div>
                 </div>
-                 <div class="input_block">
+                 <div class="input_block" style="display:none;">
                     <input id="Uniform" class="b10_input" type="text" placeholder="統一編號" autocomplete="off">
                     <div class="b13_remark">﹙僅付費課程需填寫﹚</div>
                 </div>
@@ -220,8 +220,8 @@
             <div class="b10_right_block">
                 <div class="b10_right_block_title">台北</div>
                 <div class="b10_right_block_detail">
-                (02)2362-7919</br>
-                台北市大安區浦城街13巷14號1樓
+                (02)25039035</br>
+                台北市中山區建國北路二段87號2樓
                 </div>
             </div>
             <div class="b10_right_block">

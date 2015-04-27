@@ -63,7 +63,7 @@
 <?php if (isset($news)): ?>
     <?php $i = 1; ?>
     <?php foreach ($news as $key => $value): ?>
-                                <div id="contact<?php echo $i ?>" class='b4_1_tag <?php echo isset($news_type) && $key == $news_type ? "tag_click" : "" ?>'><?php echo $key ?></div>
+                           <div id="contact<?php echo $i ?>" data-newstype="<?php echo $key ?>" class='b4_1_tag <?php echo isset($news_type) && $key == $news_type ? "tag_click" : "" ?>'><?php echo $key ?></div>
         <?php $i++; ?>
     <?php endforeach ?>
 <?php endif ?>
@@ -88,7 +88,7 @@
                                                          <div class='b4_1_list_right'>
                                                             <?php $date = date_create($value1->date) ?>
                                                             <div class='b4_1_list_right_date'><?php echo date_format($date, "Y/m/d") ?></div>
-                                                            <div class='b4_1_list_right_icon fa fa-plus'></div>
+                                                            <!--<div class='b4_1_list_right_icon fa fa-plus'></div>-->
                                                         </div>
                                                     <?php endif ?>
                                                    
@@ -136,6 +136,10 @@
         $(".b4_1_contact").hide();
 
         $("." + $(this).attr('id')).show();
+
+        var type = $(this).attr('data-newstype');
+
+        window.location = "<?php echo site_url().'home/iso_news?news_type=' ?>" + type;
 
     });
 

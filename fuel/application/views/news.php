@@ -85,7 +85,7 @@
                                                     <div class='b4_1_list_right'>
                 <?php $date = date_create($value1->date) ?>
                                                         <div class='b4_1_list_right_date'><?php echo date_format($date, "Y/m/d") ?></div>
-                                                        <div class='b4_1_list_right_icon fa fa-plus'></div>
+                                                        <!--<div class='b4_1_list_right_icon fa fa-plus'></div>-->
                                                     </div>
                                                 </div>
                                                 <div class='list_slider' style="<?php echo isset($news_id) && $news_id > 0 && $news_id == $value1->id ? '' : 'display:none;' ?> ">

@@ -105,7 +105,6 @@
 <div class="main_width_1024">
 <div class="b17_block_buttom">
     <div class="b17_buttom_block">
-        <a href="http://lds.isoleader.com.tw/iso_train">
         <div class="buttom_block_img">
             <img onload="AutoResizeImage('','180',this);" src="<?php echo site_url()."assets/templates/images/b17/about_1.jpg" ?>" />
         </div>
@@ -115,7 +114,6 @@
         <div class="buttom_block_text">
             領導力企管秉持札實輔導，不投機取巧的輔導策略。我們用心為客戶輔導，腳踏實地的完成ISO認證的各項品保規定。因此，包括瑞士SGS、英國BSI、法國BV、德國TUV 以及法國AFNOR…等驗證機構，通通和領導力保持良好合作關係。因此，我們不會只推銷單一驗證公司給您，您將可以自由選擇。
         </div>
-        </a>
     </div>
     <div class="b17_buttom_block">
         <a href="http://lds.isoleader.com.tw/home/iso_coach_detail/1969">
@@ -132,6 +130,7 @@
         </a>
     </div>
     <div class="b17_buttom_block">
+        <a href="http://www.isoleader.com.tw/iso_train">
         <div class="buttom_block_img">
             <img onload="AutoResizeImage('','180',this);" src="<?php echo site_url()."assets/templates/images/b17/about_3.jpg" ?>" />
         </div>
@@ -142,6 +141,7 @@
         <div class="buttom_block_text">
             成立已140年德國 TUV NORD，與領導力企管共同推出ISO 9001：2008、OHSAS、ISO 14001 主導稽核員 IRCA 國際登錄等課程。同時，在北美市占率排名前3大的驗證公司英國全國公證﹙Inter-tek﹚，也與領導力企管共同推出 ISO 9001：2015 條文改版課程。領導力企管獨家攜手世界級2大驗證公司，提供最具國際公信力的各式國際證照課程。
         </div>
+        </a>
     </div>
     <div class="b17_buttom_block">
         <div class="buttom_block_img">

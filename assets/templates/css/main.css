@@ -488,6 +488,18 @@ h2 {
     cursor:pointer;
     padding:0 20px 0 20px;
 }
+.b4_1_choosed{
+       display: -webkit-box;
+       display: -moz-box;
+       display: box;
+}
+.b4_1_choosed > div{
+       height: 50px;
+       -webkit-box-flex:1 ;
+       -moz-box-flex: 1;
+       box-flex: 1;
+       word-break: break-all;
+    }
 .tag_click{
     background-color:white;
     color:#eb1d23;
@@ -902,17 +914,19 @@ span.holder {
 }
 .b3_c_left_title{
     font-size:28px;
-    padding-bottom:20px;
+    padding:0 20px 20px 20px;
     text-align:left;
 }
 .b3_c_left_date{
-    line-height:50px;
-    font-size:14px;
+    line-height:26px;
+    font-size:16px;
     text-align:left;
     padding-left:20px;
+    margin-bottom:10px;
 }
 .b3_c_left_img{
     text-align:center;
+    margin-bottom:15px;
 }
 .b3_c_left_text{
     width:600px;
@@ -924,7 +938,7 @@ span.holder {
 }
 .b3_c_left_text ul li{
     list-style-type:disc;
-    margin-left:50px;
+    margin-left:40px;
 }
 .youtube_title{
     font-size:18px;
@@ -1021,6 +1035,7 @@ span.holder {
     font-size:28px;
     display:inline-block;
     padding-bottom:10px;
+    margin:0 50px 0 50px;
 }
 .b3_d_top_date{
     font-size:14px;
@@ -1034,6 +1049,7 @@ span.holder {
     font-size:16px;
     text-align:left;
     padding:0 50px 0 50px;
+    
     text-align:left;
 }
 .b3_d_text_img{
@@ -1042,7 +1058,7 @@ span.holder {
 }
 .b3_d_text ul li{
     list-style-type:disc;
-    margin-left:50px;
+    margin-left:40px;
 }
 .b3_d_contact{
     font-size:15px;
@@ -1128,6 +1144,7 @@ span.holder {
     background-color:#f3f3f3;
     text-align:left;
     font-size:16px;
+    line-height:26px;
 }
 .b12_info_title{
     color:#eb1d23;
@@ -1156,7 +1173,6 @@ span.holder {
 .b12_info_title_slider_text{
     color:#5E5E5E;
     width:520px;
-    padding-left:10px;
 }
 
 /*b14 css*/
