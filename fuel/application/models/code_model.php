@@ -142,8 +142,8 @@ class Code_model extends CI_Model {
         }
     }
 
-    public function get_performance($filter="",$orderby=""){
-        return $this->get_news(4,'PERFORMANCE',$filter," limit 0,5");
+    public function get_home_success($filter="",$orderby=""){
+        return $this->get_news(5,'-1',$filter," limit 0,5");
     }
 
     public function get_banner($filter="",$orderby=""){
