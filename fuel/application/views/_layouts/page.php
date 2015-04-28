@@ -116,7 +116,7 @@
         </div>
     </div>
     <div class="b17_buttom_block">
-        <a href="http://lds.isoleader.com.tw/home/iso_coach_detail/1969">
+        <a href="http://www.isoleader.com.tw/home/iso_coach_detail/1969">
         <div class="buttom_block_img">
             <img onload="AutoResizeImage('','180',this);" src="<?php echo site_url()."assets/templates/images/b17/about_2.jpg" ?>" />
         </div>

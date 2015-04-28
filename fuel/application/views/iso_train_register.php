@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width; initial-scale=1.0" /> <!-- 於手機觀看時不會自動放大 -->
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> <!-- 最佳的IE兼容模式 -->
-<title>Isoleader GRI Training System</title>
+<title><?php echo $title; ?></title>
 <link href="<?php echo site_url()?>assets/templates/css/main.css" rel="stylesheet" type="text/css" />
 <link href="<?php echo site_url()?>assets/templates/css/jquery-ui.min.css" rel="stylesheet" type="text/css" />
 <!--link font awesome to use the icon-->
@@ -20,6 +20,7 @@
 <div class="main main_width">
     <div class="page_banner" style="background-image:url(<?php echo site_url()?>assets/templates/images/banner_about.jpg);"></div>
     <div class="width1024 b10_width">
+        <div id="loadingIMG" style="display:none"><img src="loading.gif" height='14'/>資料處理中，請稍後。</div>
         <div class="ci_title b10_title">ISO教育網線上報名</div>
         <div class="ci_detail b7_detail b10_left">
            <!--

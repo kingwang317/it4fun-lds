@@ -68,7 +68,9 @@ class Home extends CI_Controller {
 		} 
 		// print_r($result);
 		// die;
-
+		$seo_data = $this->code_model->get_seo_default();
+		$vars['title'] = "領導力企管".$seo_data["title"];
+		$vars['keyword'] = $seo_data["keyword"];
 		$vars['news'] = $result; 
 		$vars['views'] = 'index';
 		$vars['base_url'] = base_url();
@@ -83,6 +85,9 @@ class Home extends CI_Controller {
 		$vars['ci'] = $this->code_model->get_ci_news();
 		$vars['views'] = 'ci_design';
 		$vars['base_url'] = base_url();
+		$seo_data = $this->code_model->get_seo_default();
+		$vars['title'] = "領導力企管".$seo_data["title"];
+		$vars['keyword'] = $seo_data["keyword"];
 		$page_init = array('location' => 'ci_design');
 		$this->fuel->pages->render("ci_design", $vars);
 	 
@@ -100,8 +105,12 @@ class Home extends CI_Controller {
 		$this->code_model->update_news_viewcount($id);
 
 		$vars['news'] = $news;
+		$vars['title'] = "領導力企管-國內ISO輔導資源最充足的顧問公司，協助您取得各項ISO認證，所有ISO認證問題找領導力企管就對了";
 		$vars['interest_news'] = $this->code_model->get_random_ci();
 		$vars['views'] = 'ci_design_detail';
+		$seo_data = $this->code_model->get_seo_default();
+		$vars['title'] = "領導力企管".$seo_data["title"];
+		$vars['keyword'] = $seo_data["keyword"];
 		$vars['base_url'] = base_url();
 		$page_init = array('location' => 'ci_design_detail');
 		$this->fuel->pages->render("ci_design_detail", $vars);
@@ -122,6 +131,9 @@ class Home extends CI_Controller {
 		// die;
 		$vars['iso'] = $result;
 		$vars['views'] = 'iso_coach';
+		$seo_data = $this->code_model->get_seo_default();
+		$vars['title'] = "領導力企管".$seo_data["title"];
+		$vars['keyword'] = $seo_data["keyword"];
 		$vars['base_url'] = base_url();
 		$page_init = array('location' => 'iso_coach');
 		$this->fuel->pages->render("iso_coach", $vars);
@@ -141,6 +153,9 @@ class Home extends CI_Controller {
 		$this->code_model->update_news_viewcount($id);
 
 		$vars['news'] = $news;
+		$seo_data = $this->code_model->get_seo_default();
+		$vars['title'] = "領導力企管".$seo_data["title"];
+		$vars['keyword'] = $seo_data["keyword"];
 		$vars['interest_news'] = $this->get_extension_news($news->keyword," AND type NOT IN (SELECT  code_id FROM mod_code WHERE code_key = 'RECOMMEND') ");//$this->code_model->get_coach_by_type($news->type);
  
  		$recommand = $this->code_model->get_code_info("NEWS_TYPE","RECOMMEND");	 
@@ -219,6 +234,9 @@ class Home extends CI_Controller {
 		$vars['news_series'] = $this->code_model->get_coach_by_type($type);
 
 		$vars['views'] = 'iso_coach_list';
+		$seo_data = $this->code_model->get_seo_default();
+		$vars['title'] = "領導力企管".$seo_data["title"];
+		$vars['keyword'] = $seo_data["keyword"];
 		$vars['base_url'] = base_url();
 		$page_init = array('location' => 'iso_coach_list');
 		$this->fuel->pages->render("iso_coach_list", $vars);
@@ -240,6 +258,9 @@ class Home extends CI_Controller {
 		$vars['inquiry_topic'] = $this->code_model->get_inquiry_topic();
 		$vars['do_contact_url'] = base_url()."home/do_contact";
 		$vars['views'] = 'contactus';
+		$seo_data = $this->code_model->get_seo_default();
+		$vars['title'] = "聯絡我們".$seo_data["title"];
+		$vars['keyword'] = $seo_data["keyword"];
 		$vars['base_url'] = base_url();
 		$page_init = array('location' => 'contactus');
 		$this->fuel->pages->render("contactus", $vars);
@@ -252,6 +273,9 @@ class Home extends CI_Controller {
 		$vars['coach_type'] = $this->code_model->get_iso_coach_type();
 		$vars['interest_news'] = $this->code_model->get_random_all_news();
 		$vars['views'] = 'iso_class';
+		$seo_data = $this->code_model->get_seo_default();
+		$vars['title'] = "ISO教育訓練".$seo_data["title"];
+		$vars['keyword'] = $seo_data["keyword"];
 		$vars['base_url'] = base_url();
 		$page_init = array('location' => 'iso_class');
 		$this->fuel->pages->render("iso_class", $vars);
@@ -280,6 +304,9 @@ class Home extends CI_Controller {
 		$vars['news_type'] = $this->code_model->get_series_info($news->type);
 
 		$vars['views'] = 'iso_class_detail';
+		$seo_data = $this->code_model->get_seo_default();
+		$vars['title'] = "ISO教育訓練".$seo_data["title"];
+		$vars['keyword'] = $seo_data["keyword"];
 		$vars['base_url'] = base_url();
 		$page_init = array('location' => 'iso_class_detail');
 		$this->fuel->pages->render("iso_class_detail", $vars);
@@ -361,6 +388,9 @@ class Home extends CI_Controller {
 		$vars['news_id'] = $news_id;
 		$vars['news'] = $result;
 		$vars['views'] = 'news_list';
+		$seo_data = $this->code_model->get_seo_default();
+		$vars['title'] = "ISO最新消息".$seo_data["title"];
+		$vars['keyword'] = $seo_data["keyword"];
 		$vars['news_type'] = $news_type;
 		$vars['base_url'] = base_url();
 		$page_init = array('location' => 'news_list');
@@ -396,12 +426,18 @@ class Home extends CI_Controller {
 		if ($news->layout_type <> 1) {			
 			$vars['news_series'] = $this->code_model->get_extension_news("4"," AND type='$news->type' ",'',' limit 0,5 ');
 			$vars['views'] = 'iso_news_2coldetail';
+			$seo_data = $this->code_model->get_seo_default();
+			$vars['title'] = "領導力企管".$seo_data["title"];
+			$vars['keyword'] = $seo_data["keyword"];
 			$vars['base_url'] = base_url();
 			$page_init = array('location' => 'iso_news_2coldetail');
 			$this->fuel->pages->render("iso_news_2coldetail", $vars);
 		}else{
 		
 			$vars['views'] = 'iso_news_singlecoldetail';
+			$seo_data = $this->code_model->get_seo_default();
+			$vars['title'] = "領導力企管".$seo_data["title"];
+			$vars['keyword'] = $seo_data["keyword"];
 			$vars['base_url'] = base_url();
 			$page_init = array('location' => 'iso_news_singlecoldetail');
 			$this->fuel->pages->render("iso_news_singlecoldetail", $vars);
@@ -443,6 +479,9 @@ class Home extends CI_Controller {
 		$vars['news_id'] = $news_id;
 		$vars['news'] = $result;
 		$vars['views'] = 'succcase_list';
+		$seo_data = $this->code_model->get_seo_default();
+		$vars['title'] = "成功案例".$seo_data["title"];
+		$vars['keyword'] = $seo_data["keyword"];
 		$vars['news_type'] = $news_type;
 		$vars['base_url'] = base_url();
 		$page_init = array('location' => 'succcase_list');
@@ -478,12 +517,18 @@ class Home extends CI_Controller {
 		if ($news->layout_type <> 1) {			
 			$vars['news_series'] = $this->code_model->get_extension_news("5"," AND type='$news->type' ",'',' limit 0,5 ');
 			$vars['views'] = 'iso_succcase_2coldetail';
+			$seo_data = $this->code_model->get_seo_default();
+			$vars['title'] = "成功案例".$seo_data["title"];
+			$vars['keyword'] = $seo_data["keyword"];
 			$vars['base_url'] = base_url();
 			$page_init = array('location' => 'iso_succcase_2coldetail');
 			$this->fuel->pages->render("iso_succcase_2coldetail", $vars);
 		}else{
 		
 			$vars['views'] = 'iso_succcase_singlecoldetail';
+			$seo_data = $this->code_model->get_seo_default();
+			$vars['title'] = "成功案例".$seo_data["title"];
+			$vars['keyword'] = $seo_data["keyword"];
 			$vars['base_url'] = base_url();
 			$page_init = array('location' => 'iso_succcase_singlecoldetail');
 			$this->fuel->pages->render("iso_succcase_singlecoldetail", $vars);
@@ -498,6 +543,9 @@ class Home extends CI_Controller {
 		$keyword = urldecode($keyword);
 		$vars['result'] = $this->code_model->get_serach_news($keyword);
 		$vars['views'] = 'search_result';
+		$seo_data = $this->code_model->get_seo_default();
+		$vars['title'] = "搜尋結果".$seo_data["title"];
+		$vars['keyword'] = $seo_data["keyword"];
 		$vars['keyword'] = $keyword;
 		$vars['base_url'] = base_url();
 		$page_init = array('location' => 'search_result');

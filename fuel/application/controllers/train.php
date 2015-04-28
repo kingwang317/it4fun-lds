@@ -28,6 +28,9 @@ class Train extends CI_Controller {
 			$vars['charge_train'] = $this->train_model->get_list(0);
 		}		
 		$vars['views'] = 'iso_train';
+		$seo_data = $this->code_model->get_seo_default();
+		$vars['title'] = "ISO教育訓練".$seo_data["title"];
+		$vars['keyword'] = $seo_data["keyword"];
 		$vars['base_url'] = base_url();
 		$page_init = array('location' => 'iso_train');
 		$this->fuel->pages->render("iso_train", $vars);
@@ -54,6 +57,9 @@ class Train extends CI_Controller {
 
 		$vars['train'] = $train;
 		$vars['views'] = 'iso_train_detail';
+		$seo_data = $this->code_model->get_seo_default();
+		$vars['title'] = "ISO教育訓練".$seo_data["title"];
+		$vars['keyword'] = $seo_data["keyword"];
 		$vars['interest_news'] = $this->code_model->get_random_all_news();
 		$vars['recommend_news'] = $this->code_model->get_extension_news("4"," AND type='139'",""," LIMIT 0,5");
 		$vars['base_url'] = base_url();
@@ -82,6 +88,9 @@ class Train extends CI_Controller {
 		$vars['train'] = $train;
 		$vars['register_url'] = base_url()."train/do_register";
 		$vars['views'] = 'iso_train_register';
+		$seo_data = $this->code_model->get_seo_default();
+		$vars['title'] = "線上報名".$seo_data["title"];
+		$vars['keyword'] = $seo_data["keyword"];
 		$vars['base_url'] = base_url();
 		$page_init = array('location' => 'iso_train_register');
 		$this->fuel->pages->render("iso_train_register", $vars);

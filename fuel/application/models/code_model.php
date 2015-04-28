@@ -19,6 +19,13 @@ class Code_model extends CI_Model {
         }
     }
 
+    public function get_seo_default(){
+        $var["title"] = "-國內ISO輔導資源最充足的顧問公司，協助您取得各項ISO認證，所有ISO認證問題找領導力企管就對了";
+        $var["keyword"] = "ISO 9001,ISO 27001";
+
+        return $var;
+    }
+
     public function get_news($news_kind,$type,$filter="",$orderby=""){
         $sql = @"select * from mod_news where
         news_kind = '$news_kind'
