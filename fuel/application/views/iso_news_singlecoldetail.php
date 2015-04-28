@@ -12,7 +12,7 @@
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> <!-- 最佳的IE兼容模式 -->
 
-<title>Isoleader GRI Training System</title>
+<title><?php echo $title; ?></title>
 
 <link href="<?php echo site_url()?>assets/templates/css/main.css" rel="stylesheet" type="text/css" />
 <link href="<?php echo site_url()?>assets/templates/js/iviewer_0.7.11/style.css" rel="stylesheet" type="text/css"/>

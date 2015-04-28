@@ -12,7 +12,7 @@
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> <!-- 最佳的IE兼容模式 -->
 
-<title>Isoleader GRI Training System</title>
+<title><?php echo $title; ?></title>
 
 <link href="<?php echo site_url()?>assets/templates/css/main.css" rel="stylesheet" type="text/css" />
 
@@ -211,7 +211,15 @@
 <!--Script放後面加速頁面產生-->
 
 <script type="text/javascript">
+$(".b3_c_left img").each(function(){
+            $(this).wrap( "<div class='b3_d_text_img'></div>" )
+                   .wrap($('<a >',{
+               href:  this.src,
+               class:'go'
 
-
-
+            }));
+});
 </script>
+<script type="text/javascript" src="<?php echo site_url()?>assets/templates/js/iviewer_0.7.11/jquery.mousewheel.min.js" ></script>
+<script type="text/javascript" src="<?php echo site_url()?>assets/templates/js/iviewer_0.7.11/jquery.iviewer.min.js" ></script>
+<script type="text/javascript" src="<?php echo site_url()?>assets/templates/js/iviewer_0.7.11/main.js" ></script>

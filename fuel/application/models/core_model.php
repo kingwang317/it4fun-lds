@@ -19,6 +19,7 @@ class Core_model extends CI_Model {
 
     }
 
+
     public function get_coach_item($cate_list){
 
         foreach ($cate_list as $key => $value) {
