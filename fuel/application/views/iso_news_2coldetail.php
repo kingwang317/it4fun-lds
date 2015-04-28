@@ -44,7 +44,7 @@
 
         <div class="location">
 
-            <div class="location_left"><font color="black"><a href="<?php echo site_url() ?>">首頁</a> / <a href="<?php echo site_url().'home/iso_news' ?>">最新消息</a> / <a href="<?php echo site_url().'home/iso_news?news_type='.$news_type->code_name ?>"><?php echo $news_type->code_name ?>系列</a>/ </font> <?php echo $news->title ?></div>
+            <div class="location_left"><font color="black"><a href="<?php echo site_url() ?>">首頁</a> / <a href="<?php echo site_url().'home/iso_news' ?>">最新消息</a> / <a href="<?php echo site_url().'home/iso_news?news_type='.$news_type->code_name ?>"><?php echo $news_type->code_name ?></a>/ </font> <?php echo $news->title ?></div>
 
             <div class="location_right">
 
