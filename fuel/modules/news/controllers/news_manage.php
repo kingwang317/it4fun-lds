@@ -45,7 +45,7 @@ class News_manage extends Fuel_base_controller {
 			}					
 		}
 		$vars['type_nav'] = "";
-		if ($news_kind == 3 || $news_kind == 2 || $news_kind == 0 || $news_kind == 4) {
+		if ($news_kind == 3 || $news_kind == 2 || $news_kind == 0 || $news_kind == 4 || $news_kind == 5) {
 		
 
 			// $search_type = $this->input->get_post('search_type'); 

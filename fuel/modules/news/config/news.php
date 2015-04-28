@@ -11,7 +11,7 @@ $config['nav']['news'] = array(
 'news/lists/3'		=> 'ISO小學堂',
 'news/lists/4'		=> '最新消息',
 'news/lists/5'		=> '輔導實績',
-'news/lists/4?type=93'		=> '最新消息-輔導實績'
+// 'news/lists/4?type=93'		=> '最新消息-輔導實績'
 );
 
 // deterines whether to use this configuration below or the database for controlling the blogs behavior
