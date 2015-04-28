@@ -44,7 +44,7 @@
 
         <div class="location">
 
-            <div class="location_left"><font color="black"><a href="<?php echo site_url() ?>">首頁</a> / <a href="<?php echo site_url().'home/iso_news' ?>">最新消息</a> / <a href=""><?php echo $news_type->code_name ?>系列</a>/ </font> <?php echo $news->title ?></div>
+            <div class="location_left"><font color="black"><a href="<?php echo site_url() ?>">首頁</a> / <a href="<?php echo site_url().'home/iso_news' ?>">最新消息</a> / <a href="<?php echo site_url().'home/iso_news?news_type='.$news_type->code_name ?>"><?php echo $news_type->code_name ?>系列</a>/ </font> <?php echo $news->title ?></div>
 
             <div class="location_right">
 
@@ -211,7 +211,15 @@
 <!--Script放後面加速頁面產生-->
 
 <script type="text/javascript">
+$(".b3_c_left img").each(function(){
+            $(this).wrap( "<div class='b3_d_text_img'></div>" )
+                   .wrap($('<a >',{
+               href:  this.src,
+               class:'go'
 
-
-
+            }));
+});
 </script>
+<script type="text/javascript" src="<?php echo site_url()?>assets/templates/js/iviewer_0.7.11/jquery.mousewheel.min.js" ></script>
+<script type="text/javascript" src="<?php echo site_url()?>assets/templates/js/iviewer_0.7.11/jquery.iviewer.min.js" ></script>
+<script type="text/javascript" src="<?php echo site_url()?>assets/templates/js/iviewer_0.7.11/main.js" ></script>
