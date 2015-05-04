@@ -19,3 +19,5 @@ $route[FUEL_ROUTE.'code/del/(:num)'] 			= CODEKIND_FOLDER.'/codekind_manage/do_c
 $route[FUEL_ROUTE.'code/do_create'] 			= CODEKIND_FOLDER.'/codekind_manage/do_code_create';
 $route[FUEL_ROUTE.'code/do_edit/(:num)'] 		= CODEKIND_FOLDER.'/codekind_manage/do_code_edit/$1';
 $route[FUEL_ROUTE.'code/do_multi_del'] 			= CODEKIND_FOLDER.'/codekind_manage/do_code_multi_del';
+
+$route[FUEL_ROUTE.'code/do_save_order'] 		= CODEKIND_FOLDER.'/codekind_manage/do_save_order'; 

@@ -68,7 +68,9 @@
 
                 <div class="b3_c_left_title"><?php echo $news->title ?></div>
                 <div class="b3_c_left_img">
-                    <img onload="AutoResizeImage('600','338',this);" src="<?php echo site_url().'assets/'.$news->img ?>">
+                    <?php if (isset($news->img) && !empty($news->img)): ?>
+                        <img onload="AutoResizeImage('600','338',this);" src="<?php echo site_url().'assets/'.$news->img ?>">
+                    <?php endif ?> 
                 </div>
                 <div class="b3_c_left_date"><?php 
                     $date = date_create($news->date);

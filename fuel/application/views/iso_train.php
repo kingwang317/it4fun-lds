@@ -17,7 +17,8 @@
 <?php  $this->load->view('_blocks/top')?>
 
 <div class="main main_width">
-    <div><img src="<?php echo site_url()?>assets/templates/images/b9/b9_banner.png"></div>
+    <div class="page_banner" style="background-image:url(<?php echo site_url()?>assets/templates/images/b9/b9_banner.jpg);"></div>
+    <!--<div><img src="<?php echo site_url()?>assets/templates/images/b9/b9_banner.jpg"></div>-->
     <div class="b9_main main_width_1024">
         <div class="b9_title">ISO教育訓練</div>
         <div class="table_block">

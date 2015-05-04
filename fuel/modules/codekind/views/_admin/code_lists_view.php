@@ -45,6 +45,7 @@
 		<section class="panel">
 			<header class="panel-heading">
 				<button class="btn btn-info" type="button" onClick="aHover('<?php echo $create_url;?>')">新增分類</button>
+				<button class="btn btn-primary" type="button" id="btn_save_order" >儲存排序</button>
 			</header>
 			<table class="table table-striped table-advance table-hover">
 				<thead>
@@ -57,6 +58,7 @@
 						<th>分類名稱</th>
 						<!-- <th>語系</th> -->
 						<th>Level</th>
+						<th>順序</th> 
 						<th>更新時間</th>
 						<th>編輯</th>
 					</tr>
@@ -80,6 +82,7 @@
 						<td>
 							<button class="btn btn-xs btn-info" type="button" onclick="aHover('<?php echo $level_url.$rows->code_id?>')">下一層</button>
 						</td>
+						<td><input type="text" class="order_code_id" style="width:50px" data-codeid="<?php echo $rows->code_id ?>" value="<?php echo $rows->code_value3?>" /></td>
 						<td><?php echo $rows->modi_time?></td>
 						<td>
 							<button class="btn btn-xs btn-danger del" type="button" onclick="dialog_chk(<?php echo $rows->code_id?>)">刪除</button>
@@ -92,7 +95,7 @@
 					{
 					?>
 						<tr>
-							<td colspan="4">No results.</td>
+							<td colspan="6">No results.</td>
 						</tr>
 					<?php
 					}
@@ -131,6 +134,35 @@
 					$j(this).prop("checked", false);
 				});     
 		   }
+		});
+
+		$j("#btn_save_order").click(function(event) {
+			var postData = {};
+			var ids = {};
+			var api_url = '<?php echo $url_save_order?>';
+			$j("input[class='order_code_id']").each(function(i){	
+				ids[$(this).data('codeid')] = $(this).val();	
+			});
+			// console.log(ids);
+			// return;
+			postData = {'ids': ids};
+			 $j.ajax({
+				url: api_url,
+				type: 'POST',
+				async: true,
+				crossDomain: false,
+				cache: false,
+				data: postData,
+				success: function(data, textStatus, jqXHR){
+					var data_json=jQuery.parseJSON(data);
+					console.log(data_json);
+					if(data_json.status == 1)
+					{ 
+						setTimeout("update_page()", 500);
+					}
+
+				},
+			});
 		});
 
 		$j("button.delall").click(function(){

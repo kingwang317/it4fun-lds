@@ -156,7 +156,7 @@ class Home extends CI_Controller {
 		$seo_data = $this->code_model->get_seo_default();
 		$vars['title'] = "領導力企管".$seo_data["title"];
 		$vars['keyword'] = $seo_data["keyword"];
-		$vars['interest_news'] = $this->get_extension_news($news->keyword," AND type NOT IN (SELECT  code_id FROM mod_code WHERE code_key = 'RECOMMEND') ");//$this->code_model->get_coach_by_type($news->type);
+		$vars['interest_news'] = $this->get_extension_news($news->keyword," AND type NOT IN (SELECT  code_id FROM mod_code WHERE code_key = 'RECOMMEND') AND id <> '$id' ");//$this->code_model->get_coach_by_type($news->type);
  
  		$recommand = $this->code_model->get_code_info("NEWS_TYPE","RECOMMEND");	 
 		$vars['recommand_name'] = $recommand[0]->code_name;
@@ -168,7 +168,7 @@ class Home extends CI_Controller {
 		$vars['news_type'] = $this->code_model->get_series_info($news->type);
 
 		if ($news->layout_type <> 1) {			
-			$vars['news_series'] = $this->code_model->get_extension_news("2"," AND type='$news->type' ");
+			$vars['news_series'] = $this->code_model->get_extension_news("2"," AND type='$news->type' AND id <> '$id' ");
 			$vars['views'] = 'iso_coach_2coldetail';
 			$vars['base_url'] = base_url();
 			$page_init = array('location' => 'iso_coach_2coldetail');
@@ -295,7 +295,7 @@ class Home extends CI_Controller {
 		$this->code_model->update_news_viewcount($id);
 
 		$vars['news'] = $news;
-		$vars['interest_news'] = $this->get_extension_news($news->keyword," AND type NOT IN (SELECT  code_id FROM mod_code WHERE code_key = 'RECOMMEND') ");//$this->code_model->get_random_all_news();
+		$vars['interest_news'] = $this->get_extension_news($news->keyword," AND type NOT IN (SELECT  code_id FROM mod_code WHERE code_key = 'RECOMMEND') AND id <> '$id' ");//$this->code_model->get_random_all_news();
 		// $vars['interest_news2'] = $this->code_model->get_random_all_news();
 		$recommand = $this->code_model->get_code_info("NEWS_TYPE","RECOMMEND");	 
 		$vars['recommand_name'] = $recommand[0]->code_name;
@@ -424,7 +424,7 @@ class Home extends CI_Controller {
 		$vars['news_type'] = $this->code_model->get_series_info($news->type);
 
 		if ($news->layout_type <> 1) {			
-			$vars['news_series'] = $this->code_model->get_extension_news("4"," AND type='$news->type' ",'',' limit 0,5 ');
+			$vars['news_series'] = $this->code_model->get_extension_news("4"," AND type='$news->type' AND id <> '$id' ",'',' limit 0,5 ');
 			$vars['views'] = 'iso_news_2coldetail';
 			$seo_data = $this->code_model->get_seo_default();
 			$vars['title'] = "領導力企管".$seo_data["title"];
@@ -456,7 +456,10 @@ class Home extends CI_Controller {
 		$news_type = $this->input->get_post('news_type'); 
 
 		foreach ($iso_news_type as $key => $value) { 
-			$result[$value->code_name] = $this->code_model->get_iso_succcase_items($value->code_id); 
+			$sAry = $this->code_model->get_iso_succcase_items($value->code_id);
+			if (sizeof($sAry)>0) {
+				$result[$value->code_name] = $this->code_model->get_iso_succcase_items($value->code_id); 
+			}			
 		} 
 
 		if (isset($news_type) && empty($news_type)) {
@@ -502,7 +505,7 @@ class Home extends CI_Controller {
 		$this->code_model->update_news_viewcount($id);
 
 		$vars['news'] = $news;
-		$vars['interest_news'] = $this->get_extension_news($news->keyword," AND type NOT IN (SELECT  code_id FROM mod_code WHERE code_key = 'RECOMMEND') ");//$this->code_model->get_coach_by_type($news->type);
+		$vars['interest_news'] = $this->get_extension_news($news->keyword," AND type NOT IN (SELECT  code_id FROM mod_code WHERE code_key = 'RECOMMEND') AND id <> '$id' ");//$this->code_model->get_coach_by_type($news->type);
  
 
 		$recommand = $this->code_model->get_code_info("NEWS_TYPE","RECOMMEND");	 
@@ -515,7 +518,7 @@ class Home extends CI_Controller {
 		$vars['news_type'] = $this->code_model->get_series_info($news->type);
 
 		if ($news->layout_type <> 1) {			
-			$vars['news_series'] = $this->code_model->get_extension_news("5"," AND type='$news->type' ",'',' limit 0,5 ');
+			$vars['news_series'] = $this->code_model->get_extension_news("5"," AND type='$news->type' AND id <> '$id' ",'',' limit 0,5 ');
 			$vars['views'] = 'iso_succcase_2coldetail';
 			$seo_data = $this->code_model->get_seo_default();
 			$vars['title'] = "成功案例".$seo_data["title"];

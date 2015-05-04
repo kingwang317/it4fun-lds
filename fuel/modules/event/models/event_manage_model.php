@@ -138,11 +138,13 @@ class Event_manage_model extends MY_Model {
 				`coll_unit`,
 				`train_place`,
 				`train_place_s`,
+				`qualify`,
+				`waiting_list`,
 				`host_unit`, 
 				`file_path`, 
 				`notify_date`, 
 				`modi_date` )
-				VALUES (?,?, ?, ?, ?, ?, ?, ? ,?, ?,?, ?, ?,?,?, NOW())
+				VALUES (?,?, ?, ?, ?, ?, ?, ? ,?, ?,?, ?, ?,?,?,?,?, NOW())
 				";
 		$para = array(
 				$data['is_free'],
@@ -157,6 +159,8 @@ class Event_manage_model extends MY_Model {
 				$data['coll_unit'],
 				$data['train_place'],
 				$data['train_place_s'],
+				$data['qualify'],
+				$data['waiting_list'],
 				$data['host_unit'],
 				$data['file_path'],
 				$data['notify_date']
@@ -186,6 +190,8 @@ class Event_manage_model extends MY_Model {
 									  coll_unit=?, 
 									  train_place=?, 
 									  train_place_s=?, 
+									  `qualify`=?, 
+									  `waiting_list`=?, 
 									  host_unit=?, 
 									  file_path=?, 
 									  notify_date=?, 
@@ -204,6 +210,8 @@ class Event_manage_model extends MY_Model {
 				$data['coll_unit'],
 				$data['train_place'],
 				$data['train_place_s'],
+				$data['qualify'],
+				$data['waiting_list'],
 				$data['host_unit'],
 				$data['file_path'],
 				$data['notify_date'],
