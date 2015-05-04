@@ -8,7 +8,7 @@ class Code_model extends CI_Model {
 
     public function get_code($codekind_key,$lang_code,$parent_id=-1,$filter=""){
         $sql = @"select * from mod_code where codekind_key = '$codekind_key' 
-        and parent_id = $parent_id and lang_code = '$lang_code' $filter order by code_value1 , code_id";
+        and parent_id = $parent_id and lang_code = '$lang_code' $filter order by code_value3, code_value1 , code_id";
         $query = $this->db->query($sql);
         // echo $sql;exit;
         if($query->num_rows() > 0)
@@ -59,7 +59,7 @@ class Code_model extends CI_Model {
 
     public function get_serach_news($keyword){
         $sql = @"select * from mod_news where
-        news_kind IN (2,3) AND ( title LIKE '%$keyword%' || content LIKE '%$keyword%')
+        news_kind IN (2,3,4,5) AND ( title LIKE '%$keyword%' || content LIKE '%$keyword%')
         order by news_order ASC , date DESC $orderby ";
         $query = $this->db->query($sql);
         // echo $sql;exit;

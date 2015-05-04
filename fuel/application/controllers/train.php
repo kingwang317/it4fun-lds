@@ -55,7 +55,18 @@ class Train extends CI_Controller {
 			$vars['free_charge_name'] = '收費課程';
 		}
 
+		$train_statues = '';
+
+		if ($train->reg_count >= $train->qualify + $train->waiting_list) {
+			$train_statues = '報名額滿';
+		}else if ($train->reg_count >= $train->qualify) {
+			$train_statues = '備取登記';
+		}else{
+			$train_statues = '線上報名';
+		}
+
 		$vars['train'] = $train;
+		$vars['train_statues'] = $train_statues;
 		$vars['views'] = 'iso_train_detail';
 		$seo_data = $this->code_model->get_seo_default();
 		$vars['title'] = "ISO教育訓練".$seo_data["title"];
@@ -75,6 +86,17 @@ class Train extends CI_Controller {
 
 		if (!isset($train)) {
 			$this->comm->plu_redirect(site_url(), 0, "找不到資料");
+			die;
+		}
+
+		$train_statues ='';
+
+		if ($train->reg_count >= $train->qualify + $train->waiting_list) {
+			$train_statues = '報名額滿';
+		}
+
+		if ($train_statues <> '') {
+			$this->comm->plu_redirect(site_url(), 0, $train_statues);
 			die;
 		}
 		// $train = $this->train_model->get_train_by_id($id);
@@ -152,6 +174,14 @@ class Train extends CI_Controller {
 		    $register_msg = $post_arr['register_msg'];
 		    $train = $this->train_model->get_train_by_id($train_id);
 
+		    $content = '';
+
+		    if ($train->is_free) {
+		    	$content = '請修改為：我們已經收到您的線上報名，並將於研討會前7個工作天，E-mail上課通知。';
+		    }else{
+		    	$content = '我們已經收到您的線上報名，本課程並將於開課前7個工作天，E-mail通知是否開課成功。待您收到開課成功訊息，再進行繳費作業，謝謝。';
+		    }
+
 		    $subject = "$company_name-$name-$train->train_title-$train->train_date-$train->train_place"; //信件標題 
 		    $url = site_url();
 			$image_url = $url.'assets/templates/images/mail/logo.png';
@@ -171,7 +201,7 @@ class Train extends CI_Controller {
 				    </div>
 				    <div style='background-color:#fff;padding:20px 50px 20px 50px;'>
 				        <!--<div style='margin: 0px auto;text-align:center;'><img src='http://a-wei.lionfree.net/leadership/images/mail/head.jpg'></div>-->
-				        <div style='font-size:14px;line-height:26px;'>你好：<br>我們已收到您的線上留言。將儘快與您聯繫。</div>
+				        <div style='font-size:14px;line-height:26px;'>你好：<br>$content</div>
 				        <div style='line-height:26px;'>
 				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>公司名稱：</div><div style='font-size:14px;display:inline-block;'>$company_name</div>
 				        </div>

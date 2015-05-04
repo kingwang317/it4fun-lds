@@ -53,7 +53,10 @@
 
                 <div class="b3_c_left_title"><?php echo $train->train_title ?></div>
                 <div class="b3_c_left_img">
-                    <img onload="AutoResizeImage('600','338',this);" src="<?php echo site_url().'assets/'.$train->file_path ?>">
+                     <?php if (isset($train->file_path) && !empty($train->file_path)): ?>
+                        <img onload="AutoResizeImage('600','338',this);" src="<?php echo site_url().'assets/'.$train->file_path ?>">
+                    <?php endif ?> 
+                    <!-- <img onload="AutoResizeImage('600','338',this);" src="<?php echo site_url().'assets/'.$train->file_path ?>"> -->
                 </div>
                 <div class="b3_c_left_text">
                 <?php echo htmlspecialchars_decode($train->train_detail) ?>
@@ -144,7 +147,9 @@
 
                 </div>
 
-                <a href="<?php echo site_url().'train/register?train_id='.$train->id ?>"><div class="b10_submit b12_submit">線上報名</div></a>
+                <?php if ($train_statues != '報名額滿'): ?>
+                    <a href="<?php echo site_url().'train/register?train_id='.$train->id ?>"><div class="b10_submit b12_submit"><?php echo $train_statues ?></div></a>
+                <?php endif ?>
 
                 <div class="b12_facebook_comment">
 

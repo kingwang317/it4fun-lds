@@ -76,7 +76,9 @@
             </div>
 
             <div class="b3_d_text">
-            <img onload="AutoResizeImage('600','338',this);" src="<?php echo site_url().'assets/'.$news->img ?>">
+                <?php if (isset($news->img) && !empty($news->img)): ?>
+                    <img onload="AutoResizeImage('600','338',this);" src="<?php echo site_url().'assets/'.$news->img ?>">
+                <?php endif ?>            
             <?php echo htmlspecialchars_decode($news->content) ?>
             </div>
 

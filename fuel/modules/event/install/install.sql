@@ -33,3 +33,6 @@ ALTER TABLE `mod_train` DROP `train_time`
 ALTER TABLE  `mod_train` ADD  `train_days` INT( 10 ) NOT NULL
 ALTER TABLE  `mod_train` ADD  `notify_date` datetime
 ALTER TABLE  `mod_train` ADD  `file_path` VARCHAR( 500 ) 
+
+ALTER TABLE  `mod_train` ADD  `qualify` INT NOT NULL ,
+ADD  `waiting_list` INT NOT NULL

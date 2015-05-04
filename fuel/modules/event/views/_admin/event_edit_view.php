@@ -81,6 +81,18 @@
 							</div>
 						</div>
 						<div class="form-group">
+							<label class="col-sm-2 col-sm-2 control-label"><span style="color:#d9534f">*</span>正取</label>
+							<div class="col-sm-4">
+								<input type="text" class="form-control" name="qualify" value="<?php echo $result->qualify?>" id="qualify"> 
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 col-sm-2 control-label"><span style="color:#d9534f">*</span>備取</label>
+							<div class="col-sm-4">
+								<input type="text" class="form-control" name="waiting_list" value="<?php echo $result->waiting_list?>" id="waiting_list"> 
+							</div>
+						</div>
+						<div class="form-group">
 							<label class="col-sm-2 col-sm-2 control-label"><span style="color:#d9534f">*</span>主辦單位</label>
 							<div class="col-sm-4">
 								<input type="text" class="form-control" name="host_unit" value="<?php echo $result->host_unit?>" id="host_unit"> 
@@ -249,6 +261,20 @@
 			if($j("#train_hours").val() == "")
 			{
 				$j("#train_hours").parents('.col-sm-4').after("<div class='col-sm-2 msg'><span style='color:red;'>必填</span></div>");
+
+				return false;
+			}	
+
+			if($j("#qualify").val() == "")
+			{
+				$j("#qualify").parents('.col-sm-4').after("<div class='col-sm-2 msg'><span style='color:red;'>必填</span></div>");
+
+				return false;
+			}	
+
+			if($j("#waiting_list").val() == "")
+			{
+				$j("#waiting_list").parents('.col-sm-4').after("<div class='col-sm-2 msg'><span style='color:red;'>必填</span></div>");
 
 				return false;
 			}	

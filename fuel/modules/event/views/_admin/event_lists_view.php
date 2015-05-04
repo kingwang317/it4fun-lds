@@ -73,16 +73,19 @@
 								<input type="checkbox" id="select-all"/>
 							</label>
 						</th>
-						<th style="width:20%">課程名稱</th>
-						<th style="width:30%">開課日期</th>
-						<th style="width:10%">上課時間</th>
-						<th style="width:10%">上課地點</th>
-						<th style="width:5%">費用</th>
-		<!-- 				<th style="width:10%">主辦單位</th>
+						<th style="width:380px">課程名稱</th>
+						<th style="width:80px">費用</th>
+						<th style="width:150px">時間</th>
+						<th style="width:50px">天數</th>
+						<th style="width:50px">時數</th>
+						<th style="width:80px">合作單位</th>
+						<th style="width:50px">開課日期</th>
+						<th style="width:100px">上課地點</th>
+		<!-- 				
 						<th style="width:10%">合作單位</th> -->
-						<th style="width:10%">報名人數</th>
-						<th style="width:5%">報名列表</th>
-						<th style="width:5%">刪除</th>
+						<th style="width:80px">報名人數</th>
+						<th style="width:50px">報名列表</th>
+						<th style="width:50px">刪除</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -100,16 +103,25 @@
 						</td>
 						<td style="width:10%"><p class="EventTitle"><a href="<?php echo $edit_url.$row->id?>" title="<?php echo $row->train_title?>"><?php echo $row->train_title?></a></p></td>
 						<td>
-							<?php echo $row->train_date ?>
+							<?php echo $row->train_price ?>
 						</td>
 						<td>
 							<?php echo $row->train_time_s;?>~<?php echo $row->train_time_e?>
 						</td>
 						<td>
-							<?php echo $row->train_price;?>(<?php echo $row->train_place_s ?>)
+							<?php echo $row->train_days ?>
 						</td>
 						<td>
-							<?php echo $row->train_price;?>
+							<?php echo $row->train_hours ?>
+						</td>
+						<td>
+							<?php echo $row->coll_unit;?>
+						</td>
+						<td>
+							<?php echo $row->train_date;?>
+						</td>
+						<td>
+							<?php echo $row->train_price;?>(<?php echo $row->train_place_s ?>)
 						</td>
 					<!-- 	<td>
 							<?php echo $row->host_unit;?>
@@ -132,7 +144,7 @@
 					{
 				?>
 					<tr>
-						<td colspan="8">No results.</td>
+						<td colspan="12">No results.</td>
 					</tr>
 				<?php
 					}

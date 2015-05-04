@@ -19,7 +19,7 @@ class Train_model extends CI_Model {
     } 
 
     public function get_train_by_id($id){
-        $sql = @"select * from mod_train where id = '$id' ";
+        $sql = @"select *, (SELECT COUNT(*) FROM mod_register WHERE mod_register.train_id = mod_train.id ) reg_count from mod_train where id = '$id' ";
         $query = $this->db->query($sql);
         // echo $sql;exit;
         if($query->num_rows() > 0)

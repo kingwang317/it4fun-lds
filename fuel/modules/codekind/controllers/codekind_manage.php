@@ -77,6 +77,24 @@ class Codekind_manage extends Fuel_base_controller {
 
 	}
 
+	function do_save_order(){
+
+		$ids = $this->input->get_post("ids");
+		foreach ($ids as $key => $value) {
+			$this->codekind_manage_model->set_order($key,$value);
+		}
+
+		$result = array();
+
+		$result['status'] = 1;
+
+
+		if(is_ajax())
+		{
+			echo json_encode($result);
+		}
+	}
+
 	function code_lists($dataStart=0)
 	{
 		$base_url = base_url();
@@ -116,6 +134,7 @@ class Codekind_manage extends Fuel_base_controller {
 
 			$vars['codekind_name'] = $codekind_name;
 			$vars['page_jump'] = $this->pagination->create_links();
+			$vars['url_save_order'] = $base_url."fuel/code/do_save_order";	
 			
 			$vars['edit_url'] = $base_url.'fuel/code/edit/';
 			$vars['del_url'] = $base_url.'fuel/code/del/';
