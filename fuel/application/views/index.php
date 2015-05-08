@@ -7,6 +7,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> <!-- 最佳的IE兼容模式 -->
 <title><?php echo $title ?></title>
 <link href="<?php echo site_url()?>assets/templates/css/main.css" rel="stylesheet" type="text/css" />
+<meta property="og:image" content="<?php echo $image ?>" />
+<meta property="og:title" content="<?php echo $title ?><" />
+<meta property="og:description" content="<?php echo $description ?><" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="<?php echo $url ?>" />
+<meta property="og:site_name" content="領導力企管" />
 <!--link font awesome to use the icon-->
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 <script type="text/javascript" src="<?php echo site_url()?>assets/templates/js/jquery-1.9.1.min.js"></script>

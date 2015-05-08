@@ -66,10 +66,20 @@ class Train extends CI_Controller {
 		}
 
 		$vars['train'] = $train;
+
+		$seo_data = $this->code_model->get_seo_default();
+		
+		
+		$vars['keyword'] = $seo_data["keyword"];
+		$vars['image'] = site_url().'assets/'.$train->file_path;
+		$vars['url'] = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+		$vars['description'] = mb_substr( strip_tags($train->train_detail), 0, 150 );
+
+
 		$vars['train_statues'] = $train_statues;
 		$vars['views'] = 'iso_train_detail';
 		$seo_data = $this->code_model->get_seo_default();
-		$vars['title'] = "ISO教育訓練".$seo_data["title"];
+		$vars['title'] = "ISO教育訓練 ".$train->train_title." ".$seo_data["title"];
 		$vars['keyword'] = $seo_data["keyword"];
 		$vars['interest_news'] = $this->code_model->get_random_all_news();
 		$vars['recommend_news'] = $this->code_model->get_extension_news("4"," AND type='139'",""," LIMIT 0,5");
