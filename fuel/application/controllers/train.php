@@ -60,7 +60,7 @@ class Train extends CI_Controller {
 		if ($train->reg_count >= $train->qualify + $train->waiting_list) {
 			$train_statues = '報名額滿';
 		}else if ($train->reg_count >= $train->qualify) {
-			$train_statues = '備取登記';
+			$train_statues = '後補登記';
 		}else{
 			$train_statues = '線上報名';
 		}
@@ -186,11 +186,26 @@ class Train extends CI_Controller {
 
 		    $content = '';
 
-		    if ($train->is_free) {
-		    	$content = '請修改為：我們已經收到您的線上報名，並將於研討會前7個工作天，E-mail上課通知。';
-		    }else{
-		    	$content = '我們已經收到您的線上報名，本課程並將於開課前7個工作天，E-mail通知是否開課成功。待您收到開課成功訊息，再進行繳費作業，謝謝。';
-		    }
+		    $train_statues = '';
+
+			if ($train->reg_count >= $train->qualify + $train->waiting_list) {
+				$train_statues = '報名額滿';
+			}else if ($train->reg_count >= $train->qualify) {
+				$train_statues = '後補登記';
+			}else{
+				$train_statues = '線上報名';
+			}
+
+			if ($train_statues == '後補登記') {
+	    		$content = '我們已經收到您的候補登記。將於開課前 5 個工作天，以 E-mail通知您是否取得候補席次。';
+	    	}else{
+	    		if ($train->is_free) {		    	 
+		    		$content = '我們已經收到您的線上報名，並將於研討會前7個工作天，E-mail上課通知。';		    	    	
+			    }else{
+			    	$content = '我們已經收到您的線上報名，本課程並將於開課前7個工作天，E-mail通知是否開課成功。待您收到開課成功訊息，再進行繳費作業，謝謝。';
+			    }
+	    	}
+		   
 
 		    $subject = "$company_name-$name-$train->train_title-$train->train_date-$train->train_place"; //信件標題 
 		    $url = site_url();

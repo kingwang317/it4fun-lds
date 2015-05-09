@@ -31,7 +31,10 @@
 							</div>
 						</div>	
 						<div class="form-group">
-							<label class="col-sm-2 col-sm-2 control-label"><span style="color:#d9534f">*</span>開課日期</label>
+							<label class="col-sm-2 col-sm-2 control-label">
+								<span style="color:#d9534f">*</span>開課日期<br/>
+								<span style="color:#d9534f">若有1個以上的開課日期，請使用半形逗點分開。舉例：2015-1-1,2015-5-30</span>
+							</label>
 							<div class="col-sm-4">
 								<textarea class="form-control" rows="3" name="train_date" id="train_date"></textarea>
 								<!-- <div class="input-group date train_date">
@@ -74,8 +77,10 @@
 								<input type="number" class="form-control" name="train_hours" value="" id="train_hours"> 
 							</div>
 						</div>
-						<div class="form-group">
-							<label class="col-sm-2 col-sm-2 control-label"><span style="color:#d9534f">*</span>上課地點[全稱]</label>
+						<div class="form-group">							
+							<label class="col-sm-2 col-sm-2 control-label"><span style="color:#d9534f">*</span>上課地點[全稱]<br/>
+								<span style="color:#d9534f">若有1個以上的開課地點，請使用半形逗點分開。舉例：臺北xxxxxx,高雄xxxxxx</span>
+							</label>
 							<div class="col-sm-4">
 								<input type="text" class="form-control" name="train_place" value="" id="train_place"> 
 							</div>
