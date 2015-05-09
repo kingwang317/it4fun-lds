@@ -160,6 +160,7 @@
                     <a href="#"><div class="b10_submit b12_submit"><?php echo $train_statues ?></div></a>
                 <?php endif ?>
 
+
                 <div class="b12_facebook_comment">
 
                     <div class="new_title_config extend_title">學員留言</div>
