@@ -154,8 +154,13 @@ class Home extends CI_Controller {
 
 		$vars['news'] = $news;
 		$seo_data = $this->code_model->get_seo_default();
+
 		$vars['title'] = "領導力企管".$seo_data["title"];
 		$vars['keyword'] = $seo_data["keyword"];
+		$vars['image'] = site_url().'assets/'.$news->img;
+		$vars['url'] = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+		$vars['description'] = mb_substr( strip_tags($news->content), 0, 150 );
+
 		$vars['interest_news'] = $this->get_extension_news($news->keyword," AND type NOT IN (SELECT  code_id FROM mod_code WHERE code_key = 'RECOMMEND') AND id <> '$id' ");//$this->code_model->get_coach_by_type($news->type);
  
  		$recommand = $this->code_model->get_code_info("NEWS_TYPE","RECOMMEND");	 
@@ -417,6 +422,15 @@ class Home extends CI_Controller {
 		$recommand = $this->code_model->get_code_info("NEWS_TYPE","RECOMMEND");	 
 		$vars['recommand_name'] = $recommand[0]->code_name;
 		$vars['recommand_news'] = $this->code_model->get_recommand_news(5);
+
+
+		$seo_data = $this->code_model->get_seo_default();
+		
+		$vars['title'] = "領導力企管".$seo_data["title"];
+		$vars['keyword'] = $seo_data["keyword"];
+		$vars['image'] = site_url().'assets/'.$news->img;
+		$vars['url'] = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+		$vars['description'] = mb_substr( strip_tags($news->content), 0, 150 );
 
 		// $vars['recommend_news'] = $this->code_model->get_extension_news("4"," AND type='139'",""," LIMIT 0,5");
 		//$vars['interest_news2'] = $this->code_model->get_random_all_news();

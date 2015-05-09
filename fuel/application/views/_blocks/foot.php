@@ -125,6 +125,16 @@
 
     //echo "您是本站的第 <font color=#0000ff>".$_SESSION["counter"]."</font> 位貴賓！" ;
     ?>
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-42804701-1', 'auto');
+    ga('send', 'pageview');
+
+    </script>
     <div class="foot_end">
         <div class="contact_end">
             Copyright ⓒ 2015 Leadership, All Rights Reserved. 領導力企業管理顧問有限公司版權所有&nbsp;&nbsp;&nbsp;&nbsp;<span class="fa fa-phone"></span> 0800-222-007&nbsp;&nbsp;&nbsp;&nbsp;<span class="fa fa-envelope"></span> service@isoleader.com.tw

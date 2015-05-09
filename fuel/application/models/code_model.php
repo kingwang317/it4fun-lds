@@ -92,8 +92,8 @@ class Code_model extends CI_Model {
         return $this->get_news(4,'RECOMMEND','',' limit 0,'.$page_size);
     }
 
-    public function get_coach_by_type($type){
-        $sql = @"select * from mod_news where type='$type'
+    public function get_coach_by_type($type,$kind=2){
+        $sql = @"select * from mod_news where type='$type' and news_kind = '$kind'
         order by news_order ASC , date DESC $orderby ";
         $query = $this->db->query($sql);
         // echo $sql;exit;

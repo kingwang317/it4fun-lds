@@ -14,6 +14,13 @@
 
 <title><?php echo $title; ?></title>
 
+<meta property="og:image" content="<?php echo $image ?>" />
+<meta property="og:title" content="<?php echo $title ?><" />
+<meta property="og:description" content="<?php echo $description ?><" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="<?php echo $url ?>" />
+<meta property="og:site_name" content="領導力企管" />
+
 <link href="<?php echo site_url()?>assets/templates/css/main.css" rel="stylesheet" type="text/css" />
 
 <link href="<?php echo site_url()?>assets/templates/js/iviewer_0.7.11/style.css" rel="stylesheet" type="text/css"/>
