@@ -156,7 +156,10 @@
 
                 <?php if ($train_statues != '報名額滿'): ?>
                     <a href="<?php echo site_url().'train/register?train_id='.$train->id ?>"><div class="b10_submit b12_submit"><?php echo $train_statues ?></div></a>
+                <?php else: ?>
+                    <a href="#"><div class="b10_submit b12_submit"><?php echo $train_statues ?></div></a>
                 <?php endif ?>
+
 
                 <div class="b12_facebook_comment">
 

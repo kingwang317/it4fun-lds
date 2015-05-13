@@ -59,7 +59,18 @@
 					<button class="btn btn-info" type="button" id="btn_save_order" >儲存排序</button>
 					<!-- <button type="button" id="donebatch" class="btn btn-info">批次刪除</button> -->
 				</div>
-			</div>
+			</div>			
+			<?php if ($news_kind == 2 || $news_kind == 0 || $news_kind == 4 || $news_kind == 3 || $news_kind == 5): ?>	
+				<div class="form-inline" style="margin-top:10px" >
+					<div class="form-group">
+						 <?php if (isset($type)): ?>
+						 	<?php foreach ($type as $key => $value): ?>
+						 		<button class="btn btn-primary" type="button" onclick="aHover('<?php echo $target_url ?>?type=<?php echo $value->code_id?>')"><?php echo $value->code_name ?></button>
+						 	<?php endforeach ?>
+						 <?php endif ?>
+					</div>
+				</div>			
+			<?php endif ?>
 	    </div>
 	</div> 
 

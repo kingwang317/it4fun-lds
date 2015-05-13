@@ -188,10 +188,10 @@ class Home extends CI_Controller {
 	 
 	}
 
-	function get_extension_news($keyword){
+	function get_extension_news($keyword,$filter){
 		if (isset($keyword)) {
 			$k_ary = explode(',', $keyword);
-			$filter = ' AND ( ';
+			$filter .= ' AND ( ';
 			for($i=0;$i<sizeof($k_ary);$i++){
 				$k = $k_ary[$i];
 				$k = str_replace(' ', '', $k);
@@ -416,7 +416,7 @@ class Home extends CI_Controller {
 		$this->code_model->update_news_viewcount($id);
 
 		$vars['news'] = $news;
-		$vars['interest_news'] = $this->get_extension_news($news->keyword," AND type NOT IN (SELECT  code_id FROM mod_code WHERE code_key = 'RECOMMEND') ");//$this->code_model->get_coach_by_type($news->type);
+		$vars['interest_news'] = $this->get_extension_news($news->keyword," AND type NOT IN (SELECT  code_id FROM mod_code WHERE code_key = 'RECOMMEND') AND id <> '$id' ");//$this->code_model->get_coach_by_type($news->type);
  
 
 		$recommand = $this->code_model->get_code_info("NEWS_TYPE","RECOMMEND");	 
@@ -476,9 +476,10 @@ class Home extends CI_Controller {
 			}			
 		} 
 
-		if (isset($news_type) && empty($news_type)) {
-			$news_type = $iso_news_type[0]->code_name;
+		if (!isset($news_type) || empty($news_type)) {
+			$news_type = '品質管理';//$iso_news_type[0]->code_name;
 		}
+
 		// var_dump(is_int((int)'139'));
 
 		if (is_int(((int)$news_type))) {

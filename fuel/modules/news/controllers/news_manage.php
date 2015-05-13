@@ -73,13 +73,13 @@ class News_manage extends Fuel_base_controller {
 			}
 		}
 
-		if ($news_kind == 2 || $news_kind == 3) {
+		if ($news_kind == 2 || $news_kind == 3|| $news_kind == 5) {
 			$type = $this->codekind_manage_model->get_code_list_for_other_mod("COACH_TYPE");
 			$vars['type'] = $type;
 		}else if($news_kind == 0){
 			$type = $this->codekind_manage_model->get_code_list_for_other_mod("HOME_TYPE");
 			$vars['type'] = $type;
-		}else if($news_kind == 4){
+		}else if($news_kind == 4 ){
 			$type = $this->codekind_manage_model->get_code_list_for_other_mod("NEWS_TYPE");
 			$vars['type'] = $type;
 		}
