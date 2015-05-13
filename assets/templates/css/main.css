@@ -131,6 +131,7 @@ h2 {
     color:#202020;
     font-size:15px;
     line-height:26px;
+    padding-bottom:5px;
     border-bottom: dotted 1px #7f7f7f;
 }
 .list_text a:hover{
@@ -396,6 +397,7 @@ h2 {
 
 .b2_block_table_list:hover{
     background-color:#f3f3f3;
+    color:#eb1d23;
 }
 
 /*b9 css*/
@@ -486,7 +488,7 @@ h2 {
     text-align:center;
     line-height:50px;
     cursor:pointer;
-    padding:0 20px 0 20px;
+    padding:0 10px 0 10px;
 }
 .b4_1_choosed{
        display: -webkit-box;
@@ -631,9 +633,10 @@ h2 {
     -webkit-border-radius: 3px;
     padding-left:5px;
 }
-#name{
+#name , #name2{
     width:400px;
 }
+
 .b10_select{
     border:solid 1px #CCCCCC;
     height:40px;
@@ -881,6 +884,9 @@ span.holder {
     vertical-align:middle;
     text-align:left;
 }
+.location_left a:hover{
+    color:#eb1d23;
+}
 .location_right{
     display:inline-block;
     float:right;
@@ -914,6 +920,7 @@ span.holder {
 }
 .b3_c_left_title{
     font-size:28px;
+    line-height:30px;
     padding:0 20px 20px 20px;
     text-align:left;
 }
@@ -924,9 +931,15 @@ span.holder {
     padding-left:20px;
     margin-bottom:10px;
 }
+.b3_c_left_text a{
+    color:#4285f4;
+}
 .b3_c_left_img{
     text-align:center;
     margin-bottom:15px;
+}
+.b3_c_left_img a img{
+    border-color:#808080;
 }
 .b3_c_left_text{
     width:600px;
@@ -1009,7 +1022,7 @@ span.holder {
     border-bottom: solid 1px #DDDDDD;
 }
 .b3_c_right_list_block:hover{
-    color:#505050;
+    color:#eb1d23;
 }
 .bottom_end{
     border:none;
@@ -1033,6 +1046,7 @@ span.holder {
 }
 .b3_d_top_title{
     font-size:28px;
+    line-height:30px;
     display:inline-block;
     padding-bottom:10px;
     margin:0 50px 0 50px;
@@ -1052,9 +1066,17 @@ span.holder {
     
     text-align:left;
 }
+.b3_d_text a{
+    color:#4285f4;
+    border-color:#666 !important;
+}
 .b3_d_text_img{
     text-align:center;
     margin-top:20px;
+    border-color:#666;
+}
+.b3_d_text_img a img{
+    border-color:#808080;
 }
 .b3_d_text ul li{
     list-style-type:disc;
@@ -1170,6 +1192,12 @@ span.holder {
     margin:20px 0 20px 0;
     float:none;
 }
+.add_person{
+    font-size:14px;
+    width:100px;
+    height:30px;
+    line-height:30px;
+}
 .b12_info_title_slider_text{
     color:#5E5E5E;
     width:520px;
@@ -1246,6 +1274,7 @@ span.holder {
     padding:10px 0 10px 0;
     border-bottom: dotted 1px black;
 }
+
 .b15_block_title{
     line-height:30px;
     font-weight:bold;
@@ -1255,7 +1284,10 @@ span.holder {
     line-height:30px;
     color:#5e5e5e;
 }
-
+.b15_block_mouseover{
+    background-color:#f1f1f1;
+    color:#eb1d23 !important;
+}
 /*b17_2 css*/
 .b17_2_block{
     display:inline-block;

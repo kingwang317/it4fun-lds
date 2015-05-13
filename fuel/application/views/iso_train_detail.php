@@ -170,7 +170,7 @@
                 
                 ?>
 
-                    <div class="fb-comments" data-href="<?php echo $target_url; ?>" data-width="600px" data-numposts="3" data-colorscheme="light"></div>
+                    <div class="fb-comments" data-href="<?php echo $target_url; ?>" data-width="640px" data-numposts="3" data-colorscheme="light"></div>
 
                     <div id="fb-root"></div>
 

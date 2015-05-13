@@ -20,7 +20,6 @@
 <div class="main main_width">
     <div class="page_banner" style="background-image:url(<?php echo site_url()?>assets/templates/images/banner_about.jpg);"></div>
     <div class="width1024 b10_width">
-        <div id="loadingIMG" style="display:none"><img src="loading.gif" height='14'/>資料處理中，請稍後。</div>
         <div class="ci_title b10_title">ISO教育網線上報名</div>
         <div class="ci_detail b7_detail b10_left">
            <!--
@@ -29,11 +28,11 @@
            -->
            <div class="b10_detail_input">
                 <div class="input_block">
-                    <span class="holder">公司名稱</span>
+                    <span class="holder">公司名稱<span class="red"> ﹙必填﹚</span></span>
                     <input id="company_name" class="b10_input" type="text" autocomplete="off">
                 </div>
                 <div class="input_block">
-                    <span class="holder">部門＆單位</span>
+                    <span class="holder">部門＆單位<span class="red"> ﹙必填﹚</span></span>
                     <input id="dep" class="b10_input" type="text" autocomplete="off">
                 </div>
                 <div class="input_block">
@@ -49,6 +48,24 @@
                 <div class="input_block">
                     <span class="holder">聯絡電話<span class="red"> ﹙必填﹚</span></span>
                     <input id="phone" class="b10_input" type="text" autocomplete="off">
+                </div>
+                
+                <div class='b10_submit b12_submit add_person'>增加一人</div>
+                <div id="second_person" style="display:none;">
+                    <div class="input_block">
+                        <span class="holder">姓名</span>
+                        <input id="name2" class="b10_input" type="text" autocomplete="off">
+                        <input id="sex1_2" type="radio" name="sex_2" value="1" checked="checked"><label for="sex1_2"><span><span></span></span><div class="b10_radio">男性</div></label>
+                        <input id="sex2_2" type="radio" name="sex_2" value="2"><label for="sex2_2"><span><span></span></span><div class="b10_radio">女性</div></label>
+                    </div>
+                    <div class="input_block">
+                        <span class="holder">電子信箱</span>
+                        <input id="mail2" class="b10_input" type="text" autocomplete="off">
+                    </div>
+                    <div class="input_block">
+                        <span class="holder">聯絡電話</span>
+                        <input id="phone2" class="b10_input" type="text" autocomplete="off">
+                    </div>
                 </div>
                 <div class="input_block" style="display:none;">
                      <div>
@@ -214,7 +231,7 @@
                     </div>
                 </div>
            </div>
-           <div class='b10_submit'>確認送出</div>
+           <div id="button_confirm" class='b10_submit'>確認送出</div>
         </div>
         <div class="b7_right b10_right">
             <div class="b10_right_title">領導力企業管理顧問有限公司</div>
@@ -249,6 +266,10 @@
 
 <!--Script放後面加速頁面產生-->
 <script type="text/javascript">
+    $(".add_person").click(function() {
+        $(this).fadeOut("fast");
+        $('#second_person').fadeIn("slow");
+    });
     $("span.holder + input").keyup(function() {
         if ($(this).val().length) {
             $(this).prev('span.holder').hide();
@@ -259,8 +280,8 @@
     $("span.holder").click(function() {
         $(this).next().focus();
     });
-    $(".b10_submit").click(function() {
-        /*
+    $("#button_confirm").click(function() {
+        
         if (!$("#company_name").val()){
             alert("請輸入公司名稱");
             $("#company_name").focus();
@@ -271,7 +292,7 @@
             $("#dep").focus();
             return false;
         }
-        */
+        
         if (!$("#name").val()){
             alert("請輸入姓名");
             $("#name").focus();
@@ -303,6 +324,9 @@
                           "name": $("#name").val(),
                           "sex": $('input[name=sex]:checked').val(),
                           "mail": $("#mail").val(),
+                          "name2": $("#name2").val(),
+                          "sex2": $('input[name=sex_2]:checked').val(),
+                          "mail2": $("#mail2").val(),
                           "phone": $("#phone").val(),
                           "train_id": $('#train_id').val(),
                           "price": $("#price").val(),
