@@ -222,7 +222,7 @@
              
                 <div class="input_block" style="display:none;">
                     <input id="price" class="b10_input" type="text" placeholder="課程費用" autocomplete="off">
-                    <div class="b13_remark">﹙請填寫課程費用，若不知課程費用，請前往ISO教育訓練網 <a href="<?php echo site_url().'iso_train' ?>" onclick="window.open(this.href); return false;"><font color="#eb1d23">www.isoleader.com/iso9001training</font></a> 查詢﹚</div>
+                    <div class="b13_remark">﹙請填寫課程費用，若不知課程費用，請前往ISO教育訓練網 <a href="<?php echo site_url().'iso-training-courses' ?>" onclick="window.open(this.href); return false;"><font color="#eb1d23">www.isoleader.com/iso9001training</font></a> 查詢﹚</div>
                 </div>
                 <div class="input_block" style="display:none;">
                     <div class="b13_title">請選擇上課地點</div>
@@ -405,7 +405,7 @@
               // $("#payment_form").attr('action', data.gateway);
               // $("#payment_form").submit();
               alert('報名成功！！');
-              location.href = '<?php echo site_url() ?>iso_train';
+              location.href = '<?php echo site_url() ?>iso-training-courses';
             }
             else
             {

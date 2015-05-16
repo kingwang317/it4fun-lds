@@ -44,7 +44,7 @@
             <?php $i=0; ?>
                 <?php foreach ($free_train as $key => $value): ?>
                     <tr class="table_detail <?php echo $i%2==0?"table_white":"table_gray" ?>">
-                        <td class="table_detail_td table_detail_fist"><a href="<?php echo site_url().'iso_train/detail/'.$value->id ?>"><?php echo $value->train_title ?></a></td>
+                        <td class="table_detail_td table_detail_fist"><a href="<?php echo site_url().'iso-training-courses/detail/'.$value->id ?>"><?php echo $value->train_title ?></a></td>
                         <td class="table_detail_td">免費</td>
                         <td class="table_detail_td"><?php echo $value->train_time_s ?>~<?php echo $value->train_time_e ?></td>
                         <td class="table_detail_td"><?php echo $value->train_days ?></td>
@@ -54,7 +54,7 @@
                              <?php echo $value->train_date ?>
                         </td>
                         <td class="table_detail_td" align="center"><?php echo $value->train_place_s ?></td>
-                        <td class="bottom_block"><a href="<?php echo site_url().'iso_train/detail/'.$value->id ?>"><div class="b9_button">我要報名</div></a></td>
+                        <td class="bottom_block"><a href="<?php echo site_url().'iso-training-courses/detail/'.$value->id ?>"><div class="b9_button">我要報名</div></a></td>
                     </tr>
                 <?php $i++; ?>
                 <?php endforeach ?>
@@ -130,7 +130,7 @@
             <?php $i=0; ?>
                 <?php foreach ($charge_train as $key => $value): ?>
                     <tr class="table_detail <?php echo $i%2==0?"table_white":"table_gray" ?>">
-                        <td class="table_detail_td table_detail_fist"><a href="<?php echo site_url().'iso_train/detail/'.$value->id ?>"><?php echo $value->train_title ?></a></td>
+                        <td class="table_detail_td table_detail_fist"><a href="<?php echo site_url().'iso-training-courses/detail/'.$value->id ?>"><?php echo $value->train_title ?></a></td>
                         <td class="table_detail_td">$<?php echo $value->train_price ?></td>
                         <td class="table_detail_td"><?php echo $value->train_time_s ?>~<?php echo $value->train_time_e ?></td>
                         <td class="table_detail_td"><?php echo $value->train_days ?></td>
@@ -140,7 +140,7 @@
                              <?php echo $value->train_date ?>
                         </td>
                         <td class="table_detail_td" align="center"><?php echo $value->train_place_s ?></td>
-                        <td class="bottom_block"><a href="<?php echo site_url().'iso_train/detail/'.$value->id ?>"><div class="b9_button">我要報名</div></a></td>
+                        <td class="bottom_block"><a href="<?php echo site_url().'iso-training-courses/detail/'.$value->id ?>"><div class="b9_button">我要報名</div></a></td>
                     </tr>
                 <?php $i++; ?>
                 <?php endforeach ?>

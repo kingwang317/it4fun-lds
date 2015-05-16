@@ -77,7 +77,7 @@
                             <div class="b4_1_contact contact<?php echo $i ?>" <?php echo isset($news_type) && $key == $news_type ? "" : "style='display:none;'" ?>>
         <?php if (isset($value)): ?>   
             <?php foreach ($value as $key1 => $value1): ?>
-            <a href='<?php echo site_url()."home/iso_succcase_detail/$value1->id" ?>'>
+            <a href='<?php echo site_url()."home/iso-coaching-performance-detail/$value1->id" ?>'>
                                                 <div class='b4_1_list'>
                                                     <div class='b4_1_list_left'>
                                                         <div class="b4_1_list_left_icon fa fa-file-text-o"></div>

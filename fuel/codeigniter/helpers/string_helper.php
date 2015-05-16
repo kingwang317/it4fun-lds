@@ -312,7 +312,7 @@ if ( ! function_exists('repeater'))
 			$controller = 'ci_design_detail';
 			break;
 		case '2': 
-			$controller = 'iso_coach_detail';
+			$controller = 'iso-coaching-detail';
 			break;
 		case '3': 
 			$controller = 'iso_class_detail';
@@ -321,7 +321,7 @@ if ( ! function_exists('repeater'))
 			$controller = 'iso_news_detail';
 			break;
 		case '5': 
-			$controller = 'iso_succcase_detail';
+			$controller = 'iso-coaching-performance-detail';
 			break;
 	}
 	return $controller;

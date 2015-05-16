@@ -43,7 +43,7 @@ class Home extends CI_Controller {
 			if ($value->code_key == 'FREE_TRAIN') {
 				$free_train = $this->train_model->get_list(1);
 				if (is_array($free_train) && sizeof($free_train) > 0) {
-					$value->detail = (object)array('title'=>$free_train[0]->train_title,'img'=>$free_train[0]->file_path,'url'=>site_url().'iso_train?type=free');
+					$value->detail = (object)array('title'=>$free_train[0]->train_title,'img'=>$free_train[0]->file_path,'url'=>site_url().'iso-training-courses?type=free');
 				}else{
 					$value->detail =  (object)array('title'=>'','img'=>'','url'=>site_url());
 				}
@@ -51,7 +51,7 @@ class Home extends CI_Controller {
 			}else if ($value->code_key == 'CHARGE_TRAIN') {
 				$free_train = $this->train_model->get_list(0);
 				if (is_array($free_train) && sizeof($free_train) > 0) {
-					$value->detail = (object)array('title'=>$free_train[0]->train_title,'img'=>$free_train[0]->file_path,'url'=>site_url().'iso_train?type=charge');
+					$value->detail = (object)array('title'=>$free_train[0]->train_title,'img'=>$free_train[0]->file_path,'url'=>site_url().'iso-training-courses?type=charge');
 				}else{
 					$value->detail =  (object)array('title'=>'','img'=>'','url'=>site_url());
 				}
@@ -340,7 +340,7 @@ class Home extends CI_Controller {
 					array_push($train_ary, $t_detail);
 				}
 				$detail->data = $train_ary;
-				$detail->url = site_url().'iso_train/detail/';
+				$detail->url = site_url().'iso-training-courses/detail/';
 				$detail->key = 'train';
 				$result[$value->code_name] = $detail;
 			}else if ($value->code_key == 'FREE_TRAIN') {
@@ -355,7 +355,7 @@ class Home extends CI_Controller {
 					array_push($train_ary, $t_detail);
 				}
 				$detail->data = $train_ary;
-				$detail->url = site_url().'iso_train/detail/';
+				$detail->url = site_url().'iso-training-courses/detail/';
 				$detail->key = 'train';
 				$result[$value->code_name] = $detail;
 			}else{
