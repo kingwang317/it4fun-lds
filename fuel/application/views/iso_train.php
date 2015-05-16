@@ -27,9 +27,8 @@
     <!--<div><img src="<?php echo site_url()?>assets/templates/images/b9/b9_banner.jpg"></div>-->
     <div class="b9_main main_width_1024">
         <div class="b9_title">ISO教育訓練</div>
+        <?php if (isset($free_train)): ?>
         <div class="table_block">
-            
-            <?php if (isset($free_train)): ?>
             <table border="0" cellspacing="1" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="b9_table">
                 <tr class="table_title" border="0">
                     <td class="table_title_first" width="380px">免費課程</td>
@@ -60,7 +59,7 @@
                 <?php $i++; ?>
                 <?php endforeach ?>
             </table>
-            <?php endif ?>
+            
          <!--    <tr class="table_detail table_white">
                 <td class="table_detail_td table_detail_fist"><a href="#">企業社會責任SA8000/CSR/BSCI/EICC相關標準改版說明會</a></td>
                 <td class="table_detail_td">免費</td>
@@ -113,8 +112,9 @@
             </tr> -->
             
         </div>
+        <?php endif ?>
+        <?php if (isset($charge_train)): ?>
         <div class="table_block ">
-            <?php if (isset($charge_train)): ?>
             <table border="0" cellspacing="1" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="b9_table">
                 <tr class="table_title" border="0">
                     <td class="table_title_first" width="380px">收費課程</td>
@@ -145,7 +145,6 @@
                 <?php $i++; ?>
                 <?php endforeach ?>
             </table>
-            <?php endif ?>
           <!--   <tr class="table_detail table_white">
                 <td class="table_detail_td table_detail_fist"><a href="#">企業社會責任SA8000/CSR/BSCI/EICC相關標準改版說明會</a></td>
                 <td class="table_detail_td">$3,200</td>
@@ -196,8 +195,8 @@
                 <td class="table_detail_td" align="center">新竹<br>高雄<br>新竹<br>高雄</td>
                 <td class="bottom_block"><a href="#"><div class="b9_button">我要報名</div></a></td>
             </tr> -->
-            
         </div>
+        <?php endif ?>
     </div>
 </div>
 <!-- 最底宣告 -->

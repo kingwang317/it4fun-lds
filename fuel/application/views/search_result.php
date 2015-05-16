@@ -65,10 +65,12 @@
 
         $('.b15_block').on({
             mouseover: function() {
+                $(this).addClass("b15_block_mouseover");
                 $(this).find(".b15_block_title").addClass("b15_block_mouseover");
                 $(this).find(".b15_block_text").addClass("b15_block_mouseover");
             },
             mouseleave: function() {
+                $(this).removeClass("b15_block_mouseover");
                 $(this).find(".b15_block_title").removeClass("b15_block_mouseover");
                 $(this).find(".b15_block_text").removeClass("b15_block_mouseover");
             }

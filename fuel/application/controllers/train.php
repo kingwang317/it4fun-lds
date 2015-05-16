@@ -161,6 +161,14 @@ class Train extends CI_Controller {
 	 			$sex = '小姐';
 	 		}
 		    $mail = $post_arr['mail'];
+	        $name2 = $post_arr['name2'];
+		    $sex2 = $post_arr['sex2'];
+		    if ($sex2 == '1') {
+	 			$sex2 = '先生';
+	 		}else{
+	 			$sex2 = '小姐';
+	 		}
+		    $mail2 = $post_arr['mail2'];
 		    $phone = $post_arr['phone'];
 		    $train_id = $post_arr['train_id'];
 		    $price = $post_arr['price'];
@@ -205,6 +213,8 @@ class Train extends CI_Controller {
 			    	$content = '我們已經收到您的線上報名，本課程並將於開課前7個工作天，E-mail通知是否開課成功。待您收到開課成功訊息，再進行繳費作業，謝謝。';
 			    }
 	    	}
+
+
 		   
 
 		    $subject = "$company_name-$name-$train->train_title-$train->train_date-$train->train_place"; //信件標題 
@@ -292,6 +302,7 @@ class Train extends CI_Controller {
 
 			";
 
+
 			$managers = $this->code_model->get_code("ISO_EMAIL_GROUP","zh-TW");
 
 			if (isset($managers)) {
@@ -312,6 +323,14 @@ class Train extends CI_Controller {
 			$this->email->subject($subject); 
 			$this->email->message($msg);
 			$success = $this->email->send();
+
+			if (isset($mail2) && !empty($mail2) ) {
+				$this->email->from('service@isoleader.com.tw', 'Leadership');
+				$this->email->to($mail2); 
+				$this->email->subject($subject); 
+				$this->email->message($msg);
+				$success = $this->email->send();
+			}
 
 			$result['status'] = 1; 
 			echo json_encode($result);
