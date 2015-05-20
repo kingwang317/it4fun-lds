@@ -29,7 +29,7 @@
                             <div class="b2_block_title"><?php echo $key ?></div>
                             <div class="b2_block_table">
                                 <?php foreach ($value as $key1 => $value1): ?>
-                                       <a href="<?php echo site_url()."home/iso_coach_detail/".$value1->id."?type=".$value1->type ?>"><div class="b2_block_table_list"><i class="fa fa-file-text-o"></i><?php echo $value1->title ?></div></a>
+                                       <a href="<?php echo site_url()."home/iso-coaching-detail/".$value1->id."?type=".$value1->type ?>"><div class="b2_block_table_list"><i class="fa fa-file-text-o"></i><?php echo $value1->title ?></div></a>
                                 <?php endforeach ?>
                             </div>
                         </div>                        

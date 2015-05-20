@@ -67,7 +67,7 @@
                         <input id="phone2" class="b10_input" type="text" autocomplete="off">
                     </div>
                 </div>
-                <div class="input_block" style="display:none;">
+                <div class="input_block" style=" <?php echo $train->is_free?'display:none;':'' ?> ">
                      <div>
                         <span class="b13_title">餐盒選擇</span>
                         <span class="b13_remark">﹙全天付費課程有附中午餐點，一般半天課程或研討會則無需填寫﹚</span>
@@ -79,7 +79,7 @@
                             <input id="lunch_box2" type="radio" name="lunch_box" value="2"><label for="lunch_box2"><span><span></span></span><div class="b10_radio">素食</div></label>
                           </div>
                 </div>
-                <div class="input_block" style="display:none;">
+                <div class="input_block" style="<?php echo $train->is_free?'display:none;':'' ?>">
                     <div class="b13_title">發票開立</div>
                          <div>
                             <input id="invoice1" type="radio" name="invoice" value="1" checked="checked"><label for="invoice1"><span><span></span></span><div class="b10_radio">二聯式</div></label>
@@ -88,11 +88,11 @@
                             <input id="invoice2" type="radio" name="invoice" value="2"><label for="invoice2"><span><span></span></span><div class="b10_radio">三聯式</div></label>
                           </div>
                 </div>
-                <div class="input_block" style="display:none;">
+                <div class="input_block" style="<?php echo $train->is_free?'display:none;':'' ?>">
                     <input id="invoice_title" class="b10_input" type="text" placeholder="發票抬頭" autocomplete="off">
                     <div class="b13_remark">﹙僅付費課程需填寫﹚</div>
                 </div>
-                 <div class="input_block" style="display:none;">
+                 <div class="input_block" style="<?php echo $train->is_free?'display:none;':'' ?>">
                     <input id="Uniform" class="b10_input" type="text" placeholder="統一編號" autocomplete="off">
                     <div class="b13_remark">﹙僅付費課程需填寫﹚</div>
                 </div>
@@ -125,9 +125,45 @@
 
                         <div class="b12_block">
 
+                            <?php 
+                                $train_date = '';
+                                $pos = strpos($train->train_date, ',');
+                                echo $pos;
+                                if ($pos > 0) {
+                                    $date_ary = explode(",", $train->train_date);
+                                    foreach ($date_ary as $key => $value) {
+                                        $train_date .= $value.'<br>';
+                                    }
+                                }else{
+                                    $train_date = $train->train_date;
+                                }
+                             ?>
+
                             <div class="b12_block_title">開課日期</div>
 
-                            <div class="b12_info_title_slider_text"><?php echo $train->train_date ?></div>
+                            <div class="b12_info_title_slider_text">
+                                <?php if ($pos > 0): ?>
+                                <?php 
+                                    $date_ary = explode(",", $train->train_date);
+                                    $i = 0;
+                                 ?>
+                                <?php foreach ($date_ary as $key => $value): ?>
+                                     <div>
+                                        <input id="<?php echo 'train_date'.$i ?>" type="checkbox" name="train_date" value="<?php echo $value ?>">
+                                        <label for="<?php echo 'train_date'.$i ?>"><span></span><?php echo $value ?></label>
+                                    </div>
+                                    <?php $i++; ?>
+                                <?php endforeach ?>
+
+                                <?php else: ?>
+                                    <div>
+                                        <input id="train_date1" type="checkbox" name="train_date" value="<?php echo $train->train_date ?>" checked="checked">
+                                        <label for="train_date1"><span></span><?php echo $train->train_date ?></label>
+                                    </div>
+                                <?php endif ?>
+                                
+
+                            </div>
 
                         </div>
 
@@ -186,7 +222,7 @@
              
                 <div class="input_block" style="display:none;">
                     <input id="price" class="b10_input" type="text" placeholder="課程費用" autocomplete="off">
-                    <div class="b13_remark">﹙請填寫課程費用，若不知課程費用，請前往ISO教育訓練網 <a href="<?php echo site_url().'iso_train' ?>" onclick="window.open(this.href); return false;"><font color="#eb1d23">www.isoleader.com/iso9001training</font></a> 查詢﹚</div>
+                    <div class="b13_remark">﹙請填寫課程費用，若不知課程費用，請前往ISO教育訓練網 <a href="<?php echo site_url().'iso-training-courses' ?>" onclick="window.open(this.href); return false;"><font color="#eb1d23">www.isoleader.com/iso9001training</font></a> 查詢﹚</div>
                 </div>
                 <div class="input_block" style="display:none;">
                     <div class="b13_title">請選擇上課地點</div>
@@ -268,7 +304,7 @@
 <script type="text/javascript">
     $(".add_person").click(function() {
         $(this).fadeOut("fast");
-        $('#second_person').fadeIn("slow");
+        $('#second_person').fadeIn("fast");
     });
     $("span.holder + input").keyup(function() {
         if ($(this).val().length) {
@@ -309,6 +345,18 @@
             return false;
         }
 
+        var train_date = '';
+
+        $('input[name="train_date"]:checked').each(function() {
+           // console.log($(this).val());
+           train_date += $(this).val() + ',';
+        });
+
+        if (train_date == ''){
+            alert("請選擇上課日期");         
+            return false;
+        }
+
         var url = '<?php echo $register_url?>';    
 
         var place = '';
@@ -331,7 +379,7 @@
                           "train_id": $('#train_id').val(),
                           "price": $("#price").val(),
                           "place": place,
-                          "datepicker": $("#datepicker").val(),
+                          "datepicker": train_date,//$("#datepicker").val(),
                           "invoice": $('input[name=invoice]:checked').val(),
                           "invoice_title": $("#invoice_title").val(),
                           "Uniform": $("#Uniform").val(),
@@ -357,7 +405,7 @@
               // $("#payment_form").attr('action', data.gateway);
               // $("#payment_form").submit();
               alert('報名成功！！');
-              location.href = '<?php echo site_url() ?>iso_train';
+              location.href = '<?php echo site_url() ?>iso-training-courses';
             }
             else
             {

@@ -50,7 +50,7 @@
 
         <div class="location">
 
-            <div class="location_left"><font color="black"><a href="<?php echo site_url() ?>">首頁</a> / <a href="<?php echo site_url().'iso_train' ?>">ISO教育訓練</a> / <a href="<?php echo site_url().'iso_train?type='.$free_charge ?>"><?php echo $free_charge_name ?></a> / </font><?php echo $train->train_title ?></div>
+            <div class="location_left"><font color="black"><a href="<?php echo site_url() ?>">首頁</a> / <a href="<?php echo site_url().'iso-training-courses' ?>">ISO教育訓練</a> / <a href="<?php echo site_url().'iso-training-courses?type='.$free_charge ?>"><?php echo $free_charge_name ?></a> / </font><?php echo $train->train_title ?></div>
 
         </div>
 
@@ -96,17 +96,23 @@
 
                         <div class="b12_block">
 
+                            <?php 
+                                $train_date = '';
+                                $pos = strpos($train->train_date, ',');
+                                echo $pos;
+                                if ($pos > 0) {
+                                    $date_ary = explode(",", $train->train_date);
+                                    foreach ($date_ary as $key => $value) {
+                                        $train_date .= $value.'<br>';
+                                    }
+                                }else{
+                                    $train_date = $train->train_date;
+                                }
+                             ?>
+
                             <div class="b12_block_title">開課日期</div>
 
-                            <div class="b12_info_title_slider_text"><?php echo $train->train_date ?></div>
-
-                        </div>
-
-                        <div class="b12_block">
-
-                            <div class="b12_block_title">上課天數</div>
-
-                            <div class="b12_info_title_slider_text"><?php echo $train->train_days ?></div>
+                            <div class="b12_info_title_slider_text"><?php echo $train_date ?></div>
 
                         </div>
 
@@ -156,10 +162,7 @@
 
                 <?php if ($train_statues != '報名額滿'): ?>
                     <a href="<?php echo site_url().'train/register?train_id='.$train->id ?>"><div class="b10_submit b12_submit"><?php echo $train_statues ?></div></a>
-                <?php else: ?>
-                    <a href="#"><div class="b10_submit b12_submit"><?php echo $train_statues ?></div></a>
                 <?php endif ?>
-
 
                 <div class="b12_facebook_comment">
 

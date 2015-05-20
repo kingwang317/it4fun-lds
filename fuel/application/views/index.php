@@ -164,8 +164,8 @@
                     <?php foreach ($performance as $key => $value): ?>
                         <div class="case_list_block">
                             <div class="list_date"><?php echo dateconvert($value->date) ?></div>
-                            <!-- <div class="list_text"><a href="<?php echo site_url().'home/iso_succcase?news_type='.$value->type ?>"><?php echo $value->title ?></a></div> -->
-                            <div class="list_text"><a href="<?php echo site_url().'home/iso_succcase_detail/'.$value->id ?>"><?php echo $value->title ?></a></div>
+                            <!-- <div class="list_text"><a href="<?php echo site_url().'home/iso-coaching-performance?news_type='.$value->type ?>"><?php echo $value->title ?></a></div> -->
+                            <div class="list_text"><a href="<?php echo site_url().'home/iso-coaching-performance-detail/'.$value->id ?>"><?php echo $value->title ?></a></div>
                         </div>
                     <?php endforeach ?>
                 <?php endif ?>

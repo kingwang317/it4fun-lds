@@ -77,18 +77,18 @@
         </div>
         <div class="foot_block">
             <div class="title">ISO認證輔導</div>
-            <div class="contact"><a href="<?php echo site_url() ?>home/iso_coach_list/73">品質管理</a></div>
-            <div class="contact"><a href="<?php echo site_url() ?>home/iso_coach_list/74">食品安全</a></div>
-            <div class="contact"><a href="<?php echo site_url() ?>home/iso_coach_list/75">驗廠與社會責任</a></div>
-            <div class="contact"><a href="<?php echo site_url() ?>home/iso_coach_list/76">環境管理系列</a></div>
-            <div class="contact"><a href="<?php echo site_url() ?>home/iso_coach_list/77">供應鏈安全</a></div>
-            <div class="contact"><a href="<?php echo site_url() ?>home/iso_coach_list/78">資訊安全</a></div>
-            <div class="contact"><a href="<?php echo site_url() ?>home/iso_coach_list/79">風險管理</a></div>
-            <div class="contact"><a href="<?php echo site_url() ?>home/iso_coach_list/104">神秘客認證</a></div>
+            <div class="contact"><a href="<?php echo site_url() ?>home/iso-coaching-list/73">品質管理</a></div>
+            <div class="contact"><a href="<?php echo site_url() ?>home/iso-coaching-list/74">食品安全</a></div>
+            <div class="contact"><a href="<?php echo site_url() ?>home/iso-coaching-list/75">驗廠與社會責任</a></div>
+            <div class="contact"><a href="<?php echo site_url() ?>home/iso-coaching-list/76">環境管理系列</a></div>
+            <div class="contact"><a href="<?php echo site_url() ?>home/iso-coaching-list/77">供應鏈安全</a></div>
+            <div class="contact"><a href="<?php echo site_url() ?>home/iso-coaching-list/78">資訊安全</a></div>
+            <div class="contact"><a href="<?php echo site_url() ?>home/iso-coaching-list/79">風險管理</a></div>
+            <div class="contact"><a href="<?php echo site_url() ?>home/iso-coaching-list/104">神秘客認證</a></div>
         </div>
         <div class="foot_block">
             <div class="title">最新消息</div>
-            <div class="contact"><a href="<?php echo site_url() ?>home/iso_succcase">輔導實績</a></div>
+            <div class="contact"><a href="<?php echo site_url() ?>home/iso-coaching-performance">輔導實績</a></div>
             <div class="contact"><a href="<?php echo site_url() ?>home/iso_news">ISO條文改版</a></div>
             <div class="contact"><a href="<?php echo site_url() ?>home/iso_news">免費課程</a></div>
             <div class="contact"><a href="<?php echo site_url() ?>home/iso_news">ISO認證常見問答</a></div>
@@ -97,8 +97,8 @@
         </div>
         <div class="foot_block">
             <div class="title">ISO教育訓練</div>
-            <div class="contact"><a href="<?php echo site_url() ?>iso_train">免費課程</a></div>
-            <div class="contact"><a href="<?php echo site_url() ?>iso_train">收費課程</a></div>
+            <div class="contact"><a href="<?php echo site_url() ?>iso-training-courses">免費課程</a></div>
+            <div class="contact"><a href="<?php echo site_url() ?>iso-training-courses">收費課程</a></div>
 
         </div>
     </div>

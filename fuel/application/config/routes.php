@@ -68,11 +68,16 @@ foreach($lang_ary as $l)
 	$route["$l/product/(:num)"] = 'series/product/$1'; 
 }*/
 
-$route['home/iso_succcase_detail/(:num)'] 		= 'home/iso_succcase_detail/$1';
+$route['home/iso-coaching-performance-detail/(:num)'] 		= 'home/iso_succcase_detail/$1';
+$route['home/iso-coaching-performance'] 		= 'home/iso_succcase';
+
 $route['home/iso_news_detail/(:num)'] 		= 'home/iso_news_detail/$1';
-$route['home/iso_coach_detail/(:num)'] 		= 'home/iso_coach_detail/$1';
+
+$route['home/iso-coaching'] 		            = 'home/iso_coach';
+$route['home/iso-coaching-list/(:num)'] 		= 'home/iso_coach_list/$1';
+$route['home/iso-coaching-detail/(:num)'] 		= 'home/iso_coach_detail/$1';
+
 $route['home/ci_design_detail/(:num)'] 		= 'home/ci_design_detail/$1';
-$route['home/iso_coach_list/(:num)'] 		= 'home/iso_coach_list/$1';
 $route['home/iso_class_detail/(:num)'] 		= 'home/iso_class_detail/$1';
 $route['home/search_result/(:any)'] 		= 'home/search_result/$1';
 $route['home/do_contact'] 		= 'home/do_contact';
@@ -81,10 +86,10 @@ $route['home/iso_class'] 		= 'home/iso_class';
 $route['home/iso_class/(:num)'] 		= 'home/iso_class/$1';
 $route['home/do_contact'] 		= 'home/do_contact'; 
 
-$route['iso_train'] 				= 'train/index';
-$route['iso_train/detail/(:num)'] 	= 'train/detail/$1';
-$route['iso_train/register'] 	    = 'train/register';
-$route['iso_train/do_register'] 	= 'train/do_register';
+$route['iso-training-courses'] 				= 'train/index';
+$route['iso-training-courses/detail/(:num)'] 	= 'train/detail/$1';
+$route['iso-training-courses/register'] 	    = 'train/register';
+$route['iso-training-courses/do_register'] 	= 'train/do_register';
 // $route['iso_train/register/(:num)'] 		= 'train/register/$1';
 
 // $route['zh-TW/product/(:num)'] 		= 'series/product/$1';

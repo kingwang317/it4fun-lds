@@ -54,45 +54,45 @@
             領導力企管創下許多全國第一ISO認證輔導實蹟。是國內ISO認證和輔導資源最充足的顧問公司，專業團隊將協助您取得各項ISO認證，我們的專業輔導能量，創下許多同業第一。
             <div class="b17_bottom_left_contact4">
                 <div class="b17_bottom_left_contact4_block">
-                <div class="b17_c4_img"><a href="http://www.isoleader.com.tw/home/iso_coach_list/73"><img src="{img_path(images/b17/arrow_2.png)}" /></a></div>
+                <div class="b17_c4_img"><a href="http://www.isoleader.com.tw/home/iso-coaching-list/73"><img src="{img_path(images/b17/arrow_2.png)}" /></a></div>
 
-                <div class="b17_c4_text"><a href="http://www.isoleader.com.tw/home/iso_coach_list/73">品質管理系列</a></div>
+                <div class="b17_c4_text"><a href="http://www.isoleader.com.tw/home/iso-coaching-list/73">品質管理系列</a></div>
                 </div>
 
                 <div class="b17_bottom_left_contact4_block">
-                <div class="b17_c4_img"><a href="http://www.isoleader.com.tw/home/iso_coach_list/75"><img src="{img_path(images/b17/arrow_2.png)}" /></a></div>
+                <div class="b17_c4_img"><a href="http://www.isoleader.com.tw/home/iso-coaching-list/75"><img src="{img_path(images/b17/arrow_2.png)}" /></a></div>
 
-                <div class="b17_c4_text"><a href="http://www.isoleader.com.tw/home/iso_coach_list/75">驗廠＆社會責任系列</a></div>
+                <div class="b17_c4_text"><a href="http://www.isoleader.com.tw/home/iso-coaching-list/75">驗廠＆社會責任系列</a></div>
                 </div>
 
                 <div class="b17_bottom_left_contact4_block">
-                <div class="b17_c4_img"><a href="http://www.isoleader.com.tw/home/iso_coach_list/74"><img src="{img_path(images/b17/arrow_2.png)}" /></a></div>
+                <div class="b17_c4_img"><a href="http://www.isoleader.com.tw/home/iso-coaching-list/74"><img src="{img_path(images/b17/arrow_2.png)}" /></a></div>
 
-                <div class="b17_c4_text"><a href="http://www.isoleader.com.tw/home/iso_coach_list/74">食品安全系列</a></div>
+                <div class="b17_c4_text"><a href="http://www.isoleader.com.tw/home/iso-coaching-list/74">食品安全系列</a></div>
                 </div>
 
                 <div class="b17_bottom_left_contact4_block">
-                <div class="b17_c4_img"><a href="http://www.isoleader.com.tw/home/iso_coach_list/78"><img src="{img_path(images/b17/arrow_2.png)}" /></a></div>
+                <div class="b17_c4_img"><a href="http://www.isoleader.com.tw/home/iso-coaching-list/78"><img src="{img_path(images/b17/arrow_2.png)}" /></a></div>
 
-                <div class="b17_c4_text"><a href="http://www.isoleader.com.tw/home/iso_coach_list/78">資訊安全系列</a></div>
+                <div class="b17_c4_text"><a href="http://www.isoleader.com.tw/home/iso-coaching-list/78">資訊安全系列</a></div>
                 </div>
 
                 <div class="b17_bottom_left_contact4_block">
-                <div class="b17_c4_img"><a href="http://www.isoleader.com.tw/home/iso_coach_list/77"><img src="{img_path(images/b17/arrow_2.png)}" /></a></div>
+                <div class="b17_c4_img"><a href="http://www.isoleader.com.tw/home/iso-coaching-list/77"><img src="{img_path(images/b17/arrow_2.png)}" /></a></div>
 
-                <div class="b17_c4_text"><a href="http://www.isoleader.com.tw/home/iso_coach_list/77">供應鏈安全系列</a></div>
+                <div class="b17_c4_text"><a href="http://www.isoleader.com.tw/home/iso-coaching-list/77">供應鏈安全系列</a></div>
                 </div>
 
                 <div class="b17_bottom_left_contact4_block">
-                <div class="b17_c4_img"><a href="http://www.isoleader.com.tw/home/iso_coach_list/79"><img src="{img_path(images/b17/arrow_2.png)}" /></a></div>
+                <div class="b17_c4_img"><a href="http://www.isoleader.com.tw/home/iso-coaching-list/79"><img src="{img_path(images/b17/arrow_2.png)}" /></a></div>
 
-                <div class="b17_c4_text"><a href="http://www.isoleader.com.tw/home/iso_coach_list/79">風險管理系列</a></div>
+                <div class="b17_c4_text"><a href="http://www.isoleader.com.tw/home/iso-coaching-list/79">風險管理系列</a></div>
                 </div>
 
                 <div class="b17_bottom_left_contact4_block">
-                <div class="b17_c4_img"><a href="http://www.isoleader.com.tw/home/iso_coach_list/76"><img src="{img_path(images/b17/arrow_2.png)}" /></a></div>
+                <div class="b17_c4_img"><a href="http://www.isoleader.com.tw/home/iso-coaching-list/76"><img src="{img_path(images/b17/arrow_2.png)}" /></a></div>
 
-                <div class="b17_c4_text"><a href="http://www.isoleader.com.tw/home/iso_coach_list/76">環境管理系列</a></div>
+                <div class="b17_c4_text"><a href="http://www.isoleader.com.tw/home/iso-coaching-list/76">環境管理系列</a></div>
                 </div>
             </div>
         </div>
@@ -116,7 +116,7 @@
         </div>
     </div>
     <div class="b17_buttom_block">
-        <a href="http://www.isoleader.com.tw/home/iso_coach_detail/1969">
+        <a href="http://www.isoleader.com.tw/home/iso-coaching-detail/1969">
         <div class="buttom_block_img">
             <img onload="AutoResizeImage('','180',this);" src="<?php echo site_url()."assets/templates/images/b17/about_2.jpg" ?>" />
         </div>
@@ -130,7 +130,7 @@
         </a>
     </div>
     <div class="b17_buttom_block">
-        <a href="http://www.isoleader.com.tw/iso_train">
+        <a href="http://www.isoleader.com.tw/iso-training-courses">
         <div class="buttom_block_img">
             <img onload="AutoResizeImage('','180',this);" src="<?php echo site_url()."assets/templates/images/b17/about_3.jpg" ?>" />
         </div>
