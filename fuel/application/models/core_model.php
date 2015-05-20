@@ -26,7 +26,7 @@ class Core_model extends CI_Model {
          
 
 
-            $get_coach_sql = "SELECT id,title,news_kind FROM mod_news WHERE   type = '$value->code_id'  ORDER BY date DESC  LIMIT 0,5 ";
+            $get_coach_sql = "SELECT id,title,news_kind FROM mod_news WHERE   type = '$value->code_id' AND news_kind= '2' ORDER BY date DESC  LIMIT 0,5 ";
             // echo $get_coach_sql."<br />";
             $coach_query = $this->db->query($get_coach_sql);
     
