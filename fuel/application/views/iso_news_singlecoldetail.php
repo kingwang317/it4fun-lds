@@ -88,7 +88,7 @@
                 <?php endif ?>            
             <?php echo htmlspecialchars_decode($news->content) ?>
             </div>
-
+            <a href="<?php echo site_url()?>home/contactus"><div class="b10_submit b12_submit contact_us">與我們聯繫 <span class="fa fa-arrow-circle-right"></span></div></a>
          
             
 

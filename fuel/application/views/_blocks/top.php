@@ -24,7 +24,7 @@
     color:red;
 }
 #menu{
-    padding-left:14px;
+    padding-left:10px;
 }
 .main_title{
     width:1024px;
@@ -137,6 +137,7 @@
     top:-20px;
     left:20px;
 }
+/*
 ::-webkit-search-cancel-button{
     -webkit-appearance: none;
 }
@@ -150,6 +151,7 @@
     background-size: 12px;
     background-position: top left;
 }
+*/
 </style>
 <div class="top main_width">
     <div class="top_width_1024">
@@ -157,17 +159,17 @@
     <!--
     <span class='top_menu'><a href="<?php echo site_url()?>home/ci_design">CI設計</a></span>| 
 -->
-    <span class='top_menu'><a href="<?php echo site_url()?>home/iso-coaching-performance?news_type=品質管理">輔導實績</a></span>|
-    <span class='top_menu'><a href="<?php echo site_url()?>iso-training-courses">ISO教育訓練</a></span>|  
-    <span class='top_menu'><a href="<?php echo site_url()?>home/iso-coaching">ISO輔導項目</a></span>| 
+    <span class='top_menu'><a href="<?php echo site_url()?>home/iso_succcase?news_type=品質管理">輔導實績</a></span>|
+    <span class='top_menu'><a href="<?php echo site_url()?>iso_train">ISO教育訓練</a></span>|  
+    <span class='top_menu'><a href="<?php echo site_url()?>home/iso_coach">ISO輔導項目</a></span>| 
     <span class='top_menu'><a href="http://www.isoleader.com.tw/phpBB3/" onclick="window.open(this.href);
             return false;">討論區</a></span>| 
             <!--
     <span class='top_menu'><a href="<?php echo site_url()?>home/iso_class">ISO小學堂</a></span>| 
 -->
     <span class='top_menu'><a href="<?php echo site_url()?>home/iso_news">最新消息</a></span>| 
-    <span class='top_menu'><a href="<?php echo site_url()?>home/contactus">與我們聯絡</a></span>
-    <span class="search" ><span class="fa fa-search"> </span><input type="search" id="search_box" style="height:15px;width:230px; background-color:#fafafa;" placeholder="關鍵字搜尋" autocomplete="off"></span>
+    <span class='top_menu'><a href="<?php echo site_url()?>home/contactus"><font color="#4285f4">與我們聯絡</font></a></span>
+    <span class="search" ><input type="input" id="search_box" style="height:15px;width:230px; background-color:#fafafa;" placeholder="關鍵字搜尋" autocomplete="off"><span class="fa fa-search"> </span></span>
     </div>
 </div>
 <div class="top main_width">
@@ -186,7 +188,7 @@
                     if(isset($menu_data[$key]->coach_data) && sizeof($menu_data[$key]->coach_data) > 0)
                     {
                 ?>
-                <li class="top_title_menu"><a href="<?php echo site_url()."home/iso-coaching-list/".$value->code_id ?>"><?php echo $value->code_name ?></a>
+                <li class="top_title_menu"><a href="<?php echo site_url()."home/iso_coach_list/".$value->code_id ?>"><?php echo $value->code_name ?></a>
                     <ul class="second_menu">
                         <span class="arrow_t_int"></span>
                         <span class="arrow_t_out"></span>

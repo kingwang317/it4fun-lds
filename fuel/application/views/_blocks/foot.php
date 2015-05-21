@@ -137,7 +137,7 @@
     </script>
     <div class="foot_end">
         <div class="contact_end">
-            Copyright ⓒ 2015 Leadership, All Rights Reserved. 領導力企業管理顧問有限公司版權所有&nbsp;&nbsp;&nbsp;&nbsp;<span class="fa fa-phone"></span> 0800-222-007&nbsp;&nbsp;&nbsp;&nbsp;<span class="fa fa-envelope"></span> service@isoleader.com.tw
+            Copyright ⓒ 2015 Leadership, All Rights Reserved. 領導力企業管理顧問有限公司版權所有&nbsp;&nbsp;&nbsp;&nbsp;<b><font color="#5C759F"><span class="fa fa-phone"></span> 0800-222-007&nbsp;&nbsp;&nbsp;&nbsp;<span class="fa fa-envelope"></span> service@isoleader.com.tw</font></b>
             <br>
             台北 02-25039035 台北市中山區建國北路二段87號2樓&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;台中 04-2265-3849 台中市南區五權南路516號&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;高雄 07-79278-146 高雄市小港區新昌街21之23號
             <br>

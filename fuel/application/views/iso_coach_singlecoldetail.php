@@ -88,18 +88,13 @@
                 <?php endif ?> 
             <?php echo htmlspecialchars_decode($news->content) ?>
             </div>
-
+            <a href="<?php echo site_url()?>home/contactus"><div class="b10_submit b12_submit contact_us">與我們聯繫 <span class="fa fa-arrow-circle-right"></span></div></a>
          
             
 
             <div class="b3_d_extend">
-
+                <?php if (isset($interest_news) && sizeof($interest_news) > 0): ?>
                 <div class="b3_d_extend_left">
-
-
-
-                    <?php if (isset($interest_news) && sizeof($interest_news) > 0): ?>
-
                         <div class="new_title_config extend_title">延伸閱讀</div>
 
                         <div class="under_line"></div>
@@ -107,7 +102,7 @@
                         <?php foreach ($interest_news as $key => $value): ?>
                              <a  target="_blank" href="<?php echo site_url().'home/'.news_kind_controller($value->news_kind).'/'.$value->id.'?news_type='.$value->type ?>"><div class="extend_list"><i class="fa fa-file-text-o"></i><?php echo $value->title ?></div></a>
                         <?php endforeach ?>
-                    <?php endif ?>
+                    
 
                    <!--  <a href="#"><div class="extend_list"><i class="fa fa-file-text-o"></i>食品安全品質標準（Safe Quality Food，SQF）</div></a>
 
@@ -120,7 +115,7 @@
                     <a href="#"><div class="extend_list"><i class="fa fa-file-text-o"></i>FSSC 22000 食品安全系統驗證標準</div></a> -->
 
                 </div>
-
+                <?php endif ?>
                 <div class="b3_d_extend_right">
 
                     <div class="new_title_config b3_d_extend_title">推薦閱讀</div>

@@ -27,7 +27,9 @@
     <!--<div><img src="<?php echo site_url()?>assets/templates/images/b9/b9_banner.jpg"></div>-->
     <div class="b9_main main_width_1024">
         <div class="b9_title">ISO教育訓練</div>
-        <?php if (isset($free_train)): ?>
+        <div class="location_left"><font color="black"><a href="<?php echo site_url() ?>">首頁</a> / ISO教育訓練</div>
+        <?php //print_r($free_train); ?>
+        <?php if(isset($free_train)): ?>
         <div class="table_block">
             <table border="0" cellspacing="1" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="b9_table">
                 <tr class="table_title" border="0">

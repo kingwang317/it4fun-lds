@@ -86,11 +86,8 @@
                 <div class="b3_c_left_text">
                     <?php echo htmlspecialchars_decode($news->content) ?>
                 </div>
-              
+                <a href="<?php echo site_url()?>home/contactus"><div class="b10_submit b12_submit contact_us">與我們聯繫 <span class="fa fa-arrow-circle-right"></span></div></a>
                 <div class="b3_c_left_extend">
-
-                    
-
                     <?php if (isset($interest_news) && sizeof($interest_news) > 0): ?>
                         <div class="new_title_config extend_title">延伸閱讀</div>
                         <?php foreach ($interest_news as $key => $value): ?> 
@@ -163,7 +160,7 @@
                         <a href="#"><div class="b3_c_right_list_block"><i class="fa fa-file-text-o"></i>食品安全品質標準（Safe Quality Food，SQF）</div></a>
 
                         <a href="#"><div class="b3_c_right_list_block bottom_end"><i class="fa fa-file-text-o"></i>食品安全品質標準（Safe Quality Food，SQF）</div></a> -->
-
+                        
                     </div>
 
                 </div>
