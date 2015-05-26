@@ -30,6 +30,7 @@ class Code_model extends CI_Model {
         $sql = @"select * from mod_news where
         news_kind = '$news_kind'
         AND ('$type' = '-1' || type='0' || type='$type' || type IN (SELECT  code_id FROM mod_code WHERE code_key = '$type'))
+        AND news_order <> '-99'
         $filter 
         order by date DESC $orderby ";
         $query = $this->db->query($sql);
@@ -60,6 +61,7 @@ class Code_model extends CI_Model {
     public function get_serach_news($keyword){
         $sql = @"select * from mod_news where
         news_kind IN (2,3,4,5) AND ( title LIKE '%$keyword%' || content LIKE '%$keyword%')
+        AND news_order <> '-99'
         order by news_order ASC , date DESC $orderby ";
         $query = $this->db->query($sql);
         // echo $sql;exit;
@@ -94,6 +96,7 @@ class Code_model extends CI_Model {
 
     public function get_coach_by_type($type,$kind=2){
         $sql = @"select * from mod_news where type='$type' and news_kind = '$kind'
+         AND news_order <> '-99'
         order by news_order ASC , date DESC $orderby ";
         $query = $this->db->query($sql);
         // echo $sql;exit;
@@ -113,7 +116,7 @@ class Code_model extends CI_Model {
         if (isset($type) && $type != '') {
             $filter .= " AND type='$type' ";
         }
-        $sql = @" select * from mod_news WHERE $filter ORDER BY RAND() LIMIT $limit ";
+        $sql = @" select * from mod_news WHERE 1=1  AND news_order <> '-99' AND $filter ORDER BY RAND() LIMIT $limit ";
         $query = $this->db->query($sql);
         // echo $sql;exit;
         if($query->num_rows() > 0)
@@ -251,7 +254,7 @@ class Code_model extends CI_Model {
     }
 
     public function get_news_list($type,$lang){
-        $sql = @"select * from mod_news where type='$type' and lang='$lang' ";
+        $sql = @"select * from mod_news where type='$type' and lang='$lang'  AND news_order <> '-99' ";
         $query = $this->db->query($sql);
         //echo $sql;exit;
         if($query->num_rows() > 0)

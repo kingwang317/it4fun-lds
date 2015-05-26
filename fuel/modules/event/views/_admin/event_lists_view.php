@@ -85,6 +85,7 @@
 						<th style="width:10%">合作單位</th> -->
 						<th style="width:80px">報名人數</th>
 						<th style="width:50px">報名列表</th>
+						<th>前台</th>
 						<th style="width:50px">刪除</th>
 					</tr>
 				</thead>
@@ -132,6 +133,9 @@
 						<td><a href="<?php echo $detail_url.$row->id.'/0'?>" title="<?php echo $row->reg_count?>"><?php echo $row->reg_count?></a></td>
 						<td>
 							<button class="btn btn-xs btn-info" type="button" onclick="aHover('<?php echo $detail_url.$row->id.'/0' ?>')">報名列表</button>
+						</td>
+						<td>
+							<a target="_BLANK" href="<?php echo site_url().'iso-training-courses/detail/'.$row->id ?>">前台</a>
 						</td>
 						<td>
 							<button class="btn btn-xs btn-danger del" type="button" EventID="<?php echo $row->id ?>">刪除</button>

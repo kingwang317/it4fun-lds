@@ -159,9 +159,9 @@
     <!--
     <span class='top_menu'><a href="<?php echo site_url()?>home/ci_design">CI設計</a></span>| 
 -->
-    <span class='top_menu'><a href="<?php echo site_url()?>home/iso_succcase?news_type=品質管理">輔導實績</a></span>|
-    <span class='top_menu'><a href="<?php echo site_url()?>iso_train">ISO教育訓練</a></span>|  
-    <span class='top_menu'><a href="<?php echo site_url()?>home/iso_coach">ISO輔導項目</a></span>| 
+    <span class='top_menu'><a href="<?php echo site_url()?>home/iso-coaching-performance?news_type=品質管理">輔導實績</a></span>|
+    <span class='top_menu'><a href="<?php echo site_url()?>iso-training-courses">ISO教育訓練</a></span>|  
+    <span class='top_menu'><a href="<?php echo site_url()?>home/iso-coaching">ISO輔導項目</a></span>| 
     <span class='top_menu'><a href="http://www.isoleader.com.tw/phpBB3/" onclick="window.open(this.href);
             return false;">討論區</a></span>| 
             <!--
@@ -188,7 +188,7 @@
                     if(isset($menu_data[$key]->coach_data) && sizeof($menu_data[$key]->coach_data) > 0)
                     {
                 ?>
-                <li class="top_title_menu"><a href="<?php echo site_url()."home/iso_coach_list/".$value->code_id ?>"><?php echo $value->code_name ?></a>
+                <li class="top_title_menu"><a href="<?php echo site_url()."home/iso-coaching-list/".$value->code_id ?>"><?php echo $value->code_name ?></a>
                     <ul class="second_menu">
                         <span class="arrow_t_int"></span>
                         <span class="arrow_t_out"></span>

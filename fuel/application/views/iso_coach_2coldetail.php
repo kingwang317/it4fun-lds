@@ -86,7 +86,7 @@
                 <div class="b3_c_left_text">
                     <?php echo htmlspecialchars_decode($news->content) ?>
                 </div>
-                <a href="<?php echo site_url()?>home/contactus"><div class="b10_submit b12_submit contact_us">與我們聯繫 <span class="fa fa-arrow-circle-right"></span></div></a>
+                <div class="contact_us_center"><a href="<?php echo site_url()?>home/contactus"><div class="b10_submit contact_us">與我們聯繫 <span class="fa fa-arrow-circle-right"></span></div></a></div>
                 <div class="b3_c_left_extend">
                     <?php if (isset($interest_news) && sizeof($interest_news) > 0): ?>
                         <div class="new_title_config extend_title">延伸閱讀</div>

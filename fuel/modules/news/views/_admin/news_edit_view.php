@@ -99,7 +99,9 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-sm-2 col-sm-2 control-label">順序</label>
+							<label class="col-sm-2 col-sm-2 control-label">順序<br/>
+								<span style="color:#d9534f">輸入-99將不顯示於前台</span>
+							</label>
 							<div class="col-sm-4"> 
 								<input type="text" class="form-control" id="news_order" name="news_order" value="<?php echo $news->news_order ?>">
 								<input type="hidden" name="news_ori_order" value="<?php echo $news->news_order ?>" /> 

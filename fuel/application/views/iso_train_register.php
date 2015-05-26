@@ -128,7 +128,7 @@
                             <?php 
                                 $train_date = '';
                                 $pos = strpos($train->train_date, ',');
-                                echo $pos;
+                                // echo $pos;
                                 if ($pos > 0) {
                                     $date_ary = explode(",", $train->train_date);
                                     foreach ($date_ary as $key => $value) {
@@ -191,12 +191,44 @@
 
                         </div>
 
+                        <?php 
+                                $train_place = '';
+                                $pos = strpos($train->train_place, ',');
+                                // echo $pos;
+                                if ($pos > 0) {
+                                    $date_ary = explode(",", $train->train_place);
+                                    foreach ($date_ary as $key => $value) {
+                                        $train_place .= $value.'<br>';
+                                    }
+                                }else{
+                                    $train_place = $train->train_place;
+                                }
+                             ?>
+
                         <div class="b12_block">
 
                             <div class="b12_block_title">上課地點</div>
 
-                            <div class="b12_info_title_slider_text"><?php echo $train->train_place ?>﹙實際上課地點若有變更，將另行通知。﹚</div>
+                            <!-- <div class="b12_info_title_slider_text"><?php echo $train->train_place ?>﹙實際上課地點若有變更，將另行通知。﹚</div> -->
+                            <?php if ($pos > 0): ?>
+                            <?php 
+                                $date_ary = explode(",", $train->train_place);
+                                $i = 0;
+                             ?>
+                            <?php foreach ($date_ary as $key => $value): ?>
+                                 <div>
+                                    <input id="<?php echo 'train_place'.$i ?>" type="checkbox" name="train_place" value="<?php echo $value ?>">
+                                    <label for="<?php echo 'train_place'.$i ?>"><span></span><?php echo $value ?></label>
+                                </div>
+                                <?php $i++; ?>
+                            <?php endforeach ?>
 
+                            <?php else: ?>
+                                <div>
+                                    <input id="train_place1" type="checkbox" name="train_place" value="<?php echo $train->train_place ?>" checked="checked">
+                                    <label for="train_place1"><span></span><?php echo $train->train_place ?></label>
+                                </div>
+                            <?php endif ?>
                         </div>
 
                         <div class="b12_block">
@@ -346,6 +378,7 @@
         }
 
         var train_date = '';
+        var train_place = '';
 
         $('input[name="train_date"]:checked').each(function() {
            // console.log($(this).val());
@@ -357,14 +390,24 @@
             return false;
         }
 
+        $('input[name="train_place"]:checked').each(function() {
+           // console.log($(this).val());
+           train_place += $(this).val() + ',';
+        });
+
+        if (train_place == ''){
+            alert("請選擇上課地點");         
+            return false;
+        }
+
         var url = '<?php echo $register_url?>';    
 
-        var place = '';
+        // var place = '';
 
-        $('input[name="place"]:checked').each(function() {
-           // console.log($(this).val());
-           place += $(this).val();
-        });
+        // $('input[name="place"]:checked').each(function() {
+        //    // console.log($(this).val());
+        //    place += $(this).val();
+        // });
  
         var postData = {//"plan_id": $("#plan_id").val(),
                           "company_name": $("#company_name").val(),
@@ -378,7 +421,7 @@
                           "phone": $("#phone").val(),
                           "train_id": $('#train_id').val(),
                           "price": $("#price").val(),
-                          "place": place,
+                          "place": train_place,//place,
                           "datepicker": train_date,//$("#datepicker").val(),
                           "invoice": $('input[name=invoice]:checked').val(),
                           "invoice_title": $("#invoice_title").val(),

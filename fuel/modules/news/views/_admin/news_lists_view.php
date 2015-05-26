@@ -110,6 +110,7 @@
 						<?php endif ?>
 						<th>順序</th> 
 						<th>日期</th>
+						<th>前台</th>
 						<th>刪除</th>
 					</tr>
 				</thead>
@@ -155,6 +156,9 @@
                             ?>
 						</td>
 						<td>
+							<a target="_BLANK" href="<?php echo site_url().'home/'.news_kind_controller($rows->news_kind).'/'.$rows->id ?>">前台</a>
+						</td>
+						<td>
 							<!-- <button class="btn btn-xs btn-primary" type="button" onclick="aHover('<?php echo $edit_url.$rows->id?>')" >更新</button> -->
 							<button class="btn btn-xs btn-danger del" type="button" onclick="dialog_chk('<?php echo $rows->id?>')">刪除</button>
 						</td>
@@ -166,7 +170,7 @@
 					{
 					?>
 						<tr>
-							<td colspan="7">No results.</td>
+							<td colspan="8">No results.</td>
 						</tr>
 					<?php
 					}
