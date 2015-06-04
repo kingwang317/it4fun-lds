@@ -7,7 +7,7 @@ class Train_model extends CI_Model {
     }
 
     public function get_list($is_free){
-        $sql = @"select * from mod_train where ( '$is_free'='-1' || is_free = '$is_free') order by train_date desc";
+        $sql = @"select * from mod_train where ( '$is_free'='-1' || is_free = '$is_free') order by train_date asc";
         $query = $this->db->query($sql);
         //echo $sql;exit;
         if($query->num_rows() > 0)

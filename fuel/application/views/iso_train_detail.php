@@ -19,8 +19,8 @@
 <!--link font awesome to use the icon-->
 
 <meta property="og:image" content="<?php echo $image ?>" />
-<meta property="og:title" content="<?php echo $title ?><" />
-<meta property="og:description" content="<?php echo $description ?><" />
+<meta property="og:title" content="<?php echo $title ?>" />
+<meta property="og:description" content="<?php echo $description ?>" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="<?php echo $url ?>" />
 <meta property="og:site_name" content="領導力企管" />
@@ -72,11 +72,11 @@
 
                     <div class="b12_info_title">
                         <!--<i class="fa fa-exclamation-circle" style="color:#eb1d23;"></i>課程報名資訊<i class="fa fa-plus" style="color:#eb1d23;"></i>-->
-                        課程報名資訊<i class="fa fa-plus" style="color:#eb1d23;"></i>
+                        <i class="fa fa-info-circle"></i>課程報名資訊<i class="fa fa-minus" style="color:#eb1d23;"></i>
 
                     </div>
 
-                    <div class="b12_info_title_slider" style="display:none;">
+                    <div class="b12_info_title_slider" id="open">
 
                         <div class="b12_block">
 
@@ -161,7 +161,7 @@
                 </div>
 
                 <?php if ($train_statues != '報名額滿'): ?>
-                    <a href="<?php echo site_url().'train/register?train_id='.$train->id ?>"><div class="b10_submit b12_submit"><?php echo $train_statues ?></div></a>
+                    <a href="<?php echo site_url().'train/register?train_id='.$train->id ?>"><div class="b10_submit b12_submit"><?php echo $train_statues ?><span class="fa fa-arrow-circle-right"></span></div></a>
                 <?php endif ?>
 
                 <div class="b12_facebook_comment">

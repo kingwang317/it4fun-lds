@@ -9,8 +9,8 @@
 <link href="<?php echo site_url()?>assets/templates/css/main.css" rel="stylesheet" type="text/css" />
 <!--link font awesome to use the icon-->
 <meta property="og:image" content="<?php echo $image ?>" />
-<meta property="og:title" content="<?php echo $title ?><" />
-<meta property="og:description" content="<?php echo $description ?><" />
+<meta property="og:title" content="<?php echo $title ?>" />
+<meta property="og:description" content="<?php echo $description ?>" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="<?php echo $url ?>" />
 <meta property="og:site_name" content="領導力企管" />
@@ -27,7 +27,14 @@
     <!--<div><img src="<?php echo site_url()?>assets/templates/images/b9/b9_banner.jpg"></div>-->
     <div class="b9_main main_width_1024">
         <div class="b9_title">ISO教育訓練</div>
-        <div class="location_left"><font color="black"><a href="<?php echo site_url() ?>">首頁</a> / <a href="<?php echo site_url().'iso-training-courses' ?>">ISO教育訓練</a></div>
+        <div class="location_left"><font color="black"><a href="<?php echo site_url() ?>">首頁</a> / <a href="<?php echo site_url().'iso-training-courses' ?>">ISO教育訓練</a>
+
+        <?php if($type == "free"):?>
+        / <a href="<?php echo site_url().'iso-training-courses?type=free' ?>">免費課程</a>
+        <?php elseif ($type == "charge"):?>
+        / <a href="<?php echo site_url().'iso-training-courses?type=charge' ?>">付費課程</a>
+        <?php endif; ?>
+        </div>
         <?php //print_r($free_train); ?>
         <?php if(isset($free_train)): ?>
         <div class="table_block">
@@ -39,8 +46,7 @@
                     <td width="50px">天數</td>
                     <td width="50px">時數</td>
                     <td width="80px">合作單位</td>
-                    <td width="200px">開課日期</td>
-                    <td width="100px">上課地點</td>
+                    <td width="300px">開課日期與上課地點</td>
                     <td width="150px"></td>
                 </tr>
             <?php $i=0; ?>
@@ -53,9 +59,17 @@
                         <td class="table_detail_td"><?php echo $value->train_hours ?></td>
                         <td class="table_detail_td"><?php echo $value->coll_unit ?></td>
                         <td class="table_detail_td">
-                             <?php echo $value->train_date ?>
+                             <?php //echo $value->train_date 
+                             //modified by wei 2015-06-03
+                                     $date_array = explode(",",$value->train_date);
+                                     echo "<ul>";
+                                     foreach ($date_array as $date_text){
+                                         echo "<li>".$date_text."</li>";
+                                     }
+                                     echo "</ul>";
+                             ?><br>
+                            <?php //echo $value->train_place_s ?>
                         </td>
-                        <td class="table_detail_td" align="center"><?php echo $value->train_place_s ?></td>
                         <td class="bottom_block"><a href="<?php echo site_url().'iso-training-courses/detail/'.$value->id ?>"><div class="b9_button">我要報名</div></a></td>
                     </tr>
                 <?php $i++; ?>
@@ -125,8 +139,7 @@
                     <td width="50px">天數</td>
                     <td width="50px">時數</td>
                     <td width="80px">合作單位</td>
-                    <td width="200px">開課日期</td>
-                    <td width="100px">上課地點</td>
+                    <td width="300px">開課日期與上課地點</td>
                     <td width="150px"></td>
                 </tr>
             <?php $i=0; ?>
@@ -139,9 +152,17 @@
                         <td class="table_detail_td"><?php echo $value->train_hours ?></td>
                         <td class="table_detail_td"><?php echo $value->coll_unit ?></td>
                         <td class="table_detail_td">
-                             <?php echo $value->train_date ?>
+                             <?php //echo $value->train_date 
+                             //modified by wei 2015-06-03
+                                     $date_array = explode(",",$value->train_date);
+                                     echo "<ul>";
+                                     foreach ($date_array as $date_text){
+                                         echo "<li>".$date_text."</li>";
+                                     }
+                                     echo "</ul>";
+                             ?><br>
+                             <?php //echo $value->train_place_s ?>
                         </td>
-                        <td class="table_detail_td" align="center"><?php echo $value->train_place_s ?></td>
                         <td class="bottom_block"><a href="<?php echo site_url().'iso-training-courses/detail/'.$value->id ?>"><div class="b9_button">我要報名</div></a></td>
                     </tr>
                 <?php $i++; ?>

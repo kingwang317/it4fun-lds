@@ -15,8 +15,8 @@
 <title><?php echo $title; ?></title>
 
 <meta property="og:image" content="<?php echo $image ?>" />
-<meta property="og:title" content="<?php echo $title ?><" />
-<meta property="og:description" content="<?php echo $description ?><" />
+<meta property="og:title" content="<?php echo $title ?>" />
+<meta property="og:description" content="<?php echo $description ?>" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="<?php echo $url ?>" />
 <meta property="og:site_name" content="領導力企管" />
@@ -86,7 +86,7 @@
                 <div class="b3_c_left_text">
                     <?php echo htmlspecialchars_decode($news->content) ?>
                 </div>
-                <div class="contact_us_center"><a href="<?php echo site_url()?>home/contactus"><div class="b10_submit contact_us">與我們聯繫 <span class="fa fa-arrow-circle-right"></span></div></a></div>
+                <div class="contact_us_center"><a href="<?php echo site_url()?>home/contactus" target="_blank"><div class="b10_submit contact_us">與我們聯繫 <span class="fa fa-arrow-circle-right"></span></div></a></div>
                 <div class="b3_c_left_extend">
                     <?php if (isset($interest_news) && sizeof($interest_news) > 0): ?>
                         <div class="new_title_config extend_title">延伸閱讀</div>

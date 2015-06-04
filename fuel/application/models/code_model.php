@@ -20,7 +20,7 @@ class Code_model extends CI_Model {
     }
 
     public function get_seo_default(){
-        $var["title"] = "-國內ISO輔導資源最充足的顧問公司，協助您取得各項ISO認證，所有ISO認證問題找領導力企管就對了";
+        $var["title"] = "國內ISO輔導資源最充足的顧問公司，協助您取得各項ISO認證，所有ISO認證問題找領導力企管就對了";
         $var["keyword"] = "ISO 9001,ISO 27001";
 
         return $var;
@@ -49,18 +49,20 @@ class Code_model extends CI_Model {
         $filter 
         order by date DESC $orderby $limit ";
         $query = $this->db->query($sql);
-        // echo $sql;exit;
+        // echo $sql;
         if($query->num_rows() > 0)
         {
             $result = $query->result();
-
+            /*echo "<pre>";
+            echo print_r($result);
+            echo "</pre>";*/
             return $result;
         }
     }
 
     public function get_serach_news($keyword){
-        $sql = @"select * from mod_news where
-        news_kind IN (2,3,4,5) AND ( title LIKE '%$keyword%' || content LIKE '%$keyword%')
+        $keyword = str_replace(' ', '', $keyword);
+        $sql = @"select * from mod_news where ( replace(`title`,' ','') LIKE '%$keyword%' OR replace(`content`,' ','') LIKE '%$keyword%')
         AND news_order <> '-99'
         order by news_order ASC , date DESC $orderby ";
         $query = $this->db->query($sql);

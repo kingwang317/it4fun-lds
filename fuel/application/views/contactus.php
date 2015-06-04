@@ -90,22 +90,22 @@
             <div class="b10_right_block">
                 <div class="b10_right_block_title">台北</div>
                 <div class="b10_right_block_detail">
-                (02)2503-9036</br>
-                台北市中山區建國北路二段87號2樓
+                02-2503-9036</br>
+                (104)&nbsp;台北市中山區建國北路二段87號2樓
                 </div>
             </div>
             <div class="b10_right_block">
                 <div class="b10_right_block_title">台中</div>
                 <div class="b10_right_block_detail">
-                (04)2265-3849</br>
-                台中市南區五權南路516號
+                04-2265-3849</br>
+                (402)&nbsp;台中市南區五權南路516號
                 </div>
             </div>
             <div class="b10_right_block">
                 <div class="b10_right_block_title">高雄</div>
                 <div class="b10_right_block_detail">
-                (07)7927-146</br>
-                高雄市小港區新昌街21之23號
+                07-7927-146</br>
+                (812)&nbsp;高雄市小港區新昌街21之23號
                 </div>
             </div>
         </div>

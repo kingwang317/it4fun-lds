@@ -12,7 +12,7 @@
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> <!-- 最佳的IE兼容模式 -->
 
-<title>Isoleader GRI Training System</title>
+<title>國內ISO輔導資源最充足的顧問公司，協助您取得各項ISO認證，所有ISO認證問題找領導力企管就對了-領導力企管</title>
 
 <link href="<?php echo site_url()?>assets/templates/css/main.css" rel="stylesheet" type="text/css" />
 

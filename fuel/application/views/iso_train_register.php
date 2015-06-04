@@ -22,10 +22,16 @@
     <div class="width1024 b10_width">
         <div class="ci_title b10_title">ISO教育網線上報名</div>
         <div class="ci_detail b7_detail b10_left">
-           <!--
-           <div class="b10_detail_title1">感謝您的報名，我們將儘速為您辦理課程！</div>
-           <div class="b10_detail_title2">若對開課時間或課程有任何問題，歡迎來信<font color="#eb1d23">kimmy@isoleader.com.tw</font>﹙報名學員來信煩請提供學員姓名、E-mail、連絡電話、及課程名稱﹚，也可撥打免付費客服專線0800-222-007，將有專人為您服務，謝謝！</div>
-           -->
+           
+           <div class="b10_detail_title1">
+                請即刻填寫報名資訊，我們將儘速為您辦理。若在填寫過程中有任何問題，歡迎與我們聯絡。
+           </div>
+           <div class="b10_detail_title2">
+            <div class="b10_detail_title2_phone"><span class="fa fa-phone"></span> 0800-222-007</div>
+            <!--<span class="fa fa-envelope"></span> service@isoleader.com.tw<br>-->
+            服務時間：週一～週五，09:00~18:00 
+           </div>
+           
            <div class="b10_detail_input">
                 <div class="input_block">
                     <span class="holder">公司名稱<span class="red"> ﹙必填﹚</span></span>
@@ -50,7 +56,7 @@
                     <input id="phone" class="b10_input" type="text" autocomplete="off">
                 </div>
                 
-                <div class='b10_submit b12_submit add_person'>增加一人</div>
+                <div class='b10_submit b12_submit add_person'>增加名額</div>
                 <div id="second_person" style="display:none;">
                     <div class="input_block">
                         <span class="holder">姓名</span>
@@ -96,16 +102,16 @@
                     <input id="Uniform" class="b10_input" type="text" placeholder="統一編號" autocomplete="off">
                     <div class="b13_remark">﹙僅付費課程需填寫﹚</div>
                 </div>
-                <div class="b12_info">
+                <div class="b12_info_register">
                     <input type="hidden" id="train_id" value="<?php echo $train->id ?>" />
 
-                    <div class="b12_info_title">
+                    <div class="b12_info_title_register">
                         <!--<i class="fa fa-exclamation-circle" style="color:#eb1d23;"></i>課程報名資訊<i class="fa fa-plus" style="color:#eb1d23;"></i>-->
-                        課程報名資訊<i class="fa fa-plus" style="color:#eb1d23;"></i>
+                        <i class="fa fa-info-circle"></i>課程報名資訊
 
                     </div>
 
-                    <div class="b12_info_title_slider" style="display:none;">
+                    <div class="b12_info_title_slider" >
 
                         <div class="b12_block">
 
