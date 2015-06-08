@@ -18,7 +18,7 @@
 <?php  $this->load->view('_blocks/top')?>
 
 <div class="main main_width">
-    <div class="page_banner" style="background-image:url(<?php echo site_url()?>assets/templates/images/banner_about.jpg);"></div>
+    <div class="page_banner" style="background-image:url(<?php echo site_url()?>assets/templates/images/register.jpg);"></div>
     <div class="width1024 b10_width">
         <div class="ci_title b10_title">ISO教育網線上報名</div>
         <div class="ci_detail b7_detail b10_left">
@@ -33,6 +33,36 @@
            </div>
            
            <div class="b10_detail_input">
+                <div class="input_block">
+                    <select class="b10_select" id="train_register_date" name="train_register_date">
+                        <?php 
+                                $train_date = '';
+                                $pos = strpos($train->train_date, ',');
+                                // echo $pos;
+                                if ($pos > 0) {
+                                    $date_ary = explode(",", $train->train_date);
+                                    foreach ($date_ary as $key => $value) {
+                                        $train_date .= $value.'<br>';
+                                    }
+                                }else{
+                                    $train_date = $train->train_date;
+                                }
+                             ?>
+                        <?php if ($pos > 0): ?>
+                                <?php 
+                                    $date_ary = explode(",", $train->train_date);
+                                    $i = 0;
+                                 ?>
+                                <?php foreach ($date_ary as $key => $value): ?>
+                                     <div>
+                                        <option value="<?php echo $value ?>"><?php echo $value ?></option>
+                                    </div>
+                                <?php endforeach ?>
+                                <?php else: ?>
+                                    <option value="<?php echo $train_date ?>"><?php echo $train_date ?></option>
+                                <?php endif ?>
+                    </select>
+                </div>
                 <div class="input_block">
                     <span class="holder">公司名稱<span class="red"> ﹙必填﹚</span></span>
                     <input id="company_name" class="b10_input" type="text" autocomplete="off">
@@ -131,44 +161,10 @@
 
                         <div class="b12_block">
 
-                            <?php 
-                                $train_date = '';
-                                $pos = strpos($train->train_date, ',');
-                                // echo $pos;
-                                if ($pos > 0) {
-                                    $date_ary = explode(",", $train->train_date);
-                                    foreach ($date_ary as $key => $value) {
-                                        $train_date .= $value.'<br>';
-                                    }
-                                }else{
-                                    $train_date = $train->train_date;
-                                }
-                             ?>
-
                             <div class="b12_block_title">開課日期</div>
 
                             <div class="b12_info_title_slider_text">
-                                <?php if ($pos > 0): ?>
-                                <?php 
-                                    $date_ary = explode(",", $train->train_date);
-                                    $i = 0;
-                                 ?>
-                                <?php foreach ($date_ary as $key => $value): ?>
-                                     <div>
-                                        <input id="<?php echo 'train_date'.$i ?>" type="checkbox" name="train_date" value="<?php echo $value ?>">
-                                        <label for="<?php echo 'train_date'.$i ?>"><span></span><?php echo $value ?></label>
-                                    </div>
-                                    <?php $i++; ?>
-                                <?php endforeach ?>
-
-                                <?php else: ?>
-                                    <div>
-                                        <input id="train_date1" type="checkbox" name="train_date" value="<?php echo $train->train_date ?>" checked="checked">
-                                        <label for="train_date1"><span></span><?php echo $train->train_date ?></label>
-                                    </div>
-                                <?php endif ?>
-                                
-
+                                <span id="show_register_date"></span>
                             </div>
 
                         </div>
@@ -210,33 +206,6 @@
                                     $train_place = $train->train_place;
                                 }
                              ?>
-
-                        <div class="b12_block">
-
-                            <div class="b12_block_title">上課地點</div>
-
-                            <!-- <div class="b12_info_title_slider_text"><?php echo $train->train_place ?>﹙實際上課地點若有變更，將另行通知。﹚</div> -->
-                            <?php if ($pos > 0): ?>
-                            <?php 
-                                $date_ary = explode(",", $train->train_place);
-                                $i = 0;
-                             ?>
-                            <?php foreach ($date_ary as $key => $value): ?>
-                                 <div>
-                                    <input id="<?php echo 'train_place'.$i ?>" type="checkbox" name="train_place" value="<?php echo $value ?>">
-                                    <label for="<?php echo 'train_place'.$i ?>"><span></span><?php echo $value ?></label>
-                                </div>
-                                <?php $i++; ?>
-                            <?php endforeach ?>
-
-                            <?php else: ?>
-                                <div>
-                                    <input id="train_place1" type="checkbox" name="train_place" value="<?php echo $train->train_place ?>" checked="checked">
-                                    <label for="train_place1"><span></span><?php echo $train->train_place ?></label>
-                                </div>
-                            <?php endif ?>
-                        </div>
-
                         <div class="b12_block">
 
                             <div class="b12_block_title">主辦單位</div>
@@ -340,6 +309,11 @@
 
 <!--Script放後面加速頁面產生-->
 <script type="text/javascript">
+    if ($("#train_register_date").val() !== ''){
+            $("#show_register_date").text($("#train_register_date").val());
+            $("#register_msg").text($("#train_register_date").val());
+        }
+        
     $(".add_person").click(function() {
         $(this).fadeOut("fast");
         $('#second_person').fadeIn("fast");
@@ -383,28 +357,28 @@
             return false;
         }
 
-        var train_date = '';
-        var train_place = '';
+        // var train_date = '';
+        // var train_place = '';
 
-        $('input[name="train_date"]:checked').each(function() {
-           // console.log($(this).val());
-           train_date += $(this).val() + ',';
-        });
+        // $('input[name="train_date"]:checked').each(function() {
+        //    // console.log($(this).val());
+        //    train_date += $(this).val() + ',';
+        // });
 
-        if (train_date == ''){
-            alert("請選擇上課日期");         
-            return false;
-        }
+        // if (train_date == ''){
+        //     alert("請選擇上課日期");         
+        //     return false;
+        // }
 
-        $('input[name="train_place"]:checked').each(function() {
-           // console.log($(this).val());
-           train_place += $(this).val() + ',';
-        });
+        // $('input[name="train_place"]:checked').each(function() {
+        //    // console.log($(this).val());
+        //    train_place += $(this).val() + ',';
+        // });
 
-        if (train_place == ''){
-            alert("請選擇上課地點");         
-            return false;
-        }
+        // if (train_place == ''){
+        //     alert("請選擇上課地點");         
+        //     return false;
+        // }
 
         var url = '<?php echo $register_url?>';    
 
@@ -425,10 +399,11 @@
                           "sex2": $('input[name=sex_2]:checked').val(),
                           "mail2": $("#mail2").val(),
                           "phone": $("#phone").val(),
+                          "phone2": $("#phone2").val(),
                           "train_id": $('#train_id').val(),
                           "price": $("#price").val(),
-                          "place": train_place,//place,
-                          "datepicker": train_date,//$("#datepicker").val(),
+                          "place": '',//place,
+                          "datepicker": $("#train_register_date").val(),//$("#datepicker").val(),
                           "invoice": $('input[name=invoice]:checked').val(),
                           "invoice_title": $("#invoice_title").val(),
                           "Uniform": $("#Uniform").val(),
@@ -492,5 +467,19 @@
 
         }
 
+    });
+    $(".b10_select").change(function() {
+        var target = $(this).val();
+        if (target !== '') {
+            $(this).css('color', 'black');
+        } else {
+            $(this).css('color', '#B3B3B3');
+        }
+    });
+    $("#train_register_date").click(function() {
+        if ($("#train_register_date").val() !== ''){
+            $("#show_register_date").text($("#train_register_date").val());
+            $("#register_msg").text($("#train_register_date").val());
+        }
     });
 </script>

@@ -38,6 +38,10 @@ class Train_model extends CI_Model {
                                             sex,   
                                             email,
                                             contact_tel,
+                                            customer_name2, 
+                                            sex2,   
+                                            email2,
+                                            contact_tel2,
                                             train_id,
                                             train_price,
                                             train_place,
@@ -51,7 +55,7 @@ class Train_model extends CI_Model {
                                             modi_date
 
                                         ) 
-                VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,NOW())"; 
+                VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,NOW())"; 
 
         $para = array(
                 $insert_data['company_name'], 
@@ -60,6 +64,10 @@ class Train_model extends CI_Model {
                 $insert_data['sex'],  
                 $insert_data['mail'],
                 $insert_data['phone'],
+                $insert_data['name2'],
+                $insert_data['sex2'],  
+                $insert_data['mail2'],
+                $insert_data['phone2'],
                 $insert_data['train_id'],
                 $insert_data['price'],
                 $insert_data['place'],

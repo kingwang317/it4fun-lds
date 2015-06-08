@@ -64,6 +64,34 @@
 							<div class="col-sm-4">
 								<?php echo $row->contact_tel ?>
 							</div>
+						</div>	 	 	
+						<div class="form-group">
+							<label class="col-sm-2 col-sm-2 control-label">姓名2</label>
+							<div class="col-sm-4">
+								<?php echo $row->customer_name2 ?>
+							</div>
+						</div>		
+						<div class="form-group">
+							<label class="col-sm-2 col-sm-2 control-label">性別2</label>
+							<div class="col-sm-4">
+								<?php if ($row->sex2 == '1'): ?>
+									男性
+								<?php else: ?>
+									女性
+								<?php endif ?>
+							</div>
+						</div>	  	
+						<div class="form-group">
+							<label class="col-sm-2 col-sm-2 control-label">電子信箱2</label>
+							<div class="col-sm-4">
+								<?php echo $row->email2 ?>
+							</div>
+						</div>	 	
+						<div class="form-group">
+							<label class="col-sm-2 col-sm-2 control-label">聯絡電話2</label>
+							<div class="col-sm-4">
+								<?php echo $row->contact_tel2 ?>
+							</div>
 						</div>	 	
 						<div class="form-group">
 							<label class="col-sm-2 col-sm-2 control-label">訓練名稱</label>

@@ -99,7 +99,7 @@
                             <?php 
                                 $train_date = '';
                                 $pos = strpos($train->train_date, ',');
-                                echo $pos;
+                                //echo $pos;
                                 if ($pos > 0) {
                                     $date_ary = explode(",", $train->train_date);
                                     foreach ($date_ary as $key => $value) {
@@ -136,7 +136,14 @@
 
                             <div class="b12_block_title">上課地點</div>
 
-                            <div class="b12_info_title_slider_text"><?php echo $train->train_place ?></div>
+                            <div class="b12_info_title_slider_text">
+                                <?php 
+                                $train_place_array = explode(",",$train->train_place);
+                                foreach ($train_place_array as $train_place_value){
+                                    echo $train_place_value."<br>";
+                                }
+                                ?>
+                            </div>
 
                         </div>
 
