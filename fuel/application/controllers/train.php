@@ -222,7 +222,7 @@ class Train extends CI_Controller {
 
 		   
 
-		    $subject = "$company_name-$name-$train->train_title-$train->train_date-$train->train_place"; //信件標題 
+		    $subject = "$company_name-$name-$train->train_title-$train->train_date"; //信件標題 
 		    $url = site_url();
 			$image_url = $url.'assets/templates/images/mail/logo.png';
 		    $msg = "
