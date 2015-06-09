@@ -409,7 +409,7 @@
                           "Uniform": $("#Uniform").val(),
                           "lunch_box": $('input[name=lunch_box]:checked').val(),
                           "agree": $('input[name=agree]:checked').val(),
-                          "register_msg": $("#register_msg").val()
+                          "register_msg": $("#register_msg").val() + '  ' + $("#train_register_date").val()
                         };   
 
         console.log(postData);

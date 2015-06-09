@@ -222,7 +222,8 @@ class Train extends CI_Controller {
 
 		   
 
-		    $subject = "$company_name-$name-$train->train_title-$train->train_date"; //信件標題 
+		    // $subject = "$company_name-$name-$train->train_title-$train->train_date"; //信件標題 
+		    $subject = "$company_name-$name-$train->train_title"; //信件標題 
 		    $url = site_url();
 			$image_url = $url.'assets/templates/images/mail/logo.png';
 		    $msg = "
@@ -275,9 +276,7 @@ class Train extends CI_Controller {
 				        <div style='line-height:26px;'>
 				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>課程費用：</div><div style='font-size:14px;display:inline-block;'>$train->train_price</div>
 				        </div>
-				        <div style='line-height:26px;'>
-				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>開課日期：</div><div style='font-size:14px;display:inline-block;'>$train->train_date</div>
-				        </div>
+				        
 				        <div style='line-height:26px;'>
 				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>上課天數：</div><div style='font-size:14px;display:inline-block;'>$train->train_days </div>
 				        </div>
@@ -287,9 +286,7 @@ class Train extends CI_Controller {
 				        <div style='line-height:26px;'>
 				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>上課時間：</div><div style='font-size:14px;display:inline-block;'>$train->train_time_s~$train->train_time_e</div>
 				        </div>
-				        <div style='line-height:26px;'>
-				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>上課地點：</div><div style='font-size:14px;display:inline-block;'>$train->train_place</div>
-				        </div>
+				       
 				        <div style='line-height:26px;'>
 				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>留言內容：</div><div style='font-size:14px;display:inline-block;'>$register_msg</div>
 				        </div>
@@ -357,9 +354,7 @@ class Train extends CI_Controller {
 				        <div style='line-height:26px;'>
 				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>課程費用：</div><div style='font-size:14px;display:inline-block;'>$train->train_price</div>
 				        </div>
-				        <div style='line-height:26px;'>
-				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>開課日期：</div><div style='font-size:14px;display:inline-block;'>$train->train_date</div>
-				        </div>
+				       
 				        <div style='line-height:26px;'>
 				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>上課天數：</div><div style='font-size:14px;display:inline-block;'>$train->train_days </div>
 				        </div>
@@ -369,9 +364,7 @@ class Train extends CI_Controller {
 				        <div style='line-height:26px;'>
 				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>上課時間：</div><div style='font-size:14px;display:inline-block;'>$train->train_time_s~$train->train_time_e</div>
 				        </div>
-				        <div style='line-height:26px;'>
-				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>上課地點：</div><div style='font-size:14px;display:inline-block;'>$train->train_place</div>
-				        </div>
+				        
 				        <div style='line-height:26px;'>
 				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>留言內容：</div><div style='font-size:14px;display:inline-block;'>$register_msg</div>
 				        </div>
