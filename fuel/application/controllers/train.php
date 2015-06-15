@@ -223,7 +223,7 @@ class Train extends CI_Controller {
 		   
 
 		    // $subject = "$company_name-$name-$train->train_title-$train->train_date"; //信件標題 
-		    $subject = "$company_name-$name-$train->train_title"; //信件標題 
+		    $subject = "$company_name-$name-$train->train_title-$place"; //信件標題 
 		    $url = site_url();
 			$image_url = $url.'assets/templates/images/mail/logo.png';
 		    $msg = "
@@ -304,7 +304,10 @@ class Train extends CI_Controller {
 
 			";
 
-			$msg2 = "
+			$msg2 = $msg;
+
+			if (isset($mail2) && !empty($mail2) ) {
+				$msg2 = "
 								
 				<html xmlns='http://www.w3.org/1999/xhtml'>
 				<head>
@@ -328,13 +331,22 @@ class Train extends CI_Controller {
 				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>部門單位：</div><div style='font-size:14px;display:inline-block;'>$dep</div>
 				        </div>
 				        <div style='line-height:26px;'>
-				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>姓名：</div><div style='font-size:14px;display:inline-block;'>$name2 $sex2</div>
+				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>姓名：</div><div style='font-size:14px;display:inline-block;'>$name $sex</div>
 				        </div>
 				        <div style='line-height:26px;'>
-				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>電子信箱：</div><div style='font-size:14px;display:inline-block;'>$mail2</div>
+				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>電子信箱：</div><div style='font-size:14px;display:inline-block;'>$mail</div>
 				        </div>
 				        <div style='line-height:26px;'>
-				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>連絡電話：</div><div style='font-size:14px;display:inline-block;'>$phone2</div>
+				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>連絡電話：</div><div style='font-size:14px;display:inline-block;'>$phone</div>
+				        </div>
+				        <div style='line-height:26px;'>
+				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>第二位姓名：</div><div style='font-size:14px;display:inline-block;'>$name2 $sex2</div>
+				        </div>
+				        <div style='line-height:26px;'>
+				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>第二位電子信箱：</div><div style='font-size:14px;display:inline-block;'>$mail2</div>
+				        </div>
+				        <div style='line-height:26px;'>
+				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>第二位連絡電話：</div><div style='font-size:14px;display:inline-block;'>$phone2</div>
 				        </div>
 				        <div style='line-height:26px;'>
 				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>餐盒選擇：</div><div style='font-size:14px;display:inline-block;'>$lunch_box</div>
@@ -381,6 +393,9 @@ class Train extends CI_Controller {
 
 
 			";
+			}
+
+			
 
 
 			$managers = $this->code_model->get_code("ISO_EMAIL_GROUP","zh-TW");
@@ -401,7 +416,7 @@ class Train extends CI_Controller {
 			$this->email->from('service@isoleader.com.tw', 'Leadership');
 			$this->email->to($mail); 
 			$this->email->subject($subject); 
-			$this->email->message($msg);
+			$this->email->message($msg2);
 			$success = $this->email->send();
 
 			if (isset($mail2) && !empty($mail2) ) {

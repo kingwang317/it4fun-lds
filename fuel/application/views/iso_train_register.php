@@ -402,14 +402,14 @@
                           "phone2": $("#phone2").val(),
                           "train_id": $('#train_id').val(),
                           "price": $("#price").val(),
-                          "place": '',//place,
+                          "place": $("#train_register_date").val(),//place,
                           "datepicker": $("#train_register_date").val(),//$("#datepicker").val(),
                           "invoice": $('input[name=invoice]:checked').val(),
                           "invoice_title": $("#invoice_title").val(),
                           "Uniform": $("#Uniform").val(),
                           "lunch_box": $('input[name=lunch_box]:checked').val(),
                           "agree": $('input[name=agree]:checked').val(),
-                          "register_msg": $("#register_msg").val() + '  ' + $("#train_register_date").val()
+                          "register_msg": $("#register_msg").val() 
                         };   
 
         console.log(postData);
