@@ -476,10 +476,10 @@
             $(this).css('color', '#B3B3B3');
         }
     });
-    $("#train_register_date").click(function() {
-        if ($("#train_register_date").val() !== ''){
+    $("#train_register_date").change(function() {
+        //if ($("#train_register_date").val() !== ''){
             $("#show_register_date").text($("#train_register_date").val());
             $("#register_msg").text($("#train_register_date").val());
-        }
+       // }
     });
 </script>
