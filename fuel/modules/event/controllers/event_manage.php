@@ -252,8 +252,8 @@ class Event_manage extends Fuel_base_controller {
 	function do_edit()
 	{
 		$base_url = base_url();
-		$module_uri = base_url().$this->module_uri;
 		$id = $this->input->get("id");		  
+		$module_uri = $base_url.'fuel/event/edit?id='.$id; 
 		$post_arr = $this->input->post();	 
 		$post_arr['train_detail'] = htmlspecialchars($this->input->get_post("train_detail"));
 

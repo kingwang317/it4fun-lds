@@ -135,6 +135,15 @@
 							</div>
 						</div>
 						<div class="form-group">
+							<label class="col-sm-2 col-sm-2 control-label">順序<br/>
+								<span style="color:#d9534f">-99:隱藏</span>
+								<span style="color:#d9534f">-98:歷史課程</span>
+							</label>
+							<div class="col-sm-4"> 
+								<input type="text" class="form-control" id="train_order" name="train_order" >
+							</div>
+						</div>	
+						<div class="form-group">
 							<div class="col-sm-12" style="text-align:center">
 								<button type="submit" class="btn btn-info">新增</button>
 								<button type="button" class="btn btn-danger" onClick="aHover('<?php echo $module_uri?>')">取消</button>

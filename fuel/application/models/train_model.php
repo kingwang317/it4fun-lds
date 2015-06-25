@@ -6,8 +6,25 @@ class Train_model extends CI_Model {
         $this->load->database();
     }
 
+
     public function get_list($is_free){
-        $sql = @"select * from mod_train where ( '$is_free'='-1' || is_free = '$is_free') order by train_date asc";
+        // -99 : 隱藏
+        // -98：變成歷史課程 , 出現在front-end iso 教育訓練網 list最下方
+        $sql = @"select * from mod_train where ( '$is_free'='-1' || is_free = '$is_free') AND train_order<>'-99' order by train_date asc";
+        $query = $this->db->query($sql);
+        //echo $sql;exit;
+        if($query->num_rows() > 0)
+        {
+            $result = $query->result();
+
+            return $result;
+        }
+    } 
+
+    public function get_his_list(){
+        // -99 : 隱藏
+        // -98：變成歷史課程 , 出現在front-end iso 教育訓練網 list最下方
+        $sql = @"select * from mod_train where train_order='-98' order by train_date asc";
         $query = $this->db->query($sql);
         //echo $sql;exit;
         if($query->num_rows() > 0)
@@ -19,7 +36,7 @@ class Train_model extends CI_Model {
     } 
 
     public function get_train_by_id($id){
-        $sql = @"select *, (SELECT COUNT(*) FROM mod_register WHERE mod_register.train_id = mod_train.id ) reg_count from mod_train where id = '$id' ";
+        $sql = @"select *, (SELECT COUNT(*) FROM mod_register WHERE mod_register.train_id = mod_train.id ) reg_count from mod_train where id = '$id' AND train_order<>'-99' ";
         $query = $this->db->query($sql);
         // echo $sql;exit;
         if($query->num_rows() > 0)

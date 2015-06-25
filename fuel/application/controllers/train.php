@@ -26,7 +26,8 @@ class Train extends CI_Controller {
 		}else{
 			$vars['free_train'] = $this->train_model->get_list(1);
 			$vars['charge_train'] = $this->train_model->get_list(0);
-		}		
+		}	
+		$vars['his_train'] = $this->train_model->get_his_list();	
 
 		//print_r($vars['free_train']);
 		//die();
@@ -340,13 +341,13 @@ class Train extends CI_Controller {
 				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>連絡電話：</div><div style='font-size:14px;display:inline-block;'>$phone</div>
 				        </div>
 				        <div style='line-height:26px;'>
-				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>第二位姓名：</div><div style='font-size:14px;display:inline-block;'>$name2 $sex2</div>
+				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>第2位姓名：</div><div style='font-size:14px;display:inline-block;'>$name2 $sex2</div>
 				        </div>
 				        <div style='line-height:26px;'>
-				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>第二位電子信箱：</div><div style='font-size:14px;display:inline-block;'>$mail2</div>
+				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>第2位電子信箱：</div><div style='font-size:14px;display:inline-block;'>$mail2</div>
 				        </div>
 				        <div style='line-height:26px;'>
-				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>第二位連絡電話：</div><div style='font-size:14px;display:inline-block;'>$phone2</div>
+				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>第2位連絡電話：</div><div style='font-size:14px;display:inline-block;'>$phone2</div>
 				        </div>
 				        <div style='line-height:26px;'>
 				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>餐盒選擇：</div><div style='font-size:14px;display:inline-block;'>$lunch_box</div>

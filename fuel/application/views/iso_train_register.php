@@ -357,6 +357,9 @@
             return false;
         }
 
+        $("#button_confirm").text("傳送中");
+        $("#button_confirm").unbind('click');
+
         // var train_date = '';
         // var train_place = '';
 
@@ -433,6 +436,8 @@
             }
             else
             {
+              $("#button_confirm").text("確認送出");
+              $("#button_confirm").bind('click');
               alert(data.msg);
             }
           }
