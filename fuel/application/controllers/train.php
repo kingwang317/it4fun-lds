@@ -408,7 +408,7 @@ class Train extends CI_Controller {
 					$this->email->to($m_email); 
 					$this->email->subject($subject);
 					// $this->email->message(fuel_block('contact_content'));
-					$this->email->message($msg); 
+					$this->email->message($msg2); 
 					$success = $this->email->send();
 					
 				}
