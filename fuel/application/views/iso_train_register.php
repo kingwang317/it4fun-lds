@@ -357,8 +357,10 @@
             return false;
         }
 
-        $("#button_confirm").text("傳送中");
+        $("#button_confirm").text("傳送中...");
         $("#button_confirm").unbind('click');
+        $("#button_confirm").css('background-color','gray');
+        $("#button_confirm").css('border-color','gray');
 
         // var train_date = '';
         // var train_place = '';
@@ -437,7 +439,9 @@
             else
             {
               $("#button_confirm").text("確認送出");
-              $("#button_confirm").bind('click');
+              $("#button_confirm").bind('click'); 
+              $("#button_confirm").css('background-color','#eb1d23');
+              $("#button_confirm").css('border-color','#eb1d23');
               alert(data.msg);
             }
           }
