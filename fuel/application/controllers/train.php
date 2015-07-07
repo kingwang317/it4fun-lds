@@ -83,7 +83,7 @@ class Train extends CI_Controller {
 		$vars['train_statues'] = $train_statues;
 		$vars['views'] = 'iso_train_detail';
 		$seo_data = $this->code_model->get_seo_default();
-		$vars['title'] = "ISO教育訓練-".$train->train_title." ".$seo_data["title"]."-領導力企管";
+		$vars['title'] = $train->train_title."-領導力企管";
 		$vars['keyword'] = $seo_data["keyword"];
 		$vars['interest_news'] = $this->code_model->get_random_all_news();
 		$vars['recommend_news'] = $this->code_model->get_extension_news("4"," AND type='139'",""," LIMIT 0,5");
