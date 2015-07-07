@@ -34,7 +34,7 @@
            
            <div class="b10_detail_input">
                 <div class="input_block">
-                    <select class="b10_select" id="train_register_date" name="train_register_date">
+                    <select class="b10_select train_register" id="train_register_date" name="train_register_date">
                         <?php 
                                 $train_date = '';
                                 $pos = strpos($train->train_date, ',');

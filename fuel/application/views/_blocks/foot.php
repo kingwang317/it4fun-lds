@@ -141,7 +141,7 @@
             <br>
             台北 02-25039035 (104)台北市中山區建國北路二段87號2樓&nbsp;&nbsp;|&nbsp;&nbsp;台中 04-2265-3849 (402)台中市南區五權南路516號&nbsp;&nbsp;|&nbsp;&nbsp;高雄 07-7927-146 (812)高雄市小港區新昌街21之23號
             <br>
-            法律顧問：正力法律事務所 吳永茂律師&nbsp;&nbsp;&nbsp;&nbsp;訪客人數：<?php echo  str_pad($_SESSION["counter"]+888888,8,'0',STR_PAD_LEFT); ?>(計數器)
+            法律顧問：正力法律事務所 吳永茂律師&nbsp;&nbsp;&nbsp;&nbsp;訪客人數：<?php echo  str_pad($_SESSION["counter"]+906699,8,'0',STR_PAD_LEFT); ?>(計數器)
         </div>
     </div>
     <div id="fb-root"></div>
