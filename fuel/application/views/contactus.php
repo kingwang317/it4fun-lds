@@ -83,7 +83,7 @@
                 <div class="input_block"><textarea name="msg" id="msg" class="b10_textarea" rows="10" placeholder="留言內容" autocomplete="off"></textarea></div>
             </form>
            </div>
-           <div class='b10_submit'>確認送出</div>
+           <div class='b10_submit' id="button_confirm" >確認送出</div>
         </div>
         <div class="b7_right b10_right">
             <div class="b10_right_title">領導力企業管理顧問有限公司</div>
@@ -159,6 +159,11 @@
 
         // return;
 
+        $("#button_confirm").text("傳送中...");
+        $("#button_confirm").unbind('click');
+        $("#button_confirm").css('background-color','gray');
+        $("#button_confirm").css('border-color','gray');
+
 
         var url = '<?php echo $do_contact_url ?>';
 
@@ -195,6 +200,10 @@
                 }
                 else
                 {
+                    $("#button_confirm").text("確認送出");
+                    $("#button_confirm").bind('click'); 
+                    $("#button_confirm").css('background-color','#eb1d23');
+                    $("#button_confirm").css('border-color','#eb1d23');
                     alert(data.msg);
                 }
             }
