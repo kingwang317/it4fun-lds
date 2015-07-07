@@ -26,7 +26,8 @@ class Train extends CI_Controller {
 		}else{
 			$vars['free_train'] = $this->train_model->get_list(1);
 			$vars['charge_train'] = $this->train_model->get_list(0);
-		}		
+		}	
+		$vars['his_train'] = $this->train_model->get_his_list();	
 
 		//print_r($vars['free_train']);
 		//die();
@@ -174,6 +175,7 @@ class Train extends CI_Controller {
 	 		}
 		    $mail2 = $post_arr['mail2'];
 		    $phone = $post_arr['phone'];
+		    $phone2 = $post_arr['phone2'];
 		    $train_id = $post_arr['train_id'];
 		    $price = $post_arr['price'];
 		    $place = $post_arr['place'];
@@ -221,7 +223,8 @@ class Train extends CI_Controller {
 
 		   
 
-		    $subject = "$company_name-$name-$train->train_title-$train->train_date-$train->train_place"; //信件標題 
+		    // $subject = "$company_name-$name-$train->train_title-$train->train_date"; //信件標題 
+		    $subject = "$company_name-$name-$train->train_title-$place"; //信件標題 
 		    $url = site_url();
 			$image_url = $url.'assets/templates/images/mail/logo.png';
 		    $msg = "
@@ -274,9 +277,7 @@ class Train extends CI_Controller {
 				        <div style='line-height:26px;'>
 				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>課程費用：</div><div style='font-size:14px;display:inline-block;'>$train->train_price</div>
 				        </div>
-				        <div style='line-height:26px;'>
-				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>開課日期：</div><div style='font-size:14px;display:inline-block;'>$train->train_date</div>
-				        </div>
+				        
 				        <div style='line-height:26px;'>
 				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>上課天數：</div><div style='font-size:14px;display:inline-block;'>$train->train_days </div>
 				        </div>
@@ -286,9 +287,7 @@ class Train extends CI_Controller {
 				        <div style='line-height:26px;'>
 				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>上課時間：</div><div style='font-size:14px;display:inline-block;'>$train->train_time_s~$train->train_time_e</div>
 				        </div>
-				        <div style='line-height:26px;'>
-				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>上課地點：</div><div style='font-size:14px;display:inline-block;'>$train->train_place</div>
-				        </div>
+				       
 				        <div style='line-height:26px;'>
 				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>留言內容：</div><div style='font-size:14px;display:inline-block;'>$register_msg</div>
 				        </div>
@@ -306,6 +305,99 @@ class Train extends CI_Controller {
 
 			";
 
+			$msg2 = $msg;
+
+			if (isset($mail2) && !empty($mail2) ) {
+				$msg2 = "
+								
+				<html xmlns='http://www.w3.org/1999/xhtml'>
+				<head>
+				<meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+				<meta name='viewport' content='width=device-width; initial-scale=1.0' /> <!-- 於手機觀看時不會自動放大 -->
+				<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'> <!-- 最佳的IE兼容模式 -->
+				</head>
+				<body style='margin: 0px auto;text-align:center;background-color:#f1f1f1;'>
+				<div style='margin: 0px auto;text-align:left;width:600px;background-color:#f1f1f1;'>
+				    <div style='padding:30px 0 10px 0;'>
+				        <img src='$image_url'>
+				        <div style='font-size:12px;display:inline-block;float:right;line-height:50px;padding-right:5px;'><a href='http://a-wei.lionfree.net/leadership/index.php' style='color:black;text-decoration: none;'>回領導力官網</a></div>
+				    </div>
+				    <div style='background-color:#fff;padding:20px 50px 20px 50px;'>
+				        <!--<div style='margin: 0px auto;text-align:center;'><img src='http://a-wei.lionfree.net/leadership/images/mail/head.jpg'></div>-->
+				        <div style='font-size:14px;line-height:26px;'>你好：<br>$content</div>
+				        <div style='line-height:26px;'>
+				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>公司名稱：</div><div style='font-size:14px;display:inline-block;'>$company_name</div>
+				        </div>
+				        <div style='line-height:26px;'>
+				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>部門單位：</div><div style='font-size:14px;display:inline-block;'>$dep</div>
+				        </div>
+				        <div style='line-height:26px;'>
+				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>姓名：</div><div style='font-size:14px;display:inline-block;'>$name $sex</div>
+				        </div>
+				        <div style='line-height:26px;'>
+				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>電子信箱：</div><div style='font-size:14px;display:inline-block;'>$mail</div>
+				        </div>
+				        <div style='line-height:26px;'>
+				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>連絡電話：</div><div style='font-size:14px;display:inline-block;'>$phone</div>
+				        </div>
+				        <div style='line-height:26px;'>
+				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>第2位姓名：</div><div style='font-size:14px;display:inline-block;'>$name2 $sex2</div>
+				        </div>
+				        <div style='line-height:26px;'>
+				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>第2位電子信箱：</div><div style='font-size:14px;display:inline-block;'>$mail2</div>
+				        </div>
+				        <div style='line-height:26px;'>
+				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>第2位連絡電話：</div><div style='font-size:14px;display:inline-block;'>$phone2</div>
+				        </div>
+				        <div style='line-height:26px;'>
+				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>餐盒選擇：</div><div style='font-size:14px;display:inline-block;'>$lunch_box</div>
+				        </div>
+				        <div style='line-height:26px;'>
+				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>發票開立：</div><div style='font-size:14px;display:inline-block;'>$invoice</div>
+				        </div>
+				        <div style='line-height:26px;'>
+				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>發票抬頭：</div><div style='font-size:14px;display:inline-block;'>$invoice_title</div>
+				        </div>
+				        <div style='line-height:26px;'>
+				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>統一編號：</div><div style='font-size:14px;display:inline-block;'>$Uniform</div>
+				        </div>
+				        <div style='line-height:26px;'>
+				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>課程名稱：</div><div style='font-size:14px;display:inline-block;'>$train->train_title</div>
+				        </div>
+				        <div style='line-height:26px;'>
+				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>課程費用：</div><div style='font-size:14px;display:inline-block;'>$train->train_price</div>
+				        </div>
+				       
+				        <div style='line-height:26px;'>
+				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>上課天數：</div><div style='font-size:14px;display:inline-block;'>$train->train_days </div>
+				        </div>
+				        <div style='line-height:26px;'>
+				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>上課時數：</div><div style='font-size:14px;display:inline-block;'>$train->train_hours </div>
+				        </div>
+				        <div style='line-height:26px;'>
+				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>上課時間：</div><div style='font-size:14px;display:inline-block;'>$train->train_time_s~$train->train_time_e</div>
+				        </div>
+				        
+				        <div style='line-height:26px;'>
+				            <div style='vertical-align:top;font-size:14px;margin-right:5px;display:inline-block;'>留言內容：</div><div style='font-size:14px;display:inline-block;'>$register_msg</div>
+				        </div>
+				    </div>
+				    <div style='background-color:#fafafa;padding:20px 0 20px 50px;border-top:solid 2px #f1f1f1;'>
+				        <div style='font-size:14px;margin-bottom:10px;'>若你還有其它問題，歡迎來信或來電洽詢。</div>
+				        <div style='font-size:14px;margin-bottom:10px;'>全省免費諮詢電話 0800-222-007</div>
+				        <div style='font-size:14px;margin-bottom:10px;'>E-Mail：Service@isoleader.com.tw</div>
+				        <div style='margin-top:30px;font-size:14px;'>領導力企管客服部 敬上</div>
+				    </div>
+				</div>
+				</body>
+				</html>
+
+
+			";
+			}
+
+			
+
 
 			$managers = $this->code_model->get_code("ISO_EMAIL_GROUP","zh-TW");
 
@@ -316,7 +408,7 @@ class Train extends CI_Controller {
 					$this->email->to($m_email); 
 					$this->email->subject($subject);
 					// $this->email->message(fuel_block('contact_content'));
-					$this->email->message($msg); 
+					$this->email->message($msg2); 
 					$success = $this->email->send();
 					
 				}
@@ -325,14 +417,14 @@ class Train extends CI_Controller {
 			$this->email->from('service@isoleader.com.tw', 'Leadership');
 			$this->email->to($mail); 
 			$this->email->subject($subject); 
-			$this->email->message($msg);
+			$this->email->message($msg2);
 			$success = $this->email->send();
 
 			if (isset($mail2) && !empty($mail2) ) {
 				$this->email->from('service@isoleader.com.tw', 'Leadership');
 				$this->email->to($mail2); 
 				$this->email->subject($subject); 
-				$this->email->message($msg);
+				$this->email->message($msg2);
 				$success = $this->email->send();
 			}
 

@@ -36,3 +36,12 @@ ALTER TABLE  `mod_train` ADD  `file_path` VARCHAR( 500 )
 
 ALTER TABLE  `mod_train` ADD  `qualify` INT NOT NULL ,
 ADD  `waiting_list` INT NOT NULL
+
+
+ALTER TABLE  `mod_register` ADD  `customer_name2` varchar(50);
+ALTER TABLE  `mod_register` ADD  `sex2` int(1);
+ALTER TABLE  `mod_register` ADD  `email2` varchar(255);
+ALTER TABLE  `mod_register` ADD  `contact_tel2` varchar(20);
+
+
+ALTER TABLE  `mod_train` ADD  `train_order` INT NOT NULL;

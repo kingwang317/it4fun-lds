@@ -6,19 +6,19 @@
 <meta name="viewport" content="width=device-width; initial-scale=1.0" /> <!-- 於手機觀看時不會自動放大 -->
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> <!-- 最佳的IE兼容模式 -->
 <title><?php echo $title; ?></title>
-<link href="<?php echo site_url()?>assets/templates/css/main.css" rel="stylesheet" type="text/css" />
+<link href="<?php echo site_url() ?>assets/templates/css/main.css" rel="stylesheet" type="text/css" />
 <!--link font awesome to use the icon-->
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-<script type="text/javascript" src="<?php echo site_url()?>assets/templates/js/jquery-1.9.1.min.js"></script>
-<script type="text/javascript" src="<?php echo site_url()?>assets/templates/js/jqueryUI-1.11.1.js"></script>
+<script type="text/javascript" src="<?php echo site_url() ?>assets/templates/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="<?php echo site_url() ?>assets/templates/js/jqueryUI-1.11.1.js"></script>
 </head>
 <body>
 <!-- 上方檔案 ↓ -->
-<?php  $this->load->view('_blocks/top')?>
+<?php $this->load->view('_blocks/top') ?>
 
 <div class="main main_width">
-    <div class="page_banner" style="background-image:url(<?php echo site_url()?>assets/templates/images/banner_about.jpg);"></div>
-         <!--<img src="<?php echo site_url()?>assets/templates/images/banner_about.jpg"></div>-->
+    <div class="page_banner" style="background-image:url(<?php echo site_url() ?>assets/templates/images/register.jpg);"></div>
+         <!--<img src="<?php echo site_url() ?>assets/templates/images/banner_about.jpg"></div>-->
     
     <div class="width1024 b10_width">
         <div class="ci_title b10_title">與我們聯絡</div>
@@ -26,7 +26,7 @@
         <div class="ci_detail b7_detail b10_left">
            <!--<div class="b10_detail_title2">領導力企管創下許多全國第一。國內ISO輔導資源最充足的顧問公司，協助您取得各項ISO認證，所有ISO認證問題找領導力企管就對了！我們的專業輔導能量，創下許多同業第一。</div>-->
            <div class="b10_detail_input">
-            <form method="post" action="<?php echo $do_contact_url?>" id="form_contact" >
+            <form method="post" action="<?php echo $do_contact_url ?>" id="form_contact" >
                 <div class="input_block">
                     <span class="holder">姓名<span class="red"> ﹙必填﹚</span></span>
                         <input id="name" name="name" class="b10_input" type="text" autocomplete="off">
@@ -58,12 +58,12 @@
                         <option value="2">選擇詢價主旨2</option>
                         <option value="3">選擇詢價主旨3</option> -->
                         <option value="">您想申辦哪一類服務？</option>
-                        <?php if (isset($inquiry_topic)): ?>
-                            <?php foreach ($inquiry_topic as $key => $value): ?>
-                                
-                                <option value="<?php echo $value->code_id ?>"><?php echo $value->code_name ?></option>
-                            <?php endforeach ?>
-                        <?php endif ?>
+<?php if (isset($inquiry_topic)): ?>
+    <?php foreach ($inquiry_topic as $key => $value): ?>
+                                        
+                                        <option value="<?php echo $value->code_id ?>"><?php echo $value->code_name ?></option>
+    <?php endforeach ?>
+<?php endif ?>
                     </select>
                 </div>
                 <div class="input_block">
@@ -73,17 +73,17 @@
                         <option value="2">預計配合的驗證機構2</option>
                         <option value="3">預計配合的驗證機構3</option> -->
                         <option value="">您想選擇哪家驗證機構？</option>
-                        <?php if (isset($coor_unit)): ?>
-                            <?php foreach ($coor_unit as $key => $value): ?>
-                                <option value="<?php echo $value->code_id ?>"><?php echo $value->code_name ?></option>
-                            <?php endforeach ?>
-                        <?php endif ?>
+<?php if (isset($coor_unit)): ?>
+    <?php foreach ($coor_unit as $key => $value): ?>
+                                        <option value="<?php echo $value->code_id ?>"><?php echo $value->code_name ?></option>
+    <?php endforeach ?>
+<?php endif ?>
                     </select>
                 </div>
                 <div class="input_block"><textarea name="msg" id="msg" class="b10_textarea" rows="10" placeholder="留言內容" autocomplete="off"></textarea></div>
             </form>
            </div>
-           <div class='b10_submit'>確認送出</div>
+           <div class='b10_submit' id="button_confirm" >確認送出</div>
         </div>
         <div class="b7_right b10_right">
             <div class="b10_right_title">領導力企業管理顧問有限公司</div>
@@ -112,7 +112,7 @@
     </div>
 </div>
 <!-- 最底宣告 -->
-<?php  $this->load->view('_blocks/foot')?>
+<?php $this->load->view('_blocks/foot') ?>
 </body>
 </html>
 
@@ -129,27 +129,27 @@
         $(this).next().focus();
     });
     $(".b10_submit").click(function() {
-        if (!$("#name").val()){
+        if (!$("#name").val()) {
             alert("請輸入姓名");
             $("#name").focus();
             return false;
         }
-        if (!$("#mail").val()){
+        if (!$("#mail").val()) {
             alert("請輸入電子信箱");
             $("#mail").focus();
             return false;
         }
-        if (!$("#company_name").val()){
+        if (!$("#company_name").val()) {
             alert("請輸入公司名稱");
             $("#mail").focus();
             return false;
         }
-        if (!$("#number").val()){
+        if (!$("#number").val()) {
             alert("請輸入電話號碼");
             $("#mail").focus();
             return false;
         }
-        if (!$("#company_num").val()){
+        if (!$("#company_num").val()) {
             alert("請輸入公司人數");
             $("#company_num").focus();
             return false;
@@ -159,53 +159,62 @@
 
         // return;
 
+        $("#button_confirm").text("傳送中...");
+        $("#button_confirm").unbind('click');
+        $("#button_confirm").css('background-color','gray');
+        $("#button_confirm").css('border-color','gray');
 
-        var url = '<?php echo $do_contact_url?>';   
-      
+
+        var url = '<?php echo $do_contact_url ?>';
+
         var postData = {//"plan_id": $("#plan_id").val(),
-                          "name": $("#name").val(),
-                          "sex":$('input[name=sex]:checked').val(),
-                          "company_name": $("#company_name").val(),
-                          "company_num": $("#company_num").val(),
-                          "number": $("#number").val(),
-                          "email": $("#mail").val(),
-                          "inquiry_topic": $("#inquiry_topic").val(),
-                          "coor_unit": $("#coor_unit").val(),
-                          "msg": $("#msg").val()
-                        };   
+            "name": $("#name").val(),
+            "sex": $('input[name=sex]:checked').val(),
+            "company_name": $("#company_name").val(),
+            "company_num": $("#company_num").val(),
+            "number": $("#number").val(),
+            "email": $("#mail").val(),
+            "inquiry_topic": $("#inquiry_topic").val(),
+            "coor_unit": $("#coor_unit").val(),
+            "msg": $("#msg").val()
+        };
 
         console.log(postData);
 
-       $.ajax({
-          url: url,
-          type: 'POST',
-          dataType: 'json',
-          data: postData,
-          success: function(data)
-          {
-            console.log(data);
-            if(data.status == 1)
+        $.ajax({
+            url: url,
+            type: 'POST',
+            dataType: 'json',
+            data: postData,
+            success: function(data)
             {
-              // $("#MerchantID").val(data.merchant_id);
-              // $("#XMLData").val(data.encode_data);
-              // $("#payment_form").attr('action', data.gateway);
-              // $("#payment_form").submit();
-              alert('送出成功！！');
-              location.href = '<?php echo site_url() ?>home/contactus';
+                console.log(data);
+                if (data.status == 1)
+                {
+                    // $("#MerchantID").val(data.merchant_id);
+                    // $("#XMLData").val(data.encode_data);
+                    // $("#payment_form").attr('action', data.gateway);
+                    // $("#payment_form").submit();
+                    alert('送出成功！！');
+                    location.href = '<?php echo site_url() ?>home/contactus';
+                }
+                else
+                {
+                    $("#button_confirm").text("確認送出");
+                    $("#button_confirm").bind('click'); 
+                    $("#button_confirm").css('background-color','#eb1d23');
+                    $("#button_confirm").css('border-color','#eb1d23');
+                    alert(data.msg);
+                }
             }
-            else
-            {
-              alert(data.msg);
-            }
-          }
         });
     });
-    $(".b10_select").change(function(){
-    var target = $(this).val();
-    if (target !== ''){
-        $(this).css('color','black');
-    }else{
-        $(this).css('color','#B3B3B3');
-    }
-});
+    $(".b10_select").change(function() {
+        var target = $(this).val();
+        if (target !== '') {
+            $(this).css('color', 'black');
+        } else {
+            $(this).css('color', '#B3B3B3');
+        }
+    });
 </script>
